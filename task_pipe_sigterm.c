@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 
 void myHandler(int signo) {
-	puts("In signal handler");
+	puts("In child signal handler");
 	exit(0);
 }
 
@@ -24,6 +24,7 @@ int main() {
 		puts("In child process");
 		write(pipefd[1],p,strlen(p)+1);
 		signal(SIGTERM,myHandler);
+		pause();
 	}
 	else {
 		close(pipefd[1]);
