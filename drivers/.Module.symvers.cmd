@@ -1,1 +1,1 @@
-savedcmd_Module.symvers :=  /usr/src/linux-headers-6.14.0-37-generic/scripts/mod/modpost -M -m -b -x -a      -o Module.symvers -T modules.order -i /usr/src/linux-headers-6.14.0-37-generic/Module.symvers -e 
+savedcmd_/home/dell/mirafra/drivers/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/mirafra/drivers/Module.symvers -T /home/dell/mirafra/drivers/modules.order -i Module.symvers -e 

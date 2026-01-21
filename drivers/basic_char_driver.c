@@ -23,6 +23,105 @@ static int major_number;
 static char kernel_buffer[BUF_SIZE];
 static int buffer_size;
 
+
+void reverse(char *str) {
+        int i = 0,j = strlen(str)-1;
+        for(;i<j;i++,j--) {
+                char temp = str[i];
+                str[i] = str[j];
+                str[j] = temp;
+        }
+}
+/*
+void operation(char *str) {
+	
+                int num1 = 0,num2 = 0,count = 0,res;
+                while((str[count] >= '0' && str[count] <= '9')) {
+                        num1 = num1*10 + str[count]-'0';
+                        count++;
+                }
+                count++;
+                while((str[count] >= '0' && str[count] <= '9')) {
+                        num2 = num2*10 + str[count]-'0';
+                        count++;
+                }
+                count++;
+                switch(str[count]) {
+                        case '+':
+                                res = num1+num2;
+                                break;
+                        case '-':
+                                res = num1-num2;
+                                break;
+                        case '*':
+                                res = num1*num2;
+                                break;
+                        case '/':
+                                res = num1/num2;
+                                break;
+                        default :
+                                break;
+                }
+	   count = 0;
+	   while(res) {
+                str[count] = res % 10;
+                count++;
+                res /= 10;
+	}
+	
+       // str[count] = '\0';
+        //reverse(str);
+	
+}
+*/
+
+void operation(char *str)
+{
+    int num1 = 0, num2 = 0, res = 0, i = 0, sign = 0;
+    char op;
+
+    while (str[i] >= '0' && str[i] <= '9') {
+        num1 = num1 * 10 + (str[i] - '0');
+        i++;
+    }
+
+    op = str[i];
+    i++;
+
+    while (str[i] >= '0' && str[i] <= '9') {
+        num2 = num2 * 10 + (str[i] - '0');
+        i++;
+    }
+
+    switch (op) {
+        case '+': res = num1 + num2; break;
+        case '-': res = num1 - num2; break;
+        case '*': res = num1 * num2; break;
+        case '/': res = (num2 != 0) ? num1 / num2 : 0; break;
+        default:  return;
+    }
+
+    i = 0;
+    if (res < 0) {
+        sign = 1;
+        res = -res;
+    }
+
+    do {
+        str[i++] = (res % 10) + '0';
+        res /= 10;
+    } while (res);
+
+    if (sign)
+        str[i++] = '-';
+
+    str[i] = '\0';
+
+    reverse(str);
+
+}
+
+
 /*
  * Called when user opens /dev/basic_char
  */
@@ -62,6 +161,10 @@ static ssize_t basic_read(struct file *file,
     /*
      * Copy data from kernel space to user space
      */
+
+    //reverse(kernel_buffer);
+   operation(kernel_buffer);
+
     if (copy_to_user(user_buffer,
                      kernel_buffer + *offset,
                      bytes_to_copy))
@@ -69,7 +172,7 @@ static ssize_t basic_read(struct file *file,
 
     *offset += bytes_to_copy;
 
-    printk(KERN_INFO "basic_char: read %d bytes\n", bytes_to_copy);
+    printk(KERN_INFO "basic_char: read %s bytes\n", kernel_buffer);
     return bytes_to_copy;
 }
 

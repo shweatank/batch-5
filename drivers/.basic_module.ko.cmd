@@ -1,1 +1,1 @@
-savedcmd_basic_module.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T /usr/src/linux-headers-6.14.0-37-generic/scripts/module.lds -o basic_module.ko basic_module.o basic_module.mod.o .module-common.o
+savedcmd_/home/dell/mirafra/drivers/basic_module.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/drivers/basic_module.ko /home/dell/mirafra/drivers/basic_module.o /home/dell/mirafra/drivers/basic_module.mod.o

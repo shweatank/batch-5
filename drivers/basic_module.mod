@@ -1,1 +1,1 @@
-./basic_module.o
+/home/dell/mirafra/drivers/basic_module.o
