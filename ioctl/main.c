@@ -3,9 +3,8 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
-#define DEVICE "/dev/basic_ioctl"
 #define IOCTL_MAGIC 'B'
-
+#define DEVICE "basic_ioctl"
 struct st {
 	int a;
 	int b;

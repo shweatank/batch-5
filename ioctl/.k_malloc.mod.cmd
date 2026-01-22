@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/ioctl/k_malloc.mod := printf '%s\n'   k_malloc.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/ioctl/"$$0) }' > /home/mirafra/Desktop/batch-5/ioctl/k_malloc.mod

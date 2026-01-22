@@ -1,2 +1,1 @@
-/home/mirafra/Desktop/batch-5/ioctl/k_malloc.o
 /home/mirafra/Desktop/batch-5/ioctl/cal2_driver.o
