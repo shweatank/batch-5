@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/new/batch-5/ker/ioctl/ioctl.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/new/batch-5/ker/ioctl/ioctl.ko /home/mirafra/new/batch-5/ker/ioctl/ioctl.o /home/mirafra/new/batch-5/ker/ioctl/ioctl.mod.o

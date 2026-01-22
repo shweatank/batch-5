@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/new/batch-5/ker/ioctl/ioctl_new.mod := printf '%s\n'   ioctl_new.o | awk '!x[$$0]++ { print("/home/mirafra/new/batch-5/ker/ioctl/"$$0) }' > /home/mirafra/new/batch-5/ker/ioctl/ioctl_new.mod
