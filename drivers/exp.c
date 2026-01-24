@@ -32,7 +32,7 @@ void reverse(char *str) {
                 str[j] = temp;
         }
 }
-
+/*
 void operation(char *str)
 {
     int num1 = 0, num2 = 0, res = 0, i = 0, sign = 0;
@@ -78,6 +78,8 @@ void operation(char *str)
     reverse(str);
 
 }
+*/
+
 
 
 /*
@@ -121,7 +123,7 @@ static ssize_t basic_read(struct file *file,
      */
 
     //reverse(kernel_buffer);
-   operation(kernel_buffer);
+    //operation(kernel_buffer);
 
     if (copy_to_user(user_buffer,
                      kernel_buffer + *offset,

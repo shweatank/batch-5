@@ -35,19 +35,26 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
-	{ 0x88db9f48, "__check_object_size" },
-	{ 0x13c49cc2, "_copy_from_user" },
-	{ 0x754d539c, "strlen" },
-	{ 0x6b10bee1, "_copy_to_user" },
+	{ 0xb3f7646e, "kthread_should_stop" },
+	{ 0xe2c17b5d, "__SCT__might_resched" },
+	{ 0xfe487975, "init_wait_entry" },
+	{ 0x1000e51, "schedule" },
+	{ 0x8c26d495, "prepare_to_wait_event" },
+	{ 0x92540fbf, "finish_wait" },
+	{ 0xf0fdf6cb, "__stack_chk_fail" },
+	{ 0x1f337bd7, "kthread_create_on_node" },
+	{ 0xf87c611c, "wake_up_process" },
+	{ 0x92d5838e, "request_threaded_irq" },
+	{ 0x2ef1b23, "kthread_stop" },
+	{ 0xc1514a3b, "free_irq" },
 	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x122c3a7e, "_printk" },
+	{ 0xe2964344, "__wake_up" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0x864e77e5, "__register_chrdev" },
-	{ 0x6bc3fbc0, "__unregister_chrdev" },
+	{ 0x122c3a7e, "_printk" },
 	{ 0xe2fd41e5, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "30B7886F7BDF24469C0F4BF");
+MODULE_INFO(srcversion, "6D3774C5DA73A2929F3BA9C");

@@ -1,4 +1,4 @@
-obj-m += basic_char_driver.o
+obj-m += basic_kernel_thread.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
