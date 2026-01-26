@@ -73,7 +73,6 @@ static const struct file_operations memdemo_fops = {
 static int __init memdemo_init(void)
 {
     int ret;
-
     /* Allocate device number */
     ret = alloc_chrdev_region(&dev, 0, 1, DEVICE_NAME);
     if (ret)
@@ -91,6 +90,8 @@ static int __init memdemo_init(void)
         ret = -ENOMEM;
         goto del_cdev;
     }
+pr_info("*kmalloc_buf=%d\n",*kmalloc_buf);
+pr_info("*vmalloc_buf=%d\n",*vmalloc_buf);
 
     /* vmalloc: virtually contiguous */
     vmalloc_buf = vmalloc(VMALLOC_SIZE);

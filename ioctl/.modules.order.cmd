@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/Desktop/batch-5/ioctl/modules.order := {   echo /home/mirafra/Desktop/batch-5/ioctl/k_malloc.o;   echo /home/mirafra/Desktop/batch-5/ioctl/cal2_driver.o; :; } > /home/mirafra/Desktop/batch-5/ioctl/modules.order

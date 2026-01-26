@@ -1,4 +1,4 @@
-obj-m += k_malloc.o cal1_driver.o
+obj-m += irq1.o keyboard_intr.o cal1_driver.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

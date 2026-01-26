@@ -2,7 +2,6 @@
 #include <linux/fs.h>
 #include <linux/kernel.h>
 #include <linux/uaccess.h>
-#include<linux/slab.h>
 
 #define DEVICE_NAME "basic_ioctl"
 #define IOCTL_MAGIC 'B'
@@ -25,42 +24,40 @@ static long basic_ioctl(struct file *file,
                         unsigned int cmd,
                         unsigned long arg)
 {
-    struct st *val;
-val=kmalloc(sizeof(struct st),GFP_KERNEL);
+    struct st val;
 
-    if (copy_from_user(val, (struct st __user *)arg, sizeof(struct st)))
+    if (copy_from_user(&val, (struct st __user *)arg, sizeof(val)))
         return -EFAULT;
 
-    printk(KERN_INFO "Kernel received %d and %d\n", val->a, val->b);
+    printk(KERN_INFO "Kernel received %d and %d\n", val.a, val.b);
 
     switch (cmd) {
     case IOCTL_ADD:
-        val->res = val->a + val->b;
+        val.res = val.a + val.b;
         break;
 
     case IOCTL_SUB:
-        val->res = val->a - val->b;
+        val.res = val.a - val.b;
         break;
 
     case IOCTL_MUL:
-        val->res = val->a * val->b;
+        val.res = val.a * val.b;
         break;
 
     case IOCTL_DIV:
-        if (val->b == 0)
+        if (val.b == 0)
             return -EINVAL;
-        val->res = val->a / val->b;
+        val.res = val.a / val.b;
         break;
 
     default:
         return -ENOTTY;
     }
 
-    if (copy_to_user((struct st __user *)arg, val, sizeof(struct st)))
+    if (copy_to_user((struct st __user *)arg, &val, sizeof(val)))
         return -EFAULT;
 
     return 0;
-kfree(val);
 }
 
 static struct file_operations fops = {
@@ -85,5 +82,4 @@ module_init(basic_init);
 module_exit(basic_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("KISHOE THE ALMIGHTY");
-MIDULE_DESCRIPTION("Basic IOCTL driver");
+
