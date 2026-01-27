@@ -1,0 +1,1 @@
+savedcmd_/home/dell/device/21-1/adc_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/21-1/adc_driver.ko /home/dell/device/21-1/adc_driver.o /home/dell/device/21-1/adc_driver.mod.o

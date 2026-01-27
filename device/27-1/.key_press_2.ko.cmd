@@ -1,0 +1,1 @@
+savedcmd_/home/dell/device/27-1/key_press_2.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/27-1/key_press_2.ko /home/dell/device/27-1/key_press_2.o /home/dell/device/27-1/key_press_2.mod.o

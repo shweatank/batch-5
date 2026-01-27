@@ -1,0 +1,1 @@
+savedcmd_/home/dell/device/char_device.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/char_device.ko /home/dell/device/char_device.o /home/dell/device/char_device.mod.o

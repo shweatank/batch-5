@@ -1,0 +1,1 @@
+savedcmd_/home/dell/device/open_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/open_driver.ko /home/dell/device/open_driver.o /home/dell/device/open_driver.mod.o

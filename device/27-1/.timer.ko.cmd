@@ -1,0 +1,1 @@
+savedcmd_/home/dell/device/27-1/timer.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/27-1/timer.ko /home/dell/device/27-1/timer.o /home/dell/device/27-1/timer.mod.o

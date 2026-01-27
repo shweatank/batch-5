@@ -1,0 +1,1 @@
+savedcmd_/home/dell/device/23-1/irq_kthread.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/23-1/irq_kthread.ko /home/dell/device/23-1/irq_kthread.o /home/dell/device/23-1/irq_kthread.mod.o
