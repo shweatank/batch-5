@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/new/batch-5/ker/ints/keys_irq.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/new/batch-5/ker/ints/keys_irq.ko /home/mirafra/new/batch-5/ker/ints/keys_irq.o /home/mirafra/new/batch-5/ker/ints/keys_irq.mod.o
