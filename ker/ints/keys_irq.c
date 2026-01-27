@@ -57,7 +57,7 @@ static ssize_t basic_write(struct file *file,
 	pr_info("The variables read from user are %d,%d\n",r->a,r->b);
 }
 
-tatic ssize_t basic_read(struct file *file,
+static ssize_t basic_read(struct file *file,
                           char __user *user_buffer,
                           size_t count,
                           loff_t *offset)
@@ -77,7 +77,7 @@ tatic ssize_t basic_read(struct file *file,
                      bytes_to_copy))
         return -EFAULT;
 
-
+return sizeof(re);
 }
 
 static irqreturn_t keyboard_isr(int irq, void *dev_id)
