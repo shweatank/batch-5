@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/my/ioctl_driver.mod := printf '%s\n'   ioctl_driver.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/my/"$$0) }' > /home/mirafra/Desktop/batch-5/my/ioctl_driver.mod
