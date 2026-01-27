@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/jan23/irq_thread.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/jan23/irq_thread.ko /home/dell/practice/jan23/irq_thread.o /home/dell/practice/jan23/irq_thread.mod.o
