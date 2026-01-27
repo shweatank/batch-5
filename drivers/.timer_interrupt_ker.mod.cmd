@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/drivers/timer_interrupt_ker.mod := printf '%s\n'   timer_interrupt_ker.o | awk '!x[$$0]++ { print("/home/mirafra/drivers/"$$0) }' > /home/mirafra/drivers/timer_interrupt_ker.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/drivers/waitqueue_ker.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/drivers/waitqueue_ker.ko /home/mirafra/drivers/waitqueue_ker.o /home/mirafra/drivers/waitqueue_ker.mod.o
