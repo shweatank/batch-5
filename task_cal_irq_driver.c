@@ -6,6 +6,7 @@
 #include <linux/interrupt.h>
 #include <linux/io.h>
 #include<linux/spinlock.h>
+#include<linux/slab.h>
 
 #define DEVICE_NAME "task_calc"
 #define BUF_SIZE    128
@@ -14,19 +15,13 @@
 
 struct st
 {
-        int a;
-        int b;
         int res;
-	int done;
         char strop[10];
 };
+static struct st *kernel_buff=NULL;
+static int v1=10,v2=20;
+static spinlock_t lock;
 
-/* completion object */
-static DECLARE_COMPLETION(result_ready);
-
-spinlock_t lock;
-static struct st cal_var;
-static const char *key;
 /* Simple US keyboard scan code map (Set 1) */
 static const char *keymap[128] = {
     [0x01] = "ESC",
@@ -55,16 +50,16 @@ static irqreturn_t keyboard_isr(int irq, void *dev_id)
 {
     unsigned char scancode;
     bool released;
-    //const char *key;
-
+    const char *key;
+	char op;
     scancode = inb(KBD_DATA_PORT);
 
     released = scancode & 0x80;
     scancode &= 0x7F;
 
     key = keymap[scancode];
-
-    /*if (!key)
+	op=key[0];
+    if (!key)
         key = "UNKNOWN";
 
     if (released)
@@ -73,27 +68,22 @@ static irqreturn_t keyboard_isr(int irq, void *dev_id)
     else
         printk(KERN_INFO "kbd_irq: Key PRESSED  -> %s (scancode 0x%02x)\n",
                key, scancode);
-*/
-    	spin_lock(&lock);
-	switch(*key)
-	{
-		case 'A':cal_var.res=cal_var.a+cal_var.b; strcpy((cal_var.strop),"ADD");break;
-		case 'S':cal_var.res=cal_var.a-cal_var.b; strcpy((cal_var.strop),"SUB");break;
-		case 'M':cal_var.res=cal_var.a*cal_var.b; strcpy((cal_var.strop),"MUL");break;
-		case 'D':cal_var.res=cal_var.b?cal_var.a/cal_var.b:0; strcpy((cal_var.strop),"DIV");break;
-		default:pr_info("invalid key\n");spin_unlock(&lock);return IRQ_HANDLED;
-	}
-	cal_var.done=1;
-	spin_unlock(&lock);
-	complete(&result_ready);
-	pr_info("keyboard operation done:res:%d strop:%s\n",cal_var.res,cal_var.strop);
-    return IRQ_HANDLED;
+
+    spin_lock(&lock);
+	switch(op)
+        {
+                case 'A':kernel_buff->res=v1+v2;strcpy(kernel_buff->strop,"ADD");break;
+                case 'S':kernel_buff->res=v1-v2; strcpy(kernel_buff->strop,"SUB");break;
+                case 'M':kernel_buff->res=v1*v2; strcpy(kernel_buff->strop,"MUL");break;
+                case 'D':kernel_buff->res=v2?v1/v2:0; strcpy(kernel_buff->strop,"DIV");break;
+                default:spin_unlock(&lock);return IRQ_HANDLED;
+        }
+        pr_info("keyboard operation done:res:%d strop:%s\n",kernel_buff->res,kernel_buff->strop);
+        spin_unlock(&lock);
+        return IRQ_HANDLED;
+
 }
-
-
-
 static int major_number;
-static struct st kernel_buffer;
 static int buffer_size;
 
 /*
@@ -102,24 +92,6 @@ static int buffer_size;
 static int basic_open(struct inode *inode, struct file *file)
 {
     printk(KERN_INFO "task_calc: device opened\n");
-    printk(KERN_INFO "kbd_irq: Initializing keyboard IRQ driver\n");
-    
-    spin_lock_init(&lock);
-    int ret;
-    ret = request_irq(KBD_IRQ,
-                      keyboard_isr,
-                      IRQF_SHARED,
-                      "kbd_irq_key_driver",
-                      (void *)keyboard_isr);
-
-    if (ret) {
-        printk(KERN_ERR "kbd_irq: Failed to register IRQ %d\n", KBD_IRQ);
-        return ret;
-    }
-
-    printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfully\n");
-
-
     return 0;
 }
 
@@ -140,27 +112,15 @@ static ssize_t basic_read(struct file *file,
                           size_t count,
                           loff_t *offset)
 {
-//	size_t buffer_size = sizeof(struct st);
-    size_t bytes_to_copy;
-	 
-    /* sleep until keyboard ISR runs */
-    if (wait_for_completion_interruptible(&result_ready))
-        return -ERESTARTSYS;
+	size_t bytes_to_copy;
 
     spin_lock(&lock);
-
-    if (!cal_var.done) {
-        spin_unlock(&lock);
-	pr_info("task not yet done\n");
-        return -EIO;  /* should not happen */
-    }
-
-     /* Respect the user buffer size */
-    bytes_to_copy = min(count, sizeof(struct st));
-    
-        spin_unlock(&lock);
+	bytes_to_copy = min(count, sizeof(struct st));
+ 	struct st temp;
+    temp=*kernel_buff;   
+    spin_unlock(&lock);
     /* Copy the struct to user space */
-    if (copy_to_user(user_buffer, &cal_var, bytes_to_copy)) {
+    if (copy_to_user(user_buffer,&temp, bytes_to_copy)) {
         return -EFAULT;
     }
 
@@ -179,7 +139,7 @@ static ssize_t basic_write(struct file *file,
     int bytes_to_copy;
 
     bytes_to_copy = min(count, (size_t)BUF_SIZE);
-	
+	struct st kernel_buffer;
     /*
      * Copy data from user space to kernel space
      */
@@ -187,14 +147,7 @@ static ssize_t basic_write(struct file *file,
                        user_buffer,
                        bytes_to_copy))
         return -EFAULT;
-    spin_lock(&lock);
-    cal_var.a=kernel_buffer.a;
-    cal_var.b=kernel_buffer.b;
-    cal_var.done=0;
-	bytes_to_copy=sizeof(struct st);
 	pr_info("written %d bytes\n",bytes_to_copy);
-	spin_unlock(&lock);
-	reinit_completion(&result_ready);
     return bytes_to_copy;
 }
 
@@ -228,6 +181,23 @@ static int __init task_calc_init(void)
     printk(KERN_INFO "task_calc: loaded\n");
     printk(KERN_INFO "task_calc: major number = %d\n", major_number);
     printk(KERN_INFO "Create device node with:\n");
+	spin_lock_init(&lock);
+    int ret;
+    printk(KERN_INFO "kbd_irq: Initializing keyboard IRQ driver\n");
+	kernel_buff=kzalloc(sizeof(struct st),GFP_KERNEL);
+	if(!kernel_buff)
+            return -ENOMEM;
+	ret = request_irq(KBD_IRQ,
+                      keyboard_isr,
+                      IRQF_SHARED,
+                      "kbd_irq_key_driver",
+                      (void *)keyboard_isr);
+
+    if (ret) {
+        printk(KERN_ERR "kbd_irq: Failed to register IRQ %d\n", KBD_IRQ);
+        return ret;
+	}
+	 printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfully\n");
     return 0;
     
 }
@@ -237,12 +207,12 @@ static int __init task_calc_init(void)
  */
 static void __exit task_calc_exit(void)
 {
-    unregister_chrdev(major_number, DEVICE_NAME);
-    free_irq(KBD_IRQ, (void *)keyboard_isr);
-    printk(KERN_INFO "task_calc: unloaded\n");
+	free_irq(IRQ_NUM,(void*)keyboard_isr);
+	kfree(kernel_buff);
+	  unregister_chrdev(major_number, DEVICE_NAME);
+	 pr_info("task_calc: unloaded\n");
 
 }
-
 /* Kernel module macros */
 module_init(task_calc_init);
 module_exit(task_calc_exit);
