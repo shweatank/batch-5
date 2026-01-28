@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/20_01_2026/calci/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/practice/20_01_2026/calci/Module.symvers -T /home/dell/practice/20_01_2026/calci/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/21_01_2026/basic_ioctl_drv.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/21_01_2026/basic_ioctl_drv.ko /home/dell/practice/21_01_2026/basic_ioctl_drv.o /home/dell/practice/21_01_2026/basic_ioctl_drv.mod.o

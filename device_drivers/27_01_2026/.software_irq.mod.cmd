@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/27_01_2026/software_irq.mod := printf '%s\n'   software_irq.o | awk '!x[$$0]++ { print("/home/dell/practice/27_01_2026/"$$0) }' > /home/dell/practice/27_01_2026/software_irq.mod

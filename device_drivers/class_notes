@@ -1,0 +1,4 @@
+
+23/01/2026
+->for one hardware we can have more than one driver code
+->modprobe will do the work of insmod and rmmod

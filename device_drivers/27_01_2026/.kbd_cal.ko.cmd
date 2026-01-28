@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/27_01_2026/kbd_cal.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/27_01_2026/kbd_cal.ko /home/dell/practice/27_01_2026/kbd_cal.o /home/dell/practice/27_01_2026/kbd_cal.mod.o
