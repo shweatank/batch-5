@@ -35,17 +35,21 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
-	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0x6b10bee1, "_copy_to_user" },
-	{ 0x864e77e5, "__register_chrdev" },
-	{ 0x92d5838e, "request_threaded_irq" },
-	{ 0xc1514a3b, "free_irq" },
+	{ 0xea82d349, "hrtimer_init" },
+	{ 0xc0b7c197, "hrtimer_start_range_ns" },
+	{ 0x102fe6de, "hrtimer_cancel" },
+	{ 0xea3c74e, "tasklet_kill" },
+	{ 0x65487097, "__x86_indirect_thunk_rax" },
+	{ 0x135bb7ec, "hrtimer_forward" },
+	{ 0x9d2ab8ac, "__tasklet_schedule" },
 	{ 0xbdfb6dbb, "__fentry__" },
+	{ 0x44be8471, "pcpu_hot" },
 	{ 0x122c3a7e, "_printk" },
+	{ 0x5b8239ca, "__x86_return_thunk" },
 	{ 0xe2fd41e5, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "EFDFDF79CE032C8FD7DB15A");
+MODULE_INFO(srcversion, "31EDB78388C9421CA54DD0D");

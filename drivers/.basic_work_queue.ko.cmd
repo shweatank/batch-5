@@ -1,0 +1,1 @@
+savedcmd_/home/dell/mirafra/drivers/basic_work_queue.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/drivers/basic_work_queue.ko /home/dell/mirafra/drivers/basic_work_queue.o /home/dell/mirafra/drivers/basic_work_queue.mod.o

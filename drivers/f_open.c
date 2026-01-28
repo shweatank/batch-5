@@ -17,18 +17,28 @@ char *itoa(int num) {
 }
 */
 
+
+struct kbuf {
+        int res;
+        char op;
+};
+
+static int data;
+
 int main() {
-	FILE *fp = fopen("/dev/basic_char","r+");
+	FILE *fp = fopen("/dev/basic_keyboard","r+");
+	perror("fopen: ");
 	//char *str = "Test text";
-	char str[100];
-	printf("Enter the numbers and operation in string: ");
-	scanf("%99s",str);
-	fwrite(str,strlen(str)+1,1,fp);
-	perror("fwrite: ");
-	char res[strlen(str)+1];
-	fread(res,strlen(str)+1,1,fp);
+	//char str[100];
+	//printf("Enter the numbers and operation in string: ");
+	//scanf("%99s",str);
+	//fwrite(str,strlen(str)+1,1,fp);
+	//perror("fwrite: ");
+	
+	fread(&data,sizeof(data),1,fp);
 	perror("fread: ");
-	printf("%s\n",res);
+	printf("result: %d\n",data);
+//	printf("Operation done: %c\n",data.op);
 	fclose(fp);
 	return 0;
 }

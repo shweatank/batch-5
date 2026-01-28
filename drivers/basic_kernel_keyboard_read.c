@@ -3,8 +3,28 @@
 #include <linux/interrupt.h>
 #include <linux/io.h>
 
+#include <linux/init.h>     // __init, __exit
+#include <linux/fs.h>       // register_chrdev, file_operations
+#include <linux/uaccess.h>  // copy_to_user, copy_from_user
+
+
 #define KBD_IRQ        1
 #define KBD_DATA_PORT  0x60
+
+#define DEVICE_NAME "basic_keyboard"
+#define BUF_SIZE    128
+
+
+int num1 = 20,num2 = 10;
+int major_number;
+
+
+struct kbuf {
+	int res;
+	char op;
+};
+
+static int data;
 
 /* Simple US keyboard scan code map (Set 1) */
 static const char *keymap[128] = {
@@ -31,35 +51,7 @@ static const char *keymap[128] = {
     [0x39] = "SPACE"
 };
 
-/*
-static irqreturn_t keyboard_isr(int irq, void *dev_id)
-{
-    unsigned char scancode;
-    bool released;
-    const char *key;
-
-    scancode = inb(KBD_DATA_PORT);
-
-    released = scancode & 0x80;
-    scancode &= 0x7F;
-
-    key = keymap[scancode];
-
-    if (!key)
-        key = "UNKNOWN";
-
-    if (released)
-        printk(KERN_INFO "kbd_irq: Key RELEASED -> %s (scancode 0x%02x)\n",
-               key, scancode);
-    else
-        printk(KERN_INFO "kbd_irq: Key PRESSED  -> %s (scancode 0x%02x)\n",
-               key, scancode);
-
-    return IRQ_HANDLED;
-}
-*/
-
-void myIsr(int irq,void *dev_id) {
+static irqreturn_t keyboard_isr(int irq,void *dev_id) {
 	unsigned char scancode;
 	bool released;
     	const char *key;
@@ -72,9 +64,48 @@ void myIsr(int irq,void *dev_id) {
     
 	if (!key)
 		key = "UNKNOWN";
+	if (released)
+        	printk(KERN_INFO "kbd_irq: Key RELEASED -> %s (scancode 0x%02x)\n",key, scancode);
 	else {
+		printk(KERN_INFO "kbd_irq: Key PRESSED  -> %s (scancode 0x%02x)\n",key, scancode);
 		switch(*key) {
 			case 'A':
+				printk(KERN_INFO "kbd_irq: sum = %d\n",num1+num2);
+				data = num1+num2;
+				break;
+			case 'S':
+				printk(KERN_INFO "kbd_irq: subtract = %d\n",num1-num2);
+				data = num1-num2;
+                                break;
+			case 'M':
+				printk(KERN_INFO "kbd_irq: multiply = %d\n",num1*num2);
+				data = num1*num2;
+                                break;
+			case 'D':
+				printk(KERN_INFO "kbd_irq: division = %d\n",num1/num2);
+				data = num1/num2;
+                                break;
+			default:
+				break;
+		}
+	}
+	return IRQ_HANDLED;
+}
+
+static ssize_t kbd_read(struct file *filp, char __user *buf,
+                        size_t count, loff_t *off)
+{
+//    sleep(1);
+    if (copy_to_user(buf, &data, sizeof(data)))
+        return -EFAULT;
+
+    return 1;
+}
+
+static struct file_operations fops = {
+    .owner = THIS_MODULE,
+    .read = kbd_read,
+};
 
 
 static int __init kbd_init(void)
@@ -82,7 +113,9 @@ static int __init kbd_init(void)
     int ret;
 
     printk(KERN_INFO "kbd_irq: Initializing keyboard IRQ driver\n");
-
+    
+    major_number = register_chrdev(0, "basic_keyboard", &fops);
+    
     ret = request_irq(KBD_IRQ,
                       keyboard_isr,
                       IRQF_SHARED,
@@ -94,7 +127,7 @@ static int __init kbd_init(void)
         return ret;
     }
 
-    printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfully\n");
+    printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfull with major number: %d\n",major_number);
     return 0;
 }
 
