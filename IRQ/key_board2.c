@@ -2,6 +2,9 @@
 #include <linux/kernel.h>
 #include <linux/interrupt.h>
 #include <linux/io.h>
+#include<linux/delay.h>
+
+
 
 #define KBD_IRQ        1
 #define KBD_DATA_PORT  0x60
@@ -30,8 +33,38 @@ static const char *keymap[128] = {
 	[0x32] = "M",
 	[0x39] = "SPACE"
 };
-static int num1=100,num2=200,res=0,major,*ker_buff;
+static int a=100,b=200,res=0,major,*ker_buff;
 static char op;
+static struct workqueue_struct *my_wq;
+static struct work_struct irq_work;
+
+static void work_queue_handler(struct work_struct *work){
+	pr_info("Entered work queue handler\n");
+	msleep(1);
+	int i;
+	for(i=2;i<=res;i++)
+		if(res%i==0)
+			break;
+	if(i==res)
+		pr_info("Result is prime\n");
+	else
+		pr_info("Result is not prime\n");
+}
+
+static void td_tasklet_fn(struct tasklet_struct *t){
+	pr_info("Entered tasklet function\n");
+	switch(op){
+		case 0x1E:res=a+b;break;
+		case 0x1F:res=a-b;break;
+		case 0x32:res=a*b;break;
+		case 0x20:res=a/b;break;
+	}
+	pr_info("Result=%d\n",res);
+	queue_work(my_wq,&irq_work);
+}
+
+DECLARE_TASKLET(td_tasklet,td_tasklet_fn);
+
 static irqreturn_t keyboard_isr(int irq, void *dev_id)
 {
 	unsigned char scancode;
@@ -39,7 +72,6 @@ static irqreturn_t keyboard_isr(int irq, void *dev_id)
 	const char *key;
 	scancode = inb(KBD_DATA_PORT);
 	op=scancode;
-	pr_info("asdfg=%d\n",op);
 	released = scancode & 0x80;
 	scancode &= 0x7F;
 	key = keymap[scancode];
@@ -53,28 +85,28 @@ static irqreturn_t keyboard_isr(int irq, void *dev_id)
 	else
 		printk(KERN_INFO "kbd_irq: Key PRESSED  -> %s (scancode 0x%02x)\n",
 				key, scancode);
-	//ker_buff->a=100,ker_buff->b=200;
-	switch(op){
-		case 0x1E: res=num1+num2;break;
-		case 0x1F: res=num1-num2;break;
-		case 0x32: res=num1*num2;break;
-		case 0x20: res=num1/num2;break;
-			   //	default: return IRQ_NONE;
-	}
+	tasklet_schedule(&td_tasklet);
 
-
-	//	printk(KERN_INFO "Result is %d\n",res);
 	return IRQ_HANDLED;
 
 }
-
 static ssize_t my_read(struct file*file,char __user*usr,size_t size,loff_t*off){
 	ker_buff=kmalloc(sizeof(int),GFP_KERNEL);
 	*ker_buff=res;
-	copy_to_user(usr,ker_buff,sizeof(int));
+	if(*off>=sizeof(int))
+		return 0;
+	/*	if(size>sizeof(int))
+		size=sizeof(int);
+	 */
+	size=4;
+	ssize_t ret;
+	ret=copy_to_user(usr,ker_buff,sizeof(int));
+	if(ret!=0)
+		return -EFAULT;
+	*off+=size;
 	pr_info(" 123455Result=%d\n",*ker_buff);
 	kfree(ker_buff);
-	return 4;
+	return size;
 }
 static ssize_t my_write(struct file*file,const char __user*usr,size_t size,loff_t *off){
 	pr_info("write is called\n");
@@ -84,7 +116,7 @@ static ssize_t my_write(struct file*file,const char __user*usr,size_t size,loff_
 static int my_open(struct inode*inode,struct file*file){
 	pr_info("opened\n");
 	int ret;
-	ret=request_irq(KBD_IRQ,keyboard_isr,IRQF_SHARED,"kbd_irq_key_driver",(void*)keyboard_isr);
+//	ret=request_irq(KBD_IRQ,keyboard_isr,IRQF_SHARED,"kbd_irq_key_driver",(void*)keyboard_isr);
 	return 0;
 }
 static struct file_operations fops={
@@ -106,14 +138,17 @@ static int __init kbd_init(void)
 			IRQF_SHARED,
 			"kbd_irq_key_driver",
 			(void *)keyboard_isr);
-
+	//	tasklet_schedule(&td_tasklet);
 	if (ret) {
 		printk(KERN_ERR "kbd_irq: Failed to register IRQ %d\n", KBD_IRQ);
 		return ret;
 	}
 	major=register_chrdev(0,"/dev/my_file",&fops);
+	printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfully, major number is %d\n",major);
 
-	printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfully\n");
+	my_wq=create_singlethread_workqueue("irq_wq");
+	INIT_WORK(&irq_work,work_queue_handler);
+
 	return 0;
 }
 
@@ -121,8 +156,14 @@ static void __exit kbd_exit(void)
 {
 	free_irq(KBD_IRQ, (void *)keyboard_isr);
 	//kfree(ker_buff);
+	tasklet_kill(&td_tasklet);
 	unregister_chrdev(major,"/dev/my_file");
 	printk(KERN_INFO "kbd_irq: Keyboard IRQ driver unloaded\n");
+
+//	free_irq(irq,(void*)&irq);
+	flush_workqueue(my_wq);
+	destroy_workqueue(my_wq);
+
 }
 
 module_init(kbd_init);
