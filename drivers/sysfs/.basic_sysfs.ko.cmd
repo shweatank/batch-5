@@ -1,0 +1,1 @@
+savedcmd_/home/dell/mirafra/drivers/sysfs/basic_sysfs.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/drivers/sysfs/basic_sysfs.ko /home/dell/mirafra/drivers/sysfs/basic_sysfs.o /home/dell/mirafra/drivers/sysfs/basic_sysfs.mod.o

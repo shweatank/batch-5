@@ -1,4 +1,4 @@
-obj-m += basic_procfs.o
+obj-m += basic_sysfs.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

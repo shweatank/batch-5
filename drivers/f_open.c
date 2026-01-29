@@ -23,21 +23,20 @@ struct kbuf {
         char op;
 };
 
-static int data;
+static char *data;
 
 int main() {
-	FILE *fp = fopen("/dev/basic_keyboard","r+");
+	FILE *fp = fopen("/proc/proc_basic","r+");
 	perror("fopen: ");
-	//char *str = "Test text";
-	//char str[100];
-	//printf("Enter the numbers and operation in string: ");
-	//scanf("%99s",str);
-	//fwrite(str,strlen(str)+1,1,fp);
-	//perror("fwrite: ");
+	char str[100];
+	printf("Enter the numbers and operation in string: ");
+	scanf("%99s",str);
+	fwrite(str,strlen(str)+1,1,fp);
+	perror("fwrite: ");
 	
-	fread(&data,sizeof(data),1,fp);
+	fread(&data,3,1,fp);
 	perror("fread: ");
-	printf("result: %d\n",data);
+	printf("result: %s\n",data);
 //	printf("Operation done: %c\n",data.op);
 	fclose(fp);
 	return 0;
