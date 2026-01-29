@@ -3,7 +3,7 @@
 #include<linux/fs.h>
 #include<linux/module.h>
 #include<linux/ioctl.h>
-#define DEV_NAME "/dev/my_ioctl"
+#define DEV_NAME "my_ioctl"
 struct st{
 	int a;
 	int b;
