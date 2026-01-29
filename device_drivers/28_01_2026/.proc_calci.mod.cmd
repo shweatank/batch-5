@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/28_01_2026/proc_calci.mod := printf '%s\n'   proc_calci.o | awk '!x[$$0]++ { print("/home/dell/practice/28_01_2026/"$$0) }' > /home/dell/practice/28_01_2026/proc_calci.mod

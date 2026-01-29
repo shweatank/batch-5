@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/28_01_2026/proc_calci.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/28_01_2026/proc_calci.ko /home/dell/practice/28_01_2026/proc_calci.o /home/dell/practice/28_01_2026/proc_calci.mod.o
