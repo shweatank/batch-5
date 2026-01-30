@@ -96,11 +96,11 @@ static irqreturn_t keyboard_isr(int irq,void *dev_id)
     else
         printk(KERN_INFO "kbd_irq: Key PRESSED  -> %s (scancode 0x%02x)\n", key, scancode);
 
-   // if(scancode==0x1e)
-   // {
-//	    c.res=c.a+c.b;
-//	    printk("%ld \n",c.res);
-  //  }
+  /*  if(scancode==0x1e)
+    {
+	    c.res=c.a+c.b;
+	    printk("%ld \n",c.res);
+    }*/
     queue_work(my_wq, &my_work);
 
 	return IRQ_HANDLED;
