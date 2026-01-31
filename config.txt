@@ -1,0 +1,4 @@
+(*((volatile unsigned long *) 0xE0028000))
+(*((volatile unsigned long *) 0xE0028004))
+(*((volatile unsigned long *) 0xE0028008))
+(*((volatile unsigned long *) 0xE002800C))

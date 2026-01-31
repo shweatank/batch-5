@@ -1,0 +1,1 @@
+savedcmd_/home/team1/ajay/basic_timer_irq.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/ajay/basic_timer_irq.ko /home/team1/ajay/basic_timer_irq.o /home/team1/ajay/basic_timer_irq.mod.o /home/team1/ajay/.module-common.o
