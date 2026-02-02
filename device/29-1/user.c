@@ -20,6 +20,7 @@ int main()
 		printf("%s\n",str);
 	}
 	size=ftell(fp);
+	printf("%ld\n",size);
 	while(1)
 	{
 		fseek(fp,size,SEEK_SET);
@@ -27,13 +28,8 @@ int main()
 		{
 			do
 			{
-		printf("%s",str);
-		fflush(stdout);
+			printf("%s",str);
 			}while(fgets(str,200,fp));
-		}
-		else
-		{
-			sleep(1);
 		}
 		size=ftell(fp);
 	}

@@ -2,7 +2,7 @@
 #define IOSET0 *((volatile unsigned int *)0Xe0028004)
 #define IODIR0 *((volatile unsigned int *)0Xe0028008)
 #define IOCLR0 *((volatile unsigned int *)0Xe002800c)
-
+#include<stdio.h>
 
 void delayus(unsigned int delay)
 {
@@ -18,6 +18,8 @@ int main()
 	delayus(100);
 	IOCLR0=1<<7;
 	delayus(100);
+//	unsigned int IOPIN=*((volatile unsigned int *)0xe0028000);
+//	printf("%u",IOPIN);
 
 }
 

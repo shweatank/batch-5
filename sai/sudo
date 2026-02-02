@@ -1,0 +1,1 @@
+17 tee /sys/class/gpio/export

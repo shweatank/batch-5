@@ -1,0 +1,1 @@
+savedcmd_/home/team1/sai/basic_char.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/sai/basic_char.ko /home/team1/sai/basic_char.o /home/team1/sai/basic_char.mod.o /home/team1/sai/.module-common.o
