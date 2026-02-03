@@ -98,8 +98,8 @@ static ssize_t basic_write(struct file *file,
     buffer_size = bytes_to_copy;
 
     printk(KERN_INFO "basic_char: wrote %d bytes\n", bytes_to_copy);
-    int p=*(int *)kernel_buffer;
-    int q=*(int *)kernel_buffer+4;
+ int p=*(int *)kernel_buffer;
+  int q=*(int *)kernel_buffer+4;
     char r=*(char *)kernel_buffer+8;
     int res=Cal(p,q,r);
     return bytes_to_copy;

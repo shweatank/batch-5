@@ -1,7 +1,12 @@
 #include<stdio.h>
+#include<fcntl.h>
 #include<stdlib.h>
 int main()
 {
-	while(1)
-	system("./a.out 10,20,+");
+	int fd;
+	fd=open("/dev/char_device",O_RDWR);
+	char str[100];
+	write(fd,str,100);
+	read(fd,str,100);
+	close(fd);
 }
