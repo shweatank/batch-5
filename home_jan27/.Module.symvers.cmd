@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/home_jan27/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/practice/home_jan27/Module.symvers -T /home/dell/practice/home_jan27/modules.order -i Module.symvers -e 

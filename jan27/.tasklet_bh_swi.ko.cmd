@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/jan27/tasklet_bh_swi.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/jan27/tasklet_bh_swi.ko /home/dell/practice/jan27/tasklet_bh_swi.o /home/dell/practice/jan27/tasklet_bh_swi.mod.o

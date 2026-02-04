@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/jan27/wait_queue.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/jan27/wait_queue.ko /home/dell/practice/jan27/wait_queue.o /home/dell/practice/jan27/wait_queue.mod.o

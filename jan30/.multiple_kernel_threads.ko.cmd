@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/jan30/multiple_kernel_threads.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/jan30/multiple_kernel_threads.ko /home/dell/practice/jan30/multiple_kernel_threads.o /home/dell/practice/jan30/multiple_kernel_threads.mod.o
