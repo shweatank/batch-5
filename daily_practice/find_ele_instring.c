@@ -13,7 +13,6 @@ int main()
 void Check(char *str1,char *str2)
 {
 	int i=0;
-	char *c;
 	while(str2[i])
 	{
 		if(strchr(str1,str2[i])==NULL)
