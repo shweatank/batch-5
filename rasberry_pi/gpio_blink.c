@@ -11,18 +11,15 @@ int main() {
         return 1;
     }
 
-    char rs[2];
-    int i = 0;
+    int res;
     while(1) {
-	read(fd,rs,1); 
-	if(i <= 1024) printf("%c  ",rs[0]);
-	if(rs[0] =='1'){
+	read(fd,&res,4); 
+	if(res == 1) {
 	write(fd, "1", 1);  // Turn LED ON
 	sleep(1);
         write(fd, "0", 1);  // Turn LED OFF
         sleep(1);
 	}
-	i = i << 1;
     }
 
     close(fd);

@@ -1,0 +1,1 @@
+savedcmd_/home/team1/ajay/feb_3/basic_ioremap.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/ajay/feb_3/basic_ioremap.ko /home/team1/ajay/feb_3/basic_ioremap.o /home/team1/ajay/feb_3/basic_ioremap.mod.o /home/team1/ajay/feb_3/.module-common.o

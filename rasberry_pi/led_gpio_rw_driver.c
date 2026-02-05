@@ -52,17 +52,16 @@ static ssize_t led_write(struct file *filep, const char *buffer, size_t len, lof
 
 static ssize_t led_read(struct file *filep,char __user *buffer,size_t len, loff_t *offset) {
 	
-//	if(len > 1) len = 1;
-	
 	int val = gpio_get_value(STATUS_LED);
 
 
 	if(copy_to_user(buffer,&val,sizeof(val)))
 		return -EFAULT;
 
+	printk(KERN_INFO "%d\n",val);
+
 	return len;
 }
-
 
 static struct file_operations fops = {
     .owner = THIS_MODULE,
@@ -83,6 +82,11 @@ static int __init led_init(void) {
 
     if (gpio_request(GPIO_LED, DRIVER_NAME)) {
         pr_err("LED: Failed to request GPIO %d\n", GPIO_LED);
+        return -EBUSY;
+    }
+    
+    if (gpio_request(STATUS_LED, DRIVER_NAME)) {
+        pr_err("LED: Failed to request GPIO %d\n", STATUS_LED);
         return -EBUSY;
     }
 

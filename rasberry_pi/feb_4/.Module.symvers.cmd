@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/feb_4/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team1/rasberry_pi/feb_4/Module.symvers -n -T /home/team1/rasberry_pi/feb_4/modules.order -i Module.symvers -e 

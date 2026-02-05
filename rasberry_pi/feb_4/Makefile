@@ -1,4 +1,4 @@
-obj-m += led_gpio_rw_driver.o
+obj-m += basic_uart_tx.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
