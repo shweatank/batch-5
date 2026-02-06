@@ -56,6 +56,7 @@ static ssize_t basic_read(struct file *file,
     /*
      * If offset is beyond data, return 0 (EOF)
      */
+
     if (*offset >= buffer_size)
         return 0;
 
