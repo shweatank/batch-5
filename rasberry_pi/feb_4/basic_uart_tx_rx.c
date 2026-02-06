@@ -43,6 +43,8 @@ static struct class *uart_class;
 
 static void __iomem *uart_base;
 
+static char kbuf[128];
+
 /* MMIO helpers */
 #define uart_read(off)        readl(uart_base + (off))
 #define uart_write(val, off)  writel((val), uart_base + (off))
@@ -80,7 +82,8 @@ static ssize_t uart_write_user(struct file *f,
         while (uart_read(UART_FR) & FR_TXFF)
             cpu_relax();
 
-        uart_write(ch, UART_DR);
+        uart_write(ch,UART_BASE +  UART_DR);
+	pr_info("Send byte: %c\n",ch);
     }
     return len;
 }
@@ -96,11 +99,15 @@ static ssize_t uart_read_user(struct file *f,
         if (uart_read(UART_FR) & FR_RXFE)
             break;
 
-        ch = uart_read(UART_DR) & 0xFF;
+        ch = uart_read(UART_BASE + UART_DR) & 0xFF;
+//	pr_info("received byte: %c\n",ch);
+	kbuf[i] = ch;
 
         if (copy_to_user(buf + i, &ch, 1))
             return -EFAULT;
     }
+    kbuf[i] = '\0';
+    pr_info("Received data: %s\n",kbuf);
     return i;
 }
 

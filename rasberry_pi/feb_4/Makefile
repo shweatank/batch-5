@@ -1,4 +1,4 @@
-obj-m += basic_uart_tx.o
+obj-m += basic_uart_tx_rx.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
