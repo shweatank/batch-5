@@ -1,10 +1,12 @@
-#include <linux/module.h>
-#include <linux/kernel.h>
-#include <linux/interrupt.h>
-#include <linux/io.h>
+#include<linux/module.h>
+#include<linux/init.h>
+#include<linux/interrupt.h>
+#include<linux/kernel.h>
+#include<linux/io.h>
 
-#define KBD_IRQ        1
-#define KBD_DATA_PORT  0x60
+#define KBD_IRQ 1
+#define DRIVER_NAME "keyboard_irq"
+#define KBD_DATA_PORT 0x60
 
 /* Simple US keyboard scan code map (Set 1) */
 static const char *keymap[128] = {
@@ -31,62 +33,43 @@ static const char *keymap[128] = {
     [0x39] = "SPACE"
 };
 
-static irqreturn_t keyboard_isr(int irq, void *dev_id)
+static irqreturn_t keyboard_isr(int irq,void*devid)
 {
-    unsigned char scancode;
-    bool released;
-    const char *key;
-
-    scancode = inb(KBD_DATA_PORT);
-
-    released = scancode & 0x80;
-    scancode &= 0x7F;
-
-    key = keymap[scancode];
-
-    if (!key)
-        key = "UNKNOWN";
-
-    if (released)
-        printk(KERN_INFO "kbd_irq: Key RELEASED -> %s (scancode 0x%02x)\n",
-               key, scancode);
-    else
-        printk(KERN_INFO "kbd_irq: Key PRESSED  -> %s (scancode 0x%02x)\n",
-               key, scancode);
-
-    return IRQ_HANDLED;
+	unsigned char scancode;
+	bool released;
+	const char *key;
+	scancode=inb(KBD_DATA_PORT);
+	released=scancode&0x80;
+	scancode&=0x7F;
+	key=keymap[scancode];
+	if(!key)
+		key="UNKNOWN";
+	if(released)
+		pr_info("kbd irq:key released:%s-> scancode: 0x%02x\n",key,scancode);
+	else
+		pr_info("kbd_irq:key pressed :%s->scancode: 0x%02x\n",key,scancode);
+	return IRQ_HANDLED;
 }
-
-static int __init kbd_init(void)
+static int __init keyboard_irq_init(void)
 {
-    int ret;
-
-    printk(KERN_INFO "kbd_irq: Initializing keyboard IRQ driver\n");
-
-    ret = request_irq(KBD_IRQ,
-                      keyboard_isr,
-                      IRQF_SHARED,
-                      "kbd_irq_key_driver",
-                      (void *)keyboard_isr);
-
-    if (ret) {
-        printk(KERN_ERR "kbd_irq: Failed to register IRQ %d\n", KBD_IRQ);
-        return ret;
-    }
-
-    printk(KERN_INFO "kbd_irq: Keyboard IRQ registered successfully\n");
-    return 0;
+	int ret;
+	ret=request_irq(KBD_IRQ,keyboard_isr,IRQF_SHARED,DRIVER_NAME,(void *)keyboard_isr);
+	if(ret)
+	{
+		pr_err("%s:failed to rasie keyboard interrupt:%d\n",DRIVER_NAME,KBD_IRQ);
+		return 0;
+	}
+	pr_info("%s: raised keyboard IRQ:%d successfully\n",DRIVER_NAME,KBD_IRQ);
+	return 0;
 }
-
-static void __exit kbd_exit(void)
+static void __exit keyboard_irq_exit(void)
 {
-    free_irq(KBD_IRQ, (void *)keyboard_isr);
-    printk(KERN_INFO "kbd_irq: Keyboard IRQ driver unloaded\n");
+	free_irq(KBD_IRQ,(void *)keyboard_isr);
+	pr_info("cleaning keyboard interrupt\n");
 }
-
-module_init(kbd_init);
-module_exit(kbd_exit);
+module_init(keyboard_irq_init);
+module_exit(keyboard_irq_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Educational Kernel Driver");
-MODULE_DESCRIPTION("Keyboard IRQ driver printing pressed keys to dmesg");
+MODULE_AUTHOR("prasanna");
+MODULE_DESCRIPTION("keyborad_irq");

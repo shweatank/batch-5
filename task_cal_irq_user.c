@@ -4,19 +4,17 @@
 
 struct st
 {
-	int a;
-	int b;
-	int res;
-	int done;
-	char strop[10];
+        int res;
+        char strop[10];
 };
+struct st var;
 int main()
 {
-	struct st in,out;
-	in.a=5; in.b=10;
-	int fd=open("/dev/task_calc",O_RDWR);
-	write(fd,&in,sizeof(struct st));
-	if((read(fd,&out,sizeof(struct st)))==0){perror("read");}
-	printf("res=%d operation:%s\n",out.res,out.strop);
-	return 0;
+        int fd=open("/dev/task_calc",O_RDONLY);
+        if(fd<0){perror("open");return 0;}
+        if((read(fd,&var,sizeof(struct st)))<0)
+                perror("read");
+        printf("res=%d operation:%s\n",var.res,var.strop);
+        return 0;
 }
+

@@ -1,68 +1,46 @@
-// SPDX-License-Identifier: GPL-2.0
-#include <linux/module.h>
-#include <linux/kernel.h>
-#include <linux/hrtimer.h>
-#include <linux/ktime.h>
-#include <linux/smp.h>
+#include<linux/kernel.h>
+#include<linux/module.h>
+#include<linux/hrtimer.h>
+#include<linux/ktime.h>
+#include<linux/smp.h>
+
+static struct hrtimer timer_var;
+static ktime_t time_period;
+static unsigned long timer_cnt;
+
+static enum hrtimer_restart timer_callback(struct hrtimer *timer)
+{
+	timer_cnt++;
+	pr_info("timer ticked:%lu  cpu=%d\n",timer_cnt,smp_processor_id());
+	hrtimer_forward_now(timer,time_period);
+	return HRTIMER_RESTART;
+}
+static int __init hrtimer_init_fun(void)
+{
+	u64 period_ns=1000000000ULL; //1sec in ns
+	pr_info("hrtimer_init\n");
+	time_period=ktime_set(0,period_ns);
+	hrtimer_init(&timer_var,CLOCK_MONOTONIC,HRTIMER_MODE_REL);
+	//hrtimer_init(&timer_var);
+	//timer_var.base = HRTIMER_BASE_MONOTONIC; //set the clock base
+
+	timer_var.function=timer_callback;
+	hrtimer_start(&timer_var,time_period,HRTIMER_MODE_REL);
+	pr_info("hrtimer is initialised and strated\n");
+	return 0;
+}
+static void __exit hrtimer_exit(void)
+{
+	pr_info("hrtimer exit\n");
+	int ret=hrtimer_cancel(&timer_var);
+	pr_info("hrtimer is canceled ret=%d   (1..means..callback is running))\n",ret);
+
+}
+
+module_init(hrtimer_init_fun);
+module_exit(hrtimer_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("TechDhaba");
-MODULE_DESCRIPTION("Periodic hrtimer demo (timer-interrupt style callback)");
+MODULE_AUTHOR("prasanna");
+MODULE_DESCRIPTION("timer interrupt");
 MODULE_VERSION("1.0");
-
-static struct hrtimer td_timer;
-static ktime_t td_period;
-static unsigned long td_count;
-
-/*
- * hrtimer callback runs in atomic context (do NOT sleep here).
- * Treat it like an interrupt-like context:
- *  - No blocking calls
- *  - No mutex_lock()
- *  - No msleep()
- */
-static enum hrtimer_restart td_hrtimer_cb(struct hrtimer *t)
-{
-    td_count++;
-
-    pr_info("td_hrtimer: tick=%lu cpu=%d\n", td_count, smp_processor_id());
-
-    /*
-     * Forward the timer to fire again (periodic behavior).
-     * This keeps cadence stable.
-     */
-    hrtimer_forward_now(t, td_period);
-
-    return HRTIMER_RESTART;
-}
-
-static int __init td_init(void)
-{
-    u64 period_ns = 1000000000ULL; // 1 second default
-
-    pr_info("td_hrtimer: init\n");
-
-    td_period = ktime_set(0, period_ns);
-
-    hrtimer_init(&td_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
-    td_timer.function = td_hrtimer_cb;
-
-    td_count = 0;
-    hrtimer_start(&td_timer, td_period, HRTIMER_MODE_REL);
-
-    pr_info("td_hrtimer: started period_ns=%llu\n", period_ns);
-    return 0;
-}
-
-static void __exit td_exit(void)
-{
-    int ret;
-
-    pr_info("td_hrtimer: exit\n");
-
-    ret = hrtimer_cancel(&td_timer);
-    pr_info("td_hrtimer: cancelled ret=%d (1 means callback was running)\n", ret);
-}
-
-module_init(td_init);
-module_exit(td_exit);

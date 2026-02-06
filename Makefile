@@ -1,16 +1,17 @@
-obj-m += irq_waitqueue_example.o
-obj-m += irq_driver_cal_task.o
-obj-m += proc_basic_driver.o
-obj-m += proc_strrev_driver.o
-obj-m += proc_calc_driver.o
-obj-m += basic_sys_fs_driver.o
-obj-m += irq_invoking_work_queue.o
-obj-m += kbd_irq_workqueue_calc_driver.o
-obj-m += proc_kbd_irq_workqueue_calc_driver.o
+//obj-m := simple_module.o
 
+//obj-m += export_symb.o
+//obj-m += export_symb_using_fun.o
+//obj-m += make_var_module_par.o
+//obj-m += char_driver.o
+//obj-m += demo_irq_driver.o
+//obj-m += keyboard_irq_driver.o
+//obj-m += timer_interrupt.o
+//obj-m += timer_tasklet.o
+//obj-m += work_queue.o
+obj-m += kmemleak.o
 
-all:
+all :
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
-
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
