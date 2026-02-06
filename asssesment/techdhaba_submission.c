@@ -59,12 +59,10 @@ struct c Bit_parser(struct c c)
         new.frame=c.frame^(1<<2);
         if(((new.frame>>2)&1) ^ ((c.frame>>c.action)&1))
         {
-                printf("CRC FAIL\n");
                 new.action=-1;
         }
         else
         {
-                printf("ok\n");
                 new.action=0;
         }
         return new;
@@ -89,12 +87,12 @@ struct new Loop(struct sll *head)
 	while(fast&&fast->next)
 	{
 		cnt++;
+		slow=slow->next;
+		fast=fast->next->next;
 		if(slow==fast)
 		{
 			break;
 		}
-		slow=slow->next;
-		fast=fast->next->next;
 	}
 	if(slow==fast)
 	{
