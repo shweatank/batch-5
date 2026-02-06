@@ -89,42 +89,40 @@ struct output message_buff(struct input x){
 	}
 }
 
-struct DS{
+struct nodes_ip{
 	u32 n;
 	struct DS *next;
 };
 
-struct DS_res{
+struct nodes_op{
 	u32 has_cycle;
 	u32 entry_index;
 };
 
-struct DS_res node_find(struct DS *head){
-	struct DS res;
-	struct DS *fast,*slow,*temp=head;
+struct nodes_ip node_find(struct DS *head){
+	struct nodes_ip res;
+	struct nodes_op *fast,*slow,*temp=head;
 	if(head && head->next)
 		slow=head,fast=head->next;
-	int c=0,flag=1;
+	int c=0,f=1;
 	while(slow!=fast){
 		slow=slow->next;
 		fast=fast->next;
 		if(slow->next==NULL || fast->next==NULL){
-			flag=0;
+			f=0;
 			break;
 		}
 	}
-	if(flag)
+	if(f)
 		while(slow!=temp){
 			temp=temp->next;
 			c++;
 		}
-	if(flag){
-		res.has_cycle=1;
-		res.entry_index=c;
+	if(f){
+		res.has_cycle=1;res.entry_index=c;
 	}
 	else{
-		res.has_cycle=0;
-		res.entry_index=0xFFFFFFF;
+		res.has_cycle=0;res.entry_index=0xFFFFFFF;
 	}
 	return res;
 }
