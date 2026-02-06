@@ -1,8 +1,18 @@
+/*
+Name:Naga Prasanna Koritala
+mail id:nagaprasannakoritala@mirafra.com
+problem id:p1,p3,p6
+Date:06/02/2026
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdint.h>
+typedef unsigned int uint32_t;
+typedef signed int int32_t;
+typedef unsigned char uint8_t;
 struct st{
-  uint32_t op;     // 1=op1, 2=op2
+  uint32_t op;     
   int32_t  a;
   int32_t  b;
 };
