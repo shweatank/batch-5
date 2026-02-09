@@ -1,0 +1,1 @@
+savedcmd_/home/team1/sai/2-2/led_gpio17_dts.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/sai/2-2/led_gpio17_dts.ko /home/team1/sai/2-2/led_gpio17_dts.o /home/team1/sai/2-2/led_gpio17_dts.mod.o /home/team1/sai/2-2/.module-common.o
