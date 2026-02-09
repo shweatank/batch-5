@@ -24,7 +24,6 @@ struct CRC_res{
 	u32 new_frame;
 	int status;
 };
-struct P2_in{
 
 struct DS{
 	u32 n;
