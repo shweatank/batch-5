@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/i2c_driver_demo/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/i2c_driver_demo/Module.symvers -T /home/mirafra/Desktop/batch-5/i2c_driver_demo/modules.order -i Module.symvers -e 

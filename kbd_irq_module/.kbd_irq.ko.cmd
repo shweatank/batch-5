@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/kbd_irq_module/kbd_irq.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/kbd_irq_module/kbd_irq.ko /home/mirafra/Desktop/batch-5/kbd_irq_module/kbd_irq.o /home/mirafra/Desktop/batch-5/kbd_irq_module/kbd_irq.mod.o

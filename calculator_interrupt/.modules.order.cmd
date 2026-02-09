@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/calculator_interrupt/modules.order := {   echo /home/mirafra/Desktop/batch-5/calculator_interrupt/calculator.o; :; } > /home/mirafra/Desktop/batch-5/calculator_interrupt/modules.order

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/kcalc_driver/kcalc.mod := printf '%s\n'   kcalc.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/kcalc_driver/"$$0) }' > /home/mirafra/Desktop/batch-5/kcalc_driver/kcalc.mod

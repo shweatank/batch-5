@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/char_driver_demo/kernel/simple_char_driver.mod := printf '%s\n'   simple_char_driver.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/char_driver_demo/kernel/"$$0) }' > /home/mirafra/Desktop/batch-5/char_driver_demo/kernel/simple_char_driver.mod

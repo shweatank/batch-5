@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/calculator_interrupt/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/calculator_interrupt/Module.symvers -T /home/mirafra/Desktop/batch-5/calculator_interrupt/modules.order -i Module.symvers -e 

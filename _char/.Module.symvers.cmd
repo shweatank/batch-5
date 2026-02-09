@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/techdhaba_char/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/techdhaba_char/Module.symvers -T /home/mirafra/techdhaba_char/modules.order -i Module.symvers -e 

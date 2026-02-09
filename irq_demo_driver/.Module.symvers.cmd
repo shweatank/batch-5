@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/irq_demo_driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/irq_demo_driver/Module.symvers -T /home/mirafra/Desktop/batch-5/irq_demo_driver/modules.order -i Module.symvers -e 

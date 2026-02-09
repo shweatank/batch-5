@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/test3/my_module_write.mod := printf '%s\n'   my_module_write.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/test3/"$$0) }' > /home/mirafra/Desktop/batch-5/test3/my_module_write.mod

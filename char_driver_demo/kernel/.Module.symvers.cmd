@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/char_driver_demo/kernel/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/char_driver_demo/kernel/Module.symvers -T /home/mirafra/Desktop/batch-5/char_driver_demo/kernel/modules.order -i Module.symvers -e 

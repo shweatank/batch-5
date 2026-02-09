@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/keyboard_tasklet/keyboard_tasklet.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/keyboard_tasklet/keyboard_tasklet.ko /home/mirafra/Desktop/batch-5/keyboard_tasklet/keyboard_tasklet.o /home/mirafra/Desktop/batch-5/keyboard_tasklet/keyboard_tasklet.mod.o

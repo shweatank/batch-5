@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/proc_irq_wq/proc_irq_wq.mod := printf '%s\n'   proc_irq_wq.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/proc_irq_wq/"$$0) }' > /home/mirafra/Desktop/batch-5/proc_irq_wq/proc_irq_wq.mod

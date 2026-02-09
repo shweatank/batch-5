@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/kbd_calc/kbd_calc.mod := printf '%s\n'   kbd_calc.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/kbd_calc/"$$0) }' > /home/mirafra/Desktop/batch-5/kbd_calc/kbd_calc.mod

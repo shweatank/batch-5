@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/i2c_driver_demo/i2c_simple.mod := printf '%s\n'   i2c_simple.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/i2c_driver_demo/"$$0) }' > /home/mirafra/Desktop/batch-5/i2c_driver_demo/i2c_simple.mod

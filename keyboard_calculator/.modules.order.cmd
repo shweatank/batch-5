@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/keyboard_calculator/modules.order := {   echo /home/mirafra/Desktop/batch-5/keyboard_calculator/keyboard_calculator.o; :; } > /home/mirafra/Desktop/batch-5/keyboard_calculator/modules.order

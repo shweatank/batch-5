@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/pi4_gpio_module/pi4_gpio.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/pi4_gpio_module/pi4_gpio.ko /home/mirafra/Desktop/batch-5/pi4_gpio_module/pi4_gpio.o /home/mirafra/Desktop/batch-5/pi4_gpio_module/pi4_gpio.mod.o

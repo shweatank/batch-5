@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/techdhaba_char/techdhaba_char.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/mirafra/techdhaba_char/techdhaba_char.ko /home/mirafra/techdhaba_char/techdhaba_char.o /home/mirafra/techdhaba_char/techdhaba_char.mod.o

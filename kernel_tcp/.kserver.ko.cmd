@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/kernel_tcp/kserver.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/mirafra/kernel_tcp/kserver.ko /home/mirafra/kernel_tcp/kserver.o /home/mirafra/kernel_tcp/kserver.mod.o

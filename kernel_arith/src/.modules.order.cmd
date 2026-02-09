@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/kernel_arith/src/modules.order := {   echo /home/mirafra/Desktop/batch-5/kernel_arith/src/arith_module.o; :; } > /home/mirafra/Desktop/batch-5/kernel_arith/src/modules.order

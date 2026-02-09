@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/pi4_gpio_module/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/pi4_gpio_module/Module.symvers -T /home/mirafra/Desktop/batch-5/pi4_gpio_module/modules.order -i Module.symvers -e 

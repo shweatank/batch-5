@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/kernel_arith/src/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/kernel_arith/src/Module.symvers -T /home/mirafra/Desktop/batch-5/kernel_arith/src/modules.order -i Module.symvers -e 

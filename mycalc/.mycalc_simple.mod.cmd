@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/mycalc/mycalc_simple.mod := printf '%s\n'   mycalc_simple.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/mycalc/"$$0) }' > /home/mirafra/Desktop/batch-5/mycalc/mycalc_simple.mod

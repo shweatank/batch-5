@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/keyboard_tasklet/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/keyboard_tasklet/Module.symvers -T /home/mirafra/Desktop/batch-5/keyboard_tasklet/modules.order -i Module.symvers -e 

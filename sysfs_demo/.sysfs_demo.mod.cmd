@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/sysfs_demo/sysfs_demo.mod := printf '%s\n'   sysfs_demo.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/sysfs_demo/"$$0) }' > /home/mirafra/Desktop/batch-5/sysfs_demo/sysfs_demo.mod

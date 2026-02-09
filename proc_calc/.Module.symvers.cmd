@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/proc_calc/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/proc_calc/Module.symvers -T /home/mirafra/Desktop/batch-5/proc_calc/modules.order -i Module.symvers -e 

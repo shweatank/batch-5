@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/i2c_driver_demo/i2c_simple.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/i2c_driver_demo/i2c_simple.ko /home/mirafra/Desktop/batch-5/i2c_driver_demo/i2c_simple.o /home/mirafra/Desktop/batch-5/i2c_driver_demo/i2c_simple.mod.o

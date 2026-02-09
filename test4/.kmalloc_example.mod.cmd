@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/test4/kmalloc_example.mod := printf '%s\n'   kmalloc_example.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/test4/"$$0) }' > /home/mirafra/Desktop/batch-5/test4/kmalloc_example.mod
