@@ -12,6 +12,7 @@ Now data corresponding to first and fourth byte is 257 which is prime.
 Output = Prime.*/
 
 #include<stdio.h>
+#include<stdlib.h>
 void data(char*p,int*num){
 	int i=0;
 	//	p=num;
@@ -22,24 +23,13 @@ void data(char*p,int*num){
 	}
 }
 void prime(int*a,int*b){
-	int num=0,i;
-	char *p;
-	p=&num;
-/*	*p=*a;
-printf("%d...\n",num);
-	p++;
-	*p=*b;
-printf("%d...\n",num);
-*/
-num=*b;
-num=num<<8;
-printf("%d.......\n",num);
-num=num|*a;
-printf("num=%d\n",num);
-	for(i=2;i<num;i++)
-		if(num%i==0)
+	int i;
+	printf("*a=%d *b=%d\n",*a,*b);
+*b=(*b<<8);
+	for(i=2;i<((*a)|(*b));i++)
+		if(((*a)|(*b))%i==0)
 			break;
-	if(num==i)
+	if(((*a)|(*b))==i)
 		printf("Prime\n");
 	else
 		printf("Not prime\n");
@@ -49,11 +39,12 @@ void main(){
 	char *p;
 	p=&num;
 	data(p,&num);
-	printf("The number is %d\n",num);
-	char *first,*last;
-	first=&num;
-	last=first+4;
+p=&num;
+	printf("The number is %x\n",num);
+	int *first=malloc(sizeof(int));
+	int *last=malloc(sizeof(int));
+	*first=*p;p=p+3;
+	*last=*p;
 	prime(first,last);
-printf("1st=%d 4th=%d\n",*first,*last);
 }
 
