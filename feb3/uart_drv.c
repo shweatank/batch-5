@@ -15,6 +15,7 @@
 #define PCLK 48000
 #define DIVISOR (PCLK/(16*BAUD))
 
+static void __iomem *uart_base;
 static void uart_putc(char c)
 {
 	while(readl(uart_base+FR)&(1<<5));	//checking whether tx buff full
@@ -36,7 +37,7 @@ static void uart_puts(char *str)
 }
 
 
-static void __init uart_init(void)
+static int __init uart_init(void)
 {
 	pr_info("uart0 driver initialisation\n");
 	uart_base=ioremap(UART_BASE_PHYS,UART0_SIZE);
@@ -49,12 +50,13 @@ static void __init uart_init(void)
 	writel(0x0,uart_base+CR);
 	writel(0x7FF,uart_base+ICR);
 	
-	writel(DIVISOR,uart_base+IBRD);
-	writel(DIVISOR,uart_base+FBRB);
+	writel((int)DIVISOR,uart_base+IBRD);
+	writel(3,uart_base+FBRB);
 	// enabling fifo
 	writel((1<<4)|(3<<5),uart_base+LCRH);
 
 	write((1<<0)|(1<<8)|(1<<9),uart_base+CR);
+	return 0;
 }
 
 static void ___exit uart_exit(void)
