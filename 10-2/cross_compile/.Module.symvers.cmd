@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/10-2/cross_compile/Module.symvers :=  scripts/mod/modpost -M        -o /home/mirafra/Desktop/batch-5/10-2/cross_compile/Module.symvers -T /home/mirafra/Desktop/batch-5/10-2/cross_compile/modules.order -i Module.symvers -e 

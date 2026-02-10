@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/10-2/cross_compile/modules.order := {   echo /home/mirafra/Desktop/batch-5/10-2/cross_compile/cross_driver.o; :; } > /home/mirafra/Desktop/batch-5/10-2/cross_compile/modules.order
