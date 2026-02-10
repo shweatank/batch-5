@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/pm_demo/pm_demo.mod := printf '%s\n'   pm_demo.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/pm_demo/"$$0) }' > /home/mirafra/Desktop/batch-5/pm_demo/pm_demo.mod
