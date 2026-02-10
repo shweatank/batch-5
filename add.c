@@ -1,31 +1,9 @@
-#include <stdio.h>
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-int main(int argc, char *argv[])
+#include<stdio.h>
+void main()
 {
-    if (argc != 4)
-    {
-        printf("Usage: %s <main_pid> <a> <b>\n", argv[0]);
-        return 1;
-    }
-
-    pid_t main_pid = atoi(argv[1]);
-    int a = atoi(argv[2]);
-    int b = atoi(argv[3]);
-
-    int result = a + b;
-
-    union sigval value;
-    value.sival_int = result;
-
-    if (sigqueue(main_pid, SIGUSR1, value) == -1)
-    {
-        perror("sigqueue failed");
-        return 1;
-    }
-
-    return 0;
+	int a,b,add;
+	add=a+b;
+	printf("%d",add);
 }
+
 
