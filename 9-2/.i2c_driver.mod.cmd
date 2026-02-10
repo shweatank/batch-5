@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/saikumar/9-2/i2c_driver.mod := printf '%s\n'   i2c_driver.o | awk '!x[$$0]++ { print("/home/team4/Desktop/saikumar/9-2/"$$0) }' > /home/team4/Desktop/saikumar/9-2/i2c_driver.mod

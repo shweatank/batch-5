@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/saikumar/9-2/dma_main_driver.mod := printf '%s\n'   dma_main_driver.o | awk '!x[$$0]++ { print("/home/team4/Desktop/saikumar/9-2/"$$0) }' > /home/team4/Desktop/saikumar/9-2/dma_main_driver.mod

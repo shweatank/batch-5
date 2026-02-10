@@ -1,0 +1,19 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+
+ / {
+    fragment@0 {
+        target-path = "/";
+
+        __overlay__ {
+            led_gpio17 {
+                compatible = "techdhaba,gpio-led";
+                label = "gpio17-led";
+                led-gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+                status = "okay";
+            };
+        };
+    };
+};
