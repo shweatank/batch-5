@@ -1,0 +1,175 @@
+	.file	"ho.c"
+	.text
+	.section	.rodata
+.LC0:
+	.string	"Enter a hexadecimal number: "
+.LC1:
+	.string	"%s"
+.LC2:
+	.string	"Invalid hexadecimal digit!"
+.LC3:
+	.string	"Octal: 0"
+.LC4:
+	.string	"Octal: "
+.LC5:
+	.string	"%d"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	endbr64
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$144, %rsp
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	movl	$0, -128(%rbp)
+	movl	$0, -124(%rbp)
+	leaq	.LC0(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	leaq	-32(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC1(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	movl	$0, -120(%rbp)
+	jmp	.L2
+.L8:
+	movl	-120(%rbp), %eax
+	cltq
+	movzbl	-32(%rbp,%rax), %eax
+	movb	%al, -129(%rbp)
+	sall	$4, -128(%rbp)
+	cmpb	$47, -129(%rbp)
+	jle	.L3
+	cmpb	$57, -129(%rbp)
+	jg	.L3
+	movsbl	-129(%rbp), %eax
+	subl	$48, %eax
+	addl	%eax, -128(%rbp)
+	jmp	.L4
+.L3:
+	cmpb	$64, -129(%rbp)
+	jle	.L5
+	cmpb	$70, -129(%rbp)
+	jg	.L5
+	movsbl	-129(%rbp), %eax
+	subl	$55, %eax
+	addl	%eax, -128(%rbp)
+	jmp	.L4
+.L5:
+	cmpb	$96, -129(%rbp)
+	jle	.L6
+	cmpb	$102, -129(%rbp)
+	jg	.L6
+	movsbl	-129(%rbp), %eax
+	subl	$87, %eax
+	addl	%eax, -128(%rbp)
+	jmp	.L4
+.L6:
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	movl	$0, %eax
+	jmp	.L14
+.L4:
+	addl	$1, -120(%rbp)
+.L2:
+	movl	-120(%rbp), %eax
+	cltq
+	movzbl	-32(%rbp,%rax), %eax
+	testb	%al, %al
+	jne	.L8
+	cmpl	$0, -128(%rbp)
+	jne	.L10
+	leaq	.LC3(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+	movl	$0, %eax
+	jmp	.L14
+.L11:
+	movl	-124(%rbp), %eax
+	leal	1(%rax), %edx
+	movl	%edx, -124(%rbp)
+	movl	-128(%rbp), %ecx
+	movl	%ecx, %edx
+	sarl	$31, %edx
+	shrl	$29, %edx
+	addl	%edx, %ecx
+	andl	$7, %ecx
+	subl	%edx, %ecx
+	movl	%ecx, %edx
+	cltq
+	movl	%edx, -112(%rbp,%rax,4)
+	movl	-128(%rbp), %eax
+	leal	7(%rax), %edx
+	testl	%eax, %eax
+	cmovs	%edx, %eax
+	sarl	$3, %eax
+	movl	%eax, -128(%rbp)
+.L10:
+	cmpl	$0, -128(%rbp)
+	jne	.L11
+	leaq	.LC4(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	-124(%rbp), %eax
+	subl	$1, %eax
+	movl	%eax, -116(%rbp)
+	jmp	.L12
+.L13:
+	movl	-116(%rbp), %eax
+	cltq
+	movl	-112(%rbp,%rax,4), %eax
+	movl	%eax, %esi
+	leaq	.LC5(%rip), %rax
+	movq	%rax, %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	subl	$1, -116(%rbp)
+.L12:
+	cmpl	$0, -116(%rbp)
+	jns	.L13
+	movl	$10, %edi
+	call	putchar@PLT
+	movl	$0, %eax
+.L14:
+	movq	-8(%rbp), %rdx
+	subq	%fs:40, %rdx
+	je	.L15
+	call	__stack_chk_fail@PLT
+.L15:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.section	.note.GNU-stack,"",@progbits
+	.section	.note.gnu.property,"a"
+	.align 8
+	.long	1f - 0f
+	.long	4f - 1f
+	.long	5
+0:
+	.string	"GNU"
+1:
+	.align 8
+	.long	0xc0000002
+	.long	3f - 2f
+2:
+	.long	0x3
+3:
+	.align 8
+4:
