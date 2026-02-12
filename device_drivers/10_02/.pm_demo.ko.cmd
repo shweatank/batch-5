@@ -1,0 +1,1 @@
+savedcmd_/home/dell/Desktop/batch-5/device_drivers/10_02/pm_demo.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/Desktop/batch-5/device_drivers/10_02/pm_demo.ko /home/dell/Desktop/batch-5/device_drivers/10_02/pm_demo.o /home/dell/Desktop/batch-5/device_drivers/10_02/pm_demo.mod.o

@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/04_02_2026/uart_mincom_drv.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/siva/04_02_2026/uart_mincom_drv.ko /home/team1/siva/04_02_2026/uart_mincom_drv.o /home/team1/siva/04_02_2026/uart_mincom_drv.mod.o /home/team1/siva/04_02_2026/.module-common.o

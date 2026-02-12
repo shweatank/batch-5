@@ -1,1 +1,1 @@
-savedcmd_/home/dell/practice/20_01_2026/basic.mod := printf '%s\n'   basic.o | awk '!x[$$0]++ { print("/home/dell/practice/20_01_2026/"$$0) }' > /home/dell/practice/20_01_2026/basic.mod
+savedcmd_/home/dell/Desktop/batch-5/device_drivers/20_01_2026/basic.mod := printf '%s\n'   basic.o | awk '!x[$$0]++ { print("/home/dell/Desktop/batch-5/device_drivers/20_01_2026/"$$0) }' > /home/dell/Desktop/batch-5/device_drivers/20_01_2026/basic.mod

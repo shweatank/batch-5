@@ -1,0 +1,1 @@
+savedcmd_/home/dell/Desktop/batch-5/device_drivers/10_02/pm_demo.mod := printf '%s\n'   pm_demo.o | awk '!x[$$0]++ { print("/home/dell/Desktop/batch-5/device_drivers/10_02/"$$0) }' > /home/dell/Desktop/batch-5/device_drivers/10_02/pm_demo.mod

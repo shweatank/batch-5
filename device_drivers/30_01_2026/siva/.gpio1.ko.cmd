@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/gpio1.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/siva/gpio1.ko /home/team1/siva/gpio1.o /home/team1/siva/gpio1.mod.o /home/team1/siva/.module-common.o

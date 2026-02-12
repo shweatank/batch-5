@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/led_sysfs.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/siva/led_sysfs.ko /home/team1/siva/led_sysfs.o /home/team1/siva/led_sysfs.mod.o /home/team1/siva/.module-common.o

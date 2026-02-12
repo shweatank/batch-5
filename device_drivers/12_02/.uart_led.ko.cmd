@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/12_02/uart_led.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/siva/12_02/uart_led.ko /home/team1/siva/12_02/uart_led.o /home/team1/siva/12_02/uart_led.mod.o /home/team1/siva/12_02/.module-common.o

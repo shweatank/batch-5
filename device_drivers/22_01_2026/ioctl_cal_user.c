@@ -6,6 +6,7 @@
 
 
 #define CALC_IOC_MAGIC  'C'
+
 struct calc_req {
     int a;
     int b;

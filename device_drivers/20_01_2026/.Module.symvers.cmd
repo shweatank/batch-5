@@ -1,1 +1,1 @@
-savedcmd_/home/dell/practice/20_01_2026/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/practice/20_01_2026/Module.symvers -T /home/dell/practice/20_01_2026/modules.order -i Module.symvers -e 
+savedcmd_/home/dell/Desktop/batch-5/device_drivers/20_01_2026/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/Desktop/batch-5/device_drivers/20_01_2026/Module.symvers -T /home/dell/Desktop/batch-5/device_drivers/20_01_2026/modules.order -i Module.symvers -e 

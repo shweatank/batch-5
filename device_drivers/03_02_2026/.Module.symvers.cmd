@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/03_02_2026/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team1/siva/03_02_2026/Module.symvers -n -T /home/team1/siva/03_02_2026/modules.order -i Module.symvers -e 

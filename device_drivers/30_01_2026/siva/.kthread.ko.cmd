@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/kthread.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/siva/kthread.ko /home/team1/siva/kthread.o /home/team1/siva/kthread.mod.o /home/team1/siva/.module-common.o

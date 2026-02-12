@@ -1,0 +1,1 @@
+savedcmd_/home/team1/siva/11_02/uart_pr.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/siva/11_02/uart_pr.ko /home/team1/siva/11_02/uart_pr.o /home/team1/siva/11_02/uart_pr.mod.o /home/team1/siva/11_02/.module-common.o

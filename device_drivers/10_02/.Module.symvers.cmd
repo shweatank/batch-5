@@ -1,0 +1,1 @@
+savedcmd_/home/dell/Desktop/batch-5/device_drivers/10_02/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/Desktop/batch-5/device_drivers/10_02/Module.symvers -T /home/dell/Desktop/batch-5/device_drivers/10_02/modules.order -i Module.symvers -e 
