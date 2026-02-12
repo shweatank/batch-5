@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            my_uart: my_uart@0 {
+                compatible = "my,uart";
+                reg = <0xFE201000 0x1000>;  /* Example base address & size */
+                status = "okay";
+            };
+        };
+    };
+};
+
