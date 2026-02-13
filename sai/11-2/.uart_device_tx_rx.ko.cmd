@@ -1,0 +1,1 @@
+savedcmd_/home/team1/sai/11-2/uart_device_tx_rx.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/sai/11-2/uart_device_tx_rx.ko /home/team1/sai/11-2/uart_device_tx_rx.o /home/team1/sai/11-2/uart_device_tx_rx.mod.o /home/team1/sai/11-2/.module-common.o

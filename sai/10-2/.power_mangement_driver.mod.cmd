@@ -1,0 +1,1 @@
+savedcmd_/home/team1/sai/10-2/power_mangement_driver.mod := printf '%s\n'   power_mangement_driver.o | awk '!x[$$0]++ { print("/home/team1/sai/10-2/"$$0) }' > /home/team1/sai/10-2/power_mangement_driver.mod
