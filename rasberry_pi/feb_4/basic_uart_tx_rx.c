@@ -8,7 +8,7 @@
 #include <linux/delay.h>
 
 /* BCM2711 PL011 UART0 base */
-#define UART_BASE  0xFE201000
+#define UART_BASE  0x3F201000
 #define UART_SIZE  0x100
 
 /* Registers */
@@ -43,8 +43,6 @@ static struct class *uart_class;
 
 static void __iomem *uart_base;
 
-static char kbuf[128];
-
 /* MMIO helpers */
 #define uart_read(off)        readl(uart_base + (off))
 #define uart_write(val, off)  writel((val), uart_base + (off))
@@ -53,62 +51,60 @@ static char kbuf[128];
 static void uart_hw_init(void)
 {
     uart_write(0, UART_CR);        /* Disable UART */
-    uart_write(0x7FF, UART_ICR);   /* Clear IRQs */
 
     /* 115200 baud @ 48MHz */
     uart_write(26, UART_IBRD);
     uart_write(3,  UART_FBRD);
 
-    uart_write(LCRH_8BIT | LCRH_FEN, UART_LCRH);
+    uart_write(LCRH_8BIT | LCRH_FEN, UART_LCRH); //enabling fifo
 
-    uart_write(CR_UARTEN | CR_TXE | CR_RXE, UART_CR);
-    uart_write(0, UART_IMSC);      /* No interrupts */
+    uart_write(CR_UARTEN | CR_TXE | CR_RXE, UART_CR); //enabling tx,rx,uart
 
     pr_info("rpi_uart: UART initialized\n");
 }
 
 /* ---------------- FILE OPS ---------------- */
-static ssize_t uart_write_user(struct file *f,
-                               const char __user *buf,
-                               size_t len, loff_t *off)
-{
-    char ch;
-    size_t i;
 
-    for (i = 1; i < len; i++) {
-        if (copy_from_user(&ch, buf + i, 1))
-            return -EFAULT;
+static ssize_t uart_write_user(struct file *file,const char __user *buf,size_t len,loff_t *off) {
+	char kbuf[128];
+	int i;
+	if(len > sizeof(kbuf)) 
+		len = sizeof(kbuf);
+	if(copy_from_user(kbuf,buf,len))
+		return -EFAULT;
+	for(i = 0;i<len;i++) {
+		while(uart_read(UART_FR) & FR_TXFF)
+			cpu_relax();
 
-        while (uart_read(UART_FR) & FR_TXFF)
-            cpu_relax();
-
-        uart_write(ch,UART_BASE +  UART_DR);
-	pr_info("Send byte: %c\n",ch);
-    }
-    return len;
+		uart_write(kbuf[i],UART_DR);
+	}
+	pr_info("Transmitted data: %s\n",kbuf);
+	return len;
 }
 
-static ssize_t uart_read_user(struct file *f,
-                              char __user *buf,
-                              size_t len, loff_t *off)
-{
-    char ch;
-    size_t i;
+static ssize_t uart_read_user(struct file *file,char __user *buf,size_t len,loff_t *off) {
+	char kbuf[128];
+	int i = 0;
 
-    for (i = 0; i < len; i++) {
-        if (uart_read(UART_FR) & FR_RXFE)
-            break;
+	if(len > sizeof(kbuf))
+		len = sizeof(kbuf);
 
-        ch = uart_read(UART_BASE + UART_DR) & 0xFF;
-//	pr_info("received byte: %c\n",ch);
-	kbuf[i] = ch;
-
-        if (copy_to_user(buf + i, &ch, 1))
-            return -EFAULT;
-    }
-    kbuf[i] = '\0';
-    pr_info("Received data: %s\n",kbuf);
-    return i;
+	while(i < len) {
+		if(uart_read(UART_FR) & FR_RXFE) {
+			return -EAGAIN;
+			break;
+		}
+		kbuf[i] = uart_read(UART_DR);
+		i++;
+	}
+	
+	if(i == 0) return 0;	// no initial data for reading
+	
+	if(copy_to_user(buf,kbuf,i))
+		return -EFAULT;
+	kbuf[i] = '\0';
+	pr_info("Received data: %s\n",kbuf);
+	return i;
 }
 
 static struct file_operations uart_fops = {

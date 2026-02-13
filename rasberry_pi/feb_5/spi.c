@@ -5,7 +5,7 @@
 #include <linux/delay.h>
 
 #define SPI0_BASE_PHYS   0xFE204000
-#define SPI0_SIZE        0x100
+#define SPI0_SIZE        0x18
 
 #define SPI0_CS     0x00
 #define SPI0_FIFO   0x04
@@ -29,7 +29,6 @@ static void spi_putc(char ch)
     //disabling dmaen bit to enable polling
     val = readl(spi_base + SPI0_CS);
     val &= ~DMAEN;
-    val |= (1 << 7)	//TA bit enabling
     writel(val,spi_base + SPI0_CS);
 
     // wait until tx fifo has space
@@ -45,26 +44,14 @@ static void spi_putc(char ch)
     writel(readl(spi_base + SPI0_CS) | DONE, spi_base + SPI0_CS);
 }
 
-static char spi_getc(void) 
+static char spi_getc() 
 {
     unsigned int cs;
     char ch;
 
-    cs = readl(spi_base + SPI0_CS);
-    cs &= ~DMAEN;
 
-    writel(cs,spi_base + SPI0_CS); //disabling the DMA access
-    
-    while(!(readl(spi_base + SPI0_CS) & RXD)); // waiting till the fifo is full
-    
-    ch = readl(spi_base + SPI0_FIFO); //reading the data
 
-     while(!(readl(spi_base + SPI0_CS) & DONE)); //wait until the reading is complete   
-     
-     writel(readl(spi_base + SPI0_CS) | DONE, spi_base + SPI0_CS);
 
-     return ch;
-}
 
 
 static int __init spi_init(void)
@@ -99,18 +86,10 @@ static int __init spi_init(void)
     writel(val,spi_base + SPI0_CS);
 
     //enable spi
-    val = readl(spi_base + SPI0_CS);
     val |= (1 << 7); //setting TA bit
     writel(val,spi_base + SPI0_CS);
 
     pr_info("SPI0 initialized\n");
-
-    char tx = 'A';
-    char rx;
-    spi_putc(tx);
-    rx = spi_getc();
-    pr_info("Transferred data: %c and received data: %c\n",tx,rx);
-
     return 0;
 }
 
@@ -123,9 +102,6 @@ static void __exit spi_exit(void)
 
     pr_info("SPI0 ioremap driver unloaded\n");
 }
-
-
- 
 
 module_init(spi_init);
 module_exit(spi_exit);

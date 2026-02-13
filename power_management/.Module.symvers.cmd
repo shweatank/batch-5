@@ -1,0 +1,1 @@
+savedcmd_/home/dell/mirafra/power_management/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/mirafra/power_management/Module.symvers -T /home/dell/mirafra/power_management/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+savedcmd_/home/dell/mirafra/power_management/pm_example.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/power_management/pm_example.ko /home/dell/mirafra/power_management/pm_example.o /home/dell/mirafra/power_management/pm_example.mod.o

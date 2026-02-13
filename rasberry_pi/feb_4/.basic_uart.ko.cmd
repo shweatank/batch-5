@@ -1,1 +1,0 @@
-savedcmd_/home/team1/rasberry_pi/feb_4/basic_uart.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/rasberry_pi/feb_4/basic_uart.ko /home/team1/rasberry_pi/feb_4/basic_uart.o /home/team1/rasberry_pi/feb_4/basic_uart.mod.o /home/team1/rasberry_pi/feb_4/.module-common.o

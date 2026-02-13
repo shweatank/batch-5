@@ -1,0 +1,1 @@
+savedcmd_/home/dell/mirafra/power_management/pm_example.mod := printf '%s\n'   pm_example.o | awk '!x[$$0]++ { print("/home/dell/mirafra/power_management/"$$0) }' > /home/dell/mirafra/power_management/pm_example.mod

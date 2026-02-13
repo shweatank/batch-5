@@ -1,1 +1,0 @@
-savedcmd_/home/team1/rasberry_pi/feb_4/dts/td-gpio-blink.mod := printf '%s\n'   td-gpio-blink.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/feb_4/dts/"$$0) }' > /home/team1/rasberry_pi/feb_4/dts/td-gpio-blink.mod

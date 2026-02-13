@@ -1,1 +1,0 @@
-savedcmd_/home/team1/ajay/led_gpio_driver.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/ajay/led_gpio_driver.ko /home/team1/ajay/led_gpio_driver.o /home/team1/ajay/led_gpio_driver.mod.o /home/team1/ajay/.module-common.o

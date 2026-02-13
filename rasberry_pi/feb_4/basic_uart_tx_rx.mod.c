@@ -31,6 +31,7 @@ __used __section("__versions") = {
 	{ 0x3a6d85d3, "cdev_add" },
 	{ 0x59c02473, "class_create" },
 	{ 0xb63fdcdb, "device_create" },
+	{ 0xdcb764ad, "memset" },
 	{ 0x12a4e128, "__arch_copy_from_user" },
 	{ 0xf0fdf6cb, "__stack_chk_fail" },
 	{ 0x6cbbfc54, "__arch_copy_to_user" },
@@ -40,4 +41,4 @@ __used __section("__versions") = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "28717268936710606C297B5");
+MODULE_INFO(srcversion, "0D51D27011730EEA2B58AF4");
