@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/new/batch-5/ker/basic_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/new/batch-5/ker/basic_driver.ko /home/mirafra/new/batch-5/ker/basic_driver.o /home/mirafra/new/batch-5/ker/basic_driver.mod.o

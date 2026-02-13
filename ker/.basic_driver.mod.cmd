@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/new/batch-5/ker/basic_driver.mod := printf '%s\n'   basic_driver.o | awk '!x[$$0]++ { print("/home/mirafra/new/batch-5/ker/"$$0) }' > /home/mirafra/new/batch-5/ker/basic_driver.mod
