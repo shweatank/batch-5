@@ -1,0 +1,17 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+fragment@0 {
+        target-path = "/";
+
+        __overlay__ {
+            led_gpio17 {
+                compatible = "techdhaba,gpio_led";
+                label = "gpio17_led";
+                led_gpios = <&gpio0 17 1>;
+                status = "okay";
+            };
+        };
+    };
+};
