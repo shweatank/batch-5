@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/kishore/socket/cilent1.mod := printf '%s\n'   cilent1.o | awk '!x[$$0]++ { print("/home/team4/Desktop/kishore/socket/"$$0) }' > /home/team4/Desktop/kishore/socket/cilent1.mod
