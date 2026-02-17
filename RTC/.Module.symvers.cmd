@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/ramesh/RTC/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team4/Desktop/ramesh/RTC/Module.symvers -T /home/team4/Desktop/ramesh/RTC/modules.order -i Module.symvers -e 

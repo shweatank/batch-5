@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/ramesh/RTC/rtc_read_time.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team4/Desktop/ramesh/RTC/rtc_read_time.ko /home/team4/Desktop/ramesh/RTC/rtc_read_time.o /home/team4/Desktop/ramesh/RTC/rtc_read_time.mod.o /home/team4/Desktop/ramesh/RTC/.module-common.o

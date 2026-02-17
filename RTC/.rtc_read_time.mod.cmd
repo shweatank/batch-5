@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/ramesh/RTC/rtc_read_time.mod := printf '%s\n'   rtc_read_time.o | awk '!x[$$0]++ { print("/home/team4/Desktop/ramesh/RTC/"$$0) }' > /home/team4/Desktop/ramesh/RTC/rtc_read_time.mod
