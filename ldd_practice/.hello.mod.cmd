@@ -1,0 +1,1 @@
+savedcmd_/home/dell/Desktop/batch-5/ldd_practice/hello.mod := printf '%s\n'   hello.o | awk '!x[$$0]++ { print("/home/dell/Desktop/batch-5/ldd_practice/"$$0) }' > /home/dell/Desktop/batch-5/ldd_practice/hello.mod

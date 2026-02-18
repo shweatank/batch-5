@@ -1,0 +1,1 @@
+savedcmd_/home/dell/Desktop/batch-5/ldd_practice/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/Desktop/batch-5/ldd_practice/Module.symvers -T /home/dell/Desktop/batch-5/ldd_practice/modules.order -i Module.symvers -e 
