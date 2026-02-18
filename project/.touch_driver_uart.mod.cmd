@@ -1,0 +1,1 @@
+savedcmd_/home/dell/git/batch-5/project/touch_driver_uart.mod := printf '%s\n'   touch_driver_uart.o | awk '!x[$$0]++ { print("/home/dell/git/batch-5/project/"$$0) }' > /home/dell/git/batch-5/project/touch_driver_uart.mod

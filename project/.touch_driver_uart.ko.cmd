@@ -1,0 +1,1 @@
+savedcmd_/home/dell/git/batch-5/project/touch_driver_uart.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/git/batch-5/project/touch_driver_uart.ko /home/dell/git/batch-5/project/touch_driver_uart.o /home/dell/git/batch-5/project/touch_driver_uart.mod.o
