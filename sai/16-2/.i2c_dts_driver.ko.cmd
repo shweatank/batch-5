@@ -1,0 +1,1 @@
+savedcmd_/home/team1/sai/16-2/i2c_dts_driver.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/sai/16-2/i2c_dts_driver.ko /home/team1/sai/16-2/i2c_dts_driver.o /home/team1/sai/16-2/i2c_dts_driver.mod.o /home/team1/sai/16-2/.module-common.o
