@@ -1,0 +1,1 @@
+savedcmd_/home/team1/sai/project/project_touch.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/sai/project/project_touch.ko /home/team1/sai/project/project_touch.o /home/team1/sai/project/project_touch.mod.o /home/team1/sai/project/.module-common.o
