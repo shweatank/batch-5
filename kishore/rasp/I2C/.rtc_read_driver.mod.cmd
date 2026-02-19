@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/kishore/I2C/rtc_read_driver.mod := printf '%s\n'   rtc_read_driver.o | awk '!x[$$0]++ { print("/home/team4/Desktop/kishore/I2C/"$$0) }' > /home/team4/Desktop/kishore/I2C/rtc_read_driver.mod

@@ -1,0 +1,25 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/";
+
+        __overlay__ {
+            td_spi_driver: td_spi_driver@FE204000 {
+                compatible = "my,spi_driver";
+		reg=<0xFE204000 0x100>;
+
+                /* BCM numbering, active-high */
+                in-gpios  = <&gpio 9 0>;
+                out-gpios = <&gpio 10 0>;
+
+
+                status = "okay";
+            };
+        };
+    };
+};
+
