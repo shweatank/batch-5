@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/20_01_2026/file_read_write.mod := printf '%s\n'   file_read_write.o | awk '!x[$$0]++ { print("/home/dell/practice/20_01_2026/"$$0) }' > /home/dell/practice/20_01_2026/file_read_write.mod

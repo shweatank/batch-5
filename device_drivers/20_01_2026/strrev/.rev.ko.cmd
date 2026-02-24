@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/20_01_2026/strrev/rev.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/20_01_2026/strrev/rev.ko /home/dell/practice/20_01_2026/strrev/rev.o /home/dell/practice/20_01_2026/strrev/rev.mod.o

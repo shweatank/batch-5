@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/20_01_2026/strrev/rev.mod := printf '%s\n'   rev.o | awk '!x[$$0]++ { print("/home/dell/practice/20_01_2026/strrev/"$$0) }' > /home/dell/practice/20_01_2026/strrev/rev.mod

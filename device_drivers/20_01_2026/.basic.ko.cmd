@@ -1,1 +1,0 @@
-savedcmd_/home/dell/Desktop/batch-5/device_drivers/20_01_2026/basic.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/Desktop/batch-5/device_drivers/20_01_2026/basic.ko /home/dell/Desktop/batch-5/device_drivers/20_01_2026/basic.o /home/dell/Desktop/batch-5/device_drivers/20_01_2026/basic.mod.o
