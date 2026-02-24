@@ -1,0 +1,2554 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; object-src 'none'; script-src resource: chrome:; connect-src https:; img-src https: data: blob: chrome:; style-src 'unsafe-inline';">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-l10n-id="newtab-page-title"></title>
+    <link rel="icon" type="image/png" href="chrome://branding/content/icon32.png"/>
+    <link rel="localization" href="branding/brand.ftl" />
+    <link rel="localization" href="toolkit/branding/brandings.ftl" />
+    <link rel="localization" href="browser/newtab/newtab.ftl" />
+    <link rel="localization" href="toolkit/global/mozMessageBar.ftl" />
+    <link rel="stylesheet" href="chrome://global/skin/design-system/tokens-brand.css">
+    <link rel="stylesheet" href="chrome://browser/content/contentSearchUI.css" />
+    <link rel="stylesheet" href="chrome://newtab/content/css/activity-stream.css" />
+  </head>
+  <!-- Cached: Wed, 11 Feb 2026 07:52:35 GMT -->
+  <body class="activity-stream">
+    <div id="header-asrouter-container" role="presentation"></div>
+    <div id="root">
+      <div class="has-search layout-variant-b shortcuts-refresh has-recommended-stories"><menu class="personalizeButtonWrapper"><span><button class="icon icon-settings personalize-button" data-l10n-id="newtab-personalize-settings-icon-label"></button><div class="customize-menu" role="dialog" data-l10n-id="newtab-settings-dialog-label"><div class="close-button-wrapper"><button class="close-button" data-l10n-id="newtab-custom-close-button"></button></div><div class="home-section"><div class="wallpapers-section"><div><div class="category-header"><h2 data-l10n-id="newtab-wallpaper-title"></h2><button class="wallpapers-reset" data-l10n-id="newtab-wallpaper-reset"></button></div><div role="grid" aria-label="Wallpaper category selection. Use arrow keys to navigate."><fieldset class="category-list"><div><button id="abstracts" style="background-image:url(https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/18c7861f-0c9d-48d4-a98c-fb8999e331bd.avif)" class="wallpaper-input" tabindex="0"></button><label for="abstracts" data-l10n-id="newtab-wallpaper-category-title-abstract">newtab-wallpaper-category-title-abstract</label></div><div><button id="solid-colors" style="background-color:#76C1FF" class="wallpaper-input" tabindex="-1"></button><label for="solid-colors" data-l10n-id="newtab-wallpaper-category-title-colors">newtab-wallpaper-category-title-colors</label></div><div><button id="photographs" style="background-image:url(https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/e94b1e49-c518-40d6-98e3-dffab6cc370d.avif)" class="wallpaper-input" tabindex="-1"></button><label for="photographs" data-l10n-id="newtab-wallpaper-category-title-photographs">newtab-wallpaper-category-title-photographs</label></div><div><button id="firefox" style="background-image:url(https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/6f7e2155-df50-4917-81fd-9c6f16e14965.svg)" class="wallpaper-input" tabindex="-1"></button><label for="firefox"></label></div><div><button id="celestial" style="background-image:url(https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/55b678ff-15c3-49d5-bdbc-40f8413cfb8a.avif)" class="wallpaper-input" tabindex="-1"></button><label for="celestial" data-l10n-id="newtab-wallpaper-category-title-celestial">newtab-wallpaper-category-title-celestial</label></div><div><button id="custom-wallpaper" style="background-color:" class="wallpaper-input theme-custom-wallpaper" tabindex="-1" aria-errormessage="customWallpaperError"></button><label for="custom-wallpaper" data-l10n-id="newtab-wallpaper-upload-image">newtab-wallpaper-upload-image</label></div></fieldset></div></div></div><span class="divider" role="separator"></span><div class="settings-toggles"><div id="shortcuts-section" class="section"><moz-toggle id="shortcuts-toggle" pressed="true" onToggle="function() {
+    [native code]
+}" data-preference="feeds.topsites" data-eventSource="TOP_SITES" data-l10n-id="newtab-custom-shortcuts-toggle"><div slot="nested"><div class="more-info-top-wrapper"><div class="more-information"><select id="row-selector" class="selector" name="row-count" data-preference="topSitesRows" aria-labelledby="custom-shortcuts-title"><option selected="" value="1" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 1}"></option><option value="2" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 2}"></option><option value="3" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 3}"></option><option value="4" data-l10n-id="newtab-custom-row-selector" data-l10n-args="{&quot;num&quot;: 4}"></option></select></div></div></div></moz-toggle></div><div id="pocket-section" class="section"><moz-toggle id="pocket-toggle" pressed="true" onToggle="function() {
+    [native code]
+}" aria-describedby="custom-pocket-subtitle" data-preference="feeds.section.topstories" data-eventSource="TOP_STORIES" data-l10n-id="newtab-custom-stories-toggle"><div slot="nested"></div></moz-toggle></div></div><span class="divider" role="separator"></span><div><button id="settings-link" class="external-link" data-l10n-id="newtab-custom-settings"></button></div></div></div></span></menu><div class="weatherWrapper"></div><div class="mobileDownloadPromoWrapper "></div><div class="outer-wrapper ds-outer-wrapper-search-alignment ds-outer-wrapper-breakpoint-override visible-logo"><main class="newtab-main"><div class="non-collapsible-section"><div class="search-wrapper"><h1 class="logo-and-wordmark-wrapper"><div class="logo-and-wordmark" role="img" data-l10n-id="newtab-logo-and-wordmark"><div class="logo"></div><div class="wordmark"></div></div></h1><div class="search-inner-wrapper"><button class="search-handoff-button" tabindex="-1"><div class="fake-textbox"></div><input type="search" class="fake-editable" tabindex="-1" aria-hidden="true"/><div class="fake-caret"></div></button></div></div></div><div class="body-wrapper on"><div class="discovery-stream ds-layout ds-layout-topsites"><div class="ds-column ds-column-12"><div class="ds-column-grid"><div><div class="ds-top-sites"><section class="collapsible-section top-sites" data-section-id="topsites"><div class="section-top-bar"><h2 class="section-title-container " style="visibility:hidden"><span class="section-title"><span data-l10n-id="newtab-section-header-topsites"></span></span></h2></div><div><div class="top-sites-list-wrapper"><ul role="group" aria-label="Shortcuts" class="top-sites-list"><li class="top-site-outer placeholder  "><div class="top-site-inner"><a class="top-site-button" tabindex="0" draggable="true" data-is-sponsored-link="false" title=""><div class="tile" aria-hidden="true"><div class="icon-wrapper"><div class=""></div></div></div><div class="title"><span class="title-label" dir="auto"><br/></span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.wikipedia.org/" tabindex="-1" draggable="true" data-is-sponsored-link="false" title="Wikipedia"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="W"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png)"></div></div></div><div class="title"><span class="title-label" dir="auto">Wikipedia</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Wikipedia&quot;}" class="context-menu-button icon" tabindex="-1"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.youtube.com/" tabindex="-1" draggable="true" data-is-sponsored-link="false" title="YouTube"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="Y"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png)"></div></div></div><div class="title"><span class="title-label" dir="auto">YouTube</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;YouTube&quot;}" class="context-menu-button icon" tabindex="-1"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="http://ndtv.com/" tabindex="-1" draggable="true" data-is-sponsored-link="false" title="NDTV"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="N"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/ndtv@2x.png)"></div></div></div><div class="title"><span class="title-label" dir="auto">NDTV</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;NDTV&quot;}" class="context-menu-button icon" tabindex="-1"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer"><div class="top-site-inner"><a class="top-site-button" href="https://www.reddit.com/" tabindex="-1" draggable="true" data-is-sponsored-link="false" title="Reddit"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="R"><div class="top-site-icon rich-icon" style="background-image:url(chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png)"></div></div></div><div class="title"><span class="title-label" dir="auto">Reddit</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Reddit&quot;}" class="context-menu-button icon" tabindex="-1"></button></div><div class="topsite-impression-observer"></div></div></li><li class="top-site-outer placeholder  add-button"><div class="top-site-inner"><a class="top-site-button" tabindex="-1" draggable="true" data-is-sponsored-link="false" title="newtab-topsites-add-shortcut-label"><div class="tile" aria-hidden="true"><div class="icon-wrapper" data-fallback="n"><div class=""></div></div></div><div class="title"><span class="title-label" dir="auto" data-l10n-id="newtab-topsites-add-shortcut-label">newtab-topsites-add-shortcut-label</span><span class="sponsored-label" data-l10n-id="newtab-topsite-sponsored"></span></div></a><div class="topsite-impression-observer"></div></div></li></ul></div><div class="edit-topsites-wrapper"></div></div></section></div></div></div></div><style data-styles="[[null]]"></style></div><section class="collapsible-section ds-layout" data-section-id="topstories"><div class="section-top-bar"><h2 class="section-title-container "><span class="section-title"><span data-l10n-id="newtab-section-header-stories"></span></span></h2></div><div><div class="discovery-stream ds-layout "><div class="ds-column ds-column-12"><div class="ds-column-grid"><div><div><div class="ds-card-grid    ds-card-grid-include-descriptions "><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.huffpost.com/entry/red-pill-son-fears-goog_l_697b7311e4b00b1deb8f9e6f?utm_source=firefox-newtab-en-intl" title="This 1 Big Concern About Raising Boys Didn’t Really Exist 30 Years Ago" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/0d74b2b5-6a90-4dc4-bd71-8baec001c89a.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F0d74b2b5-6a90-4dc4-bd71-8baec001c89a.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F0d74b2b5-6a90-4dc4-bd71-8baec001c89a.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">HuffPost</p></div><h3 class="title clamp">This 1 Big Concern About Raising Boys Didn’t Really Exist 30 Years Ago</h3><p class="excerpt clamp">Parents who raised kids in the ‘90s are “surprised by how young boys are when they first encounter it,” one mom said.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;This 1 Big Concern About Raising Boys Didn’t Really Exist 30 Years Ago&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.news18.com/photogallery/lifestyle/food/7-best-indian-vegetarian-soup-recipes-for-comfort-and-health-ws-el-9892497.html?utm_source=firefox-newtab-en-intl" title="7 Best Indian Vegetarian Soup Recipes for Comfort and Health" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/b3599e06-863a-4efc-9d7d-9793b5104100.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fb3599e06-863a-4efc-9d7d-9793b5104100.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fb3599e06-863a-4efc-9d7d-9793b5104100.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">News18</p></div><h3 class="title clamp">7 Best Indian Vegetarian Soup Recipes for Comfort and Health</h3><p class="excerpt clamp">Whether you’re looking for a light appetizer or a hearty meal, Indian vegetarian soups bring warmth to the table and highlight the beauty of plant-based cooking.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;7 Best Indian Vegetarian Soup Recipes for Comfort and Health&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.howtogeek.com/10-common-emojis-people-constantly-misunderstand-and-what-they-mean-now/?utm_source=firefox-newtab-en-intl" title="Stop using these emojis wrong: 16 emojis people constantly misunderstand" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/d8408934-6d08-4837-9f39-e4debec9715c.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fd8408934-6d08-4837-9f39-e4debec9715c.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fd8408934-6d08-4837-9f39-e4debec9715c.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">How-To Geek</p></div><h3 class="title clamp">Stop using these emojis wrong: 16 emojis people constantly misunderstand</h3><p class="excerpt clamp">Official names tell one story. Real usage tells another. Here are the emojis most often misread, plus what people actually mean today.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Stop using these emojis wrong: 16 emojis people constantly misunderstand&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.cntraveller.in/story/paintings-picnics-and-pickleball-how-to-do-valentines-day-in-delhi/?utm_source=firefox-newtab-en-intl" title="Paintings, Picnics and Pickleball: How to Do Valentine’s Day in Delhi" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/706ff4f7-b41e-43a0-a274-c3c368466399.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F706ff4f7-b41e-43a0-a274-c3c368466399.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F706ff4f7-b41e-43a0-a274-c3c368466399.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Condé Nast Traveller India</p></div><h3 class="title clamp">Paintings, Picnics and Pickleball: How to Do Valentine’s Day in Delhi</h3><p class="excerpt clamp">Swap the run-of-the-mill dinner for farmer’s markets, fort gardens and film screenings</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Paintings, Picnics and Pickleball: How to Do Valentine’s Day in Delhi&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.architecturaldigest.in/story/7-striking-kitchen-designs-by-indias-top-interior-architects/?utm_source=firefox-newtab-en-intl" title="7 Striking Kitchen Designs by India’s Top Interior Architects" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/8d8d84e6-51bb-4815-9b92-c177cebafeec.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F8d8d84e6-51bb-4815-9b92-c177cebafeec.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F8d8d84e6-51bb-4815-9b92-c177cebafeec.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">AD India</p></div><h3 class="title clamp">7 Striking Kitchen Designs by India’s Top Interior Architects</h3><p class="excerpt clamp">From clever layouts to unique materiality, these kitchen designs approach the everyday with intention.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;7 Striking Kitchen Designs by India’s Top Interior Architects&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.deccanchronicle.com/tabloid/hyderabad-chronicle/self-expression-the-look-of-love-1936285?utm_source=firefox-newtab-en-intl" title="Self-Expression &amp; the Look of Love" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/1c07d54b-9ebc-4718-83b2-42985fa75f4a.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F1c07d54b-9ebc-4718-83b2-42985fa75f4a.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F1c07d54b-9ebc-4718-83b2-42985fa75f4a.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Deccan Chronicle</p></div><h3 class="title clamp">Self-Expression &amp; the Look of Love</h3><p class="excerpt clamp">No more Valentine’s Day dressing dilemmas, these celeb-inspired outfits are perfect for the season of love</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Self-Expression &amp; the Look of Love&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.indiatoday.in/lifestyle/wellness/story/basic-habits-that-may-block-your-weight-loss-despite-regular-workout-2865999-2026-02-10?utm_source=firefox-newtab-en-intl" title="Basic Habits That May Block Your Weight Loss Despite Regular Workout" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/f8e1c383-d804-42ee-a30d-a244204461b5.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Ff8e1c383-d804-42ee-a30d-a244204461b5.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Ff8e1c383-d804-42ee-a30d-a244204461b5.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">India Today</p></div><h3 class="title clamp">Basic Habits That May Block Your Weight Loss Despite Regular Workout</h3><p class="excerpt clamp">Working out regularly but still seeing the same number on the weighing scale? It may be time to dig a little deeper and take a closer look at your everyday habits.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Basic Habits That May Block Your Weight Loss Despite Regular Workout&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.timeout.com/news/one-of-the-worlds-most-beautiful-destinations-is-seeking-volunteers-for-an-all-expenses-paid-trip-021026?utm_source=firefox-newtab-en-intl" title="One of the world’s most beautiful destinations is seeking volunteers for an all-expenses-paid trip" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/b30d50b2-10eb-4d32-8ea7-2aab83fb48ec.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fb30d50b2-10eb-4d32-8ea7-2aab83fb48ec.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fb30d50b2-10eb-4d32-8ea7-2aab83fb48ec.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Time Out</p></div><h3 class="title clamp">One of the world’s most beautiful destinations is seeking volunteers for an all-expenses-paid trip</h3><p class="excerpt clamp">Always wanted to see Patagonia? Now’s your chance to do so – for free</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;One of the world’s most beautiful destinations is seeking volunteers for an all-expenses-paid trip&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.vogue.in/content/indian-women-are-entering-their-rough-sports-era-post-40?utm_source=firefox-newtab-en-intl" title="Indian Women Are Entering Their ‘Rough Sports’ Era Post 40" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/feaa37d9-a345-4b2e-82f6-5688d252d699.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Ffeaa37d9-a345-4b2e-82f6-5688d252d699.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Ffeaa37d9-a345-4b2e-82f6-5688d252d699.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Vogue India</p></div><h3 class="title clamp">Indian Women Are Entering Their ‘Rough Sports’ Era Post 40</h3><p class="excerpt clamp">Who said 40 is when you slow down? For more and more Indian women, it’s when the real fun begins</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Indian Women Are Entering Their ‘Rough Sports’ Era Post 40&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.bbc.com/sport/cricket/articles/cgjzvjenjvqo?utm_source=firefox-newtab-en-intl" title="India-Pakistan to Go Ahead As Government Ends Boycott Request" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/2933b9a4-533c-4557-9e04-e6215e6e6cda.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F2933b9a4-533c-4557-9e04-e6215e6e6cda.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F2933b9a4-533c-4557-9e04-e6215e6e6cda.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">BBC</p></div><h3 class="title clamp">India-Pakistan to Go Ahead As Government Ends Boycott Request</h3><p class="excerpt clamp">Pakistan&#x27;s fixture against rivals India at the T20 World Cup is set to go ahead as scheduled after the Pakistan government ends its order for a boycott.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;India-Pakistan to Go Ahead As Government Ends Boycott Request&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.scientificamerican.com/article/the-quirky-geology-behind-olympic-curling-stones/?utm_source=firefox-newtab-en-intl" title="The Quirky Geology Behind Olympic Curling Stones" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/0f0750e1-3a16-4219-87a8-6a30211db3ba.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F0f0750e1-3a16-4219-87a8-6a30211db3ba.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F0f0750e1-3a16-4219-87a8-6a30211db3ba.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Scientific American</p></div><h3 class="title clamp">The Quirky Geology Behind Olympic Curling Stones</h3><p class="excerpt clamp">The rocks used in the Olympic sport of curling come from one island in Scotland and one quarry in Wales. What makes them so special?</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;The Quirky Geology Behind Olympic Curling Stones&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://time.com/7373140/china-world-leader-climate-energy-technology/?utm_source=firefox-newtab-en-intl" title="The World Needs China’s Climate Technology. That’s the Dilemma" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/3372a3c0-9038-4a11-b9c8-f80acb1b8a16.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F3372a3c0-9038-4a11-b9c8-f80acb1b8a16.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F3372a3c0-9038-4a11-b9c8-f80acb1b8a16.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Time</p></div><h3 class="title clamp">The World Needs China’s Climate Technology. That’s the Dilemma</h3><p class="excerpt clamp">Beijing’s dominance in clean tech could save the planet. Will it get to?</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;The World Needs China’s Climate Technology. That’s the Dilemma&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.salon.com/2026/02/08/make-a-soup-out-of-almost-anything/?utm_source=firefox-newtab-en-intl" title="Make a soup out of (almost) anything" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/8db1190b-f9dd-4bcd-943b-96bfab88f89c.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F8db1190b-f9dd-4bcd-943b-96bfab88f89c.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F8db1190b-f9dd-4bcd-943b-96bfab88f89c.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Salon</p></div><h3 class="title clamp">Make a soup out of (almost) anything</h3><p class="excerpt clamp">A simple framework for turning scraps, leftovers and good instincts into a deeply satisfying bowl</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Make a soup out of (almost) anything&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.indiatoday.in/diu/story/new-political-parties-join-the-mix-every-day-but-do-they-affect-polls-2866220-2026-02-10?utm_source=firefox-newtab-en-intl" title="New Political Parties Join the Mix Every Day. but Do They Affect Polls?" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/2984d9cf-7cdb-4d49-a574-a2fd97868f0c.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F2984d9cf-7cdb-4d49-a574-a2fd97868f0c.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F2984d9cf-7cdb-4d49-a574-a2fd97868f0c.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">India Today</p></div><h3 class="title clamp">New Political Parties Join the Mix Every Day. but Do They Affect Polls?</h3><p class="excerpt clamp">Vijay launched the Tamilaga Vettri Kazhagam in 2024 and will contest the 2026 Tamil Nadu Assembly elections. But will he make a difference?</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;New Political Parties Join the Mix Every Day. but Do They Affect Polls?&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.marthastewart.com/watering-mistakes-that-kill-houseplants-11898108?utm_source=firefox-newtab-en-intl" title="6 Watering Mistakes That Are Slowly Killing Your Houseplants" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/cbf1c504-4b8a-407a-ac23-77db69996cf3.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fcbf1c504-4b8a-407a-ac23-77db69996cf3.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fcbf1c504-4b8a-407a-ac23-77db69996cf3.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Martha Stewart</p></div><h3 class="title clamp">6 Watering Mistakes That Are Slowly Killing Your Houseplants</h3><p class="excerpt clamp">Watering mistakes can quietly kill houseplants. Experts warn against six common habits to stop now.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;6 Watering Mistakes That Are Slowly Killing Your Houseplants&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.parents.com/how-to-get-your-kid-to-take-care-of-pet-11901618?utm_source=firefox-newtab-en-intl" title="Your Child Begged for a Pet, but Now You’re Doing All the Work—Here’s What Helps" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/e95ab48e-1179-466c-890a-d2ce16892735.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fe95ab48e-1179-466c-890a-d2ce16892735.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fe95ab48e-1179-466c-890a-d2ce16892735.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Parents</p></div><h3 class="title clamp">Your Child Begged for a Pet, but Now You’re Doing All the Work—Here’s What Helps</h3><p class="excerpt clamp">You don’t want to be stuck with all the responsibility. Luckily, there are ways to get your kids to pitch in.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Your Child Begged for a Pet, but Now You’re Doing All the Work—Here’s What Helps&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://hbr.org/2026/02/stop-promoting-the-wrong-people-into-manager-roles?utm_source=firefox-newtab-en-intl" title="Stop Promoting the Wrong People into Manager Roles" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/3b5572d5-2a35-4410-a0a8-739e83956936.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F3b5572d5-2a35-4410-a0a8-739e83956936.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F3b5572d5-2a35-4410-a0a8-739e83956936.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Harvard Business Review</p></div><h3 class="title clamp">Stop Promoting the Wrong People into Manager Roles</h3><p class="excerpt clamp">One in four managers would prefer not to be people managers at all. Why the reluctance? Many of these managers found themselves in the role without knowing much about it beforehand, with less than a third reporting exposure to simulations, mentorship, or opportunities to gauge whether they were suited to becoming a manager.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Stop Promoting the Wrong People into Manager Roles&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.indiatoday.in/business/personal-finance/story/loan-rejection-in-india-despite-good-credit-score-lenders-need-to-address-issue-2865925-2026-02-10?utm_source=firefox-newtab-en-intl" title="Why Good Borrowers Still Don’t Get Loans in India, and What Lenders Must Fix" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/d7b8b8a4-a3e7-472e-b8a4-d3c3bfac8e0b.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fd7b8b8a4-a3e7-472e-b8a4-d3c3bfac8e0b.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fd7b8b8a4-a3e7-472e-b8a4-d3c3bfac8e0b.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">India Today</p></div><h3 class="title clamp">Why Good Borrowers Still Don’t Get Loans in India, and What Lenders Must Fix</h3><p class="excerpt clamp">A high income and solid credit score mean little if lenders’ systems can’t “see” the borrower holistically.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Why Good Borrowers Still Don’t Get Loans in India, and What Lenders Must Fix&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.formula1.com/en/latest/article/tech-analysis-why-adrian-neweys-first-aston-martin-design-has-caused-a-stir.57Gu2EU7z7Bo6fWUF9qRwc?utm_source=firefox-newtab-en-intl" title="Why Adrian Newey’s First Aston Martin Design Has Caused a Stir" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/061e971d-86ed-4959-924c-3fe8ca8e0e23.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F061e971d-86ed-4959-924c-3fe8ca8e0e23.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F061e971d-86ed-4959-924c-3fe8ca8e0e23.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Formula 1</p></div><h3 class="title clamp">Why Adrian Newey’s First Aston Martin Design Has Caused a Stir</h3><p class="excerpt clamp">With Adrian Newey&#x27;s maiden Aston Martin design emerging at the end of the Barcelona Shakedown, its dramatic looks have gotten plenty of people talking.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;Why Adrian Newey’s First Aston Martin Design Has Caused a Stir&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.inc.com/steve-sensing/how-to-build-a-business-where-failure-fuels-growth/91297739?utm_source=firefox-newtab-en-intl" title="How to Build a Business Where Failure Fuels Growth" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/60f577c8-87fe-478f-a3ef-9b7ef75940f4.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F60f577c8-87fe-478f-a3ef-9b7ef75940f4.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F60f577c8-87fe-478f-a3ef-9b7ef75940f4.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Inc. Magazine</p></div><h3 class="title clamp">How to Build a Business Where Failure Fuels Growth</h3><p class="excerpt clamp">Encouraging employees to do the one thing they’ve been conditioned not to do could bring the best out of them.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;How to Build a Business Where Failure Fuels Growth&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.bbc.com/news/articles/cn0elx8g00do?utm_source=firefox-newtab-en-intl" title="The Taekwondo Teacher Tasked With Healing India’s Troubled State" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/cddde5c8-bf5c-4f9a-8bae-4af5fb1df193.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fcddde5c8-bf5c-4f9a-8bae-4af5fb1df193.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fcddde5c8-bf5c-4f9a-8bae-4af5fb1df193.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">BBC</p></div><h3 class="title clamp">The Taekwondo Teacher Tasked With Healing India’s Troubled State</h3><p class="excerpt clamp">Opinion is divided on whether Manipur&#x27;s new chief minister Yumnam Khemchand Singh can bring calm to the state.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;The Taekwondo Teacher Tasked With Healing India’s Troubled State&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://restofworld.org/2026/ai-memory-chip-explainer/?utm_source=firefox-newtab-en-intl&amp;utm_medium=rss&amp;utm_campaign=feeds" title="AI Is Dominating the World’s Memory Chips. That Could Make Phones More Expensive" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/e3d299b6-8068-46e1-8bab-e4faf7c1c0e3.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fe3d299b6-8068-46e1-8bab-e4faf7c1c0e3.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fe3d299b6-8068-46e1-8bab-e4faf7c1c0e3.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Rest of World</p></div><h3 class="title clamp">AI Is Dominating the World’s Memory Chips. That Could Make Phones More Expensive</h3><p class="excerpt clamp">As chipmakers rush to serve AI data centers, consumer electronics are left in short supply.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;AI Is Dominating the World’s Memory Chips. That Could Make Phones More Expensive&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.vogue.in/content/i-saw-only-three-artworks-at-india-art-fair-2026-and-it-was-plenty?utm_source=firefox-newtab-en-intl" title="I Saw Only Three Artworks at India Art Fair 2026, and It Was Plenty" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/1e7eda38-6f4d-4a86-b7b5-291aada8c1a0.jpeg" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F1e7eda38-6f4d-4a86-b7b5-291aada8c1a0.jpeg 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2F1e7eda38-6f4d-4a86-b7b5-291aada8c1a0.jpeg 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Vogue India</p></div><h3 class="title clamp">I Saw Only Three Artworks at India Art Fair 2026, and It Was Plenty</h3><p class="excerpt clamp">At what point do we make peace with the quality of what our eyes see rather than the quantity?</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;I Saw Only Three Artworks at India Art Fair 2026, and It Was Plenty&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article><article class="ds-card   sections-card-ui    ds-card-title-lines-3 ds-card-desc-lines-3    "><a href="https://www.inc.com/kit-eaton/how-to-protect-your-team-from-workplace-harassment/91299539?utm_source=firefox-newtab-en-intl" title="How to Protect Your Team From Workplace Harassment" class="ds-card-link"><div class="img-wrapper"><picture class="ds-image
+       img
+      
+      
+    "><img loading="lazy" crossorigin="anonymous" sizes="default 296px,296px" src="https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/adf5ed26-5eed-41ca-a71f-3d533537a928.webp" srcSet="https://img-getpocket.cdn.mozilla.net/296x148/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fadf5ed26-5eed-41ca-a71f-3d533537a928.webp 296w,https://img-getpocket.cdn.mozilla.net/592x296/smart/filters:format(jpeg):quality(60):no_upscale():strip_exif()/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fpocket-curatedcorpusapi-prod-images%2Fadf5ed26-5eed-41ca-a71f-3d533537a928.webp 592w"/></picture></div><div class="impression-observer"></div><div class="meta"><div class="info-wrap"><div class="source-wrapper"><p class="source clamp">Inc. Magazine</p></div><h3 class="title clamp">How to Protect Your Team From Workplace Harassment</h3><p class="excerpt clamp">Companies that address these complaints thoroughly will cut their staff turnover and legal costs.</p></div></div></a><div class="card-stp-button-hover-background"><div class="card-stp-button-position-wrapper"><div class="context-menu-position-container"><button aria-haspopup="true" data-l10n-id="newtab-menu-content-tooltip" data-l10n-args="{&quot;title&quot;:&quot;How to Protect Your Team From Workplace Harassment&quot;}" class="context-menu-button icon" tabindex="0"></button></div></div></div></article></div></div></div><div><div class="ds-navigation ds-navigation-left-align "><ul></ul><a href="https://www.mozilla.org/privacy/firefox/#recommend-relevant-content" class="ds-navigation-privacy"><span data-l10n-id="newtab-section-menu-privacy-notice"></span></a></div></div></div></div><style data-styles="[[null,{&quot;.ds-navigation&quot;:&quot;margin-top: -10px;&quot;}]]"></style></div></div></section><div class="discovery-stream ds-layout "><div class="ds-column ds-column-12"><div class="ds-column-grid"><div></div></div></div><style data-styles="[[null]]"></style></div></div></main><aside></aside></div></div>
+    </div>
+    <div id="footer-asrouter-container" role="presentation"></div>
+    <script src="about:home?jscache"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-toggle.mjs"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-button.mjs"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-button-group.mjs"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-box-button.mjs"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-message-bar.mjs"></script>
+    <script async type="module" src="chrome://global/content/elements/moz-radio-group.mjs"></script>
+  </body>
+</html>
+window.__FROM_STARTUP_CACHE__ = true;
+window.__STARTUP_STATE__ = {
+	"TopSites": {
+		"initialized": true,
+		"rows": [
+			{
+				"isDefault": true,
+				"url": "https://skyscanner.pxf.io/RGoLka?subid1=279877925737611264&mfadid=adm",
+				"hostname": "skyscanner.pxf",
+				"sendAttributionRequest": false,
+				"label": "Skyscanner",
+				"show_sponsored_label": true,
+				"sponsored_position": 1,
+				"sponsored_click_url": "https://ads.mozilla.org/v1/t?data=CpYIEgQxNTEwGgwIjuqwzAYQopvewAEiCwiw6rDMBhDV27ooKgpTa3lzY2FubmVyMiZ7NDBkZTQ4MDctNGY0NS00ZjQ1LTkyMzUtZjFmMTQxMTU1OWM3fToCSU5yDW5ld3RhYl90aWxlXzF6AlRTggFGTW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0OyBydjoxNDAuMCkgR2Vja28vMjAxMDAxMDEgRmlyZWZveC8xNDAuMJgBAqABAagBA7ABA7gBAsIBJGU4YzMyZmNjLWM4NzctNDNmZi05OTgxLWUwYjliMTBkMzQzZsgBAZIBpAYKoQZodHRwczovL2JyaWRnZS5wZHgxLmFkbWFya2V0cGxhY2UubmV0L2N0cD92ZXJzaW9uPTEuMC4wJmVuY3A9am5FWXhtd1ZKUWtYNVFiVWZ0SU5JJTNEd3FnQ2xueEdFa2dDbHI0WmJyMUNEWTFDeFoxcDJuSG53cUklM0RFWUQlM0RjWUhGZFpnRGRTSFpFZzMlM0RmWkNkMzdmRF9QQ0M0MWlxRWFDRnZJZnRJV0hRa1hmcGJVZnRJZGolM0RxemZPSWRJbXF6Zk9JdXhyM1dHbXdxc3BrVzdudXJpRjJ6ZlpIV2ZRZlk0cExaN1JjZElHN19pRjJ6ZlF4XzFweHIxQzhkNFpmcjRRbFhmUUhrN25kWmo5MnpmdElZaiUzRDdUZ0ZJTko5NHc3UmVraiUzRHdxZ0Nibkk5ZVFpRjJ6ZnRJUWo5d3ZJcGtYZkJJUXhuRXZJcGtYZlFmYWZPSVdKJTNEd3FnQ2xXZnB4bkk5NFdIbndxZ0NsYTFDRG5JOTRXSEYzbWlGMnpmQ0RYZnRJcXhyZU5qRjNtaUYyejFDSGE0QklxeHJldkptd3FnQzhXNFFMbkhGM1pKJTNEd3FnQzhyMUNMcjRacVk0Q3hkMXBEcmZDOFlmT0laSiUzRHprSlJFdWdDbG5JRl9FRHFXekNsTmVmbUlGRSUzRExhRVpFSERRdzdKcjdQRGRFQ2Zsa1hKRTQlMkZIR2NUQ1pjXzFEZHdJOUlTaXFONHNFOGtDbnVhMndFZzRFNzRzUUlSRW5sbUhGRTlEOUkxMWMzbHNuV2REWkhfaUczUGlGXzJDWkklM0RKbDRtMnczR2klM0R1WTR0RFkzUjNQanF4ZGZrX3dFcHdnQ2xJT0lEWDFpUmUlMkZ4bGpSN0M0bDdDNGw3UjdrSnJmejZRVFMxWSUyRk02T0l2aUZmejVDbE01Q2xNNUNsTTVDbE01Q2xuSHJiemZ0YVdmcDJXNXBiVGZabFo0WVdXNXBiVGZDYlc0WVdUNXRXVGolM0R3VElHNFc1JTNEN05IbXVuaUZYVEdtNFZKbjNkSG13bUkyeXkSILLP5C4_G60KC37mQ0uznYAAp7Qs0wEtwtQoR86STpH6",
+				"sponsored_impression_url": "https://ads.mozilla.org/v1/t?data=CsgDEgQxNTEwGgwIjuqwzAYQopvewAEiCwiw6rDMBhDV27ooKgpTa3lzY2FubmVyMiZ7NDBkZTQ4MDctNGY0NS00ZjQ1LTkyMzUtZjFmMTQxMTU1OWM3fToCSU5yDW5ld3RhYl90aWxlXzF6AlRTggFGTW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0OyBydjoxNDAuMCkgR2Vja28vMjAxMDAxMDEgRmlyZWZveC8xNDAuMJgBAaABAagBA7ABA7gBAsIBJGU4YzMyZmNjLWM4NzctNDNmZi05OTgxLWUwYjliMTBkMzQzZsgBAZIB1gEK0wFodHRwczovL2ltcC5tdDQ4Lm5ldC9zdGF0aWM_aWQ9N1JIemZPSVhqRkVZc0Jkdklwa1k0WnFhNFp4JTJCZlFEcmZaeG1mQ2xZNFEybmo5d1dJQmR2SXBrWTduNFlJRmNraUdJdzVGd3FnQ2xZZlpMWTdSZVRIRjR3SkZFVWp0ZHZJcGtYZnBicjduY3E1RzR3SiUzREVRaiUzRHdWSk9kdklwa1k0WnFhNFp4JTJCZlFEcjRDTGQ0WmxZZlE4bnhtWFZqdGRVakZkT0lHOHpmMnl5EiBMbaQF3jQsvHAUwXh9i6hxabgfAJTeBa7nbrtSm7BOFg",
+				"sponsored_tile_id": "CAMSCnNreXNjYW5uZXI",
+				"partner": "amp",
+				"block_key": "CAMSCnNreXNjYW5uZXI",
+				"favicon": "https://ads-img.mozilla.org/v1/images?image_data=CnAKbmh0dHBzOi8vYW1wLWFzc2V0LjQ1dHUxYzAuY29tL2Fzc2V0cy8xNTEwLzkxMDQ3YjljZjc2Zjc2ODg2NDU0YTkyMjU2MjE2OWY1NjFjNWZjNmVjMmYwNTIyODY3ZmFmOTA2YWNjODNiYTUuanBnEiBK_o14qwRVyli0nNF97wJnXbBPH2oC-VwNbl_VD00mrQ",
+				"faviconSize": 200,
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.wikipedia.org/",
+				"hostname": "wikipedia",
+				"sendAttributionRequest": false,
+				"label": "Wikipedia",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.youtube.com/",
+				"hostname": "youtube",
+				"sendAttributionRequest": false,
+				"label": "YouTube",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/youtube-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/youtube-com.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "http://ndtv.com/",
+				"hostname": "ndtv",
+				"sendAttributionRequest": false,
+				"label": "NDTV",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/ndtv@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/ndtv.png",
+				"typedBonus": true
+			},
+			{
+				"isDefault": true,
+				"url": "https://www.reddit.com/",
+				"hostname": "reddit",
+				"sendAttributionRequest": false,
+				"label": "Reddit",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/reddit-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/reddit-com.png",
+				"typedBonus": true
+			}
+		],
+		"editForm": null,
+		"showSearchShortcutsForm": false,
+		"searchShortcuts": [
+			{
+				"keyword": "@google",
+				"shortURL": "google",
+				"url": "https://google.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/google-com@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/google-com.ico"
+			},
+			{
+				"keyword": "@bing",
+				"shortURL": "bing",
+				"url": "https://bing.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/bing-com@2x.svg",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/bing-com.ico"
+			},
+			{
+				"keyword": "@duckduckgo",
+				"shortURL": "duckduckgo",
+				"url": "https://duckduckgo.com",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/duckduckgo-com@2x.svg",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/duckduckgo-com.ico"
+			},
+			{
+				"keyword": "@wikipedia",
+				"shortURL": "wikipedia",
+				"url": "https://wikipedia.org",
+				"tippyTopIcon": "chrome://activity-stream/content/data/content/tippytop/images/wikipedia-org@2x.png",
+				"smallFavicon": "chrome://activity-stream/content/data/content/tippytop/favicons/wikipedia-org.ico"
+			}
+		],
+		"sov": {
+			"ready": false,
+			"positions": []
+		}
+	},
+	"App": {
+		"initialized": true,
+		"locale": "en-US",
+		"isForStartupCache": {
+			"App": true,
+			"Wallpaper": true
+		},
+		"customizeMenuVisible": false
+	},
+	"Ads": {
+		"initialized": false,
+		"lastUpdated": null,
+		"topsites": {}
+	},
+	"Prefs": {
+		"initialized": true,
+		"values": {
+			"default.sites": "https://www.wikipedia.org/,https://www.youtube.com/,https://www.reddit.com/,https://addons.mozilla.org",
+			"feeds.section.topstories.options": "{\"api_key_pref\":\"extensions.pocket.oAuthConsumerKey\",\"hidden\":false,\"provider_icon\":\"chrome://global/skin/icons/pocket.svg\",\"provider_name\":\"Pocket\",\"read_more_endpoint\":\"https://getpocket.com/explore/trending?src=fx_new_tab\",\"stories_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=en-US&feed_variant=default_spocs_off\",\"stories_referrer\":\"https://getpocket.com/recommendations\",\"topics_endpoint\":\"https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=en-US\",\"show_spocs\":false}",
+			"feeds.topsites": true,
+			"hideTopSitesTitle": false,
+			"showSponsored": true,
+			"system.showSponsored": false,
+			"showSponsoredTopSites": true,
+			"mobileDownloadModal.enabled": false,
+			"mobileDownloadModal.variant-a": false,
+			"mobileDownloadModal.variant-b": false,
+			"mobileDownloadModal.variant-c": false,
+			"discoverystream.refinedCardsLayout.enabled": false,
+			"unifiedAds.adsFeed.enabled": false,
+			"unifiedAds.adsFeed.tiles.enabled": false,
+			"unifiedAds.adsFeed.spocs.enabled": false,
+			"unifiedAds.tiles.enabled": true,
+			"unifiedAds.spocs.enabled": true,
+			"unifiedAds.endpoint": "https://ads.mozilla.org/",
+			"unifiedAds.blockedAds": "",
+			"system.showWeather": false,
+			"showWeather": true,
+			"weather.query": "",
+			"weather.locationSearchEnabled": true,
+			"weather.temperatureUnits": "c",
+			"weather.display": "simple",
+			"images.smart": true,
+			"pocketCta": "{\"cta_button\":\"\",\"cta_text\":\"\",\"cta_url\":\"\",\"use_cta\":false}",
+			"showSearch": true,
+			"logowordmark.alwaysVisible": true,
+			"topSitesRows": 1,
+			"telemetry": true,
+			"telemetry.ut.events": false,
+			"telemetry.structuredIngestion.endpoint": "https://incoming.telemetry.mozilla.org/submit",
+			"telemetry.privatePing.enabled": false,
+			"telemetry.privatePing.redactNewtabPing.enabled": false,
+			"telemetry.privatePing.inferredInterests.enabled": false,
+			"section.highlights.includeVisited": true,
+			"section.highlights.includeBookmarks": true,
+			"section.highlights.includePocket": true,
+			"section.highlights.includeDownloads": true,
+			"section.highlights.rows": 1,
+			"section.topstories.rows": 1,
+			"sectionOrder": "topsites,topstories,highlights",
+			"newtabWallpapers.enabled": true,
+			"newtabWallpapers.customColor.enabled": true,
+			"newtabWallpapers.customWallpaper.enabled": true,
+			"newtabWallpapers.customWallpaper.uuid": "",
+			"newtabWallpapers.customWallpaper.uploadedPreviously": false,
+			"newtabWallpapers.customWallpaper.fileSize.enabled": false,
+			"newtabWallpapers.customWallpaper.fileSize": 0,
+			"newtabAdSize.leaderboard": false,
+			"newtabAdSize.leaderboard.position": "3",
+			"newtabAdSize.billboard": false,
+			"newtabAdSize.billboard.position": "3",
+			"newtabAdSize.mediumRectangle": false,
+			"newtabLayouts.variant-a": false,
+			"newtabLayouts.variant-b": true,
+			"newtabShortcuts.refresh": true,
+			"discoverystream.sections.enabled": false,
+			"discoverystream.sections.personalization.enabled": false,
+			"discoverystream.sections.customizeMenuPanel.enabled": false,
+			"discoverystream.sections.cards.enabled": true,
+			"discoverystream.sections.contextualAds.enabled": false,
+			"discoverystream.sections.personalization.inferred.enabled": false,
+			"discoverystream.sections.personalization.inferred.user.enabled": true,
+			"discoverystream.sections.personalization.inferred.model.override": "",
+			"discoverystream.sections.cards.thumbsUpDown.enabled": true,
+			"discoverystream.reportAds.enabled": false,
+			"discoverystream.sections.following": "",
+			"discoverystream.sections.blocked": "",
+			"discoverystream.sections.interestPicker.enabled": false,
+			"discoverystream.sections.interestPicker.visibleSections": "",
+			"discoverystream.spoc-positions": "1,5,7,11,18,20",
+			"discoverystream.placements.contextualSpocs": "newtab_stories_1, newtab_stories_2, newtab_stories_3, newtab_stories_4, newtab_stories_5, newtab_stories_6",
+			"discoverystream.placements.contextualSpocs.counts": "1, 1, 1, 1, 1, 1",
+			"discoverystream.placements.spocs": "newtab_spocs",
+			"discoverystream.placements.spocs.counts": "6",
+			"discoverystream.placements.tiles": "newtab_tile_1, newtab_tile_2, newtab_tile_3",
+			"discoverystream.placements.tiles.counts": "1, 1, 1",
+			"newtabWallpapers.highlightEnabled": false,
+			"newtabWallpapers.highlightDismissed": false,
+			"newtabWallpapers.highlightSeenCounter": 0,
+			"newtabWallpapers.highlightHeaderText": "",
+			"newtabWallpapers.highlightContentText": "",
+			"newtabWallpapers.highlightCtaText": "",
+			"newtabWallpapers.wallpaper": "",
+			"improvesearch.noDefaultSearchTile": true,
+			"improvesearch.topSiteSearchShortcuts.searchEngines": "google",
+			"improvesearch.topSiteSearchShortcuts.havePinned": "",
+			"asrouter.devtoolsEnabled": false,
+			"discoverystream.flight.blocks": "{}",
+			"discoverystream.config": "{\"api_key_pref\":\"extensions.pocket.oAuthConsumerKey\",\"collapsible\":true,\"enabled\":true}",
+			"discoverystream.endpoints": "https://getpocket.cdn.mozilla.net/,https://firefox-api-proxy.cdn.mozilla.net/,https://spocs.getpocket.com/,https://merino.services.mozilla.com/,https://ads.mozilla.org/",
+			"discoverystream.isCollectionDismissible": true,
+			"discoverystream.onboardingExperience.dismissed": false,
+			"discoverystream.thumbsUpDown.enabled": false,
+			"discoverystream.thumbsUpDown.searchTopsitesCompact": true,
+			"discoverystream.region-basic-layout": false,
+			"discoverystream.spoc.impressions": "{}",
+			"discoverystream.endpointSpocsClear": "https://spocs.getpocket.com/user",
+			"discoverystream.rec.impressions": "{}",
+			"discoverystream.topicSelection.enabled": false,
+			"discoverystream.topicSelection.topics": "business, arts, food, health, finance, government, sports, tech, travel, education-science, society",
+			"discoverystream.topicSelection.selectedTopics": "",
+			"discoverystream.topicSelection.suggestedTopics": "business, arts, government",
+			"discoverystream.topicSelection.hasBeenUpdatedPreviously": false,
+			"discoverystream.topicSelection.onboarding.displayCount": 0,
+			"discoverystream.topicSelection.onboarding.maybeDisplay": true,
+			"discoverystream.topicSelection.onboarding.lastDisplayed": "",
+			"discoverystream.topicSelection.onboarding.displayTimeout": 0,
+			"discoverystream.topicSelection.onboarding.enabled": false,
+			"discoverystream.topicLabels.enabled": false,
+			"showRecentSaves": true,
+			"discoverystream.spocs.startupCache.enabled": false,
+			"discoverystream.contextualContent.enabled": false,
+			"discoverystream.contextualContent.feeds": "need_to_know, fakespot",
+			"discoverystream.contextualContent.selectedFeed": "need_to_know",
+			"discoverystream.contextualContent.listFeedTitle": "",
+			"discoverystream.contextualContent.fakespot.defaultCategoryTitle": "",
+			"discoverystream.contextualContent.fakespot.footerCopy": "",
+			"discoverystream.contextualContent.fakespot.enabled": true,
+			"discoverystream.contextualContent.fakespot.ctaCopy": "",
+			"discoverystream.contextualContent.fakespot.ctaUrl": "",
+			"discoverystream.publisherFavicon.enabled": false,
+			"support.url": "https://support.mozilla.org/1/firefox/140.7.0/Linux/en-US/new-tab",
+			"caretBlinkCount": 5,
+			"caretBlinkTime": 1200,
+			"system.showSponsoredCheckboxes": false,
+			"showSponsoredCheckboxes": true,
+			"feeds.aboutpreferences": true,
+			"feeds.newtabinit": true,
+			"feeds.places": true,
+			"feeds.prefs": true,
+			"feeds.sections": true,
+			"feeds.startupcacheinit": true,
+			"feeds.section.highlights": false,
+			"feeds.system.topstories": true,
+			"feeds.systemtick": true,
+			"feeds.telemetry": true,
+			"feeds.favicon": true,
+			"feeds.system.topsites": true,
+			"feeds.recommendationprovider": true,
+			"feeds.discoverystreamfeed": true,
+			"feeds.wallpaperfeed": true,
+			"feeds.weatherfeed": true,
+			"feeds.adsfeed": true,
+			"feeds.inferredpersonalizationfeed": true,
+			"feeds.newtabmessaging": true,
+			"isPrivateBrowsingEnabled": true,
+			"platform": "linux",
+			"region": "IN",
+			"fxa_endpoint": "https://accounts.firefox.com/",
+			"appUpdateChannel": "esr",
+			"improvesearch.topSiteSearchShortcuts": true,
+			"mayHaveSponsoredTopSites": true,
+			"improvesearch.handoffToAwesomebar": true,
+			"featureConfig": {
+				"customizationMenuEnabled": null,
+				"topSitesContileEnabled": true
+			},
+			"pocketConfig": {
+				"spocTopsitesPositions": "2",
+				"contileTopsitesPositions": "0,1,2",
+				"spocAdTypes": "",
+				"spocZoneIds": "",
+				"spocTopsitesAdTypes": "",
+				"spocTopsitesZoneIds": "",
+				"spocTopsitesPlacementEnabled": true,
+				"spocSiteId": "",
+				"widgetPositions": "",
+				"hybridLayout": false,
+				"hideCardBackground": false,
+				"fourCardLayout": false,
+				"newFooterSection": false,
+				"saveToPocketCard": true,
+				"saveToPocketCardRegions": "",
+				"hideDescriptions": false,
+				"hideDescriptionsRegions": "",
+				"compactGrid": false,
+				"compactImages": false,
+				"imageGradient": false,
+				"titleLines": 3,
+				"descLines": 3,
+				"onboardingExperience": false,
+				"essentialReadsHeader": false,
+				"editorsPicksHeader": false,
+				"recentSavesEnabled": false,
+				"readTime": true,
+				"newSponsoredLabel": false,
+				"sendToPocket": true,
+				"recsPersonalized": false,
+				"spocsPersonalized": true,
+				"ctaButtonSponsors": "",
+				"ctaButtonVariant": "",
+				"spocMessageVariant": "",
+				"regionStoriesConfig": "US,DE,CA,GB,IE,CH,AT,BE,IN,FR,IT,ES",
+				"regionBffConfig": "US,DE,CA,GB,IE,CH,AT,BE,IN,FR,IT,ES",
+				"merinoProviderEnabled": true,
+				"merinoProviderEndpoint": "merino.services.mozilla.com",
+				"regionStoriesBlock": "",
+				"localeListConfig": "",
+				"regionSpocsConfig": "US,CA,DE,GB,FR,IT,ES",
+				"topSitesContileSovEnabled": true,
+				"pocketFeedParameters": "",
+				"pocketStoriesHeadlineId": "newtab-section-header-stories"
+			},
+			"feeds.section.topstories": true,
+			"discoverystream.enabled": true,
+			"discoverystream.sponsored-collections.enabled": false,
+			"discoverystream.hardcoded-basic-layout": false,
+			"discoverystream.personalization.enabled": true,
+			"discoverystream.personalization.override": false,
+			"discoverystream.personalization.modelKeys": "nb_model_arts_and_entertainment, nb_model_autos_and_vehicles, nb_model_beauty_and_fitness, nb_model_blogging_resources_and_services, nb_model_books_and_literature, nb_model_business_and_industrial, nb_model_computers_and_electronics, nb_model_finance, nb_model_food_and_drink, nb_model_games, nb_model_health, nb_model_hobbies_and_leisure, nb_model_home_and_garden, nb_model_internet_and_telecom, nb_model_jobs_and_education, nb_model_law_and_government, nb_model_online_communities, nb_model_people_and_society, nb_model_pets_and_animals, nb_model_real_estate, nb_model_reference, nb_model_science, nb_model_shopping, nb_model_sports, nb_model_travel",
+			"discoverystream.spocs-endpoint": "",
+			"discoverystream.spocs-endpoint-query": "",
+			"newNewtabExperience.colors": "#004CA4,#009E97,#7550C2,#B63B39,#C96A00,#CA9600,#CC527F"
+		}
+	},
+	"Dialog": {
+		"visible": false,
+		"data": {}
+	},
+	"Sections": [
+		{
+			"title": {
+				"id": "newtab-section-header-stories"
+			},
+			"rows": [],
+			"enabled": true,
+			"id": "topstories",
+			"pref": {
+				"titleString": {
+					"id": "home-prefs-recommended-by-header-generic"
+				},
+				"descString": {
+					"id": "home-prefs-recommended-by-description-generic"
+				},
+				"nestedPrefs": [],
+				"learnMore": {
+					"link": {
+						"href": "https://getpocket.com/firefox/new_tab_learn_more",
+						"id": "home-prefs-recommended-by-learn-more"
+					}
+				},
+				"feed": "feeds.section.topstories"
+			},
+			"shouldHidePref": false,
+			"eventSource": "TOP_STORIES",
+			"icon": "chrome://global/skin/icons/pocket.svg",
+			"learnMore": {
+				"link": {
+					"href": "https://getpocket.com/firefox/new_tab_learn_more",
+					"message": {
+						"id": "newtab-pocket-learn-more"
+					}
+				}
+			},
+			"compactCards": false,
+			"rowsPref": "section.topstories.rows",
+			"maxRows": 4,
+			"availableLinkMenuOptions": [
+				"CheckBookmarkOrArchive",
+				"CheckSavedToPocket",
+				"Separator",
+				"OpenInNewWindow",
+				"OpenInPrivateWindow",
+				"Separator",
+				"BlockUrl"
+			],
+			"emptyState": {
+				"message": {
+					"id": "newtab-empty-section-topstories-generic"
+				},
+				"icon": "check"
+			},
+			"shouldSendImpressionStats": true,
+			"dedupeFrom": [
+				"highlights"
+			],
+			"options": {
+				"api_key_pref": "extensions.pocket.oAuthConsumerKey",
+				"hidden": false,
+				"provider_icon": "chrome://global/skin/icons/pocket.svg",
+				"provider_name": "Pocket",
+				"read_more_endpoint": "https://getpocket.com/explore/trending?src=fx_new_tab",
+				"stories_endpoint": "https://getpocket.cdn.mozilla.net/v3/firefox/global-recs?version=3&consumer_key=$apiKey&locale_lang=en-US&feed_variant=default_spocs_off",
+				"stories_referrer": "https://getpocket.com/recommendations",
+				"topics_endpoint": "https://getpocket.cdn.mozilla.net/v3/firefox/trending-topics?version=2&consumer_key=$apiKey&locale_lang=en-US",
+				"show_spocs": false
+			},
+			"contextMenuOptions": [
+				"CheckBookmarkOrArchive",
+				"Separator",
+				"OpenInNewWindow",
+				"OpenInPrivateWindow",
+				"Separator",
+				"BlockUrl"
+			],
+			"initialized": false,
+			"dedupeConfigurations": [
+				{
+					"id": "topstories",
+					"dedupeFrom": [
+						"highlights"
+					]
+				}
+			]
+		},
+		{
+			"title": {
+				"id": "newtab-section-header-recent-activity"
+			},
+			"rows": [],
+			"enabled": false,
+			"id": "highlights",
+			"pref": {
+				"titleString": {
+					"id": "home-prefs-recent-activity-header"
+				},
+				"descString": {
+					"id": "home-prefs-recent-activity-description"
+				},
+				"nestedPrefs": [
+					{
+						"name": "section.highlights.includeVisited",
+						"titleString": "home-prefs-highlights-option-visited-pages"
+					},
+					{
+						"name": "section.highlights.includeBookmarks",
+						"titleString": "home-prefs-highlights-options-bookmarks"
+					},
+					{
+						"name": "section.highlights.includeDownloads",
+						"titleString": "home-prefs-highlights-option-most-recent-download"
+					}
+				],
+				"feed": "feeds.section.highlights"
+			},
+			"shouldHidePref": false,
+			"eventSource": "HIGHLIGHTS",
+			"icon": "chrome://global/skin/icons/highlights.svg",
+			"compactCards": true,
+			"rowsPref": "section.highlights.rows",
+			"maxRows": 4,
+			"emptyState": {
+				"message": {
+					"id": "newtab-empty-section-highlights"
+				},
+				"icon": "chrome://global/skin/icons/highlights.svg"
+			},
+			"shouldSendImpressionStats": false,
+			"options": {},
+			"initialized": false
+		}
+	],
+	"Messages": {
+		"isHidden": false,
+		"portID": "",
+		"messageData": {}
+	},
+	"Notifications": {
+		"showNotifications": false,
+		"toastCounter": 0,
+		"toastId": "",
+		"toastQueue": []
+	},
+	"Pocket": {
+		"isUserLoggedIn": null,
+		"pocketCta": {},
+		"waitingForSpoc": true
+	},
+	"Personalization": {
+		"lastUpdated": null,
+		"initialized": false
+	},
+	"InferredPersonalization": {
+		"initialized": false,
+		"lastUpdated": null,
+		"inferredIntrests": {},
+		"coarseInferredInterests": {},
+		"coarsePrivateInferredInterests": {}
+	},
+	"DiscoveryStream": {
+		"config": {
+			"api_key_pref": "extensions.pocket.oAuthConsumerKey",
+			"collapsible": true,
+			"enabled": true
+		},
+		"layout": [
+			{
+				"width": 12,
+				"components": [
+					{
+						"type": "TopSites",
+						"header": {
+							"title": {
+								"id": "newtab-section-header-topsites"
+							}
+						},
+						"properties": {}
+					},
+					{
+						"type": "Message",
+						"essentialReadsHeader": false,
+						"editorsPicksHeader": false,
+						"header": {
+							"title": {
+								"id": "newtab-section-header-stories"
+							},
+							"subtitle": "",
+							"link_text": {
+								"id": "newtab-pocket-learn-more"
+							},
+							"link_url": "",
+							"icon": "chrome://global/skin/icons/pocket.svg"
+						},
+						"properties": {
+							"spocMessageVariant": ""
+						},
+						"styles": {
+							".ds-message": "margin-bottom: -20px"
+						}
+					},
+					{
+						"type": "CardGrid",
+						"properties": {
+							"items": 24,
+							"hybridLayout": false,
+							"hideCardBackground": false,
+							"fourCardLayout": false,
+							"compactGrid": false,
+							"essentialReadsHeader": false,
+							"editorsPicksHeader": false,
+							"onboardingExperience": false,
+							"ctaButtonSponsors": [
+								""
+							],
+							"ctaButtonVariant": "",
+							"spocMessageVariant": ""
+						},
+						"widgets": {
+							"positions": [],
+							"data": [
+								{
+									"type": "TopicsWidget"
+								}
+							]
+						},
+						"cta_variant": "link",
+						"header": {
+							"title": ""
+						},
+						"placement": {
+							"name": "newtab_spocs",
+							"ad_types": [
+								3617
+							],
+							"zone_ids": [
+								217758,
+								217995
+							]
+						},
+						"feed": {
+							"embed_reference": null,
+							"url": "https://merino.services.mozilla.com/api/v1/curated-recommendations"
+						},
+						"spocs": {
+							"probability": 1,
+							"positions": [
+								{
+									"index": 1
+								},
+								{
+									"index": 5
+								},
+								{
+									"index": 7
+								},
+								{
+									"index": 11
+								},
+								{
+									"index": 18
+								},
+								{
+									"index": 20
+								}
+							]
+						}
+					},
+					{
+						"type": "Navigation",
+						"newFooterSection": false,
+						"properties": {
+							"alignment": "left-align",
+							"extraLinks": [
+								{
+									"name": "Career",
+									"url": "https://getpocket.com/explore/career?utm_source=pocket-newtab"
+								},
+								{
+									"name": "Technology",
+									"url": "https://getpocket.com/explore/technology?utm_source=pocket-newtab"
+								}
+							],
+							"privacyNoticeURL": {
+								"url": "https://www.mozilla.org/privacy/firefox/#recommend-relevant-content",
+								"title": {
+									"id": "newtab-section-menu-privacy-notice"
+								}
+							}
+						},
+						"styles": {
+							".ds-navigation": "margin-top: -10px;"
+						}
+					}
+				]
+			}
+		],
+		"isPrivacyInfoModalVisible": false,
+		"isCollectionDismissible": true,
+		"topicsLoading": false,
+		"feeds": {
+			"data": {
+				"https://merino.services.mozilla.com/api/v1/curated-recommendations": {
+					"lastUpdated": 1770796337131,
+					"personalized": false,
+					"data": {
+						"settings": {},
+						"sections": [],
+						"interestPicker": {},
+						"recommendations": [
+							{
+								"id": "ffedd826-42c4-4b1c-83eb-8a0fbdf288aa",
+								"scheduled_corpus_item_id": "5047843a-eb40-49bf-841b-19d4997eddcf",
+								"corpus_item_id": "ffedd826-42c4-4b1c-83eb-8a0fbdf288aa",
+								"url": "https://www.huffpost.com/entry/red-pill-son-fears-goog_l_697b7311e4b00b1deb8f9e6f?utm_source=firefox-newtab-en-intl",
+								"title": "This 1 Big Concern About Raising Boys Didn’t Really Exist 30 Years Ago",
+								"topic": "society-parenting",
+								"features": {
+									"t_society-parenting": 1
+								},
+								"excerpt": "Parents who raised kids in the ‘90s are “surprised by how young boys are when they first encounter it,” one mom said.",
+								"publisher": "HuffPost",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/0d74b2b5-6a90-4dc4-bd71-8baec001c89a.jpeg",
+								"received_rank": 0,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/8a5cf405c8e7c3f51599fffb8036c6a1ac1f212ed01082cd9b7dc2fe908f240b_201614.ico",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "c0193635-8284-4770-acad-d7f97222e78b",
+								"scheduled_corpus_item_id": "4516e72f-4239-47fd-8900-6410debc6076",
+								"corpus_item_id": "c0193635-8284-4770-acad-d7f97222e78b",
+								"url": "https://www.news18.com/photogallery/lifestyle/food/7-best-indian-vegetarian-soup-recipes-for-comfort-and-health-ws-el-9892497.html?utm_source=firefox-newtab-en-intl",
+								"title": "7 Best Indian Vegetarian Soup Recipes for Comfort and Health",
+								"topic": "food",
+								"features": {
+									"t_food": 1
+								},
+								"excerpt": "Whether you’re looking for a light appetizer or a hearty meal, Indian vegetarian soups bring warmth to the table and highlight the beauty of plant-based cooking.",
+								"publisher": "News18",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/b3599e06-863a-4efc-9d7d-9793b5104100.jpeg",
+								"received_rank": 1,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "61b5578d-d355-4ec7-8872-c5ebb08d49fb",
+								"scheduled_corpus_item_id": "a09ddada-3a64-4798-9bd0-4ebb2d8e0487",
+								"corpus_item_id": "61b5578d-d355-4ec7-8872-c5ebb08d49fb",
+								"url": "https://www.howtogeek.com/10-common-emojis-people-constantly-misunderstand-and-what-they-mean-now/?utm_source=firefox-newtab-en-intl",
+								"title": "Stop using these emojis wrong: 16 emojis people constantly misunderstand",
+								"topic": "education",
+								"features": {
+									"t_education": 1
+								},
+								"excerpt": "Official names tell one story. Real usage tells another. Here are the emojis most often misread, plus what people actually mean today.",
+								"publisher": "How-To Geek",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/d8408934-6d08-4837-9f39-e4debec9715c.jpeg",
+								"received_rank": 2,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/2f6a4fb31fd7ab3ad833a33768b724fbc589494ce44742155546e3c1763e606f_14555.png",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "e6335094-7e20-4324-9f0a-c2c64c148bc5",
+								"scheduled_corpus_item_id": "e15ae0e0-2748-40fd-ad74-98ce00a35870",
+								"corpus_item_id": "e6335094-7e20-4324-9f0a-c2c64c148bc5",
+								"url": "https://www.cntraveller.in/story/paintings-picnics-and-pickleball-how-to-do-valentines-day-in-delhi/?utm_source=firefox-newtab-en-intl",
+								"title": "Paintings, Picnics and Pickleball: How to Do Valentine’s Day in Delhi",
+								"topic": "arts",
+								"features": {
+									"t_arts": 1
+								},
+								"excerpt": "Swap the run-of-the-mill dinner for farmer’s markets, fort gardens and film screenings",
+								"publisher": "Condé Nast Traveller India",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/706ff4f7-b41e-43a0-a274-c3c368466399.jpeg",
+								"received_rank": 3,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/65b9c19baecba5a8ef582c7a5ae6528f68760f6218ec13e8a8827b3a9ccc9c2d_10990.oct",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "ef7795c3-b3a0-4782-a2e0-f7eb14cad3b1",
+								"scheduled_corpus_item_id": "98c3b2cd-5eb6-417b-a351-4e27b12ef115",
+								"corpus_item_id": "ef7795c3-b3a0-4782-a2e0-f7eb14cad3b1",
+								"url": "https://www.architecturaldigest.in/story/7-striking-kitchen-designs-by-indias-top-interior-architects/?utm_source=firefox-newtab-en-intl",
+								"title": "7 Striking Kitchen Designs by India’s Top Interior Architects",
+								"topic": "home",
+								"features": {
+									"t_home": 1
+								},
+								"excerpt": "From clever layouts to unique materiality, these kitchen designs approach the everyday with intention.",
+								"publisher": "AD India",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/8d8d84e6-51bb-4815-9b92-c177cebafeec.jpeg",
+								"received_rank": 4,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/8d3df1e947c3b44cafb0fb4887d58fc7f1b3f10c10d593d5bedf17e311d05561_309614.oct",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "530dc45b-0d51-4f31-958e-64144151780b",
+								"scheduled_corpus_item_id": "7ee1dfbb-29fb-49e3-b863-c98a47247b1f",
+								"corpus_item_id": "530dc45b-0d51-4f31-958e-64144151780b",
+								"url": "https://www.deccanchronicle.com/tabloid/hyderabad-chronicle/self-expression-the-look-of-love-1936285?utm_source=firefox-newtab-en-intl",
+								"title": "Self-Expression & the Look of Love",
+								"topic": "society",
+								"features": {
+									"t_society": 1
+								},
+								"excerpt": "No more Valentine’s Day dressing dilemmas, these celeb-inspired outfits are perfect for the season of love",
+								"publisher": "Deccan Chronicle",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/1c07d54b-9ebc-4718-83b2-42985fa75f4a.jpeg",
+								"received_rank": 5,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/5fc08497caa4aecd54ddcca750e90c11537606fcc4384abd3c7a99e22532654c_9662.ico",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "b1362e99-5f4b-42eb-b28e-e7cd8dc88fa3",
+								"scheduled_corpus_item_id": "163b2171-9293-4bf4-93a1-e65f2a2c8f23",
+								"corpus_item_id": "b1362e99-5f4b-42eb-b28e-e7cd8dc88fa3",
+								"url": "https://www.indiatoday.in/lifestyle/wellness/story/basic-habits-that-may-block-your-weight-loss-despite-regular-workout-2865999-2026-02-10?utm_source=firefox-newtab-en-intl",
+								"title": "Basic Habits That May Block Your Weight Loss Despite Regular Workout",
+								"topic": "health",
+								"features": {
+									"t_health": 1
+								},
+								"excerpt": "Working out regularly but still seeing the same number on the weighing scale? It may be time to dig a little deeper and take a closer look at your everyday habits.",
+								"publisher": "India Today",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/f8e1c383-d804-42ee-a30d-a244204461b5.jpeg",
+								"received_rank": 6,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "06dd84e0-c283-4ffc-9486-d4bb897ace0a",
+								"scheduled_corpus_item_id": "85a52a16-6160-47ff-9952-47354bb7144b",
+								"corpus_item_id": "06dd84e0-c283-4ffc-9486-d4bb897ace0a",
+								"url": "https://www.timeout.com/news/one-of-the-worlds-most-beautiful-destinations-is-seeking-volunteers-for-an-all-expenses-paid-trip-021026?utm_source=firefox-newtab-en-intl",
+								"title": "One of the world’s most beautiful destinations is seeking volunteers for an all-expenses-paid trip",
+								"topic": "travel",
+								"features": {
+									"t_travel": 1
+								},
+								"excerpt": "Always wanted to see Patagonia? Now’s your chance to do so – for free",
+								"publisher": "Time Out",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/b30d50b2-10eb-4d32-8ea7-2aab83fb48ec.jpeg",
+								"received_rank": 7,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/254cacf91f9aab16c3640cf513b3d975ee43dd3a82d26b461be228f991977c5f_1556.png",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "78f79f8f-7c20-4edc-b7fe-695af8812c4b",
+								"scheduled_corpus_item_id": "ccc27c4f-97fe-497a-8eb6-80cef3883dc2",
+								"corpus_item_id": "78f79f8f-7c20-4edc-b7fe-695af8812c4b",
+								"url": "https://www.vogue.in/content/indian-women-are-entering-their-rough-sports-era-post-40?utm_source=firefox-newtab-en-intl",
+								"title": "Indian Women Are Entering Their ‘Rough Sports’ Era Post 40",
+								"topic": "sports",
+								"features": {
+									"t_sports": 1
+								},
+								"excerpt": "Who said 40 is when you slow down? For more and more Indian women, it’s when the real fun begins",
+								"publisher": "Vogue India",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/feaa37d9-a345-4b2e-82f6-5688d252d699.jpeg",
+								"received_rank": 8,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "2315a2ea-0fa8-4900-98f1-e23cadbe7165",
+								"scheduled_corpus_item_id": "e10f9368-c95f-4688-9c7e-42a82f694a5c",
+								"corpus_item_id": "2315a2ea-0fa8-4900-98f1-e23cadbe7165",
+								"url": "https://www.bbc.com/sport/cricket/articles/cgjzvjenjvqo?utm_source=firefox-newtab-en-intl",
+								"title": "India-Pakistan to Go Ahead As Government Ends Boycott Request",
+								"topic": "sports",
+								"features": {
+									"t_sports": 1
+								},
+								"excerpt": "Pakistan's fixture against rivals India at the T20 World Cup is set to go ahead as scheduled after the Pakistan government ends its order for a boycott.",
+								"publisher": "BBC",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/2933b9a4-533c-4557-9e04-e6215e6e6cda.jpeg",
+								"received_rank": 9,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/388231ac048528715ffc2aebad84b58c19231d92156179d21c94d0b98d4f1d9b_751.svg",
+								"isTimeSensitive": true,
+								"score": 1
+							},
+							{
+								"id": "7a683808-b384-492b-abbf-c8eebf502335",
+								"scheduled_corpus_item_id": "dddddd17-a2ee-475a-9662-5697fa335d95",
+								"corpus_item_id": "7a683808-b384-492b-abbf-c8eebf502335",
+								"url": "https://www.scientificamerican.com/article/the-quirky-geology-behind-olympic-curling-stones/?utm_source=firefox-newtab-en-intl",
+								"title": "The Quirky Geology Behind Olympic Curling Stones",
+								"topic": "education-science",
+								"features": {
+									"t_education-science": 1
+								},
+								"excerpt": "The rocks used in the Olympic sport of curling come from one island in Scotland and one quarry in Wales. What makes them so special?",
+								"publisher": "Scientific American",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/0f0750e1-3a16-4219-87a8-6a30211db3ba.jpeg",
+								"received_rank": 10,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "543a5277-6465-4c94-9c55-082a3841dd0c",
+								"scheduled_corpus_item_id": "87ff633a-2bba-42f2-bcd3-8379953aad60",
+								"corpus_item_id": "543a5277-6465-4c94-9c55-082a3841dd0c",
+								"url": "https://time.com/7373140/china-world-leader-climate-energy-technology/?utm_source=firefox-newtab-en-intl",
+								"title": "The World Needs China’s Climate Technology. That’s the Dilemma",
+								"topic": "education-science",
+								"features": {
+									"t_education-science": 1
+								},
+								"excerpt": "Beijing’s dominance in clean tech could save the planet. Will it get to?",
+								"publisher": "Time",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/3372a3c0-9038-4a11-b9c8-f80acb1b8a16.jpeg",
+								"received_rank": 11,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/6bdc80aaa6508bbb127c62edd064b3228c6d36877042236992650de6e35558d6_2342.png",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "43e83ba5-4bf1-44f5-a324-2372910ab6e9",
+								"scheduled_corpus_item_id": "02ba234b-f6d5-4140-bf7a-333c8da8801b",
+								"corpus_item_id": "43e83ba5-4bf1-44f5-a324-2372910ab6e9",
+								"url": "https://www.salon.com/2026/02/08/make-a-soup-out-of-almost-anything/?utm_source=firefox-newtab-en-intl",
+								"title": "Make a soup out of (almost) anything",
+								"topic": "food",
+								"features": {
+									"t_food": 1
+								},
+								"excerpt": "A simple framework for turning scraps, leftovers and good instincts into a deeply satisfying bowl",
+								"publisher": "Salon",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/8db1190b-f9dd-4bcd-943b-96bfab88f89c.jpeg",
+								"received_rank": 12,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/2256152770f95ddd0f4cd5393ba94d29ddb1765519adeb24040ce7f6db4afb27_8026.png",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "8129f2ac-ada8-4f41-9dfd-b6f42b814de2",
+								"scheduled_corpus_item_id": "c5aaf3dc-6676-45b8-abaf-34007971b43a",
+								"corpus_item_id": "8129f2ac-ada8-4f41-9dfd-b6f42b814de2",
+								"url": "https://www.indiatoday.in/diu/story/new-political-parties-join-the-mix-every-day-but-do-they-affect-polls-2866220-2026-02-10?utm_source=firefox-newtab-en-intl",
+								"title": "New Political Parties Join the Mix Every Day. but Do They Affect Polls?",
+								"topic": "government",
+								"features": {
+									"t_government": 1
+								},
+								"excerpt": "Vijay launched the Tamilaga Vettri Kazhagam in 2024 and will contest the 2026 Tamil Nadu Assembly elections. But will he make a difference?",
+								"publisher": "India Today",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/2984d9cf-7cdb-4d49-a574-a2fd97868f0c.jpeg",
+								"received_rank": 13,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": true,
+								"score": 1
+							},
+							{
+								"id": "43ddcb8e-cab2-4677-aff3-381afca29af3",
+								"scheduled_corpus_item_id": "51edec54-76d6-43ea-a912-3dea57b64951",
+								"corpus_item_id": "43ddcb8e-cab2-4677-aff3-381afca29af3",
+								"url": "https://www.marthastewart.com/watering-mistakes-that-kill-houseplants-11898108?utm_source=firefox-newtab-en-intl",
+								"title": "6 Watering Mistakes That Are Slowly Killing Your Houseplants",
+								"topic": "home",
+								"features": {
+									"t_home": 1
+								},
+								"excerpt": "Watering mistakes can quietly kill houseplants. Experts warn against six common habits to stop now.",
+								"publisher": "Martha Stewart",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/cbf1c504-4b8a-407a-ac23-77db69996cf3.jpeg",
+								"received_rank": 14,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/8ca59983bd90b386dcb3cfeec7a800851297279b217c5a753d5ec63cb5809d89_10526.oct",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "2e22bf06-e76f-475b-a0fe-15ddd48cbf8a",
+								"scheduled_corpus_item_id": "47f3b011-ac45-453f-aa40-0cc695148a34",
+								"corpus_item_id": "2e22bf06-e76f-475b-a0fe-15ddd48cbf8a",
+								"url": "https://www.parents.com/how-to-get-your-kid-to-take-care-of-pet-11901618?utm_source=firefox-newtab-en-intl",
+								"title": "Your Child Begged for a Pet, but Now You’re Doing All the Work—Here’s What Helps",
+								"topic": "society-parenting",
+								"features": {
+									"t_society-parenting": 1
+								},
+								"excerpt": "You don’t want to be stuck with all the responsibility. Luckily, there are ways to get your kids to pitch in.",
+								"publisher": "Parents",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/e95ab48e-1179-466c-890a-d2ce16892735.jpeg",
+								"received_rank": 15,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/f3d1afe17bd1b560d8f96e98365110e23840b52305d3f20a7d5927f3c6c78685_1844.oct",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "ee7f3880-d2b3-47dd-9874-e7d4e17eb80a",
+								"scheduled_corpus_item_id": "1680b926-e7b7-4260-906c-2a683a0d5f24",
+								"corpus_item_id": "ee7f3880-d2b3-47dd-9874-e7d4e17eb80a",
+								"url": "https://hbr.org/2026/02/stop-promoting-the-wrong-people-into-manager-roles?utm_source=firefox-newtab-en-intl",
+								"title": "Stop Promoting the Wrong People into Manager Roles",
+								"topic": "career",
+								"features": {
+									"t_career": 1
+								},
+								"excerpt": "One in four managers would prefer not to be people managers at all. Why the reluctance? Many of these managers found themselves in the role without knowing much about it beforehand, with less than a third reporting exposure to simulations, mentorship, or opportunities to gauge whether they were suited to becoming a manager.",
+								"publisher": "Harvard Business Review",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/3b5572d5-2a35-4410-a0a8-739e83956936.jpeg",
+								"received_rank": 16,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "ba9256ed-0f02-4443-bf45-75845831d422",
+								"scheduled_corpus_item_id": "1e5d46df-3bb7-40f2-baec-4c2450c0f677",
+								"corpus_item_id": "ba9256ed-0f02-4443-bf45-75845831d422",
+								"url": "https://www.indiatoday.in/business/personal-finance/story/loan-rejection-in-india-despite-good-credit-score-lenders-need-to-address-issue-2865925-2026-02-10?utm_source=firefox-newtab-en-intl",
+								"title": "Why Good Borrowers Still Don’t Get Loans in India, and What Lenders Must Fix",
+								"topic": "finance",
+								"features": {
+									"t_finance": 1
+								},
+								"excerpt": "A high income and solid credit score mean little if lenders’ systems can’t “see” the borrower holistically.",
+								"publisher": "India Today",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/d7b8b8a4-a3e7-472e-b8a4-d3c3bfac8e0b.jpeg",
+								"received_rank": 17,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "9499e5f5-9ff2-42de-9bfb-b7b36b2834b6",
+								"scheduled_corpus_item_id": "f6fcb395-cea0-4ee6-a982-13317997c574",
+								"corpus_item_id": "9499e5f5-9ff2-42de-9bfb-b7b36b2834b6",
+								"url": "https://www.formula1.com/en/latest/article/tech-analysis-why-adrian-neweys-first-aston-martin-design-has-caused-a-stir.57Gu2EU7z7Bo6fWUF9qRwc?utm_source=firefox-newtab-en-intl",
+								"title": "Why Adrian Newey’s First Aston Martin Design Has Caused a Stir",
+								"topic": "tech",
+								"features": {
+									"t_tech": 1
+								},
+								"excerpt": "With Adrian Newey's maiden Aston Martin design emerging at the end of the Barcelona Shakedown, its dramatic looks have gotten plenty of people talking.",
+								"publisher": "Formula 1",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/061e971d-86ed-4959-924c-3fe8ca8e0e23.jpeg",
+								"received_rank": 18,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/b695ad84305981161f7c5045907ab5c4cf9b5fbe9f2baa3bc3871ad2b02e7899_2116.svg",
+								"isTimeSensitive": true,
+								"score": 1
+							},
+							{
+								"id": "59247b51-7dc7-450d-9f6d-c6fa6307b9ab",
+								"scheduled_corpus_item_id": "c6c64315-0682-4fbb-8e9e-90abe10e6470",
+								"corpus_item_id": "59247b51-7dc7-450d-9f6d-c6fa6307b9ab",
+								"url": "https://www.inc.com/steve-sensing/how-to-build-a-business-where-failure-fuels-growth/91297739?utm_source=firefox-newtab-en-intl",
+								"title": "How to Build a Business Where Failure Fuels Growth",
+								"topic": "business",
+								"features": {
+									"t_business": 1
+								},
+								"excerpt": "Encouraging employees to do the one thing they’ve been conditioned not to do could bring the best out of them.",
+								"publisher": "Inc. Magazine",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/60f577c8-87fe-478f-a3ef-9b7ef75940f4.jpeg",
+								"received_rank": 19,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/4fb37c8498130ded14416660d5242cdc6ce3e66ab111b71f8b85667807c926ba_15086.ico",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "cdb04992-a17b-4531-bda1-20fbe97849fd",
+								"scheduled_corpus_item_id": "af398ff0-999d-443e-90ae-8e0a5da24706",
+								"corpus_item_id": "cdb04992-a17b-4531-bda1-20fbe97849fd",
+								"url": "https://www.bbc.com/news/articles/cn0elx8g00do?utm_source=firefox-newtab-en-intl",
+								"title": "The Taekwondo Teacher Tasked With Healing India’s Troubled State",
+								"topic": "government",
+								"features": {
+									"t_government": 1
+								},
+								"excerpt": "Opinion is divided on whether Manipur's new chief minister Yumnam Khemchand Singh can bring calm to the state.",
+								"publisher": "BBC",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/cddde5c8-bf5c-4f9a-8bae-4af5fb1df193.jpeg",
+								"received_rank": 20,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/388231ac048528715ffc2aebad84b58c19231d92156179d21c94d0b98d4f1d9b_751.svg",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "5d909537-e6a4-4d2b-9d44-c5a8bbe74290",
+								"scheduled_corpus_item_id": "e949b1c2-7ba5-402f-8b4f-580393e6f2d6",
+								"corpus_item_id": "5d909537-e6a4-4d2b-9d44-c5a8bbe74290",
+								"url": "https://restofworld.org/2026/ai-memory-chip-explainer/?utm_source=firefox-newtab-en-intl&utm_medium=rss&utm_campaign=feeds",
+								"title": "AI Is Dominating the World’s Memory Chips. That Could Make Phones More Expensive",
+								"topic": "tech",
+								"features": {
+									"t_tech": 1
+								},
+								"excerpt": "As chipmakers rush to serve AI data centers, consumer electronics are left in short supply.",
+								"publisher": "Rest of World",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/e3d299b6-8068-46e1-8bab-e4faf7c1c0e3.jpeg",
+								"received_rank": 21,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/8a31b5617b46d67b3bf40d3123641cb230d7026ea45266351f4f766797d70ec7_12858.png",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "af75870a-857f-4c87-9112-49c50e29cb15",
+								"scheduled_corpus_item_id": "a7bb41f6-d1f4-427a-aaef-bb53d1ae7d27",
+								"corpus_item_id": "af75870a-857f-4c87-9112-49c50e29cb15",
+								"url": "https://www.vogue.in/content/i-saw-only-three-artworks-at-india-art-fair-2026-and-it-was-plenty?utm_source=firefox-newtab-en-intl",
+								"title": "I Saw Only Three Artworks at India Art Fair 2026, and It Was Plenty",
+								"topic": "arts",
+								"features": {
+									"t_arts": 1
+								},
+								"excerpt": "At what point do we make peace with the quality of what our eyes see rather than the quantity?",
+								"publisher": "Vogue India",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/1e7eda38-6f4d-4a86-b7b5-291aada8c1a0.jpeg",
+								"received_rank": 22,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "4ad2cfd3-cecc-4a86-b857-c96b370d3db4",
+								"scheduled_corpus_item_id": "26ca1bdf-4e94-4fc6-a0b6-1a91917f3f33",
+								"corpus_item_id": "4ad2cfd3-cecc-4a86-b857-c96b370d3db4",
+								"url": "https://www.inc.com/kit-eaton/how-to-protect-your-team-from-workplace-harassment/91299539?utm_source=firefox-newtab-en-intl",
+								"title": "How to Protect Your Team From Workplace Harassment",
+								"topic": "career",
+								"features": {
+									"t_career": 1
+								},
+								"excerpt": "Companies that address these complaints thoroughly will cut their staff turnover and legal costs.",
+								"publisher": "Inc. Magazine",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/adf5ed26-5eed-41ca-a71f-3d533537a928.webp",
+								"received_rank": 23,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/4fb37c8498130ded14416660d5242cdc6ce3e66ab111b71f8b85667807c926ba_15086.ico",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "3d83adc3-c172-4595-9597-9702318f47b9",
+								"scheduled_corpus_item_id": "b68ae83e-7496-4aee-9f10-ca9eb0d470d0",
+								"corpus_item_id": "3d83adc3-c172-4595-9597-9702318f47b9",
+								"url": "https://www.cntraveler.com/story/the-biggest-reason-to-travel-this-year-sports?utm_source=firefox-newtab-en-intl",
+								"title": "The Biggest Reason to Travel This Year? Sports",
+								"topic": "travel",
+								"features": {
+									"t_travel": 1
+								},
+								"excerpt": "With more and more interest from fans in catching tournaments, matches, and races all over the world, sports is the biggest motivator for travel right now.",
+								"publisher": "Condé Nast Traveler",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/4ad8234e-3c29-471a-8d5b-5e33729e5398.jpeg",
+								"received_rank": 24,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/cd106eb7ed622a5a6cac356a451ba55490d5d67091ef5cd5202a139814aa06fb_7406.oct",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "1be25db6-012f-43fb-9a72-7471ecad229e",
+								"scheduled_corpus_item_id": "33d2b709-3ebb-4d36-a90f-cb83aea9f303",
+								"corpus_item_id": "1be25db6-012f-43fb-9a72-7471ecad229e",
+								"url": "https://www.npr.org/2026/02/10/g-s1-108985/in-a-world-built-for-sitting-heres-how-to-stay-active-even-when-stuck-inside?utm_source=firefox-newtab-en-intl",
+								"title": "In a World Built for Sitting, Here’s How to Stay Active — Even When Stuck Inside",
+								"topic": "health",
+								"features": {
+									"t_health": 1
+								},
+								"excerpt": "In the office, classroom and living room, working and relaxing mean sitting still. Our bodies evolved without chairs. Here are some tips for getting out of your seat and moving — even on cold days.",
+								"publisher": "NPR",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/12345658-f2ee-42b8-a87c-755245ad46c6.jpeg",
+								"received_rank": 25,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/6bf4abf4aaef70638922c7ced3acbc94ebe985015a65c1d52a9a6c9493afe202_1546.png",
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "45efcd91-8c85-40ef-96ce-1a59146a043c",
+								"scheduled_corpus_item_id": "8ebfc3c2-c997-41d4-a7fc-4f26e3cf283e",
+								"corpus_item_id": "45efcd91-8c85-40ef-96ce-1a59146a043c",
+								"url": "https://www.scientificamerican.com/article/rules-of-mysterious-ancient-roman-board-game-decoded-by-ai/?utm_source=firefox-newtab-en-intl",
+								"title": "Rules of Mysterious Ancient Roman Board Game Decoded by AI",
+								"topic": "hobbies",
+								"features": {
+									"t_hobbies": 1
+								},
+								"excerpt": "A Roman stone board game has been unplayable since its discovery more than a century ago, but AI might have just worked out the rules",
+								"publisher": "Scientific American",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/0f5e0b1a-ebed-41fa-966c-8c57e7c57260.jpeg",
+								"received_rank": 26,
+								"recommended_at": 1770796336180,
+								"icon_src": null,
+								"isTimeSensitive": false,
+								"score": 1
+							},
+							{
+								"id": "1bff479c-aa79-40c3-84f9-1cdffbee26ed",
+								"scheduled_corpus_item_id": "c51a592e-6a9c-4262-88dd-df74090d84b1",
+								"corpus_item_id": "1bff479c-aa79-40c3-84f9-1cdffbee26ed",
+								"url": "https://www.inc.com/kaylawebster/startups-are-quietly-cutting-equity-payouts-except-ai-companies/91298390?utm_source=firefox-newtab-en-intl",
+								"title": "Startups Are Quietly Cutting Equity Payouts—Except AI Companies",
+								"topic": "business",
+								"features": {
+									"t_business": 1
+								},
+								"excerpt": "Tech companies are offering small bonuses to reward employees for completing difficult projects.",
+								"publisher": "Inc. Magazine",
+								"raw_image_src": "https://s3.us-east-1.amazonaws.com/pocket-curatedcorpusapi-prod-images/b9c0d970-e191-4d48-8e28-d87785c5104d.webp",
+								"received_rank": 27,
+								"recommended_at": 1770796336180,
+								"icon_src": "https://prod-images.merino.prod.webservices.mozgcp.net/favicons/4fb37c8498130ded14416660d5242cdc6ce3e66ab111b71f8b85667807c926ba_15086.ico",
+								"isTimeSensitive": false,
+								"score": 1
+							}
+						],
+						"surfaceId": "NEW_TAB_EN_INTL",
+						"status": "success"
+					}
+				}
+			},
+			"loaded": true
+		},
+		"impressions": {
+			"feed": {}
+		},
+		"blocks": {},
+		"spocs": {
+			"spocs_endpoint": "https://spocs.getpocket.com/spocs",
+			"lastUpdated": 1770796335793,
+			"data": {},
+			"loaded": true,
+			"frequency_caps": [],
+			"blocked": [],
+			"placements": []
+		},
+		"experimentData": {
+			"utmSource": "pocket-newtab"
+		},
+		"recentSavesData": [],
+		"isUserLoggedIn": false,
+		"recentSavesEnabled": false,
+		"showTopicSelection": false,
+		"report": {
+			"visible": false,
+			"data": {}
+		},
+		"sectionPersonalization": {},
+		"pocketButtonEnabled": false,
+		"saveToPocketCard": false,
+		"hideDescriptions": false,
+		"compactImages": false,
+		"imageGradient": false,
+		"newSponsoredLabel": false,
+		"titleLines": 3,
+		"descLines": 3,
+		"readTime": true
+	},
+	"Search": {
+		"fakeFocus": false,
+		"hide": false
+	},
+	"Wallpapers": {
+		"wallpaperList": [
+			{
+				"theme": "dark",
+				"title": "black-waves",
+				"schema": 1742810343093,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-black-waves",
+				"attachment": {
+					"hash": "013b5e3a6d79b4aa740c7976b6ba61a867e47de47abe1195420ec164bfb3c73f",
+					"size": 202368,
+					"filename": "black%20curve.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/18c7861f-0c9d-48d4-a98c-fb8999e331bd.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@pawel_czerwinski",
+						"string": "Pawel Czerwinski"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/a-close-up-of-a-cell-phone-with-a-black-background-UKSC-TQE7TA",
+						"string": "Unsplash"
+					}
+				},
+				"id": "0114fe5c-4401-40a9-b8a4-313580aeaa19",
+				"last_modified": 1743101895103,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/18c7861f-0c9d-48d4-a98c-fb8999e331bd.avif"
+			},
+			{
+				"theme": "light",
+				"title": "blue",
+				"schema": 1718643233937,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-blue",
+				"solid_color": "#76C1FF",
+				"id": "02c24a73-67fd-4459-b77a-6550c365d8ee",
+				"last_modified": 1718647622963
+			},
+			{
+				"theme": "light",
+				"title": "abstract-blue",
+				"schema": 1718906348500,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-blue",
+				"attachment": {
+					"hash": "24d6733f3ff1aa1b0b23df697b3527d9d511964cdb30620184cf1bf6484f7d62",
+					"size": 182925,
+					"filename": "abstract-blue.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/e1108381-5c19-4cb4-a630-69f9e45503fb.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "081af855-daf4-4d11-9b43-b690e20acc1c",
+				"last_modified": 1718906679999,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/e1108381-5c19-4cb4-a630-69f9e45503fb.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-green",
+				"schema": 1718643966390,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-light-green",
+				"solid_color": "#DAE8E0",
+				"id": "13af9c00-685a-41a3-8b35-80936ccc6961",
+				"last_modified": 1718647622955
+			},
+			{
+				"theme": "light",
+				"title": "green",
+				"schema": 1718644038276,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-green",
+				"solid_color": "#A8DF8E",
+				"id": "18fd6f2c-0b3e-4b17-af01-6ad9d84eeee2",
+				"last_modified": 1718647622953
+			},
+			{
+				"theme": "light",
+				"title": "abstract-green",
+				"schema": 1718875716751,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-green",
+				"attachment": {
+					"hash": "0cdfae1997d508d8ae25a3f4d0169b38b31e317e588a971008134db2327ab246",
+					"size": 68945,
+					"filename": "abstract-green.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/13495d0e-f975-4218-b5f0-c841c69ce2e5.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "1bbf4d6a-1720-4462-a471-8ca90cb8cffa",
+				"last_modified": 1718906680010,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/13495d0e-f975-4218-b5f0-c841c69ce2e5.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "dark-sky",
+				"schema": 1718637445591,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-dark-sky",
+				"attachment": {
+					"hash": "6ab2a71c1d5866c10f6c8bb555b019ed6127a48112e410694bedf6fe8d5cdab9",
+					"size": 461323,
+					"filename": "dark-sky.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/e94b1e49-c518-40d6-98e3-dffab6cc370d.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@felix_mittermeier",
+						"string": "Felix Mittermeier"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/lightning-strike-under-cloudy-sky-WLGHjbC0Cq4",
+						"string": "Unsplash"
+					}
+				},
+				"id": "1d182cca-5359-4126-a8c4-e5dc868fc21e",
+				"last_modified": 1718647622999,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/e94b1e49-c518-40d6-98e3-dffab6cc370d.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "firefox-b",
+				"schema": 1767652124884,
+				"category": "firefox",
+				"attachment": {
+					"hash": "0483fd7bb1054d61301e9fcb2752009a6466f5213933f72dddd66ff909e239a2",
+					"size": 286845,
+					"filename": "desktop-wallpaper-b-1920x1080.svg",
+					"location": "main-workspace/newtab-wallpapers-v2/6f7e2155-df50-4917-81fd-9c6f16e14965.svg",
+					"mimetype": "image/svg+xml"
+				},
+				"background_position": "center right",
+				"id": "1d43f5a1-64bd-4ad4-b825-88a89878662f",
+				"last_modified": 1767716652281,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/6f7e2155-df50-4917-81fd-9c6f16e14965.svg"
+			},
+			{
+				"theme": "dark",
+				"title": "starry-canyon",
+				"schema": 1744046191375,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-starry-canyon",
+				"attachment": {
+					"hash": "394babc1cfd55065c84720869214f50ba39376c1d03eedc0d53327e252825e96",
+					"size": 290368,
+					"filename": "blue%20starry%20night.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/7d98c7ab-274a-411d-95e4-84afd4e6203c.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@markbasarabvisuals",
+						"string": "Mark Basarab"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/blue-starry-night-1OtUkD_8svc",
+						"string": "Unsplash"
+					}
+				},
+				"id": "2437199a-03d7-455b-a9ab-96b14c5b862d",
+				"last_modified": 1744052577014,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/7d98c7ab-274a-411d-95e4-84afd4e6203c.avif"
+			},
+			{
+				"theme": "light",
+				"title": "purple-green",
+				"schema": 1741985417348,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-purple-green",
+				"attachment": {
+					"hash": "3d9362a5a49aa9591a8892ef719207877df244503597a47a3c2b1d3f95beab6d",
+					"size": 237720,
+					"filename": "gradient%20purple%20blue.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/31dd47f1-a979-42a0-8351-33c2bb0b35cf.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@fakurian",
+						"string": "Milad Fakurian"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/purple-and-green-light-gradient-iFu2HILEng8",
+						"string": "Unsplash"
+					}
+				},
+				"id": "27c0d230-787e-4f98-bb9d-11e9994e4937",
+				"last_modified": 1742232562513,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/31dd47f1-a979-42a0-8351-33c2bb0b35cf.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "eclipse-time-lapse",
+				"schema": 1744045738328,
+				"category": "celestial",
+				"fluent_id": "newtab-wallpaper-celestial-eclipse-time-lapse",
+				"attachment": {
+					"hash": "fc6235317973afa7b3f34b91e79525ec7716d54faf6c558ab226e5c982d8cd68",
+					"size": 207752,
+					"filename": "lunar%20eclipse.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/55b678ff-15c3-49d5-bdbc-40f8413cfb8a.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@farzadme",
+						"string": "Farzad Mohsenvand"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/lunar-eclipse-illustration-TbuescuqMjA",
+						"string": "Unsplash"
+					}
+				},
+				"id": "2868b784-19d5-4f9b-9f77-047917484b19",
+				"last_modified": 1744046191277,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/55b678ff-15c3-49d5-bdbc-40f8413cfb8a.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "dark-blue",
+				"schema": 1718644294471,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-dark-blue",
+				"solid_color": "#031A3E",
+				"id": "289ec57a-9875-450e-b0cf-46436d75c11f",
+				"last_modified": 1718647622934
+			},
+			{
+				"theme": "dark",
+				"title": "dark-purple",
+				"schema": 1718644320019,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-dark-purple",
+				"solid_color": "#450A54",
+				"id": "2bb4d4d4-ed76-450a-805c-e4d4af19f215",
+				"last_modified": 1718647622932
+			},
+			{
+				"theme": "light",
+				"title": "firefox-f",
+				"schema": 1767652115526,
+				"category": "firefox",
+				"attachment": {
+					"hash": "07e565c12279637b52212d1cf0d4f23039e743e6623896f7e72bc1e6f05be974",
+					"size": 6463,
+					"filename": "desktop-wallpaper-f-1920x1080.svg",
+					"location": "main-workspace/newtab-wallpapers-v2/9b9d40c7-a3bf-4058-836a-2ce378e8daf5.svg",
+					"mimetype": "image/svg+xml"
+				},
+				"background_position": "bottom center",
+				"id": "2bf99683-cde8-438b-9f8e-a1222dc7f59c",
+				"last_modified": 1767716652288,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/9b9d40c7-a3bf-4058-836a-2ce378e8daf5.svg"
+			},
+			{
+				"theme": "dark",
+				"title": "dark-mountain",
+				"schema": 1718637174316,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-dark-mountain",
+				"attachment": {
+					"hash": "f5933a35945f5103ff98892f45ce03c59b2c3c1be35455faf45b10355492fd95",
+					"size": 308468,
+					"filename": "dark-mountain.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/af6073d2-cbb2-4e28-b642-3327d14808b2.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@heytowner",
+						"string": "John Towner"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/aerial-photo-of-brown-moutains-JgOeRuGD_Y4",
+						"string": "Unsplash"
+					}
+				},
+				"id": "2ccb7af0-28fc-48e6-9dbe-a1da930f7344",
+				"last_modified": 1718647623004,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/af6073d2-cbb2-4e28-b642-3327d14808b2.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "firefox-e",
+				"schema": 1767652098403,
+				"category": "firefox",
+				"attachment": {
+					"hash": "fe1cb48a30da9b05ba14b550918f708953ee6e44fa5a878bcbc5d3d7963176ad",
+					"size": 4567,
+					"filename": "desktop-wallpaper-e-1920x1080.svg",
+					"location": "main-workspace/newtab-wallpapers-v2/0b039df1-971b-445a-84f6-6a15da08940e.svg",
+					"mimetype": "image/svg+xml"
+				},
+				"background_position": "bottom center",
+				"id": "2e468f89-ac6a-474f-a789-5de0be601887",
+				"last_modified": 1767716652278,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/0b039df1-971b-445a-84f6-6a15da08940e.svg"
+			},
+			{
+				"theme": "dark",
+				"title": "dark-green",
+				"schema": 1718644346535,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-dark-green",
+				"solid_color": "#19310D",
+				"id": "35f8a180-8579-461d-be72-3d5d889dba62",
+				"last_modified": 1718647622929
+			},
+			{
+				"theme": "light",
+				"title": "firefox-c",
+				"schema": 1767052808174,
+				"category": "firefox",
+				"attachment": {
+					"hash": "7785790af185a3eca30177b678ab590773b209149dc14167a61044f8abdc7e1a",
+					"size": 14552,
+					"filename": "desktop-wallpaper-c-1920x1080.svg",
+					"location": "main-workspace/newtab-wallpapers-v2/ae9afcad-83a6-49c5-91b3-8fbea798b88f.svg",
+					"mimetype": "image/svg+xml"
+				},
+				"background_position": "top right",
+				"id": "429c288c-8d92-4baa-aefb-a04719882454",
+				"last_modified": 1767636605736,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/ae9afcad-83a6-49c5-91b3-8fbea798b88f.svg"
+			},
+			{
+				"theme": "light",
+				"title": "red",
+				"schema": 1718644265416,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-red",
+				"solid_color": "#9D242D",
+				"id": "42c4e7e1-c108-45d1-bc5a-4aa0031e9a3e",
+				"last_modified": 1718647622937
+			},
+			{
+				"theme": "dark",
+				"title": "dark-panda",
+				"schema": 1767652132609,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-dark-panda",
+				"attachment": {
+					"hash": "359ec1d08b10aec1ea6d5cb50ddb0ccbd7660301407ee2eb602cf877b1ab857a",
+					"size": 391823,
+					"filename": "dark-panda.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/6b8eb3cf-f232-4c7b-a179-afd174555134.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@willrust",
+						"string": "Will Rust"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/a-red-panda-yawns-in-a-tree-ERm7haDBW8k",
+						"string": "Unsplash"
+					}
+				},
+				"background_position": "center left",
+				"id": "4374cca0-fd79-4626-b55f-ccbe1eb13e2f",
+				"last_modified": 1767716652298,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/6b8eb3cf-f232-4c7b-a179-afd174555134.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "firefox-a",
+				"schema": 1767652080942,
+				"category": "firefox",
+				"attachment": {
+					"hash": "dfdeb8a64fc3a5c9d160472bc10467acc3e3ffba51da05c7b222a1315dd8a1f4",
+					"size": 19020,
+					"filename": "desktop-wallpaper-a-1920x1080.svg",
+					"location": "main-workspace/newtab-wallpapers-v2/e08c3e8c-4bda-48e4-8f36-a1d203f46536.svg",
+					"mimetype": "image/svg+xml"
+				},
+				"background_position": "top right",
+				"id": "451090be-cdf1-49fc-b1f3-bd2f3b4ac34d",
+				"last_modified": 1767716652291,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/e08c3e8c-4bda-48e4-8f36-a1d203f46536.svg"
+			},
+			{
+				"theme": "light",
+				"title": "orange",
+				"schema": 1718644150837,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-orange",
+				"solid_color": "#FEBE5E",
+				"id": "47a48447-d3e8-4711-a74e-33dcbd64c889",
+				"last_modified": 1718647622945
+			},
+			{
+				"theme": "light",
+				"title": "beige",
+				"schema": 1718644062923,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-beige",
+				"solid_color": "#EDD5B8",
+				"id": "59bd06d3-fa74-4059-ada2-046d48b71285",
+				"last_modified": 1718647622950
+			},
+			{
+				"theme": "light",
+				"title": "abstract-blue-purple",
+				"schema": 1718906311906,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-blue-purple",
+				"attachment": {
+					"hash": "7f80fd687288944a9e90b2b4d324a3e8b33e1575b9dbf21f953b06da26b7cac4",
+					"size": 26236,
+					"filename": "abstract-noodles.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/becfadf4-4c2d-4fad-bbbc-b060d12277e5.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "604378cd-ff54-4219-bed3-137889283c5e",
+				"last_modified": 1718906680002,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/becfadf4-4c2d-4fad-bbbc-b060d12277e5.avif"
+			},
+			{
+				"theme": "light",
+				"title": "firefox-d",
+				"schema": 1767636605829,
+				"category": "firefox",
+				"attachment": {
+					"hash": "74988ebbc20bbc957f9b082793fea4f667e307aea3e873ba01a4f094e26e8452",
+					"size": 26913,
+					"filename": "desktop-wallpaper-d-1920x1080.svg",
+					"location": "main-workspace/newtab-wallpapers-v2/3640c0ff-19a2-4f7b-a06a-fdc2232ddd4a.svg",
+					"mimetype": "image/svg+xml"
+				},
+				"background_position": "bottom right",
+				"id": "62aa72d9-b9f3-4f29-88f5-5120ee004e7c",
+				"last_modified": 1767716652284,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/3640c0ff-19a2-4f7b-a06a-fdc2232ddd4a.svg"
+			},
+			{
+				"theme": "light",
+				"title": "light-pink",
+				"schema": 1718644236363,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-light-pink",
+				"solid_color": "#F4DBE9",
+				"id": "6ab3849e-2e09-4751-9620-1e815e0a0c03",
+				"last_modified": 1718647622940
+			},
+			{
+				"theme": "light",
+				"title": "light-blue",
+				"schema": 1718643826574,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-light-blue",
+				"solid_color": "#D4E7F6",
+				"id": "6beb382b-183d-428b-9b0e-c2f213d0c245",
+				"last_modified": 1718647622960
+			},
+			{
+				"theme": "dark",
+				"title": "lunar-eclipse",
+				"schema": 1744045768465,
+				"category": "celestial",
+				"fluent_id": "newtab-wallpaper-celestial-lunar-eclipse",
+				"attachment": {
+					"hash": "3fa57c2d377a78cdc95ec097a4a4bc49fb126e7d6544c53b765410692d10843e",
+					"size": 527364,
+					"filename": "moon%20eclipse.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/7fd1f326-58cf-4b5c-9737-e68a8c44dc51.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@sarahleejs",
+						"string": "Jongsun Lee"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/moon-eclipse-F-pSZO_jeE8",
+						"string": "Unsplash"
+					}
+				},
+				"id": "6c40ffd3-b8e3-48a2-a0a0-53517aa37557",
+				"last_modified": 1744046191280,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/7fd1f326-58cf-4b5c-9737-e68a8c44dc51.avif"
+			},
+			{
+				"theme": "light",
+				"title": "hot-air-balloons",
+				"schema": 1767652359090,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-hot-air-balloons",
+				"attachment": {
+					"hash": "e95169a269ebae69c46b7202a3438903f7baf5485a878e13468ad0dc07414271",
+					"size": 297339,
+					"filename": "hot%20air%20ballons.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/ade94d3a-9a02-4b30-848f-638725a05180.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@sadswim",
+						"string": "ian dooley"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/assorted-color-hot-air-balloons-during-daytime-DuBNA1QMpPA",
+						"string": "Unsplash"
+					}
+				},
+				"background_position": "bottom center",
+				"id": "6c76fca3-3b93-41f1-b7f6-c863efcd3e91",
+				"last_modified": 1767716652275,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/ade94d3a-9a02-4b30-848f-638725a05180.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-panda",
+				"schema": 1767652165361,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-light-red-panda",
+				"attachment": {
+					"hash": "f9a34f02573401aea9366a9e97a4cdc92f925ad6ac8d56d0bedfaf0dff9e86b1",
+					"size": 531549,
+					"filename": "light-panda.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/dfd3762e-f77d-4b6e-ac75-32eb2549ef40.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@_melsayed",
+						"string": "Mohamed Elsayed"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/red-panda-on-snow-covered-ground-during-daytime-DWpR-BpKlw0",
+						"string": "Unsplash"
+					}
+				},
+				"background_position": "center left",
+				"id": "74260419-d829-42ef-bb9f-4d93be63472a",
+				"last_modified": 1767716652295,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/dfd3762e-f77d-4b6e-ac75-32eb2549ef40.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "black-hole",
+				"schema": 1744045732063,
+				"category": "celestial",
+				"fluent_id": "newtab-wallpaper-celestial-black-hole",
+				"attachment": {
+					"hash": "c6bcb286c3a289c21e9fae4602f8f9defc68b7c9f4888a4b7f0c9be6943826d7",
+					"size": 324019,
+					"filename": "black%20hole%20galaxy.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/9fa5c4e0-5f22-419e-b2eb-a3494520f5f2.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@gferla",
+						"string": "Guillermo Ferla"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/black-hole-galaxy-illustration-Oze6U2m1oYU",
+						"string": "Unsplash"
+					}
+				},
+				"id": "7622072d-a734-4df7-a467-cde719b60875",
+				"last_modified": 1744046191285,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/9fa5c4e0-5f22-419e-b2eb-a3494520f5f2.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-fox-anniversary",
+				"schema": 1767652175332,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-light-fox-anniversary",
+				"attachment": {
+					"hash": "649c272fed6c4ba3d15c5179efc85a1c528d39a074259386cf91be89ea2f67f3",
+					"size": 140270,
+					"filename": "light-fox-anniversary-v2.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/a5a041de-9275-4eb5-8f21-a0171c82d388.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@sr_kike_",
+						"string": "Luis Enrique Ibarra"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/brown-and-white-fox-on-green-grass-field-during-daytime-SLOm_cfWTT4",
+						"string": "Unsplash"
+					}
+				},
+				"background_position": "center left",
+				"id": "77bf5044-7821-4125-b555-10f71af37fd4",
+				"last_modified": 1767716652304,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/a5a041de-9275-4eb5-8f21-a0171c82d388.avif"
+			},
+			{
+				"theme": "light",
+				"title": "blue-flowers",
+				"schema": 1744047286143,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-blue-flowers",
+				"attachment": {
+					"hash": "4f20e391651c537e09c730c13c8a88408ade7bfc04e134987965718a491dd705",
+					"size": 214442,
+					"filename": "flowers.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/f5c362af-16df-488d-a8b2-bf8cf29d1c63.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@sorasagano",
+						"string": "Sora Sagano"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/closeup-photography-of-blue-petaled-flowers-on-bloom-F6ZzivdSQ5k",
+						"string": "Unsplash"
+					}
+				},
+				"id": "785549a0-c1c0-488b-9cc2-f7a18f3ba204",
+				"last_modified": 1744052577022,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/f5c362af-16df-488d-a8b2-bf8cf29d1c63.avif"
+			},
+			{
+				"theme": "light",
+				"title": "brown",
+				"schema": 1718644381622,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-brown",
+				"solid_color": "#401F00",
+				"id": "7a88dafb-3a82-4346-b34c-0b7d9232f497",
+				"last_modified": 1718647622926
+			},
+			{
+				"theme": "dark",
+				"title": "dark-fox-anniversary",
+				"schema": 1767652222492,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-dark-fox-anniversary",
+				"attachment": {
+					"hash": "eeb9526e6bcdb29b6fd5b59273d1d48ab99c4aee3d9e72584bb9eee6790e2218",
+					"size": 291301,
+					"filename": "dark-fox-anniversary-v2.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/d8b71c77-9985-41d2-b98e-51bebc60e595.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@obkim",
+						"string": "Qijin Xu"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/brown-and-white-fox-fJyO0eo6_aI",
+						"string": "Unsplash"
+					}
+				},
+				"background_position": "top left",
+				"id": "7e6ab485-8f0d-463f-8f40-1bd77a82e034",
+				"last_modified": 1767716652308,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/d8b71c77-9985-41d2-b98e-51bebc60e595.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-landscape",
+				"schema": 1718638214844,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-light-landscape",
+				"attachment": {
+					"hash": "e03ad82c9a5c6da8873cbdd21a5186a61c2eab9fe582f68e8da84cbb79b97885",
+					"size": 223179,
+					"filename": "light-landscape.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/d9289c5b-8c78-4b27-b5d8-afe7285ce7d1.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@caroliniecavalli",
+						"string": "Carolinie Cavalli"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/birds-eye-view-photography-of-mountain-Qw3w0oBH63s",
+						"string": "Unsplash"
+					}
+				},
+				"id": "8039d4b1-18c9-4a7f-9ce7-9737b224d565",
+				"last_modified": 1718647622990,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/d9289c5b-8c78-4b27-b5d8-afe7285ce7d1.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-purple",
+				"schema": 1718643868872,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-light-purple",
+				"solid_color": "#D3A3F3",
+				"id": "840007a0-7989-4a1c-a2a5-3fc422b9570d",
+				"last_modified": 1718647622958
+			},
+			{
+				"theme": "light",
+				"title": "white-curves",
+				"schema": 1741985132349,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-white-curves",
+				"attachment": {
+					"hash": "5ba6bb88912ce34b132b6809a25682d2d1cccdae1d877642d312e1644b86daa5",
+					"size": 319578,
+					"filename": "white%20curve.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/ea29bb39-223f-4c49-9362-b7caf75313af.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@vackground",
+						"string": "vackground.com"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/an-abstract-white-background-with-a-curved-curve-0F2pC8_DwvM",
+						"string": "Unsplash"
+					}
+				},
+				"id": "8f3f9010-0e47-4924-88f3-342f73cfbbc3",
+				"last_modified": 1742232562516,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/ea29bb39-223f-4c49-9362-b7caf75313af.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-color",
+				"schema": 1721056774979,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-light-color",
+				"attachment": {
+					"hash": "cd28bc282ba8dda5f6660389eb2a7ba66a57691504de2eba3405ec20eeddd5a0",
+					"size": 288837,
+					"filename": "light-color.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/a205885e-194a-41f9-ae47-e7da66a74041.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "8f896365-c4e8-497a-b8c1-c5033e4a7456",
+				"last_modified": 1721068497119,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/a205885e-194a-41f9-ae47-e7da66a74041.avif"
+			},
+			{
+				"theme": "light",
+				"title": "abstract-purple",
+				"schema": 1718906291053,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-purple",
+				"attachment": {
+					"hash": "96fbb04dd5494fb8383541289d29c22ac08dcdee242a104a310f3526b902d8fd",
+					"size": 90925,
+					"filename": "abstract-purple.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/6bf5c4ac-f55b-4de3-bbf5-1b0f2f56d488.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "92c5a286-da38-4135-ad41-6a3d659e3563",
+				"last_modified": 1718906680006,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/6bf5c4ac-f55b-4de3-bbf5-1b0f2f56d488.avif"
+			},
+			{
+				"theme": "light",
+				"title": "sand-dunes",
+				"schema": 1744047082520,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-sand-dunes",
+				"attachment": {
+					"hash": "27f42ef7095512570ac91ad165478ecb09d7343fcba161f1ed83d2edd767b547",
+					"size": 354178,
+					"filename": "white%20sand.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/7dcbd2c8-8982-4108-b044-fae72b46e97f.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@wildhoney",
+						"string": "John Fowler"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/white-sand-RsRTIofe0HE",
+						"string": "Unsplash"
+					}
+				},
+				"id": "936f5914-d192-4f87-8481-c3e74e8adb5d",
+				"last_modified": 1744052577017,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/7dcbd2c8-8982-4108-b044-fae72b46e97f.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-mountain",
+				"schema": 1718638685878,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-light-mountain",
+				"attachment": {
+					"hash": "f9fdf49580f9221ba2583d0a818d60ae79b9fd50246ef36798a264e6645b6709",
+					"size": 541196,
+					"filename": "light-mountain.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/5344443f-f427-4029-bc6b-68bc22f83355.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@daesign",
+						"string": "Sead Dedić"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/mountain-covered-with-snow-under-white-clouds-si8OYpuLVBY",
+						"string": "Unsplash"
+					}
+				},
+				"id": "98d063e5-1481-4df2-abed-e22e86b24e98",
+				"last_modified": 1718647622988,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/5344443f-f427-4029-bc6b-68bc22f83355.avif"
+			},
+			{
+				"theme": "light",
+				"title": "yellow",
+				"schema": 1718644107243,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-yellow",
+				"solid_color": "#FFF7B2",
+				"id": "9b0e2e3c-bf01-4e06-b051-3b439ff32592",
+				"last_modified": 1718647622947
+			},
+			{
+				"theme": "dark",
+				"title": "dark-beach",
+				"schema": 1718636331169,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-dark-city",
+				"attachment": {
+					"hash": "7272b542d0b28513daa9c1bdb27ae09d606c189d1c144bc6d5b550b5020c67de",
+					"size": 713257,
+					"filename": "dark-beach.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/966b18ad-3733-41c4-92f6-c89cdf1381d0.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@yespanioly",
+						"string": "Yousef Espanioly"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/seashore-DA_tplYgTow",
+						"string": "Unsplash"
+					}
+				},
+				"id": "a01be688-31cf-4f68-ac3e-e2cec09cb15a",
+				"last_modified": 1718647623009,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/966b18ad-3733-41c4-92f6-c89cdf1381d0.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "blue-purple",
+				"schema": 1756865736197,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-blue-purple",
+				"attachment": {
+					"hash": "2ce4d2b293611d478a57398e982e791c2ef6a628eb02c7ab11e47d8a001dfd02",
+					"size": 309538,
+					"filename": "wavy%20shapes.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/036ac885-33cb-41db-bcbb-52dd49254a12.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@martz90",
+						"string": "Martin Martz"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/a-blue-and-purple-background-with-wavy-shapes-1hg6NpO0kIk",
+						"string": "Unsplash"
+					}
+				},
+				"id": "b33cf5ec-52c4-4220-be05-1a3d4c998443",
+				"last_modified": 1762459339471,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/036ac885-33cb-41db-bcbb-52dd49254a12.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "palm-trees",
+				"schema": 1744047197627,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-palm-trees",
+				"attachment": {
+					"hash": "5efec5a43ee0e3816cda1f35edb4e5c82f3ae8a554cb99ba13fc578fa45b3a23",
+					"size": 440641,
+					"filename": "palm%20trees.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/32c50b87-9f4b-46cf-a467-f4aa768a1687.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@soyprome",
+						"string": "Prometey Sánchez Noskov"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/silhouette-of-coconut-palm-trees-during-golden-hour-c6M7AoevSXE",
+						"string": "Unsplash"
+					}
+				},
+				"id": "c28c67eb-4cd1-4775-8770-e0650015d19a",
+				"last_modified": 1744052577019,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/32c50b87-9f4b-46cf-a467-f4aa768a1687.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-sky",
+				"schema": 1718906680116,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-light-sky",
+				"attachment": {
+					"hash": "40a84002cfaf92fd38300e3987146f7b2ec3f5255e0427afbd30a52d7830c0e8",
+					"size": 100634,
+					"filename": "light-sky.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/45ecab20-ffb9-47b4-94ff-07a5f8b9f53f.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@frostroomhead",
+						"string": "Rodion Kutsaiev"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/cloudy-sky-8P-uQaTd8rw",
+						"string": "Unsplash"
+					}
+				},
+				"id": "c4033968-1a5e-4d8b-8961-994e2214db5d",
+				"last_modified": 1721056774861,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/45ecab20-ffb9-47b4-94ff-07a5f8b9f53f.avif"
+			},
+			{
+				"theme": "light",
+				"title": "gradient-orange",
+				"schema": 1718906280424,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-gradient-orange",
+				"attachment": {
+					"hash": "d99c7953bf5fd96fc9778cc6c663063aa7521e32db3d461efadb397be71b745f",
+					"size": 348323,
+					"filename": "gradient-orange.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/bd424c86-6366-4f2b-b8dc-74d21439c1fb.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "d01275ae-cd01-42f1-9ccf-41734e939ee3",
+				"last_modified": 1718906680008,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/bd424c86-6366-4f2b-b8dc-74d21439c1fb.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "dark-color",
+				"schema": 1721057236130,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-dark-color",
+				"attachment": {
+					"hash": "c433865edcc1eae2911f30caa95783adfe5642ec24e8bd41fcfc661276f93752",
+					"size": 206755,
+					"filename": "dark-color.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/d357925c-b9cd-417e-8731-14272f28f556.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@martz90",
+						"string": "Martin Martz"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/a-close-up-of-a-cell-phone-with-a-blurry-background-uuNCR2NpiNE",
+						"string": "Unsplash"
+					}
+				},
+				"id": "d4d8de2b-a32f-400d-83cc-ab136c197e7c",
+				"last_modified": 1721068497117,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/d357925c-b9cd-417e-8731-14272f28f556.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "suspension-bridge",
+				"schema": 1744047008604,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-suspension-bridge",
+				"attachment": {
+					"hash": "ea3dafc1e5cb5b8b81b487b801b34fe3b1fd19d722982b06b9aa95f4b01f2f72",
+					"size": 258311,
+					"filename": "bridge.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/c1130d05-bb6b-448d-bc66-96df1eb088bb.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@andersjilden",
+						"string": "Anders Jildén"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/grey-full-suspension-bridge-photography-during-daytime-AkUR27wtaxs",
+						"string": "Unsplash"
+					}
+				},
+				"id": "de57da1c-94fb-4275-905a-b3bbd1f0f8a5",
+				"last_modified": 1744052577011,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/c1130d05-bb6b-448d-bc66-96df1eb088bb.avif"
+			},
+			{
+				"theme": "light",
+				"title": "pink",
+				"schema": 1718644200528,
+				"category": "solid-colors",
+				"fluent_id": "newtab-wallpaper-pink",
+				"solid_color": "#FA87CC",
+				"id": "e3a76f3b-25ff-4285-b935-63de46bdd711",
+				"last_modified": 1718647622942
+			},
+			{
+				"theme": "dark",
+				"title": "starry-sky",
+				"schema": 1744045755270,
+				"category": "celestial",
+				"fluent_id": "newtab-wallpaper-celestial-starry-sky",
+				"attachment": {
+					"hash": "438c81ca6545f7a76880b9036aff9732e0a9f234d5859e12213029485ce02bdd",
+					"size": 404969,
+					"filename": "stary%20sky.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/43793431-0f4a-473b-b346-7c30df84af10.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@aperturevintage",
+						"string": "Aperture Vintage"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/starry-sky-Z6EpCdMcoUU",
+						"string": "Unsplash"
+					}
+				},
+				"id": "eadb40b9-7d96-4173-994e-ecdb7aade866",
+				"last_modified": 1744046191283,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/43793431-0f4a-473b-b346-7c30df84af10.avif"
+			},
+			{
+				"theme": "light",
+				"title": "light-beach",
+				"schema": 1718637553213,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-light-beach",
+				"attachment": {
+					"hash": "ad65944319e9bb3fa4261e93d465cc51be35873608dfa71d46fe734ae4517c2a",
+					"size": 465893,
+					"filename": "light-beach.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/56a7f3ae-70cc-45f2-82ec-1d39acdd3b8d.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@oulashin",
+						"string": "Sean Oulashin"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/seashore-during-golden-hour-KMn4VEeEPR8",
+						"string": "Unsplash"
+					}
+				},
+				"id": "edc18c37-9d75-4cca-a854-5bcab5275407",
+				"last_modified": 1718647622996,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/56a7f3ae-70cc-45f2-82ec-1d39acdd3b8d.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "earth-night",
+				"schema": 1744045775887,
+				"category": "celestial",
+				"fluent_id": "newtab-wallpaper-celestial-earth-night",
+				"attachment": {
+					"hash": "3e157c2f848870ae89e6339339859ee0d485c03d09328a900fc10fd82e1be60c",
+					"size": 346780,
+					"filename": "outer%20space.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/fa93a1e0-fec5-4351-adc2-5692e5b2bf32.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@nasa",
+						"string": "NASA"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/photo-of-outer-space-Q1p7bh3SHj8",
+						"string": "Unsplash"
+					}
+				},
+				"id": "ef098f84-05b0-4cb7-afee-fccd15e6c50c",
+				"last_modified": 1744046191274,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/fa93a1e0-fec5-4351-adc2-5692e5b2bf32.avif"
+			},
+			{
+				"theme": "light",
+				"title": "abstract-orange",
+				"schema": 1718906302556,
+				"category": "abstracts",
+				"fluent_id": "newtab-wallpaper-abstract-orange",
+				"attachment": {
+					"hash": "82b7a7378c27e82936e09fd747cb65ed28d9909b0469537c405c24961135c3d1",
+					"size": 39943,
+					"filename": "abstract-orange.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/32531fc6-1ea3-46de-a93c-f8a0c2f01916.avif",
+					"mimetype": "image/avif"
+				},
+				"id": "f7f89c99-c258-48b8-ad99-1b45465a0034",
+				"last_modified": 1718906680004,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/32531fc6-1ea3-46de-a93c-f8a0c2f01916.avif"
+			},
+			{
+				"theme": "dark",
+				"title": "dark-landscape",
+				"schema": 1767652229110,
+				"category": "photographs",
+				"fluent_id": "newtab-wallpaper-dark-aurora",
+				"attachment": {
+					"hash": "dba39dab685c2bc6978354537c1bc8218a0abc455d0dd49c134c031264cfcd47",
+					"size": 437288,
+					"filename": "dark-aurora.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/10e23599-85bc-4660-ae06-7a67befbbcf9.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@lightscape",
+						"string": "Lightscape"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/northern-lights-over-snow-capped-mountian-LtnPejWDSAY",
+						"string": "Unsplash"
+					}
+				},
+				"background_position": "center right",
+				"id": "f81d9d10-7f90-4d1d-ae2e-8d49e1cf993a",
+				"last_modified": 1767716652301,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/10e23599-85bc-4660-ae06-7a67befbbcf9.avif"
+			},
+			{
+				"theme": "light",
+				"title": "river",
+				"schema": 1744045761310,
+				"category": "celestial",
+				"fluent_id": "newtab-wallpaper-celestial-river",
+				"attachment": {
+					"hash": "03a1416050bcf9533b3d2094fbe3f433029eafefa178ae0520a4d7e444168209",
+					"size": 374822,
+					"filename": "satellite%20image%20of%20river.avif",
+					"location": "main-workspace/newtab-wallpapers-v2/671df231-8415-4066-8144-0ddb31394a19.avif",
+					"mimetype": "image/avif"
+				},
+				"attribution": {
+					"name": {
+						"url": "https://unsplash.com/@nasa",
+						"string": "NASA"
+					},
+					"webpage": {
+						"url": "https://unsplash.com/photos/satellite-image-of-river-whDrFMucHkc",
+						"string": "Unsplash"
+					}
+				},
+				"id": "fadd6058-24cf-4e41-b9b4-7608498f285c",
+				"last_modified": 1744046191288,
+				"wallpaperUrl": "https://firefox-settings-attachments.cdn.mozilla.net/main-workspace/newtab-wallpapers-v2/671df231-8415-4066-8144-0ddb31394a19.avif"
+			}
+		],
+		"highlightSeenCounter": {
+			"value": 0
+		},
+		"categories": [
+			"abstracts",
+			"solid-colors",
+			"photographs",
+			"firefox",
+			"celestial",
+			"custom-wallpaper"
+		],
+		"uploadedWallpaper": null
+	},
+	"Weather": {
+		"initialized": false,
+		"lastUpdated": null,
+		"query": "",
+		"suggestions": [],
+		"locationData": {
+			"city": "",
+			"adminArea": "",
+			"country": ""
+		},
+		"searchActive": false,
+		"locationSearchString": "",
+		"suggestedLocations": []
+	}
+};
+
+5��&           i�5CI(�%����       :about:home alt-data 1;59435,script version 20260106170501  lw

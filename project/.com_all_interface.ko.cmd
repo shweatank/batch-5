@@ -1,0 +1,1 @@
+savedcmd_/home/team4/kishore/project/com_all_interface.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team4/kishore/project/com_all_interface.ko /home/team4/kishore/project/com_all_interface.o /home/team4/kishore/project/com_all_interface.mod.o /home/team4/kishore/project/.module-common.o

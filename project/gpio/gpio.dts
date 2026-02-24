@@ -1,0 +1,19 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            isr_gpio17: gpio17 {
+                gpio-hog;
+                gpios = <17 0>; /* GPIO17, input */
+                input;
+                label = "ISR_GPIO17";
+            };
+        };
+    };
+};
+

@@ -95,7 +95,7 @@ for(i=0;i<len;i++){
 
     
 
-/*	char ch,ch1[len];
+	char ch,ch1[len];
     size_t i;
 pr_info("hai..........\n");
     for (i = 0; i < len; i++) {
@@ -108,7 +108,7 @@ pr_info("hai..........\n");
         if (copy_to_user(buf + i, &ch, 1))
             return -EFAULT;
     }
-    */
+    
     return i;
 }
 

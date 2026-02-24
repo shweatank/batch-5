@@ -1,1 +1,0 @@
-savedcmd_/home/team4/Desktop/kishore/I2C/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team4/Desktop/kishore/I2C/Module.symvers -T /home/team4/Desktop/kishore/I2C/modules.order -i Module.symvers -e 

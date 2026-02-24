@@ -1,0 +1,1 @@
+savedcmd_/home/team4/kishore/project/com_all_interface.mod := printf '%s\n'   com_all_interface.o | awk '!x[$$0]++ { print("/home/team4/kishore/project/"$$0) }' > /home/team4/kishore/project/com_all_interface.mod
