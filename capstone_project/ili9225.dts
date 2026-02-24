@@ -12,7 +12,7 @@
             #size-cells = <0>;
 
             ili9225@0 {
-                compatible = "ilitek,ili9225";
+                compatible = "ili9225_display";
                 reg = <0>;                     /* CE0 of SPI */
                 spi-max-frequency = <4000000>; /* 4 MHz safe for ILI9225 */
                 status = "okay";

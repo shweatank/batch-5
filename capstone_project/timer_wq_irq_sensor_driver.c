@@ -23,7 +23,7 @@ struct dht_data {
     int humidity;
 };
 
-static int c;
+static int c=0;
 struct dht_data *sensor_data;
 static int irq;
 static struct workqueue_struct *my_wq;
@@ -46,7 +46,12 @@ static void sensor_work(struct work_struct *work)
 {
  int i, j;
     u8 buf[5] = {0};
-    /* Start signal */
+      if(c==0)
+{
+       delay_us(1*MSEC);
+ c++;
+}
+   /* Start signal */
     gpio_direction_output(DHT_GPIO_4, 0);
    delay_us(18*MSEC);   
  

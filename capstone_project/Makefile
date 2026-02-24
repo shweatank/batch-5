@@ -1,4 +1,5 @@
-obj-m+=land_2.o
+obj-m+=com_all_interface_uart.o
+#obj-m+=uart_tx_driver.o
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
