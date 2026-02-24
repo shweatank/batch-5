@@ -1,0 +1,1 @@
+savedcmd_/home/team1/praneeth/feb5/spi_drv.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/praneeth/feb5/spi_drv.ko /home/team1/praneeth/feb5/spi_drv.o /home/team1/praneeth/feb5/spi_drv.mod.o /home/team1/praneeth/feb5/.module-common.o

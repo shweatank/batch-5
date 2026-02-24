@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/feb10/power_man_module_param.mod := printf '%s\n'   power_man_module_param.o | awk '!x[$$0]++ { print("/home/dell/practice/feb10/"$$0) }' > /home/dell/practice/feb10/power_man_module_param.mod

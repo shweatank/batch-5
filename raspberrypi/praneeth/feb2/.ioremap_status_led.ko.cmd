@@ -1,0 +1,1 @@
+savedcmd_/home/team1/praneeth/feb2/ioremap_status_led.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/praneeth/feb2/ioremap_status_led.ko /home/team1/praneeth/feb2/ioremap_status_led.o /home/team1/praneeth/feb2/ioremap_status_led.mod.o /home/team1/praneeth/feb2/.module-common.o

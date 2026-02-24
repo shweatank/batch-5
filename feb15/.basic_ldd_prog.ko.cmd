@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/feb15/basic_ldd_prog.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/feb15/basic_ldd_prog.ko /home/dell/practice/feb15/basic_ldd_prog.o /home/dell/practice/feb15/basic_ldd_prog.mod.o

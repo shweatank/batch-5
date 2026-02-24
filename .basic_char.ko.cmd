@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/basic_char.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/basic_char.ko /home/dell/practice/basic_char.o /home/dell/practice/basic_char.mod.o

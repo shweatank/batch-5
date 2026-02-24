@@ -1,1 +1,1 @@
-savedcmd_/home/dell/practice/modules.order := {   echo /home/dell/practice/irq_demo_driver.o; :; } > /home/dell/practice/modules.order
+savedcmd_/home/dell/practice/modules.order := {   echo /home/dell/practice/basic_char.o; :; } > /home/dell/practice/modules.order

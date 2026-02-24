@@ -1,0 +1,1 @@
+savedcmd_/home/dell/practice/feb15/char_dev_drv.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/feb15/char_dev_drv.ko /home/dell/practice/feb15/char_dev_drv.o /home/dell/practice/feb15/char_dev_drv.mod.o

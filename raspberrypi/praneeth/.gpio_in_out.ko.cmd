@@ -1,0 +1,1 @@
+savedcmd_/home/team1/praneeth/gpio_in_out.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/praneeth/gpio_in_out.ko /home/team1/praneeth/gpio_in_out.o /home/team1/praneeth/gpio_in_out.mod.o /home/team1/praneeth/.module-common.o
