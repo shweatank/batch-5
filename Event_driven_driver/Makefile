@@ -1,4 +1,4 @@
-obj-m += mouse_comments.o
+obj-m += Event_Driven_Driver.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
