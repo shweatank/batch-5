@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/ramesh/capstone_project1/project.mod := printf '%s\n'   project.o | awk '!x[$$0]++ { print("/home/team4/Desktop/ramesh/capstone_project1/"$$0) }' > /home/team4/Desktop/ramesh/capstone_project1/project.mod
