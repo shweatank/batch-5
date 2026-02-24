@@ -490,15 +490,15 @@ static int ili9225_probe(struct spi_device *spi)
 static void ili9225_remove(struct spi_device *spi)
 {
 	ili9225_fill(g_lcd,0xFFFF);  //Filling the LCD With White
-	flush_workqueue(lcd_wq);
-	destroy_workqueue(lcd_wq);
+	flush_workqueue(lcd_wq);//flushing the workqueue
+	destroy_workqueue(lcd_wq);//destroying the workqueue
 
-	input_unregister_handler(&mouse_handler);
+	input_unregister_handler(&mouse_handler);//unregistering the input handler
 
-	device_destroy(ili_class, dev_num);
+	device_destroy(ili_class, dev_num);//destroy the device
 	class_destroy(ili_class);
 	cdev_del(&ili_cdev);
-	unregister_chrdev_region(dev_num, 1);
+	unregister_chrdev_region(dev_num, 1);//unregister the character device region
 
 	if(gpio_base)
 		iounmap(gpio_base);
