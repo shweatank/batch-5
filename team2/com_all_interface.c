@@ -110,9 +110,9 @@ static int ili9225_display_write_reg(struct ili9225_display *lcd, u16 reg, u16 d
 static void ili9225_display_reset(struct ili9225_display *lcd)
 {
     gpiod_set_value(lcd->reset, 1);   //pull reset pin high
-    msleep(1);                         //wait fo 1ms
+    msleep(5);                         //wait fo 5ms
     gpiod_set_value(lcd->reset, 0);    //pull low(Trigger reset)
-    msleep(10);                        //wait for 10 ms
+    msleep(20);                        //wait for 20 ms
     gpiod_set_value(lcd->reset, 1);    //again pull high(Release reset pin)
     msleep(50);                        //Final stabilization delay
 }
