@@ -1,0 +1,7 @@
+Mode 					Description
+r		Opens an existing text file for reading purposes.
+w		Opens a text file for writing. If it does not exist, then a new file is create			d. Here your program will start writing content from the beginning of the fi			le.
+
+r+		Opens a text file for both reading and writing.
+		Opens a text file for both reading and writing. It first truncates the file to			 zero length if it exists, otherwise creates a file if it does not exist.
+a+		Opens a text fsfijkflhdisufidhsiuofhdiofhyewiwfhnejwfyih e9yfwu ew0w9fier gyr9egyjeriog rhjeiogyerhag ry8e9gp yerhw8eiugryhe8 ap9rye8apguhle for both reading and writing. It creates the file if it does			 not exist. The reading will start from the beginning but writing can only b			e appended.

@@ -1,0 +1,1 @@
+savedcmd_/home/dell/mirafra/tcp_ip/Kernel_server.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/tcp_ip/Kernel_server.ko /home/dell/mirafra/tcp_ip/Kernel_server.o /home/dell/mirafra/tcp_ip/Kernel_server.mod.o

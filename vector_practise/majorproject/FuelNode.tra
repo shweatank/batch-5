@@ -1,0 +1,25 @@
+*** Creating Trace Output File 'FuelNode.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"fuelnode.o"'
+### List of Objects: adding '"delay.o"'
+### List of Objects: adding '"can.o"'
+### List of Objects: adding '"adc.o"'
+### List of Objects: adding '"pinconnect_block.o"'
+### List of Objects: adding '"lcd.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "fuelnode.o" "delay.o" "can.o" "adc.o" "pinconnect_block.o" "lcd.o" --strict --scatter "FuelNode.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\FuelNode.map" -o "FuelNode.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'FuelNode.axf'
+### ADS-LD Command File: 'FuelNode.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'FuelNode.lnp', Handle=0x000002CC
+### Writing '.lnp' file
+### ADS-LD Command file 'FuelNode.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

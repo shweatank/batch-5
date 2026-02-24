@@ -1,0 +1,110 @@
+Examples of Bash Shell Features
+=================================
+
+Learning Objectives
+-------------------
+After completing this reading, you will be able to:
+
+- List examples of metacharacters
+- Use quoting to specify literal or special character meanings
+- Implement input and output redirection
+- Apply command substitution
+- Describe applications for command line arguments
+
+Metacharacters
+--------------
+Metacharacters are characters having special meaning that the shell interprets as instructions.
+
+Metacharacter — Meaning
+#  — Precedes a comment
+;  — Command separator
+*  — Filename expansion wildcard
+?  — Single character wildcard in filename expansion
+
+Pound #
+-------
+The # metacharacter is used to represent comments in shell scripts. Anything after # on a line is ignored.
+
+#!/bin/bash
+# This is a comment
+echo "Hello, world!"  # This is another comment
+
+Semicolon ;
+-----------
+Separates multiple commands on a single line:
+
+echo "Hello, "; echo "world!"
+
+Asterisk *
+----------
+Wildcard matching any sequence of characters:
+
+ls *.txt
+
+Question mark ?
+---------------
+Wildcard matching a single character:
+
+ls file?.txt
+
+Quoting
+-------
+Symbol — Meaning
+\     — Escape metacharacter interpretation
+" "   — Interpret metacharacters within string
+' '   — Escape all metacharacters literally
+
+Backslash -----------
+Used to escape characters:
+
+touch file\ with\ space.txt
+
+Double quotes " "
+-----------------
+Allow variable expansion:
+
+echo "Hello $USER"
+
+Single quotes ' '
+-----------------
+Interpret everything literally:
+
+echo 'Hello $USER'
+
+Input/Output Redirection
+------------------------
+>    — Redirect output (overwrite)
+>>   — Append output
+2>   — Redirect error (overwrite)
+2>>  — Append error
+<    — Redirect input
+
+Examples:
+
+ls > files.txt
+ls >> files.txt
+ls non-existent 2> error.txt
+ls non-existent 2>> error.txt
+sort < data.txt
+
+Command Substitution
+--------------------
+Use output of one command inside another:
+
+here=$(pwd)
+cd some/other/path
+cd "$here"
+
+Command Line Arguments
+----------------------
+Arguments passed after script name:
+
+./MyBashScript.sh arg1 arg2
+
+Summary
+-------
+- Metacharacters like #, ;, *, ? have special meanings  
+- Quoting controls literal vs interpreted text  
+- IO redirection changes input/output sources  
+- Command substitution uses output of commands  
+- Command line arguments pass data into scripts

@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "delay.o" "lcd.o" "assignment2_lcd8.o" --strict --scatter "assignment_lcd8.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\assignment_lcd8.map" -o "assignment_lcd8.axf"

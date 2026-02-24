@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/ili9220_lcd/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team1/rasberry_pi/ili9220_lcd/Module.symvers -n -T /home/team1/rasberry_pi/ili9220_lcd/modules.order -i Module.symvers -e 

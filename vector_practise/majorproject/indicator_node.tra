@@ -1,0 +1,23 @@
+*** Creating Trace Output File 'indicator_node.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"indicatornode.o"'
+### List of Objects: adding '"indicator.o"'
+### List of Objects: adding '"can.o"'
+### List of Objects: adding '"delay.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "indicatornode.o" "indicator.o" "can.o" "delay.o" --strict --scatter "indicator_node.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\indicator_node.map" -o "indicator_node.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'indicator_node.axf'
+### ADS-LD Command File: 'indicator_node.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'indicator_node.lnp', Handle=0x000000FC
+### Writing '.lnp' file
+### ADS-LD Command file 'indicator_node.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "ca_mux_7seg.o" --omf_browse "ca_mux_7seg.crf" --depend "ca_mux_7seg.d" "ca_mux_7seg.c"

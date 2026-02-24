@@ -1,0 +1,7 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\uart_peripheral.o"
+--strict --scatter ".\uart_peripheral.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\uart_peripheral.map" -o .\uart_peripheral.axf

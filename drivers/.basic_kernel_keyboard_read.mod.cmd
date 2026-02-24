@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/basic_kernel_keyboard_read.mod := printf '%s\n'   basic_kernel_keyboard_read.o | awk '!x[$$0]++ { print("/home/dell/mirafra/drivers/"$$0) }' > /home/dell/mirafra/drivers/basic_kernel_keyboard_read.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/basic_usb_detection.mod := printf '%s\n'   basic_usb_detection.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/"$$0) }' > /home/team1/rasberry_pi/basic_usb_detection.mod

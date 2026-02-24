@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/basic_usb_detection.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/rasberry_pi/basic_usb_detection.ko /home/team1/rasberry_pi/basic_usb_detection.o /home/team1/rasberry_pi/basic_usb_detection.mod.o /home/team1/rasberry_pi/.module-common.o

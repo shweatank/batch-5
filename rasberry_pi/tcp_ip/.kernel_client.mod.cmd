@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/tcp_ip/kernel_client.mod := printf '%s\n'   kernel_client.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/tcp_ip/"$$0) }' > /home/team1/rasberry_pi/tcp_ip/kernel_client.mod

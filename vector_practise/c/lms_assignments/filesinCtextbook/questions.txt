@@ -1,0 +1,22 @@
+1. Write a program to copy the contents of source file to N no of destination files.
+
+Hint: Use command line arguments for entering the names of source & destination file names.
+
+2. Write a program to append the contents of one file at the end of another file.
+
+3. Write a program to copy one word at a time from two different source files to one destination file. The destination file at last should contain the alternate words from the two source files. If there are extra words in one of the source file, those should be copied sequentially.
+
+4. Write a program to read the contents of one file and convert it to upper case and copy it to another file.
+
+5.Write a program that can be used at command prompt as a calculating utility. The usage of the program is shown below:
+./a.out operator n m Where, n and m are two integer operands. Operator can be any one of the arithmetic or comparison operators. If arithmetic operator is supplied, the output should be result of the operation. If comparison operator is supplied then the output should be True or False.
+
+6.What would be the output of the following program? main(int argc, char **argv)
+
+{
+
+argc = argc - (argc-1);
+
+printf ("%s", argv[argc-1]);
+
+}

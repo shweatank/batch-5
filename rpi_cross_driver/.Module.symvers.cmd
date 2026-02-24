@@ -1,0 +1,1 @@
+savedcmd_/home/dell/rpi_cross_driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/rpi_cross_driver/Module.symvers -T /home/dell/rpi_cross_driver/modules.order -i Module.symvers -e 

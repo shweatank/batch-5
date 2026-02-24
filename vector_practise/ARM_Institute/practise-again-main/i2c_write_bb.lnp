@@ -1,0 +1,7 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\i2c_bb.o"
+--strict --scatter ".\i2c_write_bb.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\i2c_write_bb.map" -o .\i2c_write_bb.axf

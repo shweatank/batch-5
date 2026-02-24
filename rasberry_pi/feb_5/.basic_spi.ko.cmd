@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/feb_5/basic_spi.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/rasberry_pi/feb_5/basic_spi.ko /home/team1/rasberry_pi/feb_5/basic_spi.o /home/team1/rasberry_pi/feb_5/basic_spi.mod.o /home/team1/rasberry_pi/feb_5/.module-common.o

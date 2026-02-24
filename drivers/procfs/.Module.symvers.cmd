@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/procfs/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/mirafra/drivers/procfs/Module.symvers -T /home/dell/mirafra/drivers/procfs/modules.order -i Module.symvers -e 

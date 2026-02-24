@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/project/iaq.o := aarch64-linux-gnu-ld -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments   -r -o /home/team1/rasberry_pi/project/iaq.o @/home/team1/rasberry_pi/project/iaq.mod 

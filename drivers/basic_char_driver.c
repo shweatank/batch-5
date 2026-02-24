@@ -15,6 +15,7 @@
 #include <linux/init.h>     // __init, __exit
 #include <linux/fs.h>       // register_chrdev, file_operations
 #include <linux/uaccess.h>  // copy_to_user, copy_from_user
+#include <linux/cdev.h>
 
 #define DEVICE_NAME "basic_char"
 #define BUF_SIZE    128
@@ -22,8 +23,8 @@
 static int major_number;
 static char kernel_buffer[BUF_SIZE];
 static int buffer_size;
-
-
+static struct cdev my_cdev;
+/*
 void reverse(char *str) {
         int i = 0,j = strlen(str)-1;
         for(;i<j;i++,j--) {
@@ -78,7 +79,7 @@ void operation(char *str)
     reverse(str);
 
 }
-
+*/
 
 /*
  * Called when user opens /dev/basic_char
@@ -121,7 +122,7 @@ static ssize_t basic_read(struct file *file,
      */
 
     //reverse(kernel_buffer);
-   operation(kernel_buffer);
+//   operation(kernel_buffer);
 
     if (copy_to_user(user_buffer,
                      kernel_buffer + *offset,
@@ -187,8 +188,10 @@ static int __init basic_char_init(void)
         printk(KERN_ERR "basic_char: failed to register device\n");
         return major_number;
     }
-    int num = 10/0;
-   	printk(KERN_INFO "value: %d\n",num);
+
+    cdev_init(&my_cdev,&basic_fops);
+    cdev_add(&my_cdev, major_number,1);
+
     printk(KERN_INFO "basic_char: loaded\n");
     printk(KERN_INFO "basic_char: major number = %d\n", major_number);
     printk(KERN_INFO "Create device node with:\n");
@@ -202,6 +205,7 @@ static int __init basic_char_init(void)
  */
 static void __exit basic_char_exit(void)
 {
+    cdev_del(&my_cdev);
     unregister_chrdev(major_number, DEVICE_NAME);
     printk(KERN_INFO "basic_char: unloaded\n");
 }

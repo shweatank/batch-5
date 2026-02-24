@@ -1,0 +1,26 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\v24he11d5\arm_he11d5\majorproject\indicator.uvproj
+Project File Date:  12/09/2025
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling indicatornode.c...
+compiling indicator.c...
+indicator.c(10): error:  #20: identifier "l" is undefined
+indicator.c:       if(l==0 && r==0)
+indicator.c:          ^
+indicator.c(10): error:  #20: identifier "r" is undefined
+indicator.c:       if(l==0 && r==0)
+indicator.c:                  ^
+indicator.c(43): warning:  #1-D: last line of file ends without a newline
+indicator.c:    
+indicator.c:    ^
+indicator.c: indicator.c: 1 warning, 2 errors
+compiling can.c...
+compiling delay.c...
+Target not created

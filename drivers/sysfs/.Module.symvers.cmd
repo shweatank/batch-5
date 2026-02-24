@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/sysfs/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/mirafra/drivers/sysfs/Module.symvers -T /home/dell/mirafra/drivers/sysfs/modules.order -i Module.symvers -e 

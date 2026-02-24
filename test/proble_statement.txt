@@ -1,0 +1,331 @@
+Submission rules (unchanged):
+
+Single file: techdhaba_submission.c
+
+Candidate identity block in top-of-file (exact format).
+
+Mandatory APIs:
+
+int td_init(void);
+int td_run(const void *in_buf, unsigned int in_len,
+           void *out_buf, unsigned int *out_len);
+int td_cleanup(void);
+
+
+Compile with: gcc -std=c11 -Wall -Wextra -Werror -O2 techdhaba_submission.c
+
+Return convention unchanged (0 success, <0 logical error, >0 system error).
+
+General change applied to every problem
+
+Difficulty: set to Intermediate for all problems.
+
+Complexity reductions applied:
+
+Smaller fixed buffer sizes.
+
+Fewer commands / smaller command formats.
+
+Simpler correctness conditions (no heavy stress/edge-case handling).
+
+Keep deterministic, testable behavior (good for automated grading).
+
+Device driver problems (P10–P12) remain the same core content you specified; complexity reduced only in peripheral aspects (e.g., simulated behavior where appropriate). The file name and API signatures remain unchanged.
+
+🧠 SECTION 1: Advanced C Programming (Intermediate)
+P1 — Function Pointer Plugin System (Intermediate)
+
+Goal: runtime selectable operations with function pointers.
+
+Simplifications:
+
+Only two operations supported per plugin.
+
+Single test vector.
+
+No plugin loading from files — choose plugin based on an op_mode input field.
+
+Input (in_buf) (12 bytes):
+
+struct {
+  uint32_t op;     // 1=op1, 2=op2
+  int32_t  a;
+  int32_t  b;
+};
+
+
+Output (out_buf) (4 bytes):
+
+int32_t result;
+
+
+Constraints: Implementation must use a struct of function pointers for dispatch (no giant switch for the core logic).
+
+P2 — Memory Pool Allocator (Intermediate)
+
+Goal: simple fixed-size allocator simulation.
+
+Simplifications:
+
+Pool size small (e.g., 4 KB).
+
+Single allocation size bucket allowed (variable size but allocator may fail if no contiguous free block).
+
+Simple free validation: only free handles previously returned.
+
+Input format:
+
+u32 cmd_count
+repeat cmd_count:
+  u8 cmd   // 1=ALLOC, 2=FREE
+  u32 arg  // ALLOC=size, FREE=handle
+
+
+Output format:
+
+u32 resp_count
+repeat resp_count:
+  int32_t status
+  u32 handle_or_zero
+
+
+Notes: Handles are integer indexes. Implementation must not use malloc inside allocator.
+
+P3 — Bitwise Protocol Parser (Intermediate)
+
+Goal: parse 32-bit frame, toggle one flag, verify CRC with a simple XOR.
+
+Simplifications:
+
+CRC = XOR of the other three bytes (simpler check).
+
+Only a single flag toggle operation (action input bitset).
+
+No complex endianness conversions — assume little-endian host.
+
+Input (8 bytes):
+
+uint32_t frame;
+uint32_t action; // bit0 => toggle flag bit2
+
+
+Output (8 bytes):
+
+uint32_t new_frame;
+int32_t  status; // 0 ok, -1 CRC fail
+
+🧩 SECTION 2: Data Structures (Intermediate)
+P4 — Circular Buffer for Logs (Intermediate)
+
+Goal: fixed-size ring buffer for short messages.
+
+Simplifications:
+
+Message max length 32 bytes.
+
+Single-producer single-consumer usage assumed (no heavy lockless subtleties).
+
+Overwrite oldest when full.
+
+Input:
+
+u32 cmd_count
+repeat:
+  u8 cmd    // 1=PUSH, 2=POP
+  u8 len    // for PUSH only
+  u8 data[len]
+
+
+Output:
+
+u32 pop_count
+repeat pop_count:
+  u8 len
+  u8 data[len]
+
+P5 — LRU Cache (Intermediate)
+
+Goal: basic LRU cache with O(1) semantics for get/put.
+
+Simplifications:
+
+Small capacity (≤16) for tests.
+
+Keys and values are 32-bit integers.
+
+Use simple open-addressing hash or small fixed hash + doubly-linked list.
+
+Input:
+
+u32 capacity
+u32 op_count
+repeat:
+  u8 op   // 1=PUT, 2=GET
+  u32 key
+  u32 value // only for PUT
+
+
+Output:
+
+u32 get_count
+repeat:
+  int32_t found
+  u32 value_if_found
+
+P6 — Detect Loop in Linked List (Intermediate)
+
+Goal: detect cycle and report start index.
+
+Simplifications:
+
+Max nodes = 128.
+
+Return first index of loop if present.
+
+Input:
+
+u32 n
+u32 next[n]   // 0xFFFFFFFF = NULL
+u32 head
+
+
+Output:
+
+u32 has_cycle  // 0/1
+u32 entry_index // valid if has_cycle=1 else 0xFFFFFFFF
+
+🖥️ SECTION 3: System Programming (Intermediate)
+P7 — Multi-Process Log Aggregator (Intermediate)
+
+Goal: parent merges child logs (simulated input).
+
+Simplifications:
+
+Simulated streams provided in in_buf instead of real fork/IPC (so automation can run in CI).
+
+Parent must merge by timestamp and output merged list.
+
+Input:
+
+u32 stream_count
+for each stream:
+  u32 record_count
+  for each record:
+    u32 ts
+    u8  len
+    u8  msg[len]
+
+
+Output: merged records in ascending timestamp order (same record format).
+
+(Note: This keeps the original learning objective — IPC & merging — but uses simulated input for automated grading.)
+
+P8 — File Copy with mmap (Intermediate)
+
+Goal: simulate page-aligned chunk copy using provided buffers.
+
+Simplifications:
+
+Input contains page_size, len, and data.
+
+Implement copying in page_size chunks; compute and return simple checksum.
+
+Input:
+
+u32 page_size
+u32 len
+u8  data[len]
+
+
+Output:
+
+u32 len
+u8  copied[len]
+u32 checksum
+
+P9 — Thread Pool with Work Queue (Intermediate)
+
+Goal: given tasks with durations, produce a feasible order as if executed by a fixed number of workers.
+
+Simplifications:
+
+Simulate scheduling deterministically rather than implement real threads inside the submission.
+
+Workers count fixed small number (provided in input).
+
+Tasks independent — no dependencies for intermediate version.
+
+Input:
+
+u32 worker_count
+u32 task_count
+for each task:
+  u32 id
+  u32 duration
+
+
+Output:
+
+u32 order_count
+u32 order[order_count]  // simple greedy schedule order
+
+🧩 SECTION 4: Device Drivers & Kernel Interaction (Intermediate)
+
+You asked "make device driver same as it is (don't change file name return type)".
+I left the device-driver problems P10–P12 structurally unchanged except for reducing peripheral complexity (use simulated inputs where hardware can't be accessed). The API and file name remain the same.
+
+P10 — Character Device Counter (Intermediate) — UNCHANGED CORE
+
+Goal: simulate char device lifecycle: open/read/write/ioctl.
+
+Input:
+
+u32 op_count
+for each op:
+  u8 op     // 1=OPEN,2=READ,3=WRITE,4=IOCTL_RESET
+  u32 arg   // for WRITE: increment value
+
+
+Output:
+
+u32 read_count
+u32 values[read_count]
+
+
+Notes: Behavior should match the conceptual driver: open initializes, read returns counter, write increments, ioctl resets.
+
+P11 — GPIO LED Driver (Conceptual) (Intermediate)
+
+Goal: explain and simulate probe/blink/remove lifecycle.
+
+Input:
+
+u32 op_count
+for each op:
+  u8 op   // 1=PROBE,2=BLINK,3=REMOVE
+  u32 arg // blink count
+
+
+Output:
+
+int32_t status[op_count]
+
+
+Notes: PROBE allocates simulated resources, BLINK returns success if probed, REMOVE frees resources. Keep simulation deterministic.
+
+P12 — User Space ↔ Kernel Space Interaction (Intermediate)
+
+Goal: decision engine: choose sysfs/procfs/ioctl/netlink for simple scenarios.
+
+Input:
+
+u32 q_count
+u8 scenario[q_count]  // 1=stats,2=config,3=events,4=debug
+
+
+Output:
+
+u8 choice[q_count] // 1=sysfs 2=procfs 3=ioctl 4=netlink
+
+
+Notes: Accepts multiple queries; choose the most appropriate interface for each.

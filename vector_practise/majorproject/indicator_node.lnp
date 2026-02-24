@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "indicatornode.o" "indicator.o" "can.o" "delay.o" --strict --scatter "indicator_node.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\indicator_node.map" -o "indicator_node.axf"

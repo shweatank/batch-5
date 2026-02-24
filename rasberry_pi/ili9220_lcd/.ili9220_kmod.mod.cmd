@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/ili9220_lcd/ili9220_kmod.mod := printf '%s\n'   ili9220_kmod.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/ili9220_lcd/"$$0) }' > /home/team1/rasberry_pi/ili9220_lcd/ili9220_kmod.mod

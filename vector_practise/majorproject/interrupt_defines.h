@@ -1,0 +1,3 @@
+#define EINT0_VIC_CHN0 14
+#define EINT1_VIC_CHN0 15
+#define EINT2_VIC_CHN0 16

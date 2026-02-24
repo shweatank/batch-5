@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "lcd_workshop.o" --omf_browse "lcd_workshop.crf" --depend "lcd_workshop.d" "lcd_workshop.c"

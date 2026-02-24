@@ -33,21 +33,35 @@ MODULE_INFO(retpoline, "Y");
 
 
 
-static const struct modversion_info ____versions[]
-__used __section("__versions") = {
-	{ 0x88db9f48, "__check_object_size" },
-	{ 0x13c49cc2, "_copy_from_user" },
-	{ 0x754d539c, "strlen" },
-	{ 0x6b10bee1, "_copy_to_user" },
-	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x122c3a7e, "_printk" },
-	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0x864e77e5, "__register_chrdev" },
-	{ 0x6bc3fbc0, "__unregister_chrdev" },
-	{ 0xe2fd41e5, "module_layout" },
-};
+static const char ____versions[]
+__used __section("__versions") =
+	"\x1c\x00\x00\x00\x5b\x59\x29\xb3"
+	"__register_chrdev\0\0\0"
+	"\x14\x00\x00\x00\xe6\xac\xda\x81"
+	"cdev_init\0\0\0"
+	"\x14\x00\x00\x00\xfa\x86\x7b\x6a"
+	"cdev_add\0\0\0\0"
+	"\x14\x00\x00\x00\xa4\x1c\xd0\x67"
+	"cdev_del\0\0\0\0"
+	"\x1c\x00\x00\x00\xc0\xfb\xc3\x6b"
+	"__unregister_chrdev\0"
+	"\x14\x00\x00\x00\xbb\x6d\xfb\xbd"
+	"__fentry__\0\0"
+	"\x10\x00\x00\x00\x7e\x3a\x2c\x12"
+	"_printk\0"
+	"\x1c\x00\x00\x00\xca\x39\x82\x5b"
+	"__x86_return_thunk\0\0"
+	"\x1c\x00\x00\x00\x48\x9f\xdb\x88"
+	"__check_object_size\0"
+	"\x18\x00\x00\x00\xc2\x9c\xc4\x13"
+	"_copy_from_user\0"
+	"\x18\x00\x00\x00\xe1\xbe\x10\x6b"
+	"_copy_to_user\0\0\0"
+	"\x18\x00\x00\x00\x2e\x9f\xe7\xf6"
+	"module_layout\0\0\0"
+	"\x00\x00\x00\x00\x00\x00\x00\x00";
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "30B7886F7BDF24469C0F4BF");
+MODULE_INFO(srcversion, "5B31348D9A970E99E46A3DE");

@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/basic_kernel_thread.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/drivers/basic_kernel_thread.ko /home/dell/mirafra/drivers/basic_kernel_thread.o /home/dell/mirafra/drivers/basic_kernel_thread.mod.o

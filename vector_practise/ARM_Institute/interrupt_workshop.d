@@ -1,0 +1,9 @@
+interrupt_workshop.o: interrupt_workshop.c
+interrupt_workshop.o: C:\KeilARM\ARM\INC\Philips\lpc21xx.h
+interrupt_workshop.o: types.h
+interrupt_workshop.o: pin_function_defines.h
+interrupt_workshop.o: pin_connect_block.h
+interrupt_workshop.o: types.h
+interrupt_workshop.o: lcd_defines.h
+interrupt_workshop.o: lcd.h
+interrupt_workshop.o: types.h

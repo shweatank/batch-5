@@ -1,0 +1,1 @@
+savedcmd_/home/dell/rpi_cross_driver/hello.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/rpi_cross_driver/hello.ko /home/dell/rpi_cross_driver/hello.o /home/dell/rpi_cross_driver/hello.mod.o /home/dell/rpi_cross_driver/.module-common.o

@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/basic_tasklet.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/drivers/basic_tasklet.ko /home/dell/mirafra/drivers/basic_tasklet.o /home/dell/mirafra/drivers/basic_tasklet.mod.o

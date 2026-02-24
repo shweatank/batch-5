@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/basic_procfs.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/mirafra/drivers/basic_procfs.ko /home/dell/mirafra/drivers/basic_procfs.o /home/dell/mirafra/drivers/basic_procfs.mod.o

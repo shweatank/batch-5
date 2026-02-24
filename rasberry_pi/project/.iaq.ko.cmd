@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/project/iaq.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team1/rasberry_pi/project/iaq.ko /home/team1/rasberry_pi/project/iaq.o /home/team1/rasberry_pi/project/iaq.mod.o /home/team1/rasberry_pi/project/.module-common.o

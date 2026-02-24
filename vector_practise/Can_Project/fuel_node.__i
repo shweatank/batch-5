@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "fuel_node.o" --omf_browse "fuel_node.crf" --depend "fuel_node.d" "Fuel_node.c"

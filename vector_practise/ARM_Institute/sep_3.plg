@@ -1,0 +1,129 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\v24he11a13\ARM\sep_3.uvproj
+Project File Date:  09/03/2025
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling show_bin_eq.c...
+show_bin_eq.c(16): warning:  #223-D: function "srand" declared implicitly
+show_bin_eq.c:          srand(seed++);
+show_bin_eq.c:          ^
+show_bin_eq.c: show_bin_eq.c: 1 warning, 0 errors
+linking...
+sep_3.axf: Error: L6218E: Undefined symbol delayMs (referred from show_bin_eq.o).
+sep_3.axf: Error: L6218E: Undefined symbol digitalRead (referred from show_bin_eq.o).
+sep_3.axf: Error: L6218E: Undefined symbol digitalWrite (referred from show_bin_eq.o).
+sep_3.axf: Error: L6218E: Undefined symbol setPinMode (referred from show_bin_eq.o).
+sep_3.axf: Not enough information to list image symbols.
+sep_3.axf: Finished: 1 information, 0 warning and 4 error messages.
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+compiling led_on.c...
+linking...
+Program Size: Code=904 RO-data=16 RW-data=0 ZI-data=1256  
+"sep_3.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling led_on.c...
+linking...
+Program Size: Code=888 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling led_on.c...
+linking...
+Program Size: Code=896 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling show_bin_eq.c...
+show_bin_eq.c(16): warning:  #223-D: function "srand" declared implicitly
+show_bin_eq.c:          srand(seed++);
+show_bin_eq.c:          ^
+show_bin_eq.c: show_bin_eq.c: 1 warning, 0 errors
+linking...
+led_on.axf: Error: L6218E: Undefined symbol digitalRead (referred from show_bin_eq.o).
+led_on.axf: Error: L6218E: Undefined symbol digitalWrite (referred from show_bin_eq.o).
+led_on.axf: Error: L6218E: Undefined symbol setPinMode (referred from show_bin_eq.o).
+led_on.axf: Not enough information to list image symbols.
+led_on.axf: Finished: 1 information, 0 warning and 3 error messages.
+Target not created
+Build target 'Target 1'
+compiling show_bin_eq.c...
+show_bin_eq.c(16): warning:  #223-D: function "srand" declared implicitly
+show_bin_eq.c:          srand(seed++);
+show_bin_eq.c:          ^
+show_bin_eq.c(25): warning:  #223-D: function "rand" declared implicitly
+show_bin_eq.c:                          num = (rand() % 255) + 1;
+show_bin_eq.c:                                 ^
+show_bin_eq.c: show_bin_eq.c: 2 warnings, 0 errors
+compiling arduino_api.c...
+linking...
+Program Size: Code=1948 RO-data=32 RW-data=4 ZI-data=1484  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling show_bin_eq.c...
+show_bin_eq.c(16): warning:  #223-D: function "srand" declared implicitly
+show_bin_eq.c:          srand(seed++);
+show_bin_eq.c:          ^
+show_bin_eq.c(25): warning:  #223-D: function "rand" declared implicitly
+show_bin_eq.c:                          num = (rand() % 31) + 1;
+show_bin_eq.c:                                 ^
+show_bin_eq.c: show_bin_eq.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=1916 RO-data=32 RW-data=4 ZI-data=1484  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling arduino_api.c...
+linking...
+Program Size: Code=1940 RO-data=32 RW-data=4 ZI-data=1484  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling show_bin_eq1.c...
+show_bin_eq1.c(2): error:  #5: cannot open source input file "delays.h": No such file or directory
+show_bin_eq1.c:   #include "delays.h"
+show_bin_eq1.c:                      ^
+show_bin_eq1.c: show_bin_eq1.c: 0 warnings, 1 error
+Target not created
+Build target 'Target 1'
+compiling show_bin_eq1.c...
+show_bin_eq1.c(12): warning:  #223-D: function "srand" declared implicitly
+show_bin_eq1.c:         srand(seed++);
+show_bin_eq1.c:         ^
+show_bin_eq1.c(19): warning:  #223-D: function "rand" declared implicitly
+show_bin_eq1.c:                         num = (rand() % 255) + 1;
+show_bin_eq1.c:                                ^
+show_bin_eq1.c(27): warning:  #1-D: last line of file ends without a newline
+show_bin_eq1.c:   }
+show_bin_eq1.c:    ^
+show_bin_eq1.c: show_bin_eq1.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=1544 RO-data=32 RW-data=4 ZI-data=1484  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling show_bin_eq1.c...
+show_bin_eq1.c(12): warning:  #223-D: function "srand" declared implicitly
+show_bin_eq1.c:         srand(seed++);
+show_bin_eq1.c:         ^
+show_bin_eq1.c(28): warning:  #1-D: last line of file ends without a newline
+show_bin_eq1.c:   }
+show_bin_eq1.c:    ^
+show_bin_eq1.c: show_bin_eq1.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=1080 RO-data=32 RW-data=4 ZI-data=1484  
+FromELF: creating hex file...
+"led_on.axf" - 0 Error(s), 2 Warning(s).

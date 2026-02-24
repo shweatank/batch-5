@@ -1,0 +1,9 @@
+fuel_node.o: Fuel_node.c
+fuel_node.o: C:\KeilARM\ARM\INC\Philips\LPC21xx.h
+fuel_node.o: types.h
+fuel_node.o: adc.h
+fuel_node.o: lcd.h
+fuel_node.o: lcd_defines.h
+fuel_node.o: delay.h
+fuel_node.o: can.h
+fuel_node.o: can_defines.h

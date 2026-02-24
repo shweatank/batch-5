@@ -1,0 +1,14 @@
+.\rtc.o: rtc.c
+.\rtc.o: rtc_defines.h
+.\rtc.o: C:\Keil\ARM\Inc\Philips\lpc21xx.h
+.\rtc.o: types.h
+.\rtc.o: delay.h
+.\rtc.o: types.h
+.\rtc.o: defines.h
+.\rtc.o: lcd_defines.h
+.\rtc.o: lcd.h
+.\rtc.o: types.h
+.\rtc.o: kpm.h
+.\rtc.o: types.h
+.\rtc.o: interrupt_defines.h
+.\rtc.o: pin_function_defines.h

@@ -1,0 +1,9 @@
+kpm_lcd_test2.o: kpm_lcd_test2.c
+kpm_lcd_test2.o: C:\KeilARM\ARM\INC\Philips\lpc21xx.h
+kpm_lcd_test2.o: lcd.h
+kpm_lcd_test2.o: types.h
+kpm_lcd_test2.o: lcd_defines.h
+kpm_lcd_test2.o: types.h
+kpm_lcd_test2.o: kpm_defines.h
+kpm_lcd_test2.o: kpm.h
+kpm_lcd_test2.o: types.h

@@ -1,0 +1,26 @@
+*** Creating Trace Output File 'main_node.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"interrupt.o"'
+### List of Objects: adding '"mainnode.o"'
+### List of Objects: adding '"pinconnect_block.o"'
+### List of Objects: adding '"can.o"'
+### List of Objects: adding '"lcd.o"'
+### List of Objects: adding '"delay.o"'
+### List of Objects: adding '"ds18b20.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "interrupt.o" "mainnode.o" "pinconnect_block.o" "can.o" "lcd.o" "delay.o" "ds18b20.o" --strict --scatter "main_node.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\main_node.map" -o "main_node.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'main_node.axf'
+### ADS-LD Command File: 'main_node.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'main_node.lnp', Handle=0x000002A8
+### Writing '.lnp' file
+### ADS-LD Command file 'main_node.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

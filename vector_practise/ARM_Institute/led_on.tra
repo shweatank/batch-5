@@ -1,0 +1,22 @@
+*** Creating Trace Output File 'led_on.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"delay.o"'
+### List of Objects: adding '"arduino_api.o"'
+### List of Objects: adding '"show_bin_eq1.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "delay.o" "arduino_api.o" "show_bin_eq1.o" --strict --scatter "led_on.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\led_on.map" -o "led_on.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'led_on.axf'
+### ADS-LD Command File: 'led_on.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'led_on.lnp', Handle=0x00000464
+### Writing '.lnp' file
+### ADS-LD Command file 'led_on.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

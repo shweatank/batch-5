@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/project/iaq.mod := printf '%s\n'   iaq_main.o iaq_timer.o iaq_worker.o iaq_thread.o iaq_buffer.o iaq_dts.o iaq_socket.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/project/"$$0) }' > /home/team1/rasberry_pi/project/iaq.mod

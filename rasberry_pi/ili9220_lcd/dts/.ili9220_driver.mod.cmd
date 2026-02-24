@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/ili9220_lcd/dts/ili9220_driver.mod := printf '%s\n'   ili9220_driver.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/ili9220_lcd/dts/"$$0) }' > /home/team1/rasberry_pi/ili9220_lcd/dts/ili9220_driver.mod

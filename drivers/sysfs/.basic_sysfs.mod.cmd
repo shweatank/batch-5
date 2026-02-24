@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/sysfs/basic_sysfs.mod := printf '%s\n'   basic_sysfs.o | awk '!x[$$0]++ { print("/home/dell/mirafra/drivers/sysfs/"$$0) }' > /home/dell/mirafra/drivers/sysfs/basic_sysfs.mod

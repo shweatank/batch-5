@@ -1,0 +1,12 @@
+mainnode.o: mainnode.c
+mainnode.o: C:\KeilARM\ARM\INC\Philips\lpc21xx.h
+mainnode.o: delay.h
+mainnode.o: types.h
+mainnode.o: lcd_defines.h
+mainnode.o: lcd.h
+mainnode.o: types.h
+mainnode.o: interrupt.h
+mainnode.o: can.h
+mainnode.o: types.h
+mainnode.o: can_defines.h
+mainnode.o: DS18B20.h

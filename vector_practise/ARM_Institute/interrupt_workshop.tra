@@ -1,0 +1,24 @@
+*** Creating Trace Output File 'interrupt_workshop.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"lcd.o"'
+### List of Objects: adding '"delay.o"'
+### List of Objects: adding '"seg.o"'
+### List of Objects: adding '"interrupt_workshop.o"'
+### List of Objects: adding '"pin_connect_block.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "lcd.o" "delay.o" "seg.o" "interrupt_workshop.o" "pin_connect_block.o" --strict --scatter "interrupt_workshop.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\interrupt_workshop.map" -o "interrupt_workshop.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'interrupt_workshop.axf'
+### ADS-LD Command File: 'interrupt_workshop.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'interrupt_workshop.lnp', Handle=0x0000033C
+### Writing '.lnp' file
+### ADS-LD Command file 'interrupt_workshop.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

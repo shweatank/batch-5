@@ -1,0 +1,1 @@
+savedcmd_/home/team1/rasberry_pi/ili9220_lcd/rpi_spi_display.mod := printf '%s\n'   rpi_spi_display.o | awk '!x[$$0]++ { print("/home/team1/rasberry_pi/ili9220_lcd/"$$0) }' > /home/team1/rasberry_pi/ili9220_lcd/rpi_spi_display.mod

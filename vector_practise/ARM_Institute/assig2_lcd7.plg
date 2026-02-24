@@ -1,0 +1,61 @@
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(16): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                                      
+defines.h:                                                                      ^
+lcd.c(175): warning:  #223-D: function "strlen" declared implicitly
+lcd.c:          u8 last = str[strlen(str) - 1];
+lcd.c:                        ^
+lcd.c: lcd.c: 2 warnings, 0 errors
+compiling seg.c...
+compiling assignment2_lcd7.c...
+assignment2_lcd7.c(15): warning:  #223-D: function "BinaryInLCD" declared implicitly
+assignment2_lcd7.c:                             BinaryInLCD(i);
+assignment2_lcd7.c:                             ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "j" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:           ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "ch" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c(22): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd7.c:             
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c: assignment2_lcd7.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=4108 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling interrupt_workshop.c...
+interrupt_workshop.c(38): warning:  #223-D: function "delay_s" declared implicitly
+interrupt_workshop.c:                   delay_s(3);
+interrupt_workshop.c:                   ^
+interrupt_workshop.c: interrupt_workshop.c: 1 warning, 0 errors
+linking...
+interrupt_workshop.axf: Error: L6218E: Undefined symbol CfgPortPinFunc (referred from interrupt_workshop.o).
+interrupt_workshop.axf: Not enough information to list image symbols.
+interrupt_workshop.axf: Finished: 1 information, 0 warning and 1 error messages.
+Target not created
+Build target 'Target 1'
+linking...
+interrupt_workshop.axf: Error: L6218E: Undefined symbol CfgPortPinFunc (referred from interrupt_workshop.o).
+interrupt_workshop.axf: Not enough information to list image symbols.
+interrupt_workshop.axf: Finished: 1 information, 0 warning and 1 error messages.
+Target not created
+Build target 'Target 1'
+compiling pin_connect_block.c...
+linking...
+Program Size: Code=4324 RO-data=32 RW-data=24 ZI-data=1256  
+FromELF: creating hex file...
+"interrupt_workshop.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling interrupt_workshop.c...
+interrupt_workshop.c(38): warning:  #223-D: function "delay_s" declared implicitly
+interrupt_workshop.c:                   delay_s(3);
+interrupt_workshop.c:                   ^
+interrupt_workshop.c: interrupt_workshop.c: 1 warning, 0 errors
+linking...
+Program Size: Code=4304 RO-data=32 RW-data=24 ZI-data=1256  
+FromELF: creating hex file...
+"interrupt_workshop.axf" - 0 Error(s), 1 Warning(s).

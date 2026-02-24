@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "copywithdelay.o" --omf_browse "copywithdelay.crf" --depend "copywithdelay.d" "copyWithDelay.c"

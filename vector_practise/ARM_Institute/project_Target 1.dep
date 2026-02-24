@@ -1,0 +1,7 @@
+Dependencies for Project 'project', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4BB1C206)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" --list "Startup.lst" --xref -o "Startup.o" --depend "Startup.d")
+F (.\copyWithDelay.c)(0x68A5B08F)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "copywithdelay.o" --omf_browse "copywithdelay.crf" --depend "copywithdelay.d")
+I (delay.h)(0x68A5B06F)
+I (types.h)(0x68A5B0A1)
+F (.\types.h)(0x68B029B8)()
+F (.\delay.h)(0x68B02A7E)()

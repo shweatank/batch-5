@@ -1,0 +1,482 @@
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                              
+defines.h:                                                              ^
+lcd.c(146): warning:  #1-D: last line of file ends without a newline
+lcd.c:   //DecToHexOnLCD(u32 num) {
+lcd.c:                             ^
+lcd.c: lcd.c: 2 warnings, 0 errors
+linking...
+assig2_lcd6.axf: Error: L6218E: Undefined symbol main (referred from rtentry2.o).
+assig2_lcd6.axf: Not enough information to list image symbols.
+assig2_lcd6.axf: Finished: 1 information, 0 warning and 1 error messages.
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+defines.h: lcd.c: 1 warning, 0 errors
+linking...
+assig2_lcd6.axf: Error: L6218E: Undefined symbol main (referred from rtentry2.o).
+assig2_lcd6.axf: Not enough information to list image symbols.
+assig2_lcd6.axf: Finished: 1 information, 0 warning and 1 error messages.
+Target not created
+Build target 'Target 1'
+compiling assignment2_lcd6.c...
+assignment2_lcd6.c(13): warning:  #223-D: function "cmdLCD" declared implicitly
+assignment2_lcd6.c:                     cmdLCD(GOTO_LINE2_POS0);
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c(17): error:  #65: expected a ";"
+assignment2_lcd6.c:                             StrLCD("  ");
+assignment2_lcd6.c:                             ^
+assignment2_lcd6.c(19): warning:  #223-D: function "STRLCD" declared implicitly
+assignment2_lcd6.c:                             STRLCD("  ");
+assignment2_lcd6.c:                             ^
+assignment2_lcd6.c(26): error:  #167: argument of type "char *" is incompatible with parameter of type "u8"
+assignment2_lcd6.c:                             CharLCD(" ");
+assignment2_lcd6.c:                                     ^
+assignment2_lcd6.c(31): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd6.c:                     
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c: assignment2_lcd6.c: 3 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling assignment2_lcd6.c...
+assignment2_lcd6.c(13): warning:  #223-D: function "cmdLCD" declared implicitly
+assignment2_lcd6.c:                     cmdLCD(GOTO_LINE2_POS0);
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c(17): error:  #65: expected a ";"
+assignment2_lcd6.c:                             StrLCD("  ");
+assignment2_lcd6.c:                             ^
+assignment2_lcd6.c(19): warning:  #223-D: function "STRLCD" declared implicitly
+assignment2_lcd6.c:                             STRLCD("  ");
+assignment2_lcd6.c:                             ^
+assignment2_lcd6.c(31): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd6.c:                     
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c: assignment2_lcd6.c: 3 warnings, 1 error
+Target not created
+Build target 'Target 1'
+compiling assignment2_lcd6.c...
+assignment2_lcd6.c(13): warning:  #223-D: function "cmdLCD" declared implicitly
+assignment2_lcd6.c:                     cmdLCD(GOTO_LINE2_POS0);
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c(17): error:  #65: expected a ";"
+assignment2_lcd6.c:                             StrLCD("  ");
+assignment2_lcd6.c:                             ^
+assignment2_lcd6.c(31): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd6.c:                     
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c: assignment2_lcd6.c: 2 warnings, 1 error
+Target not created
+Build target 'Target 1'
+compiling assignment2_lcd6.c...
+assignment2_lcd6.c(13): warning:  #223-D: function "cmdLCD" declared implicitly
+assignment2_lcd6.c:                     cmdLCD(GOTO_LINE2_POS0);
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c(31): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd6.c:                     
+assignment2_lcd6.c:                     ^
+assignment2_lcd6.c: assignment2_lcd6.c: 2 warnings, 0 errors
+linking...
+assig2_lcd6.axf: Error: L6218E: Undefined symbol cmdLCD (referred from assignment2_lcd6.o).
+assig2_lcd6.axf: Not enough information to list image symbols.
+assig2_lcd6.axf: Finished: 1 information, 0 warning and 1 error messages.
+Target not created
+Build target 'Target 1'
+compiling assignment2_lcd6.c...
+assignment2_lcd6.c(31): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd6.c:             
+assignment2_lcd6.c:             ^
+assignment2_lcd6.c: assignment2_lcd6.c: 1 warning, 0 errors
+linking...
+Program Size: Code=3912 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3912 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling lcd_workshop.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+defines.h: lcd_workshop.c: 1 warning, 0 errors
+linking...
+Program Size: Code=3884 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3884 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3912 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(147): error:  #20: identifier "c8" is undefined
+lcd.c:          c8 str[8];
+lcd.c:          ^
+lcd.c(158): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 1 error
+compiling assignment2_lcd7.c...
+assignment2_lcd7.c(15): warning:  #223-D: function "BinaryInLCD" declared implicitly
+assignment2_lcd7.c:                             BinaryInLCD(i);
+assignment2_lcd7.c:                             ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "j" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:           ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "ch" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c(22): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd7.c:             
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c: assignment2_lcd7.c: 4 warnings, 0 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(147): error:  #20: identifier "c8" is undefined
+lcd.c:          c8 str[8];
+lcd.c:          ^
+lcd.c(158): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 1 error
+compiling assignment2_lcd6.c...
+assignment2_lcd6.c(31): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd6.c:             
+assignment2_lcd6.c:             ^
+assignment2_lcd6.c: assignment2_lcd6.c: 1 warning, 0 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(147): error:  #20: identifier "c8" is undefined
+lcd.c:          c8 str[8];
+lcd.c:          ^
+lcd.c(158): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 1 error
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(158): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=3996 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(158): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=3996 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3996 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd6.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(161): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling assignment2_lcd7.c...
+assignment2_lcd7.c(15): warning:  #223-D: function "BinaryInLCD" declared implicitly
+assignment2_lcd7.c:                             BinaryInLCD(i);
+assignment2_lcd7.c:                             ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "j" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:           ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "ch" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c(22): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd7.c:             
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c: assignment2_lcd7.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling assignment2_lcd7.c...
+assignment2_lcd7.c(15): warning:  #223-D: function "BinaryInLCD" declared implicitly
+assignment2_lcd7.c:                             BinaryInLCD(i);
+assignment2_lcd7.c:                             ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "j" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:           ^
+assignment2_lcd7.c(8): warning:  #177-D: variable "ch" was declared but never referenced
+assignment2_lcd7.c:     u32 i,j,ch;
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c(22): warning:  #1-D: last line of file ends without a newline
+assignment2_lcd7.c:             
+assignment2_lcd7.c:             ^
+assignment2_lcd7.c: assignment2_lcd7.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=3904 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(163): error:  #7: unrecognized token
+lcd.c:          `       U32LCD((num >> i) & 1);
+lcd.c:          ^
+lcd.c(163): error:  #29: expected an expression
+lcd.c:          `       U32LCD((num >> i) & 1);
+lcd.c:          ^
+lcd.c(168): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(163): error:  #7: unrecognized token
+lcd.c:          `       U32LCD(((num >> i) & 1));
+lcd.c:          ^
+lcd.c(163): error:  #29: expected an expression
+lcd.c:          `       U32LCD(((num >> i) & 1));
+lcd.c:          ^
+lcd.c(168): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(163): error:  #7: unrecognized token
+lcd.c:          `       U32LCD(((num >> i)&1));
+lcd.c:          ^
+lcd.c(163): error:  #29: expected an expression
+lcd.c:          `       U32LCD(((num >> i)&1));
+lcd.c:          ^
+lcd.c(168): warning:  #1-D: last line of file ends without a newline
+lcd.c:          
+lcd.c:          ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(164): error:  #7: unrecognized token
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(164): error:  #29: expected an expression
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(161): warning:  #550-D: variable "status" was set but never used
+lcd.c:          s32 i = 7,status;
+lcd.c:                    ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(164): error:  #7: unrecognized token
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(164): error:  #29: expected an expression
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(161): warning:  #550-D: variable "status" was set but never used
+lcd.c:          s32 i = 7,status;
+lcd.c:                    ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(164): error:  #7: unrecognized token
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(164): error:  #29: expected an expression
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(161): warning:  #550-D: variable "status" was set but never used
+lcd.c:          s32 i = 7,status;
+lcd.c:                    ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(163): error:  #7: unrecognized token
+lcd.c:          `       U32LCD((((num >> i)&1) ? 1 : 0));
+lcd.c:          ^
+lcd.c(163): error:  #29: expected an expression
+lcd.c:          `       U32LCD((((num >> i)&1) ? 1 : 0));
+lcd.c:          ^
+lcd.c: lcd.c: 1 warning, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(164): error:  #7: unrecognized token
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(164): error:  #29: expected an expression
+lcd.c:          `       U32LCD(status);
+lcd.c:          ^
+lcd.c(161): warning:  #550-D: variable "status" was set but never used
+lcd.c:          s32 i = 7,status;
+lcd.c:                    ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(164): error:  #7: unrecognized token
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c(164): error:  #29: expected an expression
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c(161): warning:  #177-D: variable "status" was declared but never referenced
+lcd.c:          s32 i = 7,status;
+lcd.c:                    ^
+lcd.c: lcd.c: 2 warnings, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(164): error:  #7: unrecognized token
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c(164): error:  #29: expected an expression
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c: lcd.c: 1 warning, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+defines.h: lcd.c: 1 warning, 0 errors
+linking...
+Program Size: Code=3892 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(150): error:  #7: unrecognized token
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c(150): error:  #29: expected an expression
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c: lcd.c: 1 warning, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+lcd.c(150): error:  #7: unrecognized token
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c(150): error:  #29: expected an expression
+lcd.c:          `               CharLCD('1');
+lcd.c:          ^
+lcd.c: lcd.c: 1 warning, 2 errors
+Target not created
+Build target 'Target 1'
+compiling lcd.c...
+defines.h(11): warning:  #1-D: last line of file ends without a newline
+defines.h:                                                      
+defines.h:                                                      ^
+defines.h: lcd.c: 1 warning, 0 errors
+linking...
+Program Size: Code=3892 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"assig2_lcd7.axf" - 0 Error(s), 1 Warning(s).

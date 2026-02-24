@@ -1,0 +1,23 @@
+a.out: myMain.o insertAtLast.o insertAtFirst.o deleteAtFirst.o saveIntoFile.o syncFromFile.o insertAtSortedOrder.o
+	cc myMain.o insertAtLast.o insertAtFirst.o deleteAtFirst.o saveIntoFile.o syncFromFile.o insertAtSortedOrder.o
+
+myMain.o:myMain.c
+	cc -c myMain.c
+
+insertAtLast.o:insertAtLast.c
+	cc -c insertAtLast.c
+
+insertAtFires.o: insertAtFirst.c
+	cc -c insertAtFirst.c
+
+deleteAtFirst.o: deleteAtFirst.c
+	cc -c deleteAtFirst.c
+
+saveIntoFile.o: saveIntoFile.c
+	cc -c saveIntoFile.c
+
+syncFromFile.o: syncFromFile.c
+	cc -c syncFromFile.c
+
+insertAtSortedOrder.o: insertAtSortedOrder.c
+	cc -c insertAtSortedOrder.c

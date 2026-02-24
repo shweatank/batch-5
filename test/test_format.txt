@@ -1,0 +1,294 @@
+🔧 Advanced C, Data Structures, System Programming & Device Drivers
+Unified, Automatable Problem Set
+📦 SUBMISSION RULES (STRICT)
+1️⃣ File to Submit
+
+Candidates must submit ONE file only:
+
+techdhaba_submission.c
+
+
+No headers, no multiple files.
+
+2️⃣ Mandatory Candidate Identity Block (TOP OF FILE)
+
+This block is non-negotiable and must be exactly in this format:
+
+/* 
+TECHDHABA_SUBMISSION
+NAME: <Full Name>
+EMAIL: <Email ID>
+PROBLEM_ID: P1 | P2 | P3 | ... | P12
+DATE: YYYY-MM-DD
+*/
+
+
+📌 Automation will reject the file if this block is missing or malformed.
+
+3️⃣ Mandatory API (SAME FOR ALL PROBLEMS)
+
+Every problem must be solved using these exact APIs:
+
+// Called once before any test
+int td_init(void);
+
+// Core execution entry point
+// in_buf  : input data buffer
+// in_len  : size of input buffer
+// out_buf : output buffer (provided by test harness)
+// out_len : IN: max size, OUT: actual bytes written
+int td_run(const void *in_buf,
+           unsigned int in_len,
+           void *out_buf,
+           unsigned int *out_len);
+
+// Called once after all tests
+int td_cleanup(void);
+
+✅ Return Convention (MANDATORY)
+Return Value	Meaning
+0	Success
+< 0	Logical / validation error
+> 0	System / resource error
+4️⃣ Compilation Rules
+
+The submission must compile cleanly with:
+
+gcc -std=c11 -Wall -Wextra -Werror -O2 techdhaba_submission.c
+
+
+❌ Warnings = FAIL
+❌ Interactive I/O = FAIL
+❌ Global mutable state unless required = PENALTY
+
+🧠 SECTION 1: Advanced C Programming
+Problem P1: Function Pointer–Based Plugin System
+
+Goal
+Dispatch operations at runtime using function pointers.
+
+Input (in_buf)
+
+Binary layout (12 bytes):
+
+struct {
+    uint32_t op;   // 1=ADD, 2=SUB, 3=AND, 4=OR
+    int32_t  a;
+    int32_t  b;
+};
+
+Output (out_buf)
+struct {
+    int32_t result;
+};
+
+Expected Behavior
+
+Must internally use function pointers
+
+No if-else chains for operation logic
+
+Problem P2: Fixed Memory Pool Allocator
+
+Goal
+Simulate a memory allocator using a fixed buffer.
+
+Input
+struct {
+    uint32_t cmd_count;
+    struct {
+        uint8_t  cmd;   // 1=ALLOC, 2=FREE
+        uint32_t arg;   // size or handle
+    } cmds[];
+};
+
+Output
+struct {
+    uint32_t resp_count;
+    struct {
+        int32_t  status;
+        uint32_t handle;
+    } resp[];
+};
+
+Constraints
+
+❌ malloc/free inside allocator
+
+Handles are logical IDs, not real pointers
+
+Problem P3: Bitwise Protocol Parser
+
+Goal
+Parse, modify, and rebuild a 32-bit protocol frame.
+
+Input
+struct {
+    uint32_t frame;
+    uint32_t action; // bit0: toggle flag bit2
+};
+
+Output
+struct {
+    uint32_t new_frame;
+    int32_t  status;
+};
+
+🧩 SECTION 2: Data Structures
+Problem P4: Circular Log Buffer
+Input
+struct {
+    uint32_t cmd_count;
+    struct {
+        uint8_t cmd; // 1=PUSH, 2=POP
+        uint8_t len;
+        uint8_t data[60];
+    } cmds[];
+};
+
+Output
+struct {
+    uint32_t pop_count;
+    struct {
+        uint8_t len;
+        uint8_t data[60];
+    } logs[];
+};
+
+Problem P5: LRU Cache
+Input
+struct {
+    uint32_t capacity;
+    uint32_t op_count;
+    struct {
+        uint8_t  op;   // 1=PUT, 2=GET
+        uint32_t key;
+        uint32_t value;
+    } ops[];
+};
+
+Output
+struct {
+    uint32_t get_count;
+    struct {
+        int32_t  found;
+        uint32_t value;
+    } results[];
+};
+
+Problem P6: Linked List Loop Detection
+Input
+struct {
+    uint32_t n;
+    uint32_t next[256];
+    uint32_t head;
+};
+
+Output
+struct {
+    uint32_t has_cycle;
+    uint32_t entry_index;
+};
+
+🖥️ SECTION 3: System Programming (Simulated)
+Problem P7: Multi-Process Log Aggregator (Simulated)
+Input
+struct {
+    uint32_t stream_count;
+    struct {
+        uint32_t record_count;
+        struct {
+            uint32_t ts;
+            uint8_t  len;
+            uint8_t  msg[64];
+        } records[];
+    } streams[];
+};
+
+Output
+
+Merged & timestamp-sorted records (same format)
+
+Problem P8: mmap-Style File Copy (Simulated)
+Input
+struct {
+    uint32_t page_size;
+    uint32_t len;
+    uint8_t  data[];
+};
+
+Output
+struct {
+    uint32_t len;
+    uint8_t  copied[];
+    uint32_t checksum;
+};
+
+Problem P9: Thread Pool Scheduler (Dependency Graph)
+Input
+struct {
+    uint32_t task_count;
+    struct {
+        uint32_t id;
+        uint32_t dep_count;
+        uint32_t deps[8];
+    } tasks[];
+};
+
+Output
+struct {
+    uint32_t order_count;
+    uint32_t order[];
+};
+
+🧩 SECTION 4: Linux Driver Concepts (Simulated State Machines)
+Problem P10: Character Device Counter
+Input
+struct {
+    uint32_t op_count;
+    struct {
+        uint8_t op;  // 1=OPEN,2=READ,3=WRITE,4=IOCTL_RESET
+        uint32_t arg;
+    } ops[];
+};
+
+Output
+struct {
+    uint32_t read_count;
+    uint32_t values[];
+};
+
+Problem P11: GPIO LED Driver Lifecycle
+Input
+struct {
+    uint32_t op_count;
+    struct {
+        uint8_t op; // 1=PROBE,2=BLINK,3=REMOVE
+        uint32_t arg;
+    } ops[];
+};
+
+Output
+struct {
+    int32_t status[];
+};
+
+Problem P12: User ↔ Kernel Interface Decision Engine
+Input
+struct {
+    uint32_t q_count;
+    uint8_t scenario[];
+};
+
+Output
+struct {
+    uint8_t choice[]; // 1=sysfs,2=procfs,3=ioctl,4=netlink
+};
+
+🧪 WHY THIS FORMAT IS GOLD
+
+✅ One function to test (td_run)
+✅ Python can binary-pack inputs & validate outputs
+✅ No cheating with interactive logic
+✅ Candidate identity auto-extracted
+✅ Same harness for all 12 problems

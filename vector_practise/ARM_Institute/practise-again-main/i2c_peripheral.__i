@@ -1,0 +1,6 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork 
+-I C:\Keil\ARM\RV31\INC
+-I C:\Keil\ARM\CMSIS\Include
+-I C:\Keil\ARM\Inc\Philips
+
+-o .\i2c_peripheral.o --omf_browse .\i2c_peripheral.crf --depend .\i2c_peripheral.d "i2c_peripheral.c"

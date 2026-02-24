@@ -1,1 +1,0 @@
-savedcmd_/home/dell/mirafra/drivers/basic_waitqueue_with_irq.mod := printf '%s\n'   basic_waitqueue_with_irq.o | awk '!x[$$0]++ { print("/home/dell/mirafra/drivers/"$$0) }' > /home/dell/mirafra/drivers/basic_waitqueue_with_irq.mod

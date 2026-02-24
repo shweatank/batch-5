@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "assignment2_lcd7.o" --omf_browse "assignment2_lcd7.crf" --depend "assignment2_lcd7.d" "assignment2_lcd7.c"
