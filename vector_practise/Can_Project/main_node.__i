@@ -1,1 +1,0 @@
--c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\KeilARM\ARM\INC" -I "C:\KeilARM\ARM\INC\Philips" -o "main_node.o" --omf_browse "main_node.crf" --depend "main_node.d" "Main_node.c"

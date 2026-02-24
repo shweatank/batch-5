@@ -1,4 +1,0 @@
---cpu ARM7TDMI "startup.o" "pin_connect_block.o" "adc.o" "can.o" "delay.o" "ds18b20.o" "lcd.o" "main_node.o" --strict --scatter "main_node.sct" 
---autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
---info sizes --info totals --info unused --info veneers 
- --list ".\main_node.map" -o "main_node.axf"

@@ -1,9 +1,0 @@
-lcd_workshop.o: lcd_workshop.c
-lcd_workshop.o: C:\KeilARM\ARM\INC\Philips\lpc21xx.h
-lcd_workshop.o: types.h
-lcd_workshop.o: lcd_defines.h
-lcd_workshop.o: lcd.h
-lcd_workshop.o: types.h
-lcd_workshop.o: defines.h
-lcd_workshop.o: delay.h
-lcd_workshop.o: types.h

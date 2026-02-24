@@ -1,9 +1,0 @@
-fuelnode.o: fuelnode.c
-fuelnode.o: C:\KeilARM\ARM\INC\Philips\lpc21xx.h
-fuelnode.o: can.h
-fuelnode.o: types.h
-fuelnode.o: adc.h
-fuelnode.o: types.h
-fuelnode.o: lcd.h
-fuelnode.o: types.h
-fuelnode.o: lcd_defines.h
