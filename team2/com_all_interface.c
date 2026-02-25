@@ -284,8 +284,7 @@ snprintf(str,sizeof(str),"Temperature:%d.%d°C\nHumidity:%d.%d%%\n",buf[2],buf[3
 
 for(i=0;str[i];i++)
 {
-while(readl(uart_base+UART_FR)&FR_TXFF)
-cpu_relax();
+while(readl(uart_base+UART_FR)&FR_TXFF);
 writel(str[i],uart_base+UART_DR);
 }
 
