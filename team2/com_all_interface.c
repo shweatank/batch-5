@@ -36,6 +36,7 @@
 /* Flags */
 #define FR_TXFF (1 << 5) //tx fifo full flag ,1->fifo full ,0->fifo empty
 #define FR_RXFE (1 << 4) //rx fifo empty flag,1->empty,0->available data
+#define FR_BUSY (1 << 3)//uart busy flag,used in trasmitting data
 
 /* Control bits */
 #define CR_UARTEN (1 << 0) //EN uart H/W
@@ -274,17 +275,17 @@ pr_info("Humidity=%d.%d%%\n",buf[0],buf[1]);// humidity -> buf[0]=integer part b
   ili9225_display_fill(g_lcd, 0xFFFF);// clear screen with white screen
 snprintf(temp_str,sizeof(temp_str),"%d.%d%cC",buf[2],buf[3],126); //converting temperature into string
 snprintf(hum_str,sizeof(hum_str),"%d.%d%%",buf[0],buf[1]);// converting humidity into string
-//Sending data to print on LCD (x co-ordinate, y co-ordinate,string,colour(black))
+
 drawString(5,10,"Temperature:",0x0000);
 drawString(5,40,temp_str,0x0000);
 drawString(5,70,"Humidity:",0x0000);
 drawString(5,100,hum_str,0x0000);
-	//Converting total data into single string to send through UART
 snprintf(str,sizeof(str),"Temperature:%d.%d°C\nHumidity:%d.%d%%\n",buf[2],buf[3],buf[0],buf[1]);  
 
 for(i=0;str[i];i++)
 {
 while(readl(uart_base+UART_FR)&FR_TXFF);
+//cpu_relax();
 writel(str[i],uart_base+UART_DR);
 }
 
@@ -305,9 +306,9 @@ writel(0x7FF,uart_base+UART_ICR); //clear irqs
 writel(26,uart_base+UART_IBRD); //integer baud rate
 writel(3,uart_base+UART_FBRD); //fraction baud rate
 
-writel(LCRH_8BIT|LCR_FEN,uart_base+UART_LCR);//wl=8,fifo EN
+writel(LCR_8BIT|LCR_FEN,uart_base+UART_LCR);//wl=8,fifo EN
 
-writel(CR_UARTEN|CR_TXE|CR_RXE,uart_base+UART_CR);//uart EN TX EN,RX EN
+writel(CR_UARTEN|CR_TXE|CR_RXE,uart_base+UART_CR);//uart EN,TX EN,RX EN
 writel(0,uart_base+UART_IMSC);//no interupts
     pr_info(" UART initialized\n");
 }
