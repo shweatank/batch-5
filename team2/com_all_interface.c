@@ -274,11 +274,12 @@ pr_info("Humidity=%d.%d%%\n",buf[0],buf[1]);// humidity -> buf[0]=integer part b
   ili9225_display_fill(g_lcd, 0xFFFF);// clear screen with white screen
 snprintf(temp_str,sizeof(temp_str),"%d.%d%cC",buf[2],buf[3],126); //converting temperature into string
 snprintf(hum_str,sizeof(hum_str),"%d.%d%%",buf[0],buf[1]);// converting humidity into string
-
+//Sending data to print on LCD (x co-ordinate, y co-ordinate,string,colour(black))
 drawString(5,10,"Temperature:",0x0000);
 drawString(5,40,temp_str,0x0000);
 drawString(5,70,"Humidity:",0x0000);
 drawString(5,100,hum_str,0x0000);
+	//Converting total data into single string to send through UART
 snprintf(str,sizeof(str),"Temperature:%d.%d°C\nHumidity:%d.%d%%\n",buf[2],buf[3],buf[0],buf[1]);  
 
 for(i=0;str[i];i++)
