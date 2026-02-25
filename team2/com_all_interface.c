@@ -28,7 +28,7 @@
 #define UART_FR    0x18 //flag reg tx full ,Rx empty
 #define UART_IBRD  0x24//integer baud rate divisor register
 #define UART_FBRD  0x28 // fractional baud rate divisor
-#define UART_LCRH  0x2C //line control register ,WL,FIFO EN,stop bits
+#define UART_LCR  0x2C //line control register ,WL,FIFO EN,stop bits
 #define UART_CR    0x30 // control reg ,uart EN,TX EN,RX EN
 #define UART_IMSC  0x38 //interrupt mask set /clear reg disable uart interrupts
 #define UART_ICR   0x44 // interrupt clear reg,clear pending uart interrupts
@@ -44,8 +44,8 @@
 #define CR_RXE    (1 << 9) // EN RX
 
 /* Line control */
-#define LCRH_8BIT (3 << 5)//select 8 bit length
-#define LCRH_FEN  (1 << 4) //EN tx fifo and rx fifo buffers
+#define LCR_8BIT (3 << 5)//select 8 bit length
+#define LCR_FEN  (1 << 4) //EN tx fifo and rx fifo buffers
 
 
 #define LCD_WIDTH   220 // horizontal direction
@@ -305,9 +305,9 @@ writel(0x7FF,uart_base+UART_ICR); //clear irqs
 writel(26,uart_base+UART_IBRD); //integer baud rate
 writel(3,uart_base+UART_FBRD); //fraction baud rate
 
-writel(LCRH_8BIT|LCRH_FEN,uart_base+UART_LCRH);//wl=8,fifo EN
+writel(LCRH_8BIT|LCR_FEN,uart_base+UART_LCR);//wl=8,fifo EN
 
-writel(CR_UARTEN|CR_TXE|CR_RXE,uart_base+UART_CR);//uart EN,TX EN,RX EN
+writel(CR_UARTEN|CR_TXE|CR_RXE,uart_base+UART_CR);//uart EN TX EN,RX EN
 writel(0,uart_base+UART_IMSC);//no interupts
     pr_info(" UART initialized\n");
 }
