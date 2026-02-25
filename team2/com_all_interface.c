@@ -36,7 +36,6 @@
 /* Flags */
 #define FR_TXFF (1 << 5) //tx fifo full flag ,1->fifo full ,0->fifo empty
 #define FR_RXFE (1 << 4) //rx fifo empty flag,1->empty,0->available data
-#define FR_BUSY (1 << 3)//uart busy flag,used in trasmitting data
 
 /* Control bits */
 #define CR_UARTEN (1 << 0) //EN uart H/W
