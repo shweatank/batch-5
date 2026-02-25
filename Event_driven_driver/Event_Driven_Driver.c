@@ -354,7 +354,7 @@ static void mouse_event(struct input_handle *handle,
 			led_on();//led is ON
 		}
 		else{
-			pr_info("TOP RIGHT -> LED ON\n");
+			pr_info("BOTTOM LEFT -> LED OFF\n");
 			led_off();//led is OFF
 		}
 	}
