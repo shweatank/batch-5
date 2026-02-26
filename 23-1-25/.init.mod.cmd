@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/23-1-25/init.mod := printf '%s\n'   init.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/23-1-25/"$$0) }' > /home/mirafra/Desktop/batch-5/23-1-25/init.mod

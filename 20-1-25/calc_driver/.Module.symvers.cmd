@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/20-1-25/calc_driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/20-1-25/calc_driver/Module.symvers -T /home/mirafra/Desktop/batch-5/20-1-25/calc_driver/modules.order -i Module.symvers -e 

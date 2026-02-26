@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/Module.symvers -T /home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/modules.order -i Module.symvers -e 

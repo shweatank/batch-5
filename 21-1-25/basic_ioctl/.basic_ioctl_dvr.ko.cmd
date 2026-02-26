@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/basic_ioctl_dvr.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/basic_ioctl_dvr.ko /home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/basic_ioctl_dvr.o /home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/basic_ioctl_dvr.mod.o

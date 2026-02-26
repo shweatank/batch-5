@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/27-1-25/tasklet.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/27-1-25/tasklet.ko /home/mirafra/Desktop/batch-5/27-1-25/tasklet.o /home/mirafra/Desktop/batch-5/27-1-25/tasklet.mod.o

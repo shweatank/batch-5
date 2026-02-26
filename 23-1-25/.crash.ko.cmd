@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/23-1-25/crash.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/23-1-25/crash.ko /home/mirafra/Desktop/batch-5/23-1-25/crash.o /home/mirafra/Desktop/batch-5/23-1-25/crash.mod.o

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/basic_ioctl_dvr.mod := printf '%s\n'   basic_ioctl_dvr.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/"$$0) }' > /home/mirafra/Desktop/batch-5/21-1-25/basic_ioctl/basic_ioctl_dvr.mod

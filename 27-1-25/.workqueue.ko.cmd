@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/27-1-25/workqueue.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/27-1-25/workqueue.ko /home/mirafra/Desktop/batch-5/27-1-25/workqueue.o /home/mirafra/Desktop/batch-5/27-1-25/workqueue.mod.o
