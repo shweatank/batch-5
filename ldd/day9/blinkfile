@@ -1,0 +1,8 @@
+#define T0PC (*(volatile unsigned long *)0xE0004010)
+#define T0PR (*(volatile unsigned long *)0xE000400C)
+#define T0TC (*(volatile unsigned long *)0xE0004008)
+#define T0TCR (*(volatile unsigned long *)0xE0004004)
+#define IODIR0 (*(volatile unsigned long *)0xE0028008)
+#define IOSET0 (*(volatile unsigned long *)0xE0028004)
+#define IOCLR0 (*(volatile unsigned long *)0xE002800C)
+
