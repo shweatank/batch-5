@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/memdemo_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/memdemo_driver.ko /home/dell/practice/memdemo_driver.o /home/dell/practice/memdemo_driver.mod.o

@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/jan28/proc_int_wq.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/jan28/proc_int_wq.ko /home/dell/practice/jan28/proc_int_wq.o /home/dell/practice/jan28/proc_int_wq.mod.o

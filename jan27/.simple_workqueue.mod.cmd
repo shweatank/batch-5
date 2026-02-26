@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/jan27/simple_workqueue.mod := printf '%s\n'   simple_workqueue.o | awk '!x[$$0]++ { print("/home/dell/practice/jan27/"$$0) }' > /home/dell/practice/jan27/simple_workqueue.mod

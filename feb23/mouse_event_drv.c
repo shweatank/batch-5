@@ -350,26 +350,26 @@ static int ili9225_probe(struct spi_device *spi)
     struct ili9225 *lcd;
     int ret;
 
-    lcd = devm_kzalloc(&spi->dev, sizeof(*lcd), GFP_KERNEL);
+    lcd = devm_kzalloc(&spi->dev, sizeof(*lcd), GFP_KERNEL);	//allocates and initializes memory to 0's GFP_KERNEL-> flag for general purpose memory allocation
     if(!lcd) return -ENOMEM;
     lcd->spi = spi;
     spi_set_drvdata(spi, lcd);
 
-    lcd->dc = devm_gpiod_get(&spi->dev, "dc", GPIOD_OUT_LOW);
+    lcd->dc = devm_gpiod_get(&spi->dev, "dc", GPIOD_OUT_LOW);	//links GPIO pins from device tree dc and reset
     if(IS_ERR(lcd->dc)) return PTR_ERR(lcd->dc);
 
     lcd->reset = devm_gpiod_get(&spi->dev, "reset", GPIOD_OUT_HIGH);
     if(IS_ERR(lcd->reset)) return PTR_ERR(lcd->reset);
 
     /* MMIO LED / UART */
-    gpio_base = ioremap(LED_PHYS_ADDR, 0xB4);
+    gpio_base = ioremap(LED_PHYS_ADDR, 0xB4);	//maps physical memory addresses to virtual addressses for kernel access
     if(!gpio_base)
     {
 	    pr_err("Failed ioremap GPIO\n");
 	    return -ENOMEM;
     }
-    gpio17_set_output();
-    led_off();
+    gpio17_set_output();	//sets GPIO17 pin as output pin
+    led_off();			//initially led off
     uart_base = ioremap(UART_PHYS_ADDR, 0x1000);  // map 256 bytes for UART
     if(!uart_base)
     {
@@ -378,17 +378,19 @@ static int ili9225_probe(struct spi_device *spi)
     }
     iowrite32(UART_CR_UARTEN | UART_CR_TXE, uart_base+UART_CR);
 
-
+    //configuring spi communication mode 8 bit transfer and mode 0
     spi->mode = SPI_MODE_0;
     spi->bits_per_word = 8;
     spi_setup(spi);
-
-    ili9225_init(lcd);
-    ili9225_fill(lcd, 0xFFFF);
+	
+    //resets the ili9225 display
+    ili9225_init(lcd);	//function for initializing ili9225 display
+    ili9225_fill(lcd, 0xFFFF);	//fill the display white
     g_lcd = lcd;
 
     /* Chardev */
-    ret = alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME);
+    //Allows writing strings to the driver, which can later be sent to LCD or UART.
+    ret = alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME);	
     if(ret) return ret;
     cdev_init(&ili_cdev, &fops);
     cdev_add(&ili_cdev, dev_num, 1);
@@ -438,17 +440,17 @@ MODULE_DEVICE_TABLE(of, ili9225_dt_ids);
 static struct spi_driver ili9225_driver = {
     .driver = {
         .name = DRIVER_NAME,
-        .of_match_table = ili9225_dt_ids,
+        .of_match_table = ili9225_dt_ids,	//links to device tree
     },
-    .probe  = ili9225_probe,
-    .remove = ili9225_remove,
+    .probe  = ili9225_probe,	//function called when spi compatible is found
+    .remove = ili9225_remove,	//function called when device is removed
 };
 
 /* Module init/exit */
 static int __init mouse_spi_init(void)
 {
     pr_info("Registering SPI driver and mouse handler...\n");
-    return spi_register_driver(&ili9225_driver);
+    return spi_register_driver(&ili9225_driver);	//registers spi driver with kernel
 }
 
 static void __exit mouse_spi_exit(void)

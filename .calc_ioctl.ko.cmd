@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/calc_ioctl.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/calc_ioctl.ko /home/dell/practice/calc_ioctl.o /home/dell/practice/calc_ioctl.mod.o

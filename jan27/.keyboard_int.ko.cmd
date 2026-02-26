@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/jan27/keyboard_int.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/practice/jan27/keyboard_int.ko /home/dell/practice/jan27/keyboard_int.o /home/dell/practice/jan27/keyboard_int.mod.o

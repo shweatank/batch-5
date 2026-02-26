@@ -1,1 +1,0 @@
-savedcmd_/home/dell/practice/jan30/multiple_kernel_threads.mod := printf '%s\n'   multiple_kernel_threads.o | awk '!x[$$0]++ { print("/home/dell/practice/jan30/"$$0) }' > /home/dell/practice/jan30/multiple_kernel_threads.mod
