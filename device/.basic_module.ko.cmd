@@ -1,1 +1,0 @@
-savedcmd_/home/dell/device/basic_module.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/basic_module.ko /home/dell/device/basic_module.o /home/dell/device/basic_module.mod.o

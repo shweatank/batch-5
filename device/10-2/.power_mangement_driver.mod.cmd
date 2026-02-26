@@ -1,1 +1,0 @@
-savedcmd_/home/dell/git/batch-5/device/10-2/power_mangement_driver.mod := printf '%s\n'   power_mangement_driver.o | awk '!x[$$0]++ { print("/home/dell/git/batch-5/device/10-2/"$$0) }' > /home/dell/git/batch-5/device/10-2/power_mangement_driver.mod

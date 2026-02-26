@@ -1,1 +1,0 @@
-savedcmd_/home/dell/device/22-1/kmalloc_use.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/22-1/kmalloc_use.ko /home/dell/device/22-1/kmalloc_use.o /home/dell/device/22-1/kmalloc_use.mod.o

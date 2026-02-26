@@ -1,1 +1,0 @@
-savedcmd_/home/dell/device/23-1/irq_module.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/23-1/irq_module.ko /home/dell/device/23-1/irq_module.o /home/dell/device/23-1/irq_module.mod.o

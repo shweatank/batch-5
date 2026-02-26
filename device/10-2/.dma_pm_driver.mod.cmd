@@ -1,1 +1,0 @@
-savedcmd_/home/dell/git/batch-5/device/10-2/dma_pm_driver.mod := printf '%s\n'   dma_pm_driver.o | awk '!x[$$0]++ { print("/home/dell/git/batch-5/device/10-2/"$$0) }' > /home/dell/git/batch-5/device/10-2/dma_pm_driver.mod

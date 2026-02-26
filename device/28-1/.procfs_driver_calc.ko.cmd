@@ -1,1 +1,0 @@
-savedcmd_/home/dell/git/batch-5/device/28-1/procfs_driver_calc.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/git/batch-5/device/28-1/procfs_driver_calc.ko /home/dell/git/batch-5/device/28-1/procfs_driver_calc.o /home/dell/git/batch-5/device/28-1/procfs_driver_calc.mod.o

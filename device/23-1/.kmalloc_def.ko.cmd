@@ -1,1 +1,0 @@
-savedcmd_/home/dell/device/23-1/kmalloc_def.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/23-1/kmalloc_def.ko /home/dell/device/23-1/kmalloc_def.o /home/dell/device/23-1/kmalloc_def.mod.o

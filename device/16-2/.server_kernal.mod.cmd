@@ -1,1 +1,0 @@
-savedcmd_/home/dell/git/batch-5/device/16-2/server_kernal.mod := printf '%s\n'   server_kernal.o | awk '!x[$$0]++ { print("/home/dell/git/batch-5/device/16-2/"$$0) }' > /home/dell/git/batch-5/device/16-2/server_kernal.mod

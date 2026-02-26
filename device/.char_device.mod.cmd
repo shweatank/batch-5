@@ -1,1 +1,0 @@
-savedcmd_/home/dell/git/batch-5/device/char_device.mod := printf '%s\n'   char_device.o | awk '!x[$$0]++ { print("/home/dell/git/batch-5/device/"$$0) }' > /home/dell/git/batch-5/device/char_device.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/dell/git/batch-5/Event_driven_driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/git/batch-5/Event_driven_driver/Module.symvers -T /home/dell/git/batch-5/Event_driven_driver/modules.order -i Module.symvers -e 

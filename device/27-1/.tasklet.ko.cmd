@@ -1,1 +1,0 @@
-savedcmd_/home/dell/device/27-1/tasklet.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/device/27-1/tasklet.ko /home/dell/device/27-1/tasklet.o /home/dell/device/27-1/tasklet.mod.o

@@ -1,1 +1,0 @@
-savedcmd_/home/dell/git/batch-5/device/16-2/server_kernal.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/git/batch-5/device/16-2/server_kernal.ko /home/dell/git/batch-5/device/16-2/server_kernal.o /home/dell/git/batch-5/device/16-2/server_kernal.mod.o
