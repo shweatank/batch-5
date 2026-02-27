@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/raspberrypi/prasanna/socket/modules.order := {   echo /home/mirafra/raspberrypi/prasanna/socket/server_driver.o;   echo /home/mirafra/raspberrypi/prasanna/socket/client_driver.o;   echo /home/mirafra/raspberrypi/prasanna/socket/cli.o; :; } > /home/mirafra/raspberrypi/prasanna/socket/modules.order

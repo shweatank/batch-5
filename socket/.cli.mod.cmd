@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/raspberrypi/prasanna/socket/cli.mod := printf '%s\n'   cli.o | awk '!x[$$0]++ { print("/home/mirafra/raspberrypi/prasanna/socket/"$$0) }' > /home/mirafra/raspberrypi/prasanna/socket/cli.mod

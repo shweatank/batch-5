@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/raspberrypi/prasanna/socket/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/raspberrypi/prasanna/socket/Module.symvers -T /home/mirafra/raspberrypi/prasanna/socket/modules.order -i Module.symvers -e 

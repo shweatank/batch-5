@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/raspberrypi/prasanna/socket/cli.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/raspberrypi/prasanna/socket/cli.ko /home/mirafra/raspberrypi/prasanna/socket/cli.o /home/mirafra/raspberrypi/prasanna/socket/cli.mod.o
