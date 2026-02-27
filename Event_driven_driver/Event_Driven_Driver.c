@@ -29,8 +29,8 @@
 
 /* ---------------- LCD Configuration ---------------- */
 
-#define SCREEN_WIDTH 176
-#define SCREEN_HEIGHT 220
+#define SCREEN_WIDTH 176			//width of display in pixels
+#define SCREEN_HEIGHT 220			//heigth of display in pixels
 #define MAX_STRING_LEN 128           //MAX Stored String Length
 
 /* ---------------- MMIO GPIO (LED) ---------------- */
