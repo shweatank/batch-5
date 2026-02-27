@@ -1,18 +1,18 @@
-/dts-v1/;
-/plugin/;
+/dts-v1/;   //dts version
+/plugin/;    //Marks this file as an overlay that modifies an existing device tree instead of defining a complete one.
 
 / {
     compatible = "brcm,bcm2711";
 
-    fragment@0 {
-        target = <&spi0>;
+    fragment@0 {                            //first overlay fragment
+        target = <&spi0>;                    //selecting the spi 0
 
-        __overlay__ {
-            #address-cells = <1>;
-            #size-cells = <0>;
+        __overlay__ {                        //required for the new child device
+            #address-cells = <1>;             // One cell for device address (chip select)  
+            #size-cells = <0>;                // No size cells needed for SPI devices
 
             ili9225@0 {
-                compatible = "ilitek,ili9225";
+                compatible = "ilitek,ili9225"; //Driver binding name
                 reg = <0>;                     /* CE0 of SPI */
                 spi-max-frequency = <4000000>; /* 4 MHz safe for ILI9225 */
                 status = "okay";
