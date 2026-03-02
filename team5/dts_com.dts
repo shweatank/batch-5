@@ -1,0 +1,42 @@
+/dts-v1/;                        // device tree version
+/plugin/;                        // enable device tree overlay support
+
+/ {
+    compatible = "brcm,bcm2711"; // target SoC (Raspberry Pi 4)
+
+    /* ================= SPI LCD fragment ================= */
+    fragment@0 {
+        target = <&spi0>;         // attach overlay to SPI0 controller
+
+        __overlay__ {
+            #address-cells = <1>; // one cell for SPI device address
+            #size-cells = <0>;    // no size cell needed
+
+            spislave@0 {          // SPI device on chip select 0
+                compatible = "myvendor,mylcd";   // matches LCD SPI driver
+                reg = <0>;                       // CE0 of SPI
+                spi-max-frequency = <4000000>;   // 4 MHz safe for ILI9225
+                status = "okay";                 // enable device
+
+                dc-gpios = <&gpio 25 0>;         // DC pin connected to GPIO25
+                reset-gpios = <&gpio 24 0>;      // RESET pin connected to GPIO24
+            };
+        };
+    };
+
+    /* ================= I2C RTC fragment ================= */
+    fragment@1 {
+        target = <&i2c_arm>;       // attach overlay to I2C controller
+
+        __overlay__ {
+            #address-cells = <1>;  // one cell for I2C address
+            #size-cells = <0>;     // no size cell needed
+
+            rtc@68 {               // RTC device at I2C address 0x68
+                compatible = "myvendor,myrtc";   // matches RTC I2C driver
+                reg = <0x68>;                    // DS3231 I2C address
+                status = "okay";                 // enable device
+            };
+        };
+    };
+};
