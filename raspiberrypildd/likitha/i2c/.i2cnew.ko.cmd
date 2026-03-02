@@ -1,0 +1,1 @@
+savedcmd_/home/team2/likitha/i2c/i2cnew.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/likitha/i2c/i2cnew.ko /home/team2/likitha/i2c/i2cnew.o /home/team2/likitha/i2c/i2cnew.mod.o /home/team2/likitha/i2c/.module-common.o

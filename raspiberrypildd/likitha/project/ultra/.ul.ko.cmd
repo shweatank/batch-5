@@ -1,0 +1,1 @@
+savedcmd_/home/team2/likitha/project/ultra/ul.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/likitha/project/ultra/ul.ko /home/team2/likitha/project/ultra/ul.o /home/team2/likitha/project/ultra/ul.mod.o /home/team2/likitha/project/ultra/.module-common.o

@@ -1,0 +1,1 @@
+savedcmd_/home/team2/likitha/gpioker.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/likitha/gpioker.ko /home/team2/likitha/gpioker.o /home/team2/likitha/gpioker.mod.o /home/team2/likitha/.module-common.o

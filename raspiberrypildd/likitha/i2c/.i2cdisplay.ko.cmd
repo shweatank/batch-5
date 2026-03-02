@@ -1,0 +1,1 @@
+savedcmd_/home/team2/likitha/i2c/i2cdisplay.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/likitha/i2c/i2cdisplay.ko /home/team2/likitha/i2c/i2cdisplay.o /home/team2/likitha/i2c/i2cdisplay.mod.o /home/team2/likitha/i2c/.module-common.o
