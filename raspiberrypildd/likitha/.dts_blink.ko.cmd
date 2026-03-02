@@ -1,0 +1,1 @@
+savedcmd_/home/team2/likitha/dts_blink.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/likitha/dts_blink.ko /home/team2/likitha/dts_blink.o /home/team2/likitha/dts_blink.mod.o /home/team2/likitha/.module-common.o

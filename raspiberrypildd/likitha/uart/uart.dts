@@ -1,0 +1,14 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&uart2>;
+        __overlay__ {
+            status = "okay";
+            compatible = "my,uart";
+        };
+    };
+};
