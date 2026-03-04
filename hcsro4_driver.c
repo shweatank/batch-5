@@ -311,7 +311,7 @@ static int ili9225_probe(struct spi_device *spi)
 
     g_lcd = lcd;
 
-    pr_info( "ILI9225 initialized\n");
+    dev_info( "ILI9225 initialized\n");
 
 
   return 0;
@@ -323,7 +323,7 @@ static void ili9225_remove(struct spi_device *spi)
     cdev_del(&ili_cdev);
     unregister_chrdev_region(dev_num, 1);
 
-    pr_info("ILI9225 removed\n");
+    dev_info(&spi->dev, "ILI9225 removed\n");
 }
 
 
@@ -344,7 +344,7 @@ static struct spi_driver ili9225_driver = {
     .remove = ili9225_remove,
 };
 
-//module_spi_driver(ili9225_driver);    //load the driver when inserted using insmod
+module_spi_driver(ili9225_driver);    //load the driver when inserted using insmod
 
 static const struct proc_ops proc_fops = {
     .proc_read = proc_read,
@@ -406,7 +406,7 @@ static void hcsr04_remove(struct platform_device *pdev)
     gpiod_set_value(led_near, 0);
     gpiod_set_value(led_far, 0);
 
-    //dev_info(&pdev->dev, "HC-SR04 Driver Unloaded\n");
+    dev_info(&pdev->dev, "HC-SR04 Driver Unloaded\n");
 }
 
 static struct platform_driver hcsr04_driver = {
@@ -418,33 +418,7 @@ static struct platform_driver hcsr04_driver = {
     },
 };
 
-//module_platform_driver(hcsr04_driver);
-
-static int __init my_driver_init(void)
-{
-    int ret;
-
-    ret = spi_register_driver(&ili9225_driver);   // requesting the kernal to add this driver in your driver list.
-    if (ret)
-        return ret;
-
-    ret = platform_driver_register(&hcsr04_driver);  // requesting the kernal to add this driver in your driver list.
-    if (ret) {
-        spi_unregister_driver(&ili9225_driver);        
-        return ret;
-    }
-
-    return 0;
-}
-
-static void __exit my_driver_exit(void)
-{
-    platform_driver_unregister(&hcsr04_driver);
-    spi_unregister_driver(&ili9225_driver);
-}
-
-module_init(my_driver_init);
-module_exit(my_driver_exit);
+module_platform_driver(hcsr04_driver);
 
 
 MODULE_LICENSE("GPL");

@@ -1,23 +1,18 @@
 #include <linux/module.h>
-#include <linux/kernel.h>
-#include <linux/gpio/consumer.h>
-#include <linux/interrupt.h>
-#include <linux/proc_fs.h>
-#include <linux/platform_device.h>
-#include <linux/of.h>
-#include <linux/uaccess.h>
-#include <linux/ktime.h>
-#include <linux/delay.h>
 #include <linux/spi/spi.h>
-#include "font8x8_basic.h"
+#include <linux/gpio/consumer.h>
+#include <linux/delay.h>
+#include <linux/of.h>
+#include <linux/fs.h>
 #include <linux/cdev.h>
-
-
-#define PROC_NAME "hcsr04_direction_led"
+#include <linux/device.h>
+#include <linux/uaccess.h>
+#include "font8x8_basic.h"
 
 #define DRIVER_NAME "ili9225"
 #define CLASS_NAME  "ili"
 #define DEVICE_NAME "ili9225_char"
+
 #define SCREEN_WIDTH 176
 #define SCREEN_HEIGHT 220
 
@@ -36,24 +31,7 @@ struct ili9225 {
     struct gpio_desc *reset;
 };
 
-static struct gpio_desc *trig;
-static struct gpio_desc *echo;
-static struct gpio_desc *led_near;   // GPIO17
-static struct gpio_desc *led_far;    // GPIO27
-
-static int irq_number;
-static ktime_t echo_start, echo_end;
-static unsigned long distance_cm = 0;
-
-/* Speed variables */
-static long prev_distance_cm = 0;
-static ktime_t prev_time;
-static long speed_cm_per_sec = 0;
-
-static struct proc_dir_entry *proc_file;
-
-
-
+/* ---------------- SPI helpers ---------------- */
 static int ili9225_write16(struct ili9225 *lcd, u16 value)
 {
     u8 buf[2];
@@ -79,6 +57,7 @@ static void ili9225_reset(struct ili9225 *lcd)
     gpiod_set_value(lcd->reset, 1);
     msleep(50);
 }
+
 static void ili9225_init(struct ili9225 *lcd)
 {
     ili9225_reset(lcd);
@@ -184,108 +163,40 @@ static void drawString(int *x, int *y, const char *str, uint16_t color)
     }
 }
 
-/* ---------------- Interrupt Handler ---------------- */
-static irqreturn_t echo_irq_handler(int irq, void *dev_id)
+/* ---------------- Char Device Write ---------------- */
+static ssize_t ili_write(struct file *file,
+                         const char __user *buf,
+                         size_t len,
+                         loff_t *off)
 {
-    if (gpiod_get_value(echo))
-        echo_start = ktime_get();
-    else {
-        echo_end = ktime_get();
-        s64 duration_us = ktime_to_us(ktime_sub(echo_end, echo_start));
-        if (duration_us > 0)
-            distance_cm = duration_us / 58;   // Distance in cm
-    }
+    char kbuf[128];
 
-    return IRQ_HANDLED;
-}
+    if (len > 127)
+        len = 127;
 
-/* ---------------- PROC READ FUNCTION ---------------- */
-static ssize_t proc_read(struct file *file, char __user *buf,
-                         size_t count, loff_t *pos)
-{
-    char output[128];
-    int len, i;
-    ktime_t current_time;
-    s64 time_diff_ms;
-    long distance_diff;
-    long display_speed = 0;
-    unsigned int blink_delay = 150;
+    if (copy_from_user(kbuf, buf, len))
+        return -EFAULT;
 
-    if (*pos > 0)
-        return 0;
+    kbuf[len] = '\0';
 
-    /* Trigger ultrasonic sensor */
-    gpiod_set_value(trig, 0);
-    udelay(2);
-    gpiod_set_value(trig, 1);
-    udelay(10);
-    gpiod_set_value(trig, 0);
-
-    msleep(60);
-
-    /* ---- Speed Calculation ---- */
-    current_time = ktime_get();
-    time_diff_ms = ktime_to_ms(ktime_sub(current_time, prev_time));
-
-    if (time_diff_ms > 0) {
-        distance_diff = distance_cm - prev_distance_cm;
-        speed_cm_per_sec = (distance_diff * 1000) / time_diff_ms;
-    }
-
-    prev_distance_cm = distance_cm;
-    prev_time = current_time;
-
-    /* Absolute value for display */
-    if (speed_cm_per_sec < 0)
-        display_speed = -speed_cm_per_sec;
-    else
-        display_speed = speed_cm_per_sec;
-
-    /* Turn off both LEDs */
-    gpiod_set_value(led_near, 0);
-    gpiod_set_value(led_far, 0);
-
-    /* ---- Direction Based LED Blink ---- */
-
-    if (speed_cm_per_sec < 0) {
-        /* Object moving closer */
-        for (i = 0; i < 5; i++) {
-            gpiod_set_value(led_near, 1);
-            msleep(blink_delay);
-            gpiod_set_value(led_near, 0);
-            msleep(blink_delay);
-        }
-    }
-    else if (speed_cm_per_sec > 0) {
-        /* Object moving away */
-        for (i = 0; i < 5; i++) {
-            gpiod_set_value(led_far, 1);
-            msleep(blink_delay);
-            gpiod_set_value(led_far, 0);
-            msleep(blink_delay);
-        }
-    }
-
-    /* Output to user */
-    len = sprintf(output,
-                  "Distance: \n\n%lu cm\n\nSpeed: \n\n%ld cm/s\n",
-                  distance_cm,
-                  display_speed);
-
+    /* Clear screen and reset cursor */
     ili9225_fill(g_lcd, 0xFFFF);  // white background
     cursor_x = 0;
     cursor_y = 20;
 
     /* Draw the new string */
-    drawString(&cursor_x, &cursor_y, output, 0x0000); // black text
+    drawString(&cursor_x, &cursor_y, kbuf, 0x0000); // black text
 
-
-    if (copy_to_user(buf, output, len))
-        return -EFAULT;
-
-    *pos = len;
     return len;
 }
+
+static struct file_operations fops = {
+    .owner = THIS_MODULE,
+    .write = ili_write,
+};
+
+// SPI Probe / Remove   function
+
 static int ili9225_probe(struct spi_device *spi)
 {
     struct ili9225 *lcd;
@@ -307,15 +218,21 @@ static int ili9225_probe(struct spi_device *spi)
     spi_setup(spi);
 
     ili9225_init(lcd);           // lcd init function
-    ili9225_fill(lcd, 0xFFFF);  // setting height and width of lcd display
+    ili9225_fill(lcd, 0xFFFF);  // setting height and width of lcd display 
 
     g_lcd = lcd;
 
-    pr_info( "ILI9225 initialized\n");
+    alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME);
+    cdev_init(&ili_cdev, &fops);
+    cdev_add(&ili_cdev, dev_num, 1);
 
+    ili_class = class_create(CLASS_NAME);
+    device_create(ili_class, NULL, dev_num, NULL, DEVICE_NAME);
 
-  return 0;
+    dev_info(&spi->dev, "ILI9225 initialized\n");
+    return 0;
 }
+
 static void ili9225_remove(struct spi_device *spi)
 {
     device_destroy(ili_class, dev_num);
@@ -323,9 +240,8 @@ static void ili9225_remove(struct spi_device *spi)
     cdev_del(&ili_cdev);
     unregister_chrdev_region(dev_num, 1);
 
-    pr_info("ILI9225 removed\n");
+    dev_info(&spi->dev, "ILI9225 removed\n");
 }
-
 
 /* ---------------- Device Tree ---------------- */
 static const struct of_device_id ili9225_dt_ids[] = {
@@ -344,109 +260,8 @@ static struct spi_driver ili9225_driver = {
     .remove = ili9225_remove,
 };
 
-//module_spi_driver(ili9225_driver);    //load the driver when inserted using insmod
-
-static const struct proc_ops proc_fops = {
-    .proc_read = proc_read,
-};
-
-/* ---------------- Device Tree Match ---------------- */
-static const struct of_device_id hcsr04_of_match[] = {
-    { .compatible = "mycompany,hcsr04", },
-    {},
-};
-MODULE_DEVICE_TABLE(of, hcsr04_of_match);
-
-/* ---------------- Probe ---------------- */
-static int hcsr04_probe(struct platform_device *pdev)
-{
-    int ret;
-
-    trig = devm_gpiod_get(&pdev->dev, "trig", GPIOD_OUT_LOW);
-    echo = devm_gpiod_get(&pdev->dev, "echo", GPIOD_IN);
-    led_near = devm_gpiod_get(&pdev->dev, "led-near", GPIOD_OUT_LOW);
-    led_far  = devm_gpiod_get(&pdev->dev, "led-far", GPIOD_OUT_LOW);
-
-    if (IS_ERR(trig) || IS_ERR(echo) ||
-        IS_ERR(led_near) || IS_ERR(led_far)) {
-        dev_err(&pdev->dev, "Failed to get GPIOs\n");
-        return -ENODEV;
-    }
-
-    irq_number = gpiod_to_irq(echo);
-    if (irq_number < 0)
-        return irq_number;
-
-    ret = request_irq(irq_number,
-                      echo_irq_handler,
-                      IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
-                      "hcsr04_irq",
-                      NULL);
-    if (ret)
-        return ret;
-
-    proc_file = proc_create(PROC_NAME, 0666, NULL, &proc_fops);
-    if (!proc_file) {
-        free_irq(irq_number, NULL);
-        return -ENOMEM;
-    }
-
-    prev_time = ktime_get();
-
-    dev_info(&pdev->dev, "HC-SR04 Direction Detection Driver Loaded\n");
-    return 0;
-}
-
-/* ---------------- Remove ---------------- */
-static void hcsr04_remove(struct platform_device *pdev)
-{
-    proc_remove(proc_file);
-    free_irq(irq_number, NULL);
-
-    gpiod_set_value(led_near, 0);
-    gpiod_set_value(led_far, 0);
-
-    //dev_info(&pdev->dev, "HC-SR04 Driver Unloaded\n");
-}
-
-static struct platform_driver hcsr04_driver = {
-    .probe  = hcsr04_probe,
-    .remove = hcsr04_remove,
-    .driver = {
-        .name = "hcsr04_direction_led",
-        .of_match_table = hcsr04_of_match,
-    },
-};
-
-//module_platform_driver(hcsr04_driver);
-
-static int __init my_driver_init(void)
-{
-    int ret;
-
-    ret = spi_register_driver(&ili9225_driver);   // requesting the kernal to add this driver in your driver list.
-    if (ret)
-        return ret;
-
-    ret = platform_driver_register(&hcsr04_driver);  // requesting the kernal to add this driver in your driver list.
-    if (ret) {
-        spi_unregister_driver(&ili9225_driver);        
-        return ret;
-    }
-
-    return 0;
-}
-
-static void __exit my_driver_exit(void)
-{
-    platform_driver_unregister(&hcsr04_driver);
-    spi_unregister_driver(&ili9225_driver);
-}
-
-module_init(my_driver_init);
-module_exit(my_driver_exit);
-
+module_spi_driver(ili9225_driver);    //load the driver when inserted using insmod
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("team 4");
-MODULE_DESCRIPTION("HC-SR04 Direction Detection with Two LEDs (Positive Speed Output)");
+MODULE_AUTHOR("TEAM 4");
+MODULE_DESCRIPTION("ILI9225 SPI LCD Driver with text wrapping");
