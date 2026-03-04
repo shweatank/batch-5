@@ -1,0 +1,1 @@
+savedcmd_/home/dell/git/batch-5/device/practice/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/dell/git/batch-5/device/practice/Module.symvers -T /home/dell/git/batch-5/device/practice/modules.order -i Module.symvers -e 

@@ -5,7 +5,11 @@
 #include<linux/kernel.h>
 
 #define DEVICE_NAME "BASIC_CHAR"
+#define BUFFER 150
+
+static char kernel_buffer[BUFFER];
 static int major_number;
+static int buffer_size;
 
 
 
@@ -21,19 +25,39 @@ static int basic_close(struct inode *inode,struct file *file)
 	return 0;
 }
 
-static int basic_read(struct file *file,char __user *user_buffer,size_t count,loff_t *offset)
+static ssize_t basic_write(struct file *file ,const char __user *user_buffer,size_t count, loff_t *offset)
 {
-	if(copy_to_user(user_buffer,kernel_buffer,count))
+	int bytes_to_copy;
+	bytes_to_copy=min(count,(size_t)BUFFER);
+	if(copy_from_user(kernel_buffer,user_buffer,bytes_to_copy))
 		return -EFAULT;
+	buffer_size = bytes_to_copy;
+	printk("write success wrote %d\n",bytes_to_copy);
+	printk("wrote into buffer %s\n",kernel_buffer);
+	return bytes_to_copy;
+}
+
+static ssize_t basic_read(struct file *file,char __user *user_buffer,size_t count,loff_t *offset)
+{
+	int bytes_to_copy;
+	if(*offset>=buffer_size)
+		return 0;
+	bytes_to_copy=min(count,(size_t)(buffer_size-*offset));
+	if(copy_to_user(user_buffer,kernel_buffer,bytes_to_copy))
+		return -EFAULT;
+	*offset+=bytes_to_copy;
+	printk("read %d bytes\n",bytes_to_copy);
+	printk("wrote %s\n",kernel_buffer);
+	return bytes_to_copy;
 
 }
 struct file_operations fops=
 {
         .owner=THIS_MODULE,
         .open=basic_open,
-        .release=basic_close,
 	.read=basic_read,
 	.write=basic_write,
+        .release=basic_close,
 };
 
 

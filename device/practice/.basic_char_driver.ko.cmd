@@ -1,0 +1,1 @@
+savedcmd_/home/dell/git/batch-5/device/practice/basic_char_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/dell/git/batch-5/device/practice/basic_char_driver.ko /home/dell/git/batch-5/device/practice/basic_char_driver.o /home/dell/git/batch-5/device/practice/basic_char_driver.mod.o

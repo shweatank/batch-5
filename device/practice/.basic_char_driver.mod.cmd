@@ -1,0 +1,1 @@
+savedcmd_/home/dell/git/batch-5/device/practice/basic_char_driver.mod := printf '%s\n'   basic_char_driver.o | awk '!x[$$0]++ { print("/home/dell/git/batch-5/device/practice/"$$0) }' > /home/dell/git/batch-5/device/practice/basic_char_driver.mod
