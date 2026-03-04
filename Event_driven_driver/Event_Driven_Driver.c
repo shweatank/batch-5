@@ -29,13 +29,9 @@
 
 /* ---------------- LCD Configuration ---------------- */
 
-<<<<<<< HEAD
-#define SCREEN_WIDTH 176			//width of display in pixels
-#define SCREEN_HEIGHT 220			//heigth of display in pixels
-=======
 #define SCREEN_WIDTH 176	     //size of the width for display and mouse quadrant
 #define SCREEN_HEIGHT 220	     //size of the height for display and mouse quadrant
->>>>>>> 1d1b53c (updated)
+				     //
 #define MAX_STRING_LEN 128           //MAX Stored String Length
 
 /* ---------------- MMIO GPIO (LED) ---------------- */
