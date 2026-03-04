@@ -1,4 +1,4 @@
-obj-m +=waitqueue_ker.o
+obj-m +=basic_char.o
 
 
 all:

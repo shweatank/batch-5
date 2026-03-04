@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/batch-5/drivers/basic_char.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/batch-5/drivers/basic_char.ko /home/mirafra/batch-5/drivers/basic_char.o /home/mirafra/batch-5/drivers/basic_char.mod.o

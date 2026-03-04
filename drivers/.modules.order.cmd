@@ -1,1 +1,1 @@
-savedcmd_/home/mirafra/drivers/modules.order := {   echo /home/mirafra/drivers/waitqueue_ker.o; :; } > /home/mirafra/drivers/modules.order
+savedcmd_/home/mirafra/batch-5/drivers/modules.order := {   echo /home/mirafra/batch-5/drivers/basic_char.o; :; } > /home/mirafra/batch-5/drivers/modules.order
