@@ -7,7 +7,6 @@
 #include <linux/workqueue.h>     // Workqueue APIs
 #include <linux/of.h>            // Device Tree support
 #include "font8x8_basic.h"       // 8x8 font table for LCD text
-#include <linux/jiffies.h>       // jiffies for debounce timing
 				 
 
 #define DS3231_SEC     0x00      // seconds register
@@ -24,8 +23,6 @@
 #define GPIO_IR  (17 + 512)      // GPIO number for IR sensor
 #define WID      176             // LCD width
 #define HIG      220             // LCD height
-
-static unsigned long last_jiffies;       // Used for interrupt debounce
 
 
 struct my_context {
@@ -289,22 +286,18 @@ static void work_handler(struct work_struct *work)
     ili9225_fill(g_lcd, 0xFFFF);                // clear LCD screen (white)
     drawString(10, 10, "Object\nDetected", 0x0000); // display detection message
     drawString(10, 51, kbuf, 0x0000);           // display RTC time on LCD
+    enable_irq(irq);                           //enable the irq
 }
 
 
 /* gpio_isr - GPIO interrupt handler with debounce logic */
 static irqreturn_t gpio_isr(int irq, void *dev_id)
 {
-    unsigned long now = jiffies;               // get current time in jiffies
+     disable_irq_nosync(irq);                   //disbale the irq
 
-    if (time_before(now, last_jiffies + msecs_to_jiffies(200))) // debounce check
-        return IRQ_HANDLED;                    // ignore bouncing interrupt
+     queue_work(ctx.my_wq, &ctx.work);          // schedule workqueue task
 
-    last_jiffies = now;                        // update last interrupt time
-
-    queue_work(ctx.my_wq, &ctx.work);          // schedule workqueue task
-
-    return IRQ_HANDLED;                        // interrupt handled
+    return IRQ_HANDLED;                         // interrupt handled
 }
 
 
