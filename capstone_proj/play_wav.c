@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
     wav_riff_t riff;// declare the dtructure to store first 12bytes(RIFF header)
     if (read_exact(fp, &riff, sizeof(riff)) != 0)// read RIFF header from file
     {
-        fprintf(stderr, "Failed to read RIFF header\n");
+     fprintf(stderr, "Failed to read RIFF header\n");
         fclose(fp);
         return 1;
     }
@@ -111,31 +111,36 @@ int main(int argc, char **argv) {
         fclose(fp);
         return 1;
     }
+  // ---- Find "fmt " and "data" chunks ----
+    wav_fmt_t fmt = {0};
+    int have_fmt = 0;
+    uint32_t data_size = 0;
+    long data_offset = -1;
 
-    // ---- Find "fmt " and "data" chunks ----
-    wav_fmt_t fmt = {0};// to store fmt chunk data
-    int have_fmt = 0;// flag to track if fmt chunk is found
-    uint32_t data_size = 0;//store the size od the data chunk
-    long data_offset = -1;//file offset where audio data begins
+    while (!have_fmt || data_offset < 0)//loop until both "fmt" chunk and "data" chunk are found
+ {
+        char chunk_id[4];//buf to store current chunk id
+        uint32_t chunk_size;// var to store current chunk size
 
-    while (!have_fmt || data_offset < 0) {
-        char chunk_id[4];
-        uint32_t chunk_size;
+        if (read_exact(fp, chunk_id, 4) != 0)//read chunk id
+	break;
+        if (read_exact(fp, &chunk_size, 4) != 0)//read chunk size
+	break;
 
-        if (read_exact(fp, chunk_id, 4) != 0) break;
-        if (read_exact(fp, &chunk_size, 4) != 0) break;
-
-        if (memcmp(chunk_id, "fmt ", 4) == 0) {
+        if (memcmp(chunk_id, "fmt ", 4) == 0)//check if the chunk is "fmt" 
+	{
             // Read at least the base fmt struct without the "id" and "size"
             // We've already read id + size, so read the rest fields:
-            if (chunk_size < 16) {
+            if (chunk_size < 16)//validate min fmt chunk size for PCM
+ {
                 fprintf(stderr, "Invalid fmt chunk size: %u\n", chunk_size);
                 fclose(fp);
                 return 1;
             }
 
-            fmt.size = chunk_size;
-            if (read_exact(fp, &fmt.audio_format, 16) != 0) {
+            fmt.size = chunk_size;//store fmt chunk from the header
+            if (read_exact(fp, &fmt.audio_format, 16) != 0)
+	 {
                 fprintf(stderr, "Failed to read fmt chunk\n");
                 fclose(fp);
                 return 1;
@@ -150,10 +155,11 @@ int main(int argc, char **argv) {
                 }
             }
 
-            have_fmt = 1;
-        } else if (memcmp(chunk_id, "data", 4) == 0) {
-            data_size = chunk_size;
-            data_offset = ftell(fp);
+            have_fmt = 1;//fmt found
+        } else if (memcmp(chunk_id, "data", 4) == 0)//check if current chunk is data
+ {
+            data_size = chunk_size;//store size of audio data
+            data_offset = ftell(fp);//record file pos when audio data begins
             // Do not skip now; we want to stream from here
             break;
         } else {
@@ -162,7 +168,7 @@ int main(int argc, char **argv) {
         }
 
         // Chunks are word-aligned in RIFF; if odd size, skip pad byte
-        if (chunk_size & 1) (void)skip_bytes(fp, 1);
+        if (chunk_size & 1) (void)skip_bytes(fp, 1);//skip one padding byte if chunk size is odd
     }
 
     if (!have_fmt || data_offset < 0) {
@@ -195,10 +201,10 @@ int main(int argc, char **argv) {
             fmt.sample_rate, fmt.num_channels, fmt.bits_per_sample, data_size, dev);
 
     // ---- ALSA setup ----
-    snd_pcm_t *pcm = NULL;
+    snd_pcm_t *pcm = NULL;//ptr to alsa pcm blayback
     snd_pcm_hw_params_t *hw = NULL;
 
-    int err = snd_pcm_open(&pcm, dev, SND_PCM_STREAM_PLAYBACK, 0);
+    int err = snd_pcm_open(&pcm, dev, SND_PCM_STREAM_PLAYBACK, 0);//open alsa device for playback
     if (err < 0) die_alsa("snd_pcm_open", err);
 
     snd_pcm_hw_params_alloca(&hw);
@@ -208,14 +214,14 @@ int main(int argc, char **argv) {
     err = snd_pcm_hw_params_set_access(pcm, hw, SND_PCM_ACCESS_RW_INTERLEAVED);
     if (err < 0) die_alsa("set_access", err);
 
-    err = snd_pcm_hw_params_set_format(pcm, hw, pcm_format);
+    err = snd_pcm_hw_params_set_format(pcm, hw, pcm_format);//u8,s16,s24/s32
     if (err < 0) die_alsa("set_format", err);
 
-    err = snd_pcm_hw_params_set_channels(pcm, hw, fmt.num_channels);
+    err = snd_pcm_hw_params_set_channels(pcm, hw, fmt.num_channels);//set no of channels
     if (err < 0) die_alsa("set_channels", err);
 
-    unsigned int rate = fmt.sample_rate;
-    err = snd_pcm_hw_params_set_rate_near(pcm, hw, &rate, NULL);
+    unsigned int rate = fmt.sample_rate;//copy wav sample rate
+    err = snd_pcm_hw_params_set_rate_near(pcm, hw, &rate, NULL);//set sample rate
     if (err < 0) die_alsa("set_rate_near", err);
 
     // Apply
@@ -233,7 +239,7 @@ int main(int argc, char **argv) {
     const snd_pcm_uframes_t chunk_frames = 1024;
     const size_t chunk_bytes = (size_t)chunk_frames * bytes_per_frame;
 
-    uint8_t *buf = (uint8_t *)malloc(chunk_bytes);
+    uint8_t *buf = (uint8_t *)malloc(chunk_bytes);//total bytes per cunk
     if (!buf) {
         perror("malloc");
         snd_pcm_close(pcm);
@@ -241,37 +247,39 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    uint32_t remaining = data_size;
-    while (remaining > 0) {
-        size_t to_read = chunk_bytes;
+    uint32_t remaining = data_size;//audio bytes left to play
+    while (remaining > 0)//loop untill all audio data is sent
+ {
+        size_t to_read = chunk_bytes;// default 1 chunk
         if (to_read > remaining) to_read = remaining;
 
-        size_t n = fread(buf, 1, to_read, fp);
-        if (n == 0) break;
+        size_t n = fread(buf, 1, to_read, fp); // Read audio data from WAV file into buffer
+        if (n == 0) break; // Stop if no more data
 
         remaining -= (uint32_t)n;
 
         snd_pcm_uframes_t frames = (snd_pcm_uframes_t)(n / bytes_per_frame);
         uint8_t *p = buf;
 
-        while (frames > 0) {
+        while (frames > 0)//write all frames to alsa
+ {
             snd_pcm_sframes_t w = snd_pcm_writei(pcm, p, frames);
             if (w == -EPIPE) {
                 snd_pcm_prepare(pcm); // underrun recovery
                 continue;
             } else if (w < 0) {
-                w = snd_pcm_recover(pcm, (int)w, 1);
+                w = snd_pcm_recover(pcm, (int)w, 1);//automatic recovery
                 if (w < 0) die_alsa("snd_pcm_writei/recover", (int)w);
                 continue;
             }
 
             snd_pcm_uframes_t written = (snd_pcm_uframes_t)w;
             frames -= written;
-            p += (size_t)written * bytes_per_frame;
+            p += (size_t)written * bytes_per_frame;//mov buf ptr frwd by written frames
         }
     }
 
-    snd_pcm_drain(pcm);
+    snd_pcm_drain(pcm);//Wait until all queued audio samples are played
 
     free(buf);
     snd_pcm_close(pcm);
@@ -280,3 +288,4 @@ int main(int argc, char **argv) {
     fprintf(stderr, "Done.\n");
     return 0;
 }
+
