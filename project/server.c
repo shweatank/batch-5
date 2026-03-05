@@ -13,7 +13,7 @@
 #include <linux/gpio/consumer.h> // GPIO descriptor API
 #include <linux/io.h>          // ioremap(), readl(), writel()
 #include <linux/types.h>       // for u8, u16 etc
-#include "font_basic.h"        // 8x8 ASCII bitmap font
+#include "characters.h"        // 8x8 ASCII bitmap font
 
 #define SERVER_PORT 8082    // TCP server port number
 #define RX_MAX 512          // Max receive buffer size
