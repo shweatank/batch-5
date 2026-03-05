@@ -155,14 +155,10 @@ static void play_audio(void)
 	char *argv[] = {"/usr/bin/aplay",
 		"/home/project/project/welcome.wav",
 		NULL};
-	static char *envp[] = {
-		"HOME=/",
-		"PATH=/sbin:/bin:/usr/sbin:/usr/bin",
-		NULL
-	};
+	
 	pr_info("playing welcome audio\n");
 	//plays audio
-	call_usermodehelper(argv[0], argv, envp, UMH_WAIT_PROC);
+	call_usermodehelper(argv[0], argv, NULL, UMH_WAIT_PROC);
 	pr_info("played audio\n");
 }
 
