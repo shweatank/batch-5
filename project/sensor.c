@@ -131,15 +131,16 @@ static int mimic_fn(void *data)
 					case 0x06:  // FP_ADD
 						pr_info("MIMIC: FP_ADD (Register)\n");
 			
-						// extract packet length from bytes 7-8
+						// extract packet length from bytes 7-8 because finger print protocols store length in 2 bytes 
 						int pkt_len = (buffer[7] << 8) | buffer[8];
 
-						int payload_len = pkt_len - 3; // exclude CMD + 2-byte checksum
-						if (payload_len > MAX_IMAGE_SIZE)
-							payload_len = MAX_IMAGE_SIZE;
+						int storing_len = pkt_len - 3; // exclude cmd + 2-byte checksum
+						//to prevent buffer overloading
+						if (storing_len > MAX_IMAGE_SIZE)
+							storing_len = MAX_IMAGE_SIZE;
 
-						memcpy(registered_image, buffer + 10, payload_len);
-						image_size = payload_len;
+						memcpy(registered_image, buffer + 10, storing_len);
+						image_size = storing_len;
 						registered = 1;
 						uart_send(success_ack, sizeof(success_ack));
 						break;
@@ -147,7 +148,7 @@ static int mimic_fn(void *data)
 					case 0x04:  // FP_SEARCH
 						pr_info("MIMIC: FP_SEARCH\n");
 						
-						int search_len = ((buffer[7] << 8) | buffer[8])- 3; // CMD + CRC
+						int search_len = ((buffer[7] << 8) | buffer[8])- 3; // EXCLUDING(Command + Check sum)
 						if (search_len > image_size)
 							search_len = image_size;
 
