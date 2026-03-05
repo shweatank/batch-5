@@ -477,18 +477,24 @@ static int server_fn(void *data)
 				for (int i = 0; i < ret; i++)
 					pr_cont("%02X ", ack[i]);
 				pr_cont("\n");
-
-				pr_info("no match\n");
-				msleep(20);
-				ili9225_fill(g_lcd, 0xFFFF);//white background
-
-				drawString(20, 80, "NO MATCH", 0xF800);//red
+				if (ret > 9 && ack[9] == 0x00)
+				{
+					pr_info("matched\n");
+					msleep(10);
+					ili9225_fill(g_lcd, 0xFFFF);//white background
+					drawString(20, 80, "MATCHED", 0x07E0);//green text
+				}
+				else{
+					pr_info("no match\n");
+					ili9225_fill(g_lcd, 0xFFFF);//white background
+					drawString(20, 80, "NO MATCH", 0xF800);//red text
+					}
 			}
 			else
 			{
 				  ili9225_fill(g_lcd, 0xFFFF);//white background
 
-                                  drawString(20, 80, "INVALID", 0xF800);//red
+                 drawString(20, 80, "INVALID", 0xF800);//red
 
 			}
 			sock_release(client_sock);
