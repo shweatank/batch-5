@@ -152,7 +152,7 @@ static int mimic_fn(void *data)
 						if (search_len > image_size)
 							search_len = image_size;
 
-						if (registered && memcmp(registered_image, buffer + 10, search_len) == 0)
+						if (registered && (memcmp(registered_image, buffer + 10, search_len) == 0))
 						{
 							uart_send(success_ack, sizeof(success_ack));
 							pr_info("MIMIC: MATCHED\n");
