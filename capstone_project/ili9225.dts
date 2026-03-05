@@ -1,0 +1,25 @@
+/dts-v1/; //dTS format version
+/plugin/;// used for insert dts whenever module is loaded
+
+/ { //root node
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&spi0>; //points to SPI controller 0 in base device tree
+
+        __overlay__ { // under this section what changes you write that will effect to target node
+            #address-cells = <1>; // used 1 chip select number
+            #size-cells = <0>;
+
+            ili9225@0 { //device node
+                compatible = "ili9225_display"; // compatible string
+                reg = <0>;                     // CE0 of SPI
+                spi-max-frequency = <4000000>; // 4 MHz 
+                status = "okay"; // enable device
+
+                rs-gpios = <&gpio 25 0>;       //GPIO 25 
+                reset-gpios = <&gpio 24 0>;    //  GPIO 24 
+            };
+        };
+    };
+};
