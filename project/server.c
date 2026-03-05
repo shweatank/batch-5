@@ -166,7 +166,7 @@ static void play_audio(void)
 // Draw a single pixel at (x,y) with given color
 static void drawPixel(int x, int y, uint16_t color)
 {
-	struct ili9225 *lcd = g_lcd; //kcd globa; pointer
+	struct ili9225 *lcd = g_lcd; //lcd global pointer
 
 	// rotation adjustment
 	int x_rotated = 219 - x; //flip x axis
