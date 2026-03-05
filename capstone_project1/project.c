@@ -1,4 +1,3 @@
-//FINAL CODE//////
 #include<linux/module.h> // for kernel modules  ex: module_init
 #include<linux/kernel.h>// printk,pr_info fns
 #include<linux/interrupt.h>// interrupt handling functions
@@ -10,47 +9,41 @@
 #include<linux/gpio.h>// gpio fns
 #include<linux/delay.h>//for udelay,msleep
 #include<linux/workqueue.h>// for workqueue functions
-#include<linux/types.h>// data types u8,u16
-#include "char_header.h"// characters header
+#include<linux/types.h>//data types u8,u16
+#include "char_header.h"//characters header
 
 #define DHT_GPIO_4 4+512 //for sensor data output pin
-#define GPIO_17 17+512 // gpio interrupt pin
+#define GPIO_17 17+512 //gpio interrupt pin
 
-#define TIMER_PHY 0xFE003000 // physical base address of s/s timer register
+#define TIMER_PHY 0xFE003000//physical base address of s/s timer register
 #define TIMER_CLO  0x04 //  timer counter register
-#define TIMER_SIZE 0x1C // size of timer memory region 
+#define TIMER_SIZE 0x1C // size of timer memory map  region 
 #define MSEC 1000  // for convert microseconds to milliseconds
 #define DRIVER_NAME "ili9225_driver"  //driver name
 #define LINE_HEIGHT 20 //pixel height between text lines
-#define UART_BASE  0xFE201000
-#define UART_SIZE  0x100
+#define UART_BASE  0xFE201000 //physical address of uart H/W
+#define UART_SIZE  0x100 //size of uart memory map region
 
-/* Registers */
-#define UART_DR    0x00
-#define UART_FR    0x18
-#define UART_IBRD  0x24
-#define UART_FBRD  0x28
-#define UART_LCRH  0x2C
-#define UART_CR    0x30
-#define UART_IMSC  0x38
-#define UART_ICR   0x44
+#define UART_DR    0x00 //data reg send or recieve data
+#define UART_FR    0x18 //flag reg tx full ,Rx empty
+#define UART_IBRD  0x24//integer baud rate divisor register
+#define UART_FBRD  0x28 // fractional baud rate divisor
+#define UART_LCR  0x2C //line control register ,WL,FIFO EN,stop bits
+#define UART_CR    0x30 // control reg ,uart EN,TX EN,RX EN
+#define UART_IMSC  0x38 //interrupt mask set /clear reg disable uart interrupts
+#define UART_ICR   0x44 // interrupt clear reg,clear pending uart interrupts
 
 /* Flags */
-#define FR_TXFF (1 << 5)
-#define FR_RXFE (1 << 4)
-#define FR_BUSY (1 << 3)
+#define FR_TXFF (1 << 5) //tx fifo full flag ,1->fifo full ,0->fifo empty
+#define FR_RXFE (1 << 4) //rx fifo empty flag,1->empty,0->available data
 
 /* Control bits */
-#define CR_UARTEN (1 << 0)
-#define CR_TXE    (1 << 8)
-#define CR_RXE    (1 << 9)
-
+#define CR_UARTEN (1 << 0) //EN uart H/W
+#define CR_TXE    (1 << 8) //EN Tx
+#define CR_RXE    (1 << 9) //EN RX
 /* Line control */
-#define LCRH_8BIT (3 << 5)
-#define LCRH_FEN  (1 << 4)
-
-#define uart_read(off)        readl(uart_base + (off))
-#define uart_write(val, off)  writel((val), uart_base + (off))
+#define LCR_8BIT (3 << 5)//select 8 bit length
+#define LCR_FEN  (1 << 4) //EN tx fifo and rx fifo buffers
 
 #define LCD_WIDTH   220 // horizontal direction
 #define LCD_HEIGHT  176 // vertical direction
@@ -83,18 +76,17 @@ if((now-start)>=us) // if required delay comes break it
 us=5000;
 now=150000-10000 =5000 -> break the loop*/
 }
-
+	
 /* 
 	Storing data into buffer and sending to a pointer that represents hardware
 */
 static int ili9225_display_write16(struct ili9225_display *lcd, u16 value)
 {
     u8 buf[2];
-    buf[0] = value >> 8;
-    buf[1] = value & 0xFF;
+    buf[0] = value >> 8;//Because the ILI9225 expects the HIGH BYTE first
+    buf[1] = value & 0xFF;//then lower byte
     return spi_write(lcd->spi, buf, 2);
 }
-
 
 static int ili9225_display_write_reg(struct ili9225_display *lcd, u16 reg, u16 data)
 {
@@ -105,25 +97,15 @@ static int ili9225_display_write_reg(struct ili9225_display *lcd, u16 reg, u16 d
     gpiod_set_value(lcd->rs, 1);
     return ili9225_display_write16(lcd, data);
 }
-
-
-
-
-
-
 static void ili9225_display_reset(struct ili9225_display *lcd)
 {
     gpiod_set_value(lcd->reset, 1);   //pull reset pin high
-    msleep(5);                         //wait fo 5ms
+    msleep(5);                        //wait fo 5ms
     gpiod_set_value(lcd->reset, 0);    //pull low(Trigger reset)
     msleep(20);                        //wait for 20 ms
     gpiod_set_value(lcd->reset, 1);    //again pull high(Release reset pin)
     msleep(50);                        //Final stabilization delay
 }
-
-
-
-
 
 static void ili9225_display_init(struct ili9225_display *lcd)
 {
@@ -151,15 +133,9 @@ static void ili9225_display_init(struct ili9225_display *lcd)
     ili9225_display_write_reg(lcd, 0x0007, 0x1017);       //Enables Internal logic, Display output
     msleep(20);                                           //Delay to ensure stable start
 }
-
-
-
-
-
 static void ili9225_display_fill(struct ili9225_display *lcd, u16 color)
 {
     int x, y;
-
     ili9225_display_write_reg(lcd, 0x0036, LCD_HEIGHT - 1);   //Sets vertical bottom limit
     ili9225_display_write_reg(lcd, 0x0037, 0);                //sets vertical top limit
     ili9225_display_write_reg(lcd, 0x0038, LCD_WIDTH - 1);    //sets horizontal end 
@@ -201,6 +177,7 @@ static void drawPixel(int x, int y, uint16_t color)
     gpiod_set_value(lcd->rs, 1);
     ili9225_display_write16(lcd, color);
 }
+
 static void drawChar(int x, int y, unsigned char c, u16 color)
 {
 int scale=2;
@@ -226,6 +203,7 @@ int scale=2;
         }
     }
 }
+
 static void drawString(int x, int y, const unsigned char *str,u16 color)
 {
     int scale = 2;
@@ -236,23 +214,24 @@ static void drawString(int x, int y, const unsigned char *str,u16 color)
         x += (8*scale)+2;   // adjust spacing
     }
 }
-static void sensor_work(struct work_struct *work)
+
+static void sensor_work(struct work_strut *work)
 {
  int i, j;
     u8 buf[5] = {0}; // buffers to store sensor data of 5 bytes
     char temp_str[25],hum_str[25],str[60]; //strings to store temperature and humidity
-
    /* Start condition */
     gpio_direction_output(DHT_GPIO_4, 0); // pull pin to  low to start communication
    delay_us(18*MSEC);    //wait for 18 msec
  
-      gpio_set_value(DHT_GPIO_4, 1);//  pull pin to high 
-      delay_us(30); //wait for 30us (20-40us)
+    gpio_set_value(DHT_GPIO_4, 1);//  pull pin to high 
+    delay_us(35); //wait for 35us (20-40us)
     gpio_direction_input(DHT_GPIO_4); //changing GPIO pin to input to recieve data from sensor 
 
     if (gpio_get_value(DHT_GPIO_4))  // checking pin  low or not
         pr_info("GPIO_4 error in sensor work\n");
 /*sensor response waiting time*/
+
     while (!gpio_get_value(DHT_GPIO_4));// pin will be in low for 80us 
     while (gpio_get_value(DHT_GPIO_4)); // pin will be in high for 80us 
 
@@ -262,10 +241,9 @@ static void sensor_work(struct work_struct *work)
 
             while (!gpio_get_value(DHT_GPIO_4)); //wait for start bit high
 
-            delay_us(35); //wait for 30us to detect bit value (26-28us)
+            delay_us(30); //wait for 30us to detect bit value (26-28us)
             if (gpio_get_value(DHT_GPIO_4)) // if still bit is high store value into buffer (pin should be high for 70us)
                 buf[i] |= (1 << (7 - j));
-
             while (gpio_get_value(DHT_GPIO_4)); //wait for pin to low
         }
     }
@@ -276,46 +254,40 @@ static void sensor_work(struct work_struct *work)
 
 pr_info("Temperature=%d.%d°C\n",buf[2],buf[3]);//tempearture -> buf[2]=integer part ,buf[3]=decimal part
 pr_info("Humidity=%d.%d%%\n",buf[0],buf[1]);// humidity -> buf[0]=integer part buf[1]=fraction part 
-  ili9225_display_fill(g_lcd, 0xFFFF);// clear screen with white screen
+ili9225_display_fill(g_lcd, 0xFFFF);// clea  disable_irq_nosync(irq);r screen with white screen
 snprintf(temp_str,sizeof(temp_str),"%d.%d%cC",buf[2],buf[3],126); //converting temperature into string
-snprintf(hum_str,sizeof(hum_str),"%d.%d%%",buf[0],buf[1]);// converting humidity into string
-
+snprintf(hum_str,sizeof(hum_str),"%d.%d%%",buf[0],buf[1]);// converting humidity into string //sends formatted data to the lcd
 drawString(5,10,"Temperature:",0x0000);
 drawString(5,40,temp_str,0x0000);
 drawString(5,70,"Humidity:",0x0000);
 drawString(5,100,hum_str,0x0000);
-snprintf(str,sizeof(str),"Temperature:%d.%d°C\nHumidity:%d.%d%%\n",buf[2],buf[3],buf[0],buf[1]);  
-for (i = 0; str[i]; i++) {
-        while (uart_read(UART_FR) & FR_TXFF)
-            cpu_relax();
-
-        uart_write(str[i], UART_DR);
-    }
-
+snprintf(str,sizeof(str),"Temperature:%d.%d°C\nHumidity:%d.%d%%\n",buf[2],buf[3],buf[0],buf[1]);//send data to uart
+for(i=0;str[i];i++)
+{
+while(readl(uart_base+UART_FR)&FR_TXFF);
+writel(str[i],uart_base+UART_DR);
+}
 enable_irq(irq);// enable irq
+
 }
 static irqreturn_t GPIO_isr(int irq, void *dev_id)
-{
-delay_us(500);
-	disable_irq_nosync(irq); //avoiding multiple triggers
+{	disable_irq_nosync(irq); //avoiding multiple triggers
 	pr_info("GPIO interrrupt triggered\n");
 	queue_work(my_wq, &my_work);// schedule the work
 	return IRQ_HANDLED;
 }
 static void uart_hw_init(void)
 {
-    uart_write(0, UART_CR);        /* Disable UART */
-    uart_write(0x7FF, UART_ICR);   /* Clear IRQs */
+writel(0,uart_base+UART_CR); //disable uart
+writel(0x7FF,uart_base+UART_ICR); //clear irqs
 
-    /* 115200 baud @ 48MHz */
-    uart_write(26, UART_IBRD);
-    uart_write(3,  UART_FBRD);
+writel(26,uart_base+UART_IBRD); //integer baud rate
+writel(3,uart_base+UART_FBRD); //fraction baud rate
 
-    uart_write(LCRH_8BIT | LCRH_FEN, UART_LCRH);
+writel(LCRH_8BIT|LCR_FEN,uart_base+UART_LCR);//wl=8,fifo EN
 
-    uart_write(CR_UARTEN | CR_TXE | CR_RXE, UART_CR);
-    uart_write(0, UART_IMSC);      /* No interrupts */
-
+writel(CR_UARTEN|CR_TXE|CR_RXE,uart_base+UART_CR);//uart EN TX EN,RX EN
+writel(0,uart_base+UART_IMSC);//no interupts
     pr_info(" UART initialized\n");
 }
 
@@ -338,7 +310,7 @@ static int ili9225_display_probe(struct spi_device *spi)
     spi->mode = SPI_MODE_0; // cpol=0,cpha=0
     spi->bits_per_word = 8;// 1 byte at a time per transfer
     spi_setup(spi);//applying spi configuration to hardware controller
-
+ {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
     ili9225_display_init(lcd);// initailizing display
     ili9225_display_fill(lcd, 0xFFFF);// fill screen with white color
 
@@ -369,6 +341,7 @@ static int ili9225_display_probe(struct spi_device *spi)
     my_wq = create_singlethread_workqueue("dht_wq"); // creating worker thread
     if (!my_wq)
         return -ENOMEM;
+
     INIT_WORK(&my_work, sensor_work); //initializing sensor work  function
 
 	gpio_direction_output(DHT_GPIO_4, 1); //set as output for sensor data pin
@@ -380,14 +353,14 @@ static int ili9225_display_probe(struct spi_device *spi)
     }
 	pr_info("module loaded\n");
 
-uart_base = ioremap(UART_BASE, UART_SIZE);
+uart_base = ioremap(UART_BASE, UART_SIZE);//
     if (!uart_base) {
         pr_err("rpi_uart: ioremap failed\n");
         return -ENOMEM;
     }
 
 
-    uart_hw_init();
+    uart_hw_init(); // intailizing uart H/W
 	return 0;
 }
 
@@ -410,7 +383,7 @@ if (timer_base){
         iounmap(timer_base);}//unmap memory mapped timer registers
 iounmap(uart_base);
 pr_info("removed\n");
- 
+
 }
 static const struct of_device_id ili9225_dt_ids[] = {
     { .compatible = "ili9225_display" },// device tree compatible string to match driver
