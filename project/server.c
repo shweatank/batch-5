@@ -392,17 +392,15 @@ static void finger_print_handler(void)
 		if (ret > 9 && ack[9] == 0x00)
 		{
 			pr_info("matched\n");
-
-			msleep(10);
+			
 			ili9225_fill(g_lcd, 0xFFFF);//white background
 			drawString(20, 80, "MATCHED", 0x07E0);//green text
 		}
 		else{
 			pr_info("no match\n");
-
+			
 			ili9225_fill(g_lcd, 0xFFFF);//white background
-
-			drawString(20, 80, "NO MATCH", 0xF800);//red text
+			drawString(20, 80, "NOT MATCHED", 0xF800);//red text
 		}
 
 
@@ -480,14 +478,14 @@ static int server_fn(void *data)
 				if (ret > 9 && ack[9] == 0x00)
 				{
 					pr_info("matched\n");
-					msleep(10);
+					
 					ili9225_fill(g_lcd, 0xFFFF);//white background
 					drawString(20, 80, "MATCHED", 0x07E0);//green text
 				}
 				else{
 					pr_info("no match\n");
 					ili9225_fill(g_lcd, 0xFFFF);//white background
-					drawString(20, 80, "NO MATCH", 0xF800);//red text
+					drawString(20, 80, "NOT MATCHED", 0xF800);//red text
 					}
 			}
 			else
