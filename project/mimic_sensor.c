@@ -214,4 +214,4 @@ module_exit(mimic_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("GC07 Kernel Mimic");
-MODULE_DESCRIPTION("Kernel GC07 Fingerprint Sensor Emulator using PL011 MMIO");
+MODULE_DESCRIPTION("Kernel GC07 Fingerprint Sensor using PL011 MMIO");
