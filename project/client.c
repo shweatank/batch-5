@@ -44,7 +44,7 @@ int main(int argc,char *argv[])
     /* Send message */
     if(strcmp(argv[1],"2")==0)
     {
-	    sent = send(sock, "NEW", strlen("NEW"), 0);
+	    sent = send(sock, "I am new client", strlen("I am new client"), 0);
     }
     else
     sent = send(sock, msg, strlen(msg), 0);
