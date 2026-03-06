@@ -35,19 +35,29 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
+	{ 0xb5b54b34, "_raw_spin_unlock" },
+	{ 0xf9a482f9, "msleep" },
+	{ 0xb3f7646e, "kthread_should_stop" },
+	{ 0xe3ec2f2b, "alloc_chrdev_region" },
+	{ 0x858c69be, "cdev_init" },
+	{ 0x6b732375, "cdev_add" },
+	{ 0x6ca9b86a, "class_create" },
+	{ 0x3b69de06, "device_create" },
+	{ 0x1f337bd7, "kthread_create_on_node" },
+	{ 0xf87c611c, "wake_up_process" },
+	{ 0x6091b333, "unregister_chrdev_region" },
+	{ 0xc892ac3e, "cdev_del" },
+	{ 0x75646747, "class_destroy" },
+	{ 0x2ef1b23, "kthread_stop" },
+	{ 0x5b40b481, "device_destroy" },
 	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x4c03a563, "random_kmalloc_seed" },
-	{ 0x8da0819, "kmalloc_caches" },
-	{ 0xd0c3484c, "kmalloc_trace" },
-	{ 0xd6ee688f, "vmalloc" },
-	{ 0x8bb6054c, "kernel_kobj" },
-	{ 0x39977daa, "kobject_create_and_add" },
 	{ 0x122c3a7e, "_printk" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
+	{ 0xba8fbd64, "_raw_spin_lock" },
 	{ 0xe2fd41e5, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "634F68A3D34EBE71D046800");
+MODULE_INFO(srcversion, "F5897902F6E414F2FB207D4");

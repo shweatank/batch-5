@@ -1,8 +1,11 @@
-savedcmd_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o := gcc-12 -Wp,-MMD,/home/mirafra/Desktop/batch-5/memory_leak/.memoryleak_driver.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -I./ubuntu/include -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -mharden-sls=all -fpatchable-function-entry=16,16 -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -fno-omit-frame-pointer -fno-optimize-sibling-calls -ftrivial-auto-var-init=zero -fno-stack-clash-protection -fzero-call-used-regs=used-gpr -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -falign-functions=16 -fno-strict-overflow -fno-stack-check -fconserve-stack -Wall -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-overflow -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-restrict -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -g -gdwarf-5  -fsanitize=bounds-strict -fsanitize=shift -fsanitize=bool -fsanitize=enum  -DMODULE  -DKBUILD_BASENAME='"memoryleak_driver"' -DKBUILD_MODNAME='"memoryleak_driver"' -D__KBUILD_MODNAME=kmod_memoryleak_driver -c -o /home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o /home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.c   ; ./tools/objtool/objtool --hacks=jump_label --hacks=noinstr --hacks=skylake --retpoline --rethunk --sls --stackval --static-call --uaccess --prefix=16   --module /home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o
+savedcmd_/home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o := gcc-12 -Wp,-MMD,/home/mirafra/Desktop/batch-5/dd/.spinlock1.mod.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -I./ubuntu/include -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -mharden-sls=all -fpatchable-function-entry=16,16 -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -fno-omit-frame-pointer -fno-optimize-sibling-calls -ftrivial-auto-var-init=zero -fno-stack-clash-protection -fzero-call-used-regs=used-gpr -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -falign-functions=16 -fno-strict-overflow -fno-stack-check -fconserve-stack -Wall -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-overflow -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-restrict -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -g -gdwarf-5 -fsanitize=bounds-strict -fsanitize=shift -fsanitize=bool -fsanitize=enum -DMODULE -DKBUILD_BASENAME='"spinlock1.mod"' -DKBUILD_MODNAME='"spinlock1"' -D__KBUILD_MODNAME=kmod_spinlock1 -c -o /home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o /home/mirafra/Desktop/batch-5/dd/spinlock1.mod.c
 
-source_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o := /home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.c
+source_/home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o := /home/mirafra/Desktop/batch-5/dd/spinlock1.mod.c
 
-deps_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o := \
+deps_/home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o := \
+    $(wildcard include/config/UNWINDER_ORC) \
+    $(wildcard include/config/MODULE_UNLOAD) \
+    $(wildcard include/config/RETPOLINE) \
   include/linux/compiler-version.h \
     $(wildcard include/config/CC_VERSION_TEXT) \
   include/linux/kconfig.h \
@@ -21,7 +24,6 @@ deps_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o := \
     $(wildcard include/config/CC_HAS_ASM_INLINE) \
   include/linux/compiler_attributes.h \
   include/linux/compiler-gcc.h \
-    $(wildcard include/config/RETPOLINE) \
     $(wildcard include/config/GCC_ASM_GOTO_OUTPUT_WORKAROUND) \
     $(wildcard include/config/ARCH_USE_BUILTIN_BSWAP) \
     $(wildcard include/config/SHADOW_CALL_STACK) \
@@ -49,7 +51,6 @@ deps_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o := \
     $(wildcard include/config/HAVE_STATIC_CALL_INLINE) \
     $(wildcard include/config/KUNIT) \
     $(wildcard include/config/PRINTK_INDEX) \
-    $(wildcard include/config/MODULE_UNLOAD) \
     $(wildcard include/config/CONSTRUCTORS) \
     $(wildcard include/config/FUNCTION_ERROR_INJECTION) \
     $(wildcard include/config/DYNAMIC_DEBUG_CORE) \
@@ -1025,22 +1026,46 @@ deps_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o := \
   include/linux/error-injection.h \
   include/asm-generic/error-injection.h \
   arch/x86/include/asm/module.h \
-    $(wildcard include/config/UNWINDER_ORC) \
   include/asm-generic/module.h \
     $(wildcard include/config/HAVE_MOD_ARCH_SPECIFIC) \
     $(wildcard include/config/MODULES_USE_ELF_REL) \
     $(wildcard include/config/MODULES_USE_ELF_RELA) \
-  include/linux/vmalloc.h \
-    $(wildcard include/config/HAVE_ARCH_HUGE_VMALLOC) \
-  arch/x86/include/asm/vmalloc.h \
-    $(wildcard include/config/HAVE_ARCH_HUGE_VMAP) \
-  arch/x86/include/asm/pgtable_areas.h \
-  include/linux/delay.h \
-  arch/x86/include/asm/delay.h \
-  include/asm-generic/delay.h \
+  include/linux/build-salt.h \
+    $(wildcard include/config/BUILD_SALT) \
+  include/linux/elfnote.h \
+  include/linux/elfnote-lto.h \
+    $(wildcard include/config/LTO) \
+  include/linux/export-internal.h \
+    $(wildcard include/config/PARISC) \
+  include/linux/vermagic.h \
+    $(wildcard include/config/PREEMPT_BUILD) \
+  include/generated/utsrelease.h \
+  arch/x86/include/asm/vermagic.h \
+    $(wildcard include/config/M486SX) \
+    $(wildcard include/config/M486) \
+    $(wildcard include/config/M586) \
+    $(wildcard include/config/M586TSC) \
+    $(wildcard include/config/M586MMX) \
+    $(wildcard include/config/MCORE2) \
+    $(wildcard include/config/M686) \
+    $(wildcard include/config/MPENTIUMII) \
+    $(wildcard include/config/MPENTIUMIII) \
+    $(wildcard include/config/MPENTIUMM) \
+    $(wildcard include/config/MPENTIUM4) \
+    $(wildcard include/config/MK6) \
+    $(wildcard include/config/MK7) \
+    $(wildcard include/config/MK8) \
+    $(wildcard include/config/MELAN) \
+    $(wildcard include/config/MCRUSOE) \
+    $(wildcard include/config/MEFFICEON) \
+    $(wildcard include/config/MWINCHIPC6) \
+    $(wildcard include/config/MWINCHIP3D) \
+    $(wildcard include/config/MCYRIXIII) \
+    $(wildcard include/config/MVIAC3_2) \
+    $(wildcard include/config/MVIAC7) \
+    $(wildcard include/config/MGEODEGX1) \
+    $(wildcard include/config/MGEODE_LX) \
 
-/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o: $(deps_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o)
+/home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o: $(deps_/home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o)
 
-$(deps_/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o):
-
-/home/mirafra/Desktop/batch-5/memory_leak/memoryleak_driver.o: $(wildcard ./tools/objtool/objtool)
+$(deps_/home/mirafra/Desktop/batch-5/dd/spinlock1.mod.o):

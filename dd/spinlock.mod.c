@@ -36,12 +36,12 @@ MODULE_INFO(retpoline, "Y");
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
 	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x4c03a563, "random_kmalloc_seed" },
-	{ 0x8da0819, "kmalloc_caches" },
-	{ 0xd0c3484c, "kmalloc_trace" },
-	{ 0xd6ee688f, "vmalloc" },
-	{ 0x8bb6054c, "kernel_kobj" },
-	{ 0x39977daa, "kobject_create_and_add" },
+	{ 0x44be8471, "pcpu_hot" },
+	{ 0xba8fbd64, "_raw_spin_lock" },
+	{ 0xb5b54b34, "_raw_spin_unlock" },
+	{ 0xf9a482f9, "msleep" },
+	{ 0x1f337bd7, "kthread_create_on_node" },
+	{ 0xf87c611c, "wake_up_process" },
 	{ 0x122c3a7e, "_printk" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
 	{ 0xe2fd41e5, "module_layout" },
@@ -50,4 +50,4 @@ __used __section("__versions") = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "634F68A3D34EBE71D046800");
+MODULE_INFO(srcversion, "B1CD4A86B8AA0BDEDB8F038");

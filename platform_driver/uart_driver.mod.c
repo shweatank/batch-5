@@ -35,19 +35,26 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
+	{ 0x864e77e5, "__register_chrdev" },
+	{ 0x32a08632, "platform_device_unregister" },
+	{ 0x4a77885d, "platform_driver_unregister" },
+	{ 0x23509fba, "__platform_driver_register" },
+	{ 0xf6f06725, "platform_device_register_full" },
+	{ 0xf0fdf6cb, "__stack_chk_fail" },
+	{ 0x88db9f48, "__check_object_size" },
+	{ 0x13c49cc2, "_copy_from_user" },
+	{ 0x87a21cb3, "__ubsan_handle_out_of_bounds" },
+	{ 0x6b10bee1, "_copy_to_user" },
 	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x4c03a563, "random_kmalloc_seed" },
-	{ 0x8da0819, "kmalloc_caches" },
-	{ 0xd0c3484c, "kmalloc_trace" },
-	{ 0xd6ee688f, "vmalloc" },
-	{ 0x8bb6054c, "kernel_kobj" },
-	{ 0x39977daa, "kobject_create_and_add" },
 	{ 0x122c3a7e, "_printk" },
+	{ 0x6bc3fbc0, "__unregister_chrdev" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
+	{ 0x60a5786d, "platform_get_resource" },
+	{ 0x14d9bc1b, "devm_ioremap_resource" },
 	{ 0xe2fd41e5, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "634F68A3D34EBE71D046800");
+MODULE_INFO(srcversion, "7CD81547BF668C2FE8B1273");

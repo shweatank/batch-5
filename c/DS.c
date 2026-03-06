@@ -22,6 +22,8 @@ void delete_particular_node(emp**);
 int count_num_nodes(emp*);
 void add_middle(emp**);
 void reverse_print(emp*);
+void delete_nth_from_last(emp **);
+void print_nth_from_last(emp*);
 
 void main()
 {
@@ -30,7 +32,7 @@ void main()
 	while(1)
 	{
 	printf("Enter the option:\n");
-	printf("Enter 1)create_node 2)print_node 3)add_node_end 4)insert_at_position 5)delete_all_node 6)delete_first_node 7)delete_last_node 8)delete_particular_node 9)count_num_nodes 10)add_middle 11)reverse_print 12)exit\n");
+	printf("Enter 1)create_node 2)print_node 3)add_node_end 4)insert_at_position 5)delete_all_node 6)delete_first_node 7)delete_last_node 8)delete_particular_node 9)count_num_nodes 10)add_middle 11)reverse_print 12)delete_node_last 13)print_nth_from_last 14)exit\n");
 	scanf("%d",&op);
 	switch(op)
 	{
@@ -57,7 +59,11 @@ void main()
 			break;
 		case 11: reverse_print(hptr);
 			break;
-		case 12: exit(0);
+		case 12: delete_nth_from_last(&hptr);
+			break; 
+		case 13: print_nth_from_last(hptr);
+			break;
+		case 14: exit(0);
 		default: printf("Unknown option\n");
 	}
 	}
@@ -181,7 +187,7 @@ void delete_last_node(emp **ptr)
 		free(del);
 		return;
 	}
-	
+
 	while(del->next->next)
 	{
 		del=del->next;
@@ -240,40 +246,167 @@ int count_num_nodes(emp *ptr)
 
 void add_middle(emp **ptr)
 {
-emp *new=malloc(sizeof(struct employee));
-printf("Enter the emp_name, emp_id and salary:\n");
-scanf("%s%d%f",new->name,&new->emp_id,&new->salary);
-if(*ptr==0 || (new->emp_id)<((*ptr)->emp_id))
-{
-new->next=*ptr;
-*ptr=new;
-}
-else
-{
-emp *last=*ptr;
-while(last->next!=0 && (new->emp_id)>(last->next->emp_id))
-last=last->next;
-new->next=last->next;
-last->next=new;
-}
-}
-
-void reverse_print(emp *ptr)
-{
-if(ptr==0)
-{
-printf("No records found:\n");
-return;
+	emp *new=malloc(sizeof(struct employee));
+	printf("Enter the emp_name, emp_id and salary:\n");
+	scanf("%s%d%f",new->name,&new->emp_id,&new->salary);
+	if(*ptr==0 || (new->emp_id)<((*ptr)->emp_id))
+	{
+		new->next=*ptr;
+		*ptr=new;
+	}
+	else
+	{
+		emp *last=*ptr;
+		while(last->next!=0 && (new->emp_id)>(last->next->emp_id))
+			last=last->next;
+		new->next=last->next;
+		last->next=new;
+	}
 }
 
-emp *t;
-int i,j,c;
-c=count_num_nodes(ptr);
-for(i=0;i<c;i++)
+void reverse_print(emp *ptr)  // it is slow bcz, count nodes-->o(n), outer loop---> o(n) ,inner loop--->o(n)  so total complexity is o(n^2)
 {
-t=ptr;
-for(j=0;j<c-i-1;j++)
-t=t->next;
-printf("Name=%s emp_id=%d salary=%f\n",t->name,t->emp_id,t->salary);
+	if(ptr==0)
+	{
+		printf("No records found:\n");
+		return;
+	}
+
+	emp *t;
+	int i,j,c;
+	c=count_num_nodes(ptr);
+	for(i=0;i<c;i++)
+	{
+		t=ptr;
+		for(j=0;j<c-i-1;j++)
+			t=t->next;
+		printf("Name=%s emp_id=%d salary=%f\n",t->name,t->emp_id,t->salary);
+	}
 }
+
+/*void reverse_print(emp *ptr)    // using recursion, time complextity is o(n)
+  {
+  if(ptr == NULL)
+  {
+  return;
+  }
+
+  reverse_print(ptr->next);
+
+  printf("Name=%s emp_id=%d salary=%f\n",
+  ptr->name, ptr->emp_id, ptr->salary);
+  }*/
+
+void delete_nth_from_last(emp **ptr)
+{
+	if(*ptr==0)
+	{
+		printf("No records found\n");
+		return;
+	}
+
+	int n;
+	printf("Enter the value of n(nth node from last):\n");
+	scanf("%d",&n);
+
+	int total=count_num_nodes(*ptr);
+
+	if(n<=0 || n>total)
+	{
+		printf("Invalid position\n");
+		return;
+	}
+	int pos_from_start=total-n+1;
+	emp *cur=*ptr;
+	emp *prev=NULL;
+
+	if(pos_from_start==1)
+	{
+		*ptr=cur->next;
+		free(cur);
+		printf("Nth node from last deleted\n");
+		return;
+	}
+
+	for(int i=1;i<pos_from_start;i++)
+	{
+		prev=cur;
+		cur=cur->next;
+	}
+	prev->next=cur->next;
+	free(cur);
+
+	printf("Nth node from last deleted\n");
 }
+
+
+void print_nth_from_last(emp *ptr)
+{
+	if(ptr==0)
+	{
+		printf("No records found\n");
+		return;
+	}
+
+	int n,i;
+	printf("Enter the value of n(nth node from last):\n");
+	scanf("%d",&n);
+
+	emp *fast=ptr;
+	emp *slow=ptr;
+
+	// Move fast ptr n steps ahead
+	for(i=0;i<n;i++)  /// here moving the fast pointer 2 steps
+	{
+		if(fast==NULL)
+		{
+			printf("Position exceeded number of nodes\n");
+			return;
+		}
+		fast=fast->next;
+	}
+
+	// Move both the pointers
+	while(fast!=NULL)
+	{
+		slow=slow->next;
+		fast=fast->next;
+	}           /// when fast becomes NULL, the slow will be at Nth node from last
+
+	printf("Nth node from last details:\n");
+	printf("Name: %s, emp_id=%d, salary=%f\n",slow->name,slow->emp_id,slow->salary);
+}         /// Time complexity is O(n), and the traversal is 1
+
+/*void print_nth_from_last(emp *ptr)
+  {
+  if(ptr == 0)
+  {
+  printf("No records found\n");
+  return;
+  }
+
+  int n;
+  printf("Enter the value of N (nth node from last):\n");
+  scanf("%d",&n);
+
+  int total = count_num_nodes(ptr);
+
+  if(n <= 0 || n > total)
+  {
+  printf("Invalid position\n");
+  return;
+  }
+
+  int pos_from_start = total - n + 1;
+
+  emp *temp = ptr;
+
+  for(int i = 1; i < pos_from_start; i++)
+  {
+  temp = temp->next;
+  }
+
+  printf("Nth node from last details:\n");
+  printf("Name=%s emp_id=%d salary=%f\n",
+  temp->name, temp->emp_id, temp->salary);
+  }*/
