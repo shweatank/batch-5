@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            hcsr04 {
+                compatible = "mycompany,hcsr04";
+
+                /* Ultrasonic */
+                trig-gpios = <&gpio 5 0>;   /* BCM 5 */
+                echo-gpios = <&gpio 6 0>;   /* BCM 6 */
+
+                /* LEDs */
+                ledclose-gpios = <&gpio 17 0>;  /* BCM 17 */
+                ledfar-gpios   = <&gpio 27 0>;  /* BCM 27 */
+            };
+        };
+    };
+};
