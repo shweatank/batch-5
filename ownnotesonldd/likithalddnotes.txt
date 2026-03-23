@@ -11,16 +11,16 @@ Ans)A kernel is the core part of an operating system. It acts as a bridge betwee
                                ------------------
                                 |       |       |
                                CPU    MEMORY  DEVICE
-=====================================================================================================
+=========================================================================================================================================================
 2)What is Linux?
 Ans)A free and open-source operating system kernel that manages hardware resources, provides services to programs, and acts as an interface between the user and the computer.
 
 -->Kernel = the engine of a car (makes it run)
 -->Linux = the complete car (engine + wheels + seats + dashboard + everything else)
-=====================================================================================================3)What is Device?
+=========================================================================================================================================================3)What is Device?
 Ans)A device is a hardware it is used to intract with software(or)comuter.
 eg:i)keyboard ii)mouse iii)printer(e.t.c)......
-=====================================================================================================
+=========================================================================================================================================================
 4)What is Driver?
 Ans)A driver is a software program that allows os to communicate with hardware device
 eg:keyboard driver,mouse driver(e.t.c).......
@@ -37,7 +37,7 @@ eg:keyboard driver,mouse driver(e.t.c).......
 
 --->Device = the car (hardware).
 --->Device driver = the driver (software) who knows how to operate it.
-=====================================================================================================
+=========================================================================================================================================================
 5)Types of linux device driver?
 Ans)
 1️⃣ Character Device Drivers (Char Drivers)
@@ -52,7 +52,7 @@ Example: /dev/sda (hard disk)
 Control network interfaces like Ethernet cards, Wi-Fi adapters
 Handle sending and receiving network packets
 Example: e1000 (Intel Ethernet driver)
-=====================================================================================================
+=========================================================================================================================================================
 6)Differences between userspace vs kernelspace?
 Ans) ------------------------------------------------------
       userspace                         kernelspace
@@ -65,7 +65,7 @@ Ans) ------------------------------------------------------
    iv)indirect way of accessing     iv)direct way of accessing kernel.
        kernel.
     v)limited hardware acesss.               v)full hardware access.
-=====================================================================================================
+=========================================================================================================================================================
 7)Differences between module vs built-in-drivers?
 Ans)--------------------------------------------------------------
             modules                                built-in-drivers
@@ -77,7 +77,7 @@ Ans)--------------------------------------------------------------
    iii)slightly slower.                    iii)faster.
    iv)Can be added or removed              iv)Cannot be removed without rebuilding the kernel.
       without reboot.       
-=====================================================================================================
+=========================================================================================================================================================
 8)Top half and bottom half
 Ans)Top half
    -----------
@@ -91,10 +91,10 @@ Ans)Top half
    ii)Handles time-consuming work that the top half cannot do.
    iii)Can run with interrupts enabled, allowing other interrupts to be handled.
    Examples: Softirq, Tasklet, Workqueue in Linux.
-=====================================================================================================
+=========================================================================================================================================================
 9)What is modprobe?
 Ans)modprobe is usedto load or remove kernel modules.
-=====================================================================================================
+=========================================================================================================================================================
 10)What is probe function?
 Ans)A probe function is a callback function in a device driver that the kernel calls when:
  i)the driver is loaded.
@@ -108,7 +108,7 @@ Example:struct platform_driver my_driver = {
     },
 };
         
-=====================================================================================================
+=========================================================================================================================================================
 11)What is Kmalloc()?
 Ans)kmalloc() allocates physically contiguous memory in the kernel space.
 Faster than vmalloc.
@@ -120,7 +120,7 @@ Example:
                  if (!ptr)
                  return -ENOMEM;
 here GFP_KERNEEL->get free pages,it allow sleep
-=====================================================================================================12)What is Vmalloc()?
+=========================================================================================================================================================12)What is Vmalloc()?
 Ans)vmalloc() allocates virtually contiguous memory in kernel space.
 Slower than kmalloc.
 Suitable for large memory allocations.
@@ -138,7 +138,7 @@ Virtual Address	Physical Page
 0xA001	12000
 0xA002	3000
 0xA003	9000
-=====================================================================================================13)What is DMA?
+=========================================================================================================================================================13)What is DMA?
 Ans)DMA stands for direct memory access.
 It is a hardware feature that allows devices (like disk controllers, network cards, GPUs) to read/write memory directly without using the CPU.
 The CPU initiates the transfer but does not copy the data itself, saving CPU cycles.
@@ -147,7 +147,7 @@ CPU is free to do other work.
 ✅ Faster and efficient for large transfers.
 DMA APIs
 dma_alloc_coherent() → allocate DMA-safe memory.
-=====================================================================================================
+=========================================================================================================================================================
 14)What is kzalloc?
 Ans)Allocates physically contiguous memory and initializes it to zero.
 Example:
@@ -155,7 +155,7 @@ Example:
                     ptr = kzalloc(1024, GFP_KERNEL); // 1024 bytes, zeroed
                     if (!ptr)
                     return -ENOMEM;
-=====================================================================================================15)File Operations in Drivers?
+=========================================================================================================================================================15)File Operations in Drivers?
 Ans)struct file_operations {
     .open = my_open,
     .read = my_read,
@@ -163,7 +163,7 @@ Ans)struct file_operations {
     .release = my_release,
     .ioctl = my_ioctl,
 };
-=====================================================================================================16)What is dts?
+=========================================================================================================================================================16)What is dts?
 Ans)DTS stands for device tree source.
 it is a text file and human-readable text file.
 The name of DTS files should end with “.dts”.
@@ -196,7 +196,7 @@ Drivers cannot find devices automatically.
 Without DTS: Kernel cannot find or initialize hardware → board may not work.
 With DTS: Kernel knows all hardware locations and configurations → can load drivers and use devices properly.
 Purpose: Makes embedded Linux portable, maintainable, and reliable.
-=====================================================================================================
+========================================================================================================================================================
 17)What is /pro?
 Ans)/proc="processes"
 -/proc is a virtual filesystem created by the kernel to expose information about running processes and system state.
@@ -206,12 +206,12 @@ Ans)/proc="processes"
 Example:
             struct proc_dir_entry *entry;
             entry = proc_create("my_driver_info", 0, NULL, &my_fops);
-=====================================================================================================18)What is /sys?
+=========================================================================================================================================================18)What is /sys?
 Ans)/sys=sysfs
 -/sys is the sysfs filesystem, a virtual filesystem created by the Linux kernel.
 -Purpose: to provide a structured, hierarchical view of kernel objects and hardware devices.
 -Unlike /proc, which is mostly about processes and system info, /sys is device- and kernel-object oriented.
-=====================================================================================================
+=========================================================================================================================================================
 19)what is ioremap()?
 Ans)
 -ioremap() is a kernel function that maps physical memory addresses of hardware devices (like memory-mapped I/O registers) into the kernel’s virtual address space.
@@ -219,10 +219,10 @@ Ans)
 Example:
                   void __iomem *reg_base;
                   reg_base = ioremap(0x101f1000, 0x1000);
-=====================================================================================================20)How to register character device?
+=========================================================================================================================================================20)How to register character device?
 Ans)register_chrdev(MAJOR_NUM, "my_device", &fops);
 unregister_chrdev(MAJOR_NUM, "my_device");
-=====================================================================================================
+=========================================================================================================================================================
 21)What is copy_to_user() and copy_from_user()?
 Ans)For character devices, you often need to transfer data between kernel space and userspace safely.
 copy_to_user() → kernel → userspace
@@ -230,7 +230,7 @@ copy_from_user() → userspace → kernel
 Example:
 copy_to_user(buf, kernel_buffer, size);
 copy_from_user(kernel_buffer, buf, size);
-====================================================================================================
+=========================================================================================================================================================
 22)What is IOCTL?
 Ans)
 -ioctl stands for Input/Output Control.

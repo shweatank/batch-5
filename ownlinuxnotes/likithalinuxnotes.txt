@@ -1,0 +1,226 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#LINUX NOTES
+
+=======================================================================================================================================================================================
+1)What is Process?
+Ans)A program which is loaded into a RAM for execution is called "Process".Process ID (PID):
+Every process in Linux is assigned a unique number called a Process ID (PID).
+
+=======================================================================================================================================================================================2)What is a Shell?
+Ans)Shell is a user program which is used to interact with os.
+-shelll is a command language interpreter.
+
+=======================================================================================================================================================================================3)What is Process control block(PCB)?
+Ans)Whenever a process is created, for every process process manager will create a look up table or a data structure called "process control block(PCB)
+it contains the following information about a process
+i)process state
+ii)process id,its parent id.
+iii)program counter.
+iv)cpu registers.
+v)cpu scheduling iformation.
+vi)Memory-management information
+
+=======================================================================================================================================================================================4)What is Context switch?
+Ans)A context switch is the mechanism to store and restore the state or context of a cpu in process control block.
+
+=======================================================================================================================================================================================5)Library functions vs System calls?
+Ans) ---------------------------------------------------------------------
+     |     Library functions            |       System calls             |
+     ---------------------------------------------------------------------
+     |i)library functions are supported |i)System calls are supported    |
+     |by compilers.                     |by operating systems.           |
+     |ii)Another name for library func  |ii)Another name for system      |
+     |is Application programming        |call is system call             |
+     |interface(API).                   |interface(SCI).                 |
+     |iii)They are slower but process   |iii)They are faster but process |
+     |calling library function execute  |calling system calls execute    |
+     |faster.                           |slower.                         |
+     |iv)library functions execute in   |iv)system call execute in kernel|
+     |user space.                       |space.                          |
+     |v)No mode switch.                 |v)Requires switch from user mode|
+     |                                  |to kernel mode.                 |
+     |vi)Library functions may          |vi)System calls do not depend on|
+     |internally use system calls.      |library functions.              |
+     ---------------------------------------------------------------------
+
+===========================================================================i===========================================================================================================6)What is fork()?
+Ans)fork() is a system call used to create a new process.
+-it creates a child process that is an exact copy of the parent process.
+After fork() is called,two processes run:
+.👨 Parent process
+.👶 Child process
+Syntax:
+              pid_t fork(void);
+✅ On Success:
+             parent->returns->child pid
+             child->returns->0
+❌ On Failure:
+             Returns->-1
+Example:
+
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    pid_t pid = fork();
+
+    if(pid == 0){
+        printf("This is child process\n");
+    }else{
+        printf("This is parent process\n");
+    }
+    return 0;
+}
+
+=======================================================================================================================================================================================
+7)What is Orphan process?
+Ans)child process whose parent process has terminated (finished execution) while the child is still running.
+
+=======================================================================================================================================================================================8)What is Zombie process?
+Ans)Child execution completed,parent is still executing here child becomes zombie.
+
+=======================================================================================================================================================================================
+9)What is Defunct process?
+Ans)A Zombie is dead process which does not have any pendng instruction to execute it is "defunct process".
+
+=======================================================================================================================================================================================10)What is v.fork()?
+Ans)vfork() creates a child process that shares the same address space as the parent process temporarily until the child calls exec() or exit().
+Syntax:
+                pid_t vfork(void);
+Return values:
+0 → returned in the child process
+child PID → returned in the parent process
+-1 → error
+
+=======================================================================================================================================================================================11)CPU schedulers?
+Ans)A CPU Scheduler is a component of the operating system that selects which process from the ready queue will get the CPU next.
+Types of CPU Scheduling Algorithms:
+----------------------------------
+i)First Come First Serve (FCFS)
+Process that arrives first gets the CPU first.
+ii)Shortest Job First (SJF)
+Process with the shortest execution time runs first.
+iii)Priority Scheduling
+Process with highest priority runs first.
+iv)Round Robin (RR)
+Each process gets a fixed time slice (time quantum).
+v)Multilevel Queue Scheduling
+
+=======================================================================================================================================================================================12)What is signal?
+Ans)Signal is disturbance to normal process execution
+*When a process is executing because of some reason if the execution gets disturbed then we need to say process got a signal
+*A signal is a notification to a process that an event has occured.
+
+=======================================================================================================================================================================================13)Explain IPC Mechanism?
+Ans)IPC (Inter-Process Communication) is a mechanism that allows processes to communicate and share data with each other in an operating system.
+                                       ---------------------------
+                                       Inter-process communication
+                                       ---------------------------
+                                                   |
+                            --------------------------------------------
+                            |                                           |
+                         communication                              synchronisation
+                            |                                           |
+                   -------------------                             --------------------
+                   |                  |                            |                   |
+              data transfer     sharedmemory                   semaphores          record lock
+                        |
+                 ----------------
+                 |               |
+              Byte stream      Message
+                  |              |
+              ---------          |
+             |         |     Message Queue
+             pipe    fifo
+
+=======================================================================================================================================================================================14)What is Pipe?
+Ans)pipe is a kernel buffer
+->unnamed pipe
+->used for commmunication between related process.
+
+=======================================================================================================================================================================================15)What is fifo?
+Ans)It is special type of file.
+->Can be used by both related and unrelated processes.
+->Follows FIFO (first-in, first-out) order.
+
+=======================================================================================================================================================================================
+16)What is shared memory?
+Ans)Shared memory is an Inter-Process Communication (IPC) mechanism that allows multiple processes to access the same region of memory to exchange data directly.
+
+=======================================================================================================================================================================================17)What is semaphore?
+Ans)Semaphore is one of the synchronization technique.it is a small positive integer which is present in the kernel space.it can control access to shared resources by multiple processes.
+
+=======================================================================================================================================================================================18)Explain Deadlock?
+Ans)When there are two process and two common resources,when one process is holding one resoures and waiting for another recourse and vice versa then te both get block this is an unusual condition this is called "Dead lock"
+
+=======================================================================================================================================================================================19)What is Thread?
+Ans)Thread is small part of process.
+->A thread is sometimes called a lightweight process.
+
+=======================================================================================================================================================================================20)What is Multi-Threading?
+Ans)Multithreading means a single process can have multiple threads running at the same time, sharing the same memory and resources but executing independently.
+
+=======================================================================================================================================================================================21)What is MMU?
+Ans)A hardware component in a computer that translates logical (virtual) addresses into physical addresses in RAM.
+
+=======================================================================================================================================================================================22)What is Logical addressses(Virtual addrsses)?
+Ans)An address generated by the CPU during program execution.
+
+=======================================================================================================================================================================================23)What is Physical addresses?
+Ans)The actual location in RAM where data or instructions are stored.
+
+=======================================================================================================================================================================================24)What is virtual memory?
+Ans)Virtual memory is a part of harddisk which acts as physical RAM.
+
+=======================================================================================================================================================================================25)What is Pages?
+Ans)Virtual memory is divided into small parts called as "Pages".
+
+=======================================================================================================================================================================================26)What is Frames?
+Ans)A Physical memory is divided into small parts called as "Frames".
+
+=======================================================================================================================================================================================27)What is Page fault?
+Ans)A page fault occurs when a program tries to access a page that is not currently present in physical memory(RAM).
+
+=======================================================================================================================================================================================28)What is Mutex?
+Ans)A Mutex is a locking mechanism that allow only one thread to access a shared resources.
+*locking and unlocking must be performed by the same thread.
+
+=======================================================================================================================================================================================29)What is critical section?
+Ans)The part of code where a process accessed shared resources is called "Critical Section". 
+
+=======================================================================================================================================================================================30)What is internal fragmentation?
+Ans)In fixed partioning method for process more than the required memory is allocated that extra unused memory is called "internal fragmentation".
+
+=======================================================================================================================================================================================31)What is external fragmentation?
+Ans)In Dynamic partioning method for a process more than required memory is present but not in contiguous so the process is not getting the space for execution is called "external fragmentation".
+
+=======================================================================================================================================================================================32)What is exec()?
+Ans)exec() is a family of system calls used to replace the current process image with a new program.
+It does not create a new process.
+It replaces the current process code, data, stack, and heap with a new program.
+Common exec functions:
+execl()
+execv()
+execle()
+execlp()
+execvp()
+
+=======================================================================================================================================================================================33)What is wait()?
+Ans)wait() is a system call used by the parent process to wait for child process termination.
+Syntax: pid_t wait(int *status);
+
+=======================================================================================================================================================================================34)What is kill()?
+Ans)kill() is a system call used to send signals to a process.
+Syntax:int kill(pid_t pid, int signal);
+
+=======================================================================================================================================================================================35)What is Spinlock?
+Ans)A spinlock is a synchronization mechanism used to protect shared resources where a thread continuously checks the lock in a loop until the lock becomes available instead of going to sleep.
+It uses busy waiting.
+Mainly used for short critical sections.
+Commonly used in kernel programming in the Linux Kernel.
+
+=======================================================================================================================================================================================36)Ans)A spinlock is a synchronization mechanism used to protect shared resources where a thread continuously checks the lock in a loop until the lock becomes available instead of going to sleep.
+Ans)A spinlock is a synchronization mechanism used to protect shared resources where a thread continuously checks the lock in a loop until the lock becomes available instead of going to sleep.
+
+=======================================================================================================================================================================================
+
