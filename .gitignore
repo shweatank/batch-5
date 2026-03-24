@@ -1,0 +1,30 @@
+# Compiled kernel modules and objects
+*.ko
+*.o
+*.cmd
+*.mod
+*.mod.c
+*.symvers
+*.order
+.tmp_versions/
+Module.symvers
+modules.order
+modules.builtin
+modules.builtin.modinfo
+
+# Compiled userspace binaries
+a.out
+*.out
+alsa_record_play
+
+# Large raw/media capture files (do not commit)
+*.raw
+*.pcm
+
+# Generated output media
+output.mp4
+recorded.wav
+
+# Misc
+*~
+*.swp
