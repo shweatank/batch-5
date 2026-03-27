@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/Internal_Projects/I2C/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/Internal_Projects/I2C/Module.symvers -T /home/mirafra/Desktop/batch-5/Internal_Projects/I2C/modules.order -i Module.symvers -e 
