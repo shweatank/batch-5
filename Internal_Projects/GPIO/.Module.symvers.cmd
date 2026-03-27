@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/Desktop/batch-5/Internal_Projects/GPIO/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/batch-5/Internal_Projects/GPIO/Module.symvers -T /home/mirafra/Desktop/batch-5/Internal_Projects/GPIO/modules.order -i Module.symvers -e 
