@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {//overlay structure
+        target = <&spi0>;//parent node or hardware node or find the spio node  in main device tree and apply changes in the overlay of that node. 
+        __overlay__ {//which make any changes at run time 
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            ili9225@0 {
+                compatible = "ili9225_display";//tells the kernel which driver should handle this device
+                reg = <0>;                     //chip select number
+                spi-max-frequency = <4000000>; /* 4 MHz safe for ILI9225 */
+                status = "okay";
+                rs-gpios = <&gpio 25 0>;       //register selects a pin of the LCD is connected to the GPIO pin 25 and rs=0 means command mode ,rs=1 means data mode
+                reset-gpios = <&gpio 24 0>;    //restart pin which is used to restart the lcd and brings into the initial state//
+            };
+        };
+    };
+};
