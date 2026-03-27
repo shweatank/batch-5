@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/key_board_1.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/key_board_1.ko /home/mirafra/Desktop/batch-5/key_board_1.o /home/mirafra/Desktop/batch-5/key_board_1.mod.o
