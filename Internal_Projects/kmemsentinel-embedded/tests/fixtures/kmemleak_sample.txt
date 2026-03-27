@@ -1,0 +1,9 @@
+unreferenced object 0xffff88810f9ef4c0 (size 128):
+  comm "kworker/0:1", pid 45, jiffies 4294945132 (age 300.936s)
+  hex dump (first 32 bytes):
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+unreferenced object 0xffff88811abc2000 (size 64):
+  comm "mydriver", pid 888, jiffies 4294946000 (age 150.100s)
+  backtrace:
+    [<ffffffff81012345>] kmalloc_trace+0x123/0x1f0
