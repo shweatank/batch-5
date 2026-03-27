@@ -1,29 +1,38 @@
-#include<linux/module.h>
-#include<linux/kernel.h>
-#include<linux/interrupt.h>
-#include<linux/io.h>
-#include<linux/gpio.h>
-#include<linux/delay.h>
-#include<linux/uaccess.h>
-#include<linux/cdev.h>
-#include<linux/fs.h>
-#include<linux/workqueue.h>
-#include<linux/slab.h>
-#include<linux/gfp.h>
-
+#include<linux/module.h>//used for module_init ,module_exit(),module_license, module_Author
+#include<linux/kernel.h>//pr_info ,pr_err,printk()
+#include<linux/interrupt.h>//requst_irq() ,free_irq(),IRQ_HANDLED, IRQF_TRIGGER_RISSING
+#include<linux/io.h>//ioremap(),readl,writel
+#include<linux/gpio.h>//gpio_request(),gpio_free(),gpio_direction_input(),gpio_direction_output(),gpio_to_irq()
+#include<linux/delay.h>//msleep(),mdelay(),udelay()
+#include<linux/uaccess.h>//
+#include<linux/cdev.h>//cdev_init(),cdev_add(),cdev_del()
+#include<linux/fs.h>//struct file_operations,alloc_chrdev_region(),register_chrdev(),unregister_chrdev()
+#include<linux/workqueue.h>//INIT_WORK(),queue_work(),creat_singlethread_workqueue(),delay_workqueue()
+#include<linux/slab.h>//kmalloc
+#include<linux/gfp.h>//memory allocation flags
+/* Define GPIO number for DHT sensor data pin.
+  4 is BCM GPIO4.
+  +512 is used in some Raspberry Pi kernels where GPIO base starts from 512.
+ */
 #define DHT_GPIO_4 4+512
 #define GPIO_17 17+512
+/* Define GPIO number for Switch pin.
+ * 17 is BCM GPIO17.
+ * +512 because GPIO base offset may start at 512.
+ */
 
+/* Structure to store DHT sensor data */
 struct dht_data {
-    int temperature;
-    int humidity;
+    int temperature;//Variable to store temperature value from DHT
+    int humidity;// Variable to store humidity value from DHT
 };
+
 static int c;
-struct dht_data *data;
-static int irq;
-static struct workqueue_struct *my_wq;
-static struct work_struct my_work;
-static void sensor_work(struct work_struct *work)
+struct dht_data *data;//Variable to store IRQ number. GPIO is converted to IRQ using gpio_to_irq().
+static int irq;// Pointer to workqueue structure.This represents a custom workqueue created using create_workqueue().
+static struct workqueue_struct *my_wq;//This links the work function (sensor_work) to the workqueue.
+static struct work_struct my_work;//Workqueue handler function.
+static void sensor_work(struct work_struct *work)// Work structure.This links the work function (sensor_work) to the workqueue.
 {
 data=kmalloc(sizeof(*data),GFP_KERNEL);
  int i, j;

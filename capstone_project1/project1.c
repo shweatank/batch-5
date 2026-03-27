@@ -53,7 +53,6 @@ struct ili9225_display {
     struct gpio_desc *rs;// register select  rs=0 ->command rs=1 ->data //gpio controller,flags,consumer name
     struct gpio_desc *reset;//reset the dislpay
 };
-
 static struct ili9225_display *g_lcd,*lcd;
 
 static int irq;//store interrupt number assigned to GPIO pin
@@ -73,12 +72,14 @@ now=readl(timer_base+TIMER_CLO); //reading continously timer counter value
 if((now-start)>=us) // if required delay comes break it
 	break;
 }
+/* ex: start =10000
+us=5000;
+now=150000-10000 =5000 -> break the loop*/
 }
 	
 /* 
 	Storing data into buffer and sending to a pointer that represents hardware
 */
-
 static int ili9225_display_write16(struct ili9225_display *lcd, u16 value)
 {
     u8 buf[2];
@@ -96,10 +97,6 @@ static int ili9225_display_write_reg(struct ili9225_display *lcd, u16 reg, u16 d
     gpiod_set_value(lcd->rs, 1);
     return ili9225_display_write16(lcd, data);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 88bbc8b (Commit unstaged changes before pull)
 static void ili9225_display_reset(struct ili9225_display *lcd)
 {
     gpiod_set_value(lcd->reset, 1);   //pull reset pin high
@@ -132,13 +129,10 @@ static void ili9225_display_init(struct ili9225_display *lcd)
     ili9225_display_write_reg(lcd, 0x0013, 0x0063);       //Controls voltage switching
     ili9225_display_write_reg(lcd, 0x0014, 0x5A00);       //Fine tuning
     msleep(50);                                           //Delay for stabilizing voltage
+
     ili9225_display_write_reg(lcd, 0x0007, 0x1017);       //Enables Internal logic, Display output
     msleep(20);                                           //Delay to ensure stable start
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 88bbc8b (Commit unstaged changes before pull)
 static void ili9225_display_fill(struct ili9225_display *lcd, u16 color)
 {
     int x, y;
@@ -158,6 +152,7 @@ static void ili9225_display_fill(struct ili9225_display *lcd, u16 color)
         for (x = 0; x < LCD_WIDTH; x++)
             ili9225_display_write16(lcd, color);             //Filling screen with (white) background
 }
+
 
 static void drawPixel(int x, int y, uint16_t color)
 {
@@ -188,13 +183,14 @@ static void drawChar(int x, int y, unsigned char c, u16 color)
 int scale=2;
     if (c < 32 || c > 126)               //Allow printable charecters
         return;
+
     const unsigned char *bitmap = font8x8[c - 32];  //storing the charecter
 
     for (int row = 0; row < 8; row++)
     {
         for (int col = 0; col < 8; col++)
         {
-            if (bitmap[row] & (1 << (7 - col))) //1->draw pixel,0->skip pixel
+            if (bitmap[row] & (1 << (7 - col)))      //1->draw pixel,0->skip pixel
             {
                 for (int dy = 0; dy < scale; dy++)
                 {
@@ -219,25 +215,17 @@ static void drawString(int x, int y, const unsigned char *str,u16 color)
     }
 }
 
-<<<<<<< HEAD
 static void sensor_work(struct work_strut *work)
-=======
-static void sensor_work(struct work_struct *work)
->>>>>>> 88bbc8b (Commit unstaged changes before pull)
 {
  int i, j;
     u8 buf[5] = {0}; // buffers to store sensor data of 5 bytes
     char temp_str[25],hum_str[25],str[60]; //strings to store temperature and humidity
    /* Start condition */
     gpio_direction_output(DHT_GPIO_4, 0); // pull pin to  low to start communication
-    delay_us(18*MSEC);    //wait for 18 msec
+   delay_us(18*MSEC);    //wait for 18 msec
  
     gpio_set_value(DHT_GPIO_4, 1);//  pull pin to high 
-<<<<<<< HEAD
     delay_us(35); //wait for 35us (20-40us)
-=======
-    delay_us(30); //wait for 30us (20-40us)
->>>>>>> 88bbc8b (Commit unstaged changes before pull)
     gpio_direction_input(DHT_GPIO_4); //changing GPIO pin to input to recieve data from sensor 
 
     if (gpio_get_value(DHT_GPIO_4))  // checking pin  low or not
@@ -259,9 +247,11 @@ static void sensor_work(struct work_struct *work)
             while (gpio_get_value(DHT_GPIO_4)); //wait for pin to low
         }
     }
+
     /* Checksum */
     if (((buf[0] + buf[1] + buf[2] + buf[3]) & 0xFF) != buf[4]) //checking the data  valid or not
         pr_info("sensor data error\n");
+
 pr_info("Temperature=%d.%d°C\n",buf[2],buf[3]);//tempearture -> buf[2]=integer part ,buf[3]=decimal part
 pr_info("Humidity=%d.%d%%\n",buf[0],buf[1]);// humidity -> buf[0]=integer part buf[1]=fraction part 
 ili9225_display_fill(g_lcd, 0xFFFF);// clea  disable_irq_nosync(irq);r screen with white screen

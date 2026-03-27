@@ -1,1 +1,0 @@
-savedcmd_/home/team4/Desktop/ramesh/project/DHT11_project.mod := printf '%s\n'   DHT11_project.o | awk '!x[$$0]++ { print("/home/team4/Desktop/ramesh/project/"$$0) }' > /home/team4/Desktop/ramesh/project/DHT11_project.mod

@@ -1,1 +1,0 @@
-savedcmd_/home/team4/Desktop/kishore/USB/usb_driver.mod := printf '%s\n'   usb_driver.o | awk '!x[$$0]++ { print("/home/team4/Desktop/kishore/USB/"$$0) }' > /home/team4/Desktop/kishore/USB/usb_driver.mod
