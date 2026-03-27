@@ -1,0 +1,22 @@
+# Kernel module / build artifacts
+*.o
+*.ko
+*.mod
+*.mod.o
+*.mod.c
+*.cmd
+.*.cmd
+Module.symvers
+modules.order
+.*.mod.cmd
+
+# Editor / OS
+*.swp
+*.tmp
+*.bak
+*.DS_Store
+
+# Generated DTS/DTB/DTBO artifacts (if you compile overlays)
+*.dtb
+*.dtbo
+

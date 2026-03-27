@@ -1,0 +1,13 @@
+/ {
+	button_irq: button-irq@0 {
+		compatible = "example,gpio-button-irq";
+		/*
+		 * Replace with your SoC GPIO controller phandle and pin number.
+		 * Example only.
+		 */
+		button-gpios = <&gpio0 5 1>;
+		debounce-ms = <30>;
+		irq-both-edges;
+		status = "okay";
+	};
+};

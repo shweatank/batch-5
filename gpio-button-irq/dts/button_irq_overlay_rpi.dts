@@ -1,0 +1,24 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835", "brcm,bcm2711";
+
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			button_irq: button-irq@0 {
+				compatible = "example,gpio-button-irq";
+				/*
+				 * <&gpio pin flags>
+				 * flags: 0 => active-high, 1 => active-low (platform dependent)
+				 */
+				button-gpios = <&gpio 17 1>;
+				/* Optional software debounce in milliseconds */
+				debounce-ms = <30>;
+				irq-both-edges;
+				status = "okay";
+			};
+		};
+	};
+};
