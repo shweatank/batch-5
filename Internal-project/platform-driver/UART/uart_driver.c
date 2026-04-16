@@ -123,7 +123,6 @@ static ssize_t my_read(struct file *file,
     if (copy_to_user(buf, kbuf, count))
         return -EFAULT;
     pr_info("Data read is %s\n",buf);
-
     return count;
 }
 

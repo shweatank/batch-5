@@ -1,8 +1,8 @@
-savedcmd_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o := gcc-12 -Wp,-MMD,/home/mirafra/batch-5/Internal-project/linux_performance_issues/.memory1.mod.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -I./ubuntu/include -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -mharden-sls=all -fpatchable-function-entry=16,16 -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -fno-omit-frame-pointer -fno-optimize-sibling-calls -ftrivial-auto-var-init=zero -fno-stack-clash-protection -fzero-call-used-regs=used-gpr -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -falign-functions=16 -fno-strict-overflow -fno-stack-check -fconserve-stack -fno-builtin-wcslen -fno-builtin-wcslen -Wall -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-overflow -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-restrict -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -g -gdwarf-5 -fsanitize=bounds-strict -fsanitize=shift -fsanitize=bool -fsanitize=enum -DMODULE -DKBUILD_BASENAME='"memory1.mod"' -DKBUILD_MODNAME='"memory1"' -D__KBUILD_MODNAME=kmod_memory1 -c -o /home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o /home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.c
+savedcmd_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o := gcc-12 -Wp,-MMD,/home/mirafra/batch-5/Internal-project/linux_performance_issues/.memory3.mod.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -I./ubuntu/include -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -mharden-sls=all -fpatchable-function-entry=16,16 -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -fno-omit-frame-pointer -fno-optimize-sibling-calls -ftrivial-auto-var-init=zero -fno-stack-clash-protection -fzero-call-used-regs=used-gpr -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -falign-functions=16 -fno-strict-overflow -fno-stack-check -fconserve-stack -fno-builtin-wcslen -fno-builtin-wcslen -Wall -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-overflow -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-restrict -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -g -gdwarf-5 -fsanitize=bounds-strict -fsanitize=shift -fsanitize=bool -fsanitize=enum -DMODULE -DKBUILD_BASENAME='"memory3.mod"' -DKBUILD_MODNAME='"memory3"' -D__KBUILD_MODNAME=kmod_memory3 -c -o /home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o /home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.c
 
-source_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o := /home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.c
+source_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o := /home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.c
 
-deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o := \
+deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o := \
     $(wildcard include/config/UNWINDER_ORC) \
     $(wildcard include/config/MODULE_UNLOAD) \
     $(wildcard include/config/RETPOLINE) \
@@ -151,10 +151,6 @@ deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod
   include/linux/ratelimit_types.h \
   include/linux/bits.h \
   include/vdso/bits.h \
-  include/linux/overflow.h \
-  include/linux/limits.h \
-  include/uapi/linux/limits.h \
-  include/vdso/limits.h \
   include/uapi/linux/param.h \
   arch/x86/include/generated/uapi/asm/param.h \
   include/asm-generic/param.h \
@@ -333,6 +329,9 @@ deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod
     $(wildcard include/config/PROVE_LOCKING) \
   include/linux/align.h \
   include/linux/array_size.h \
+  include/linux/limits.h \
+  include/uapi/linux/limits.h \
+  include/vdso/limits.h \
   include/linux/bitops.h \
   include/linux/typecheck.h \
   include/asm-generic/bitops/generic-non-atomic.h \
@@ -372,6 +371,7 @@ deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod
     $(wildcard include/config/BINARY_PRINTF) \
     $(wildcard include/config/FORTIFY_SOURCE) \
   include/linux/err.h \
+  include/linux/overflow.h \
   include/uapi/linux/string.h \
   include/linux/fortify-string.h \
     $(wildcard include/config/CC_HAS_KASAN_MEMINTRINSIC_PREFIX) \
@@ -1068,6 +1068,6 @@ deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod
     $(wildcard include/config/MGEODEGX1) \
     $(wildcard include/config/MGEODE_LX) \
 
-/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o: $(deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o)
+/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o: $(deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o)
 
-$(deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory1.mod.o):
+$(deps_/home/mirafra/batch-5/Internal-project/linux_performance_issues/memory3.mod.o):
