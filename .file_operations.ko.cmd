@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/file_operations.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/batch-5/file_operations.ko /home/mirafra/Desktop/batch-5/file_operations.o /home/mirafra/Desktop/batch-5/file_operations.mod.o

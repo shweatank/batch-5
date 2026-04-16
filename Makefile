@@ -1,4 +1,4 @@
-obj-m += key_board_1.o
+obj-m += file_operations.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

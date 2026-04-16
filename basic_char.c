@@ -2,7 +2,7 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/fs.h>
-#include<string.h>
+//#include<string.h>
 
 
 #define DEVICE_NAME "basic_char"
@@ -10,20 +10,6 @@
 static int major_number;
 
 /* Module initialization */
-
-void reverse(char *s)
-{
-	  int j=strlen(s);
-
-	  for(i=0,j=n-1;i<j;i++,j--)
-	  {
-		  char temp=s[i];
-		  s[i]=s[j];
-		  s[j]=temp;
-	  }
-}
-
-
 static int __init basic_char_init(void)
 {
     major_number = register_chrdev(0, DEVICE_NAME, NULL);
