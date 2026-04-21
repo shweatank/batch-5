@@ -1,0 +1,1 @@
+savedcmd_/home/team2/multimedia/camera/camera_driver.mod := printf '%s\n'   camera_driver.o | awk '!x[$$0]++ { print("/home/team2/multimedia/camera/"$$0) }' > /home/team2/multimedia/camera/camera_driver.mod

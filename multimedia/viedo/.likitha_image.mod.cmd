@@ -1,0 +1,1 @@
+savedcmd_/home/team2/multimedia/viedo/likitha_image.mod := printf '%s\n'   likitha_image.o | awk '!x[$$0]++ { print("/home/team2/multimedia/viedo/"$$0) }' > /home/team2/multimedia/viedo/likitha_image.mod

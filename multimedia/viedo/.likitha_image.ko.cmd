@@ -1,0 +1,1 @@
+savedcmd_/home/team2/multimedia/viedo/likitha_image.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/multimedia/viedo/likitha_image.ko /home/team2/multimedia/viedo/likitha_image.o /home/team2/multimedia/viedo/likitha_image.mod.o /home/team2/multimedia/viedo/.module-common.o

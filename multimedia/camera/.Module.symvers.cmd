@@ -1,0 +1,1 @@
+savedcmd_/home/team2/multimedia/camera/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team2/multimedia/camera/Module.symvers -n -T /home/team2/multimedia/camera/modules.order -i Module.symvers -e 
