@@ -1,0 +1,19 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&{/}>;
+
+        __overlay__ {
+            led_gpio17 {
+                compatible = "techdhaba,gpio-led";
+                status = "okay";
+
+                led-gpios = <&gpio 17 0>;
+            };
+        };
+    };
+};

@@ -1,0 +1,315 @@
+// ili9225_spi_driver.c
+#include <linux/module.h>
+#include <linux/spi/spi.h>
+#include <linux/gpio/consumer.h>
+#include <linux/delay.h>
+#include <linux/of.h>
+#include <linux/fs.h>
+#include <linux/cdev.h>
+#include <linux/device.h>
+#include <linux/uaccess.h>
+#include "char_header.h"
+
+#define DRIVER_NAME "ili9225"
+#define CLASS_NAME  "ili"
+#define DEVICE_NAME "ili9225_char"
+#define LINE_HEIGHT 20
+
+#define LCD_WIDTH   220
+#define LCD_HEIGHT  176
+
+static dev_t dev_num;
+static struct class *ili_class;
+static struct cdev ili_cdev;
+
+struct ili9225 {
+    struct spi_device *spi;
+    struct gpio_desc *rs;
+    struct gpio_desc *reset;
+};
+
+static struct ili9225 *g_lcd,*lcd;
+
+/* ---------------------------------------------------- */
+/* SPI write                                             */
+/* ---------------------------------------------------- */
+static int ili9225_write16(struct ili9225 *lcd, u16 value)
+{
+/* Storing data into buffer and sending over to SPI bus */
+    u8 buf[2];
+    buf[0] = value >> 8;
+    buf[1] = value & 0xFF;
+    return spi_write(lcd->spi, buf, 2);
+}
+
+/* ---------------------------------------------------- */
+static int ili9225_write_reg(struct ili9225 *lcd, u16 reg, u16 data)
+{
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, reg);
+
+    gpiod_set_value(lcd->rs, 1);
+    return ili9225_write16(lcd, data);
+}
+
+/* ---------------------------------------------------- */
+static void ili9225_reset(struct ili9225 *lcd)
+{
+    gpiod_set_value(lcd->reset, 1);
+    msleep(5);
+    gpiod_set_value(lcd->reset, 0);
+    msleep(20);
+    gpiod_set_value(lcd->reset, 1);
+    msleep(50);
+}
+
+/* ---------------------------------------------------- */
+/* INIT — LANDSCAPE MODE                                 */
+/* ---------------------------------------------------- */
+static void ili9225_init(struct ili9225 *lcd)
+{
+    ili9225_reset(lcd);
+
+    ili9225_write_reg(lcd, 0x0001, 0x011C);
+    ili9225_write_reg(lcd, 0x0002, 0x0100);
+
+    // LANDSCAPE ENTRY MODE
+    ili9225_write_reg(lcd, 0x0003, 0x1038);
+
+    ili9225_write_reg(lcd, 0x0008, 0x0808);
+    ili9225_write_reg(lcd, 0x000C, 0x0000);
+    ili9225_write_reg(lcd, 0x000F, 0x0B01);
+
+    ili9225_write_reg(lcd, 0x0010, 0x0A00);
+    ili9225_write_reg(lcd, 0x0011, 0x1038);
+    msleep(50);
+
+    ili9225_write_reg(lcd, 0x0012, 0x1121);
+    ili9225_write_reg(lcd, 0x0013, 0x0063);
+    ili9225_write_reg(lcd, 0x0014, 0x5A00);
+    msleep(50);
+
+    ili9225_write_reg(lcd, 0x0007, 0x1017);
+    msleep(20);
+}
+
+/* ---------------------------------------------------- */
+/* Fill Screen — Landscape Window                        */
+/* ---------------------------------------------------- */
+static void ili9225_fill(struct ili9225 *lcd, u16 color)
+{
+    int x, y;
+
+    ili9225_write_reg(lcd, 0x0036, LCD_HEIGHT - 1);
+    ili9225_write_reg(lcd, 0x0037, 0);
+    ili9225_write_reg(lcd, 0x0038, LCD_WIDTH - 1);
+    ili9225_write_reg(lcd, 0x0039, 0);
+
+    ili9225_write_reg(lcd, 0x0020, 0);
+    ili9225_write_reg(lcd, 0x0021, 0);
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0022);
+    gpiod_set_value(lcd->rs, 1);
+
+    for (y = 0; y < LCD_HEIGHT; y++)
+        for (x = 0; x < LCD_WIDTH; x++)
+            ili9225_write16(lcd, color);
+}
+
+/* ---------------------------------------------------- */
+/* Draw Pixel — ROTATED                                  */
+/* ---------------------------------------------------- */
+/*static void drawPixel(int x, int y, uint16_t color)
+{
+    struct ili9225 *lcd = g_lcd;
+
+    // Rotate coordinates for landscape
+    int tx = x;
+    x = y;
+    y = (LCD_HEIGHT - 1) - tx;
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0020);
+    gpiod_set_value(lcd->rs, 1);
+    ili9225_write16(lcd, x);
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0021);
+    gpiod_set_value(lcd->rs, 1);
+    ili9225_write16(lcd, y);
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0022);
+    gpiod_set_value(lcd->rs, 1);
+    ili9225_write16(lcd, color);
+}
+*/
+
+static void drawPixel(int x, int y, uint16_t color)
+{
+    struct ili9225 *lcd = g_lcd;
+
+    // New rotation for the circled corner
+    int x_rotated = (LCD_WIDTH - 1) - x;
+    int y_rotated = y;
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0020); 
+    gpiod_set_value(lcd->rs, 1);
+    ili9225_write16(lcd, y_rotated); // Use y_rotated for Gram Address Set
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0021);
+    gpiod_set_value(lcd->rs, 1);
+    ili9225_write16(lcd, x_rotated); // Use x_rotated for Gram Address Set
+
+    gpiod_set_value(lcd->rs, 0);
+    ili9225_write16(lcd, 0x0022);
+    gpiod_set_value(lcd->rs, 1);
+    ili9225_write16(lcd, color);
+}
+/* ---------------------------------------------------- */
+/*
+static void drawChar(int x, int y, char c, uint16_t color)
+{
+    if (c < 32 || c > 127) return;
+
+    const uint8_t *bitmap = font8x8[c - 32];
+
+    for (int row = 0; row < 8; row++)
+    {
+        for (int col = 0; col < 8; col++)
+        {
+            if (bitmap[row] & (1 << (7 - col)))
+            {
+                drawPixel(x + col*2, y + row*2, color);
+                drawPixel(x + col*2+1, y + row*2, color);
+                drawPixel(x + col*2, y + row*2+1, color);
+                drawPixel(x + col*2+1, y + row*2+1, color);
+            }
+        }
+    }
+}
+*/
+static void drawChar(int x, int y, char c, uint16_t color)
+{
+    if (c < 32 || c > 127) return;
+
+    const uint8_t *bitmap = font8x8[c - 32];
+
+    for (int row = 0; row < 8; row++)
+    {
+        for (int col = 0; col < 8; col++)
+        {
+            // Check the bit for the current pixel
+            if (bitmap[row] & (1 << (7 - col)))
+            {
+                // Draw only a single pixel instead of a 2x2 block
+                drawPixel(x + col, y + row, color);
+            }
+        }
+    }
+}
+
+static void drawString(int x, int y, const char *str, uint16_t color)
+{
+    for (int i = 0; str[i]; i++)
+    {
+        drawChar(x, y, str[i], color);
+        x += 9;
+    }
+}
+
+/* ---------------------------------------------------- */
+static ssize_t ili_write(struct file *file,
+                         const char __user *buf,
+                         size_t len,
+                         loff_t *off)
+{
+    char kbuf[128];
+
+    if (len > 127)
+        len = 127;
+
+    if (copy_from_user(kbuf, buf, len))
+        return -EFAULT;
+
+    kbuf[len] = '\0';
+
+    ili9225_fill(g_lcd, 0xFFFF);
+
+    drawString(0, 0, kbuf, 0x0000);
+    drawString(0, 9, "humid=23%", 0x0000);
+
+    return len;
+}
+
+/* ---------------------------------------------------- */
+static struct file_operations fops = {
+    .owner = THIS_MODULE,
+    .write = ili_write,
+};
+
+/* ---------------------------------------------------- */
+static int ili9225_probe(struct spi_device *spi)
+{
+    lcd = devm_kzalloc(&spi->dev, sizeof(*lcd), GFP_KERNEL);
+    if (!lcd)
+        return -ENOMEM;
+
+    lcd->spi = spi;
+    spi_set_drvdata(spi, lcd);
+
+    lcd->rs = devm_gpiod_get(&spi->dev, "rs", GPIOD_OUT_LOW);
+    lcd->reset = devm_gpiod_get(&spi->dev, "reset", GPIOD_OUT_HIGH);
+
+    spi->mode = SPI_MODE_0;
+    spi->bits_per_word = 8;
+    spi_setup(spi);
+
+    ili9225_init(lcd);
+    ili9225_fill(lcd, 0xFFFF);
+
+    g_lcd = lcd;
+
+    alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME);
+    cdev_init(&ili_cdev, &fops);
+    cdev_add(&ili_cdev, dev_num, 1);
+
+    ili_class = class_create(CLASS_NAME);
+    device_create(ili_class, NULL, dev_num, NULL, DEVICE_NAME);
+
+    dev_info(&spi->dev, "ILI9225 Landscape Ready\n");
+    return 0;
+}
+
+/* ---------------------------------------------------- */
+static void ili9225_remove(struct spi_device *spi)
+{
+    device_destroy(ili_class, dev_num);
+    class_destroy(ili_class);
+    cdev_del(&ili_cdev);
+    unregister_chrdev_region(dev_num, 1);
+pr_info("removed\n");
+}
+
+/* ---------------------------------------------------- */
+static const struct of_device_id ili9225_dt_ids[] = {
+    { .compatible = "ili9225_display" },
+    { }
+};
+MODULE_DEVICE_TABLE(of, ili9225_dt_ids);
+
+static struct spi_driver ili9225_driver = {
+    .driver = {
+        .name = DRIVER_NAME,
+        .of_match_table = ili9225_dt_ids,
+    },
+    .probe  = ili9225_probe,
+    .remove = ili9225_remove,
+};
+
+module_spi_driver(ili9225_driver);
+
+MODULE_LICENSE("GPL");

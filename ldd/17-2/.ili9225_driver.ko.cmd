@@ -1,0 +1,1 @@
+savedcmd_/home/team4/saikumar/17-2/ili9225_driver.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team4/saikumar/17-2/ili9225_driver.ko /home/team4/saikumar/17-2/ili9225_driver.o /home/team4/saikumar/17-2/ili9225_driver.mod.o /home/team4/saikumar/17-2/.module-common.o

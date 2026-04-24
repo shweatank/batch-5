@@ -1,0 +1,1 @@
+savedcmd_/home/team4/saikumar/10-2/uart_tx_rx_driver.mod := printf '%s\n'   uart_tx_rx_driver.o | awk '!x[$$0]++ { print("/home/team4/saikumar/10-2/"$$0) }' > /home/team4/saikumar/10-2/uart_tx_rx_driver.mod

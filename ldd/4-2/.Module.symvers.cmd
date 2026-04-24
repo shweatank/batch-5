@@ -1,0 +1,1 @@
+savedcmd_/home/team4/Desktop/saikumar/4-2/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team4/Desktop/saikumar/4-2/Module.symvers -n -T /home/team4/Desktop/saikumar/4-2/modules.order -i Module.symvers -e 
