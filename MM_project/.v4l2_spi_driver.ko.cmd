@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/test/batch-5/MM_project/v4l2_spi_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/test/batch-5/MM_project/v4l2_spi_driver.ko /home/mirafra/Desktop/test/batch-5/MM_project/v4l2_spi_driver.o /home/mirafra/Desktop/test/batch-5/MM_project/v4l2_spi_driver.mod.o

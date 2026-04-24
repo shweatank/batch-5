@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/test/batch-5/MM_project/v4l2_spi_driver.mod := printf '%s\n'   v4l2_spi_driver.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/test/batch-5/MM_project/"$$0) }' > /home/mirafra/Desktop/test/batch-5/MM_project/v4l2_spi_driver.mod

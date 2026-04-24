@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/test/batch-5/practice/modules.order := {   echo /home/mirafra/Desktop/test/batch-5/practice/my_char_driver.o; :; } > /home/mirafra/Desktop/test/batch-5/practice/modules.order
