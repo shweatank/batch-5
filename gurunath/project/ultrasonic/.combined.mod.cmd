@@ -1,0 +1,1 @@
+savedcmd_/home/team2/gurunath/project/ultrasonic/combined.mod := printf '%s\n'   combined.o | awk '!x[$$0]++ { print("/home/team2/gurunath/project/ultrasonic/"$$0) }' > /home/team2/gurunath/project/ultrasonic/combined.mod

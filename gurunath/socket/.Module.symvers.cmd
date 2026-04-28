@@ -1,0 +1,1 @@
+savedcmd_/home/team2/gurunath/socket/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/team2/gurunath/socket/Module.symvers -T /home/team2/gurunath/socket/modules.order -i Module.symvers -e 

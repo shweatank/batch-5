@@ -1,0 +1,1 @@
+savedcmd_/home/team2/gurunath/socket/clientliki.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/gurunath/socket/clientliki.ko /home/team2/gurunath/socket/clientliki.o /home/team2/gurunath/socket/clientliki.mod.o /home/team2/gurunath/socket/.module-common.o

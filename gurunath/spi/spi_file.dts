@@ -1,0 +1,30 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    /* Enable SPI0 controller */
+    fragment@0 {
+        target = <&spi0>;
+        __overlay__ {
+            status = "okay";
+            #address-cells = <1>;
+            #size-cells = <0>;
+        };
+    };
+
+    /* SD card SPI slave on CE1 */
+    fragment@1 {
+        target-path = "/spi0";
+        __overlay__ {
+            sdcard@1 {
+                compatible = "spi-mmc";       /* standard SPI SD card driver */
+                reg = <1>;                     /* CE1 */
+                spi-max-frequency = <400000>;  /* 400 kHz safe for init */
+                status = "okay";
+            };
+        };
+    };
+};
+

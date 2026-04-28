@@ -1,0 +1,1 @@
+savedcmd_/home/team2/gurunath/i2c/i2c_o_led.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/gurunath/i2c/i2c_o_led.ko /home/team2/gurunath/i2c/i2c_o_led.o /home/team2/gurunath/i2c/i2c_o_led.mod.o /home/team2/gurunath/i2c/.module-common.o

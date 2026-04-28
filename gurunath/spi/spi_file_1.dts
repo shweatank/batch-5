@@ -1,0 +1,26 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&spi0>;
+        __overlay__ {
+            status = "okay";
+        };
+    };
+
+    fragment@1 {
+        target-path = "/spi0";
+        __overlay__ {
+            sdcard@1 {
+                compatible = "spi-mmc";        /* matches driver */
+                reg = <1>;                     /* CE1 */
+                spi-max-frequency = <400000>;  /* safe init frequency */
+                status = "okay";
+            };
+        };
+    };
+};
+

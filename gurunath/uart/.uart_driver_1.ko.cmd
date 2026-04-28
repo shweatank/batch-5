@@ -1,0 +1,1 @@
+savedcmd_/home/team2/gurunath/uart/uart_driver_1.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/gurunath/uart/uart_driver_1.ko /home/team2/gurunath/uart/uart_driver_1.o /home/team2/gurunath/uart/uart_driver_1.mod.o /home/team2/gurunath/uart/.module-common.o

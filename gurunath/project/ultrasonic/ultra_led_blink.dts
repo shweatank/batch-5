@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+
+            hcsr04 {
+                compatible = "mycompany,hcsr04";
+
+                trig-gpios = <&gpio 5 0>;
+                echo-gpios = <&gpio 6 0>;
+
+                led-near-gpios = <&gpio 17 0>;
+                led-far-gpios  = <&gpio 27 0>;
+            };
+        };
+    };
+};

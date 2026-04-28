@@ -1,0 +1,19 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";  /* Pi 4 SoC */
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            hcsr04 {
+                compatible = "mycompany,hcsr04";
+
+                trig-gpios = <&gpio 5 0>;   /* Trigger GPIO */
+                echo-gpios = <&gpio 6 0>;   /* Echo GPIO */
+                led17-gpios = <&gpio 17 0>; /* Speed indication LED */
+            };
+        };
+    };
+};

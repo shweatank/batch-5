@@ -1,0 +1,19 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            hcsr04 {
+                compatible = "mycompany,hcsr04";
+
+                /* Use proper GPIO mapping for BCM 5 and BCM 6 */
+                trig-gpios = <&gpio 5 0>;  /* 0 = active-high output */
+                echo-gpios = <&gpio 6 0>;  /* 0 = active-high input */
+            };
+        };
+    };
+};
