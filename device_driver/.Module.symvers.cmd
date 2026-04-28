@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/device_driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/device_driver/Module.symvers -T /home/mirafra/device_driver/modules.order -i Module.symvers -e 

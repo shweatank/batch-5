@@ -1,0 +1,1 @@
+savedcmd_/home/team2/hema/Kserver.ko := aarch64-linux-gnu-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/team2/hema/Kserver.ko /home/team2/hema/Kserver.o /home/team2/hema/Kserver.mod.o /home/team2/hema/.module-common.o

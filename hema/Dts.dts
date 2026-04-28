@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+
+&{/} {
+    compatible = "brcm,bcm2711";
+
+    led_gpio17 {
+        compatible = "techdhaba,gpio-led";
+        led-gpios = <&gpio 17 GPIO_ACTIVE_HIGH>;
+        label = "gpio17-led";
+        status = "okay";
+    };
+};
