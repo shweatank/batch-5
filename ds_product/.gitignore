@@ -1,0 +1,5 @@
+build/
+*.o
+taskmgr
+test_runner
+tasks.db

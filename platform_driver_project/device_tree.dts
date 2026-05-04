@@ -1,0 +1,12 @@
+/dts-v1/;
+
+/ {
+	demo_device@10000000 {
+		compatible = "demo,my-platform-device";
+		reg = <0x10000000 0x1000>;
+		interrupt-parent = <&gic>;
+		interrupts = <0 42 4>;
+		enable-gpios = <&gpio0 17 0>;
+		status = "okay";
+	};
+};

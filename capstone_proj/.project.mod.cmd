@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/batch-5/capstone_proj/project.mod := printf '%s\n'   project.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/batch-5/capstone_proj/"$$0) }' > /home/mirafra/Desktop/batch-5/capstone_proj/project.mod

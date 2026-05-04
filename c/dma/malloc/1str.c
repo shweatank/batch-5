@@ -7,5 +7,5 @@ p=malloc(sizeof(char)*10);
 
 scanf("%s",p);
 
-printf("%s",p);
+printf("%s\n",p);
 }

@@ -47,5 +47,6 @@ if(fd1<0)
 	printf("turning off led\n");
 
     close(fd);
+    close(fd1);
     return 0;
 }
